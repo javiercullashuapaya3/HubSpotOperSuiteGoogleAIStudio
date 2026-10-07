@@ -19,6 +19,7 @@ import { AgentDailyMonitor } from './components/AgentDailyMonitor';
 import { McpConfigPanel } from './components/McpConfigPanel';
 import { LoginScreen } from './components/LoginScreen';
 import { TenantHeaderBadge } from './components/TenantHeaderBadge';
+import { PromptiaLogo } from './components/PromptiaLogo';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { HubSpotOwner } from './types';
 import { mcpHubspot } from './services/mcpHubspot';
@@ -86,13 +87,15 @@ function AppContent() {
           <div className="flex items-center justify-between h-16">
             {/* Logo & Brand Identity */}
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-indigo-800 flex items-center justify-center text-white shadow-sm shadow-indigo-200">
-                <Zap className="w-5 h-5 fill-white text-white" />
+              <div className="w-11 h-11 rounded-xl bg-white border border-slate-200 shadow-2xs flex items-center justify-center p-1.5 hover:border-indigo-300 transition-colors shrink-0">
+                <PromptiaLogo variant="icon" size={32} />
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <h1 className="text-base font-extrabold text-slate-900 tracking-tight">
-                    HubOps Suite de Promptia.lat
+                  <h1 className="text-base font-extrabold text-slate-900 tracking-tight flex items-baseline">
+                    <span className="text-[#00C4FF] font-black mr-0.5">Promptia</span>
+                    <span className="text-[#9333EA] font-black mr-1.5">.lat</span>
+                    <span className="text-slate-800 font-extrabold">HubOps Suite</span>
                   </h1>
                   <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200 tracking-wide uppercase">
                     v2.4
@@ -188,8 +191,9 @@ function AppContent() {
       {/* Operational Footer */}
       <footer className="bg-white border-t border-slate-200 py-4 text-xs text-slate-500 mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <div className="flex items-center gap-2">
-            <span className="font-semibold text-slate-800">HubOps Suite de Promptia.lat</span>
+          <div className="flex items-center gap-2.5">
+            <PromptiaLogo variant="icon" size={16} />
+            <span className="font-semibold text-slate-800">Promptia.lat HubOps Suite</span>
             <span>•</span>
             <span>Sincronizado con HubSpot CRM</span>
             <span>•</span>

@@ -9,6 +9,7 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import { PromptiaLogo } from './PromptiaLogo';
 
 export const LoginScreen: React.FC = () => {
   const { handleLogin, isLoggingIn, loginError } = useAuth();
@@ -17,16 +18,20 @@ export const LoginScreen: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 flex items-center justify-center p-4 sm:p-6 lg:p-8 font-sans">
       <div className="max-w-md w-full">
-        {/* Brand Banner */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-indigo-600 shadow-xl shadow-indigo-500/25 mb-4 text-white ring-8 ring-white/5">
-            <Building2 className="w-7 h-7" />
+        {/* Brand Banner with Promptia.lat Logo */}
+        <div className="text-center mb-8 flex flex-col items-center">
+          <div className="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-white/10 backdrop-blur-md p-3 mb-4 border border-white/20 shadow-2xl ring-8 ring-white/5">
+            <PromptiaLogo variant="icon" size={56} />
           </div>
-          <h1 className="text-2xl font-extrabold text-white tracking-tight">
-            Portal de Clientes
+          <div className="flex items-baseline justify-center">
+            <span className="text-3xl font-black text-[#00E5FF] tracking-tight">Promptia</span>
+            <span className="text-3xl font-black text-[#A855F7] tracking-tight">.lat</span>
+          </div>
+          <h1 className="text-lg font-bold text-white mt-1">
+            HubOps Suite
           </h1>
-          <p className="text-sm text-slate-400 mt-1.5">
-            Gestión Inteligente de Contactos y CRM
+          <p className="text-xs text-slate-400 mt-0.5">
+            Operaciones Comerciales &amp; Gestión Masiva HubSpot CRM
           </p>
         </div>
 

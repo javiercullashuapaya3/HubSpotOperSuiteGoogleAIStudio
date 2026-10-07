@@ -8,6 +8,7 @@ import {
   ChevronRight,
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import { PromptiaLogo } from './PromptiaLogo';
 
 interface TenantHeaderBadgeProps {
   onOpenConfig?: () => void;
@@ -50,8 +51,8 @@ export const TenantHeaderBadge: React.FC<TenantHeaderBadgeProps> = ({ onOpenConf
             }}
           />
         ) : (
-          <div className="w-7 h-7 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-xs uppercase">
-            {companyName.charAt(0) || 'E'}
+          <div className="w-7 h-7 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center p-0.5 shrink-0">
+            <PromptiaLogo variant="icon" size={20} />
           </div>
         )}
 

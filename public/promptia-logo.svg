@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="100%" height="100%">
+  <defs>
+    <!-- Cyan to Blue Gradient -->
+    <linearGradient id="promptiaCyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00E5FF" />
+      <stop offset="45%" stop-color="#00A3FF" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </linearGradient>
+
+    <!-- Purple to Violet Gradient -->
+    <linearGradient id="promptiaPurpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366F1" />
+      <stop offset="50%" stop-color="#8B5CF6" />
+      <stop offset="100%" stop-color="#A855F7" />
+    </linearGradient>
+
+    <!-- Full Spectrum Gradient for Connectors -->
+    <linearGradient id="promptiaFullGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00E5FF" />
+      <stop offset="60%" stop-color="#8B5CF6" />
+      <stop offset="100%" stop-color="#A855F7" />
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(0, -20)">
+    <!-- LEFT BRAIN HEMISPHERE WITH CIRCUITS -->
+    <!-- Outer brain lobes outline -->
+    <path
+      d="M 390 140
+         C 335 140, 275 165, 250 215
+         C 220 225, 205 255, 210 295
+         C 200 320, 205 365, 230 395
+         C 220 420, 230 460, 260 485
+         C 300 520, 360 525, 390 500"
+      fill="none"
+      stroke="url(#promptiaCyanGrad)"
+      stroke-width="26"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <!-- Middle lobe inner indent -->
+    <path
+      d="M 215 315
+         C 245 320, 265 345, 260 380"
+      fill="none"
+      stroke="url(#promptiaCyanGrad)"
+      stroke-width="22"
+      stroke-linecap="round"
+    />
+
+    <!-- Top circuit branch inside brain -->
+    <path
+      d="M 365 240 L 295 295"
+      fill="none"
+      stroke="url(#promptiaCyanGrad)"
+      stroke-width="22"
+      stroke-linecap="round"
+    />
+    <circle cx="365" cy="240" r="22" fill="url(#promptiaCyanGrad)" />
+    <circle cx="295" cy="295" r="22" fill="url(#promptiaCyanGrad)" />
+
+    <!-- Bottom circuit branch inside brain -->
+    <path
+      d="M 360 440 L 330 480"
+      fill="none"
+      stroke="url(#promptiaCyanGrad)"
+      stroke-width="22"
+      stroke-linecap="round"
+    />
+    <path
+      d="M 330 480 L 345 495"
+      fill="none"
+      stroke="url(#promptiaCyanGrad)"
+      stroke-width="22"
+      stroke-linecap="round"
+    />
+    <circle cx="360" cy="440" r="22" fill="url(#promptiaCyanGrad)" />
+
+    <!-- RIGHT SIDE: "IA" LETTERS WITH CIRCUIT TRACE -->
+    <!-- Letter I -->
+    <rect
+      x="440"
+      y="215"
+      width="34"
+      height="135"
+      rx="8"
+      fill="url(#promptiaPurpleGrad)"
+    />
+
+    <!-- Circuit trace extending from base of I -->
+    <path
+      d="M 457 348
+         L 457 395
+         L 510 445
+         L 480 495
+         L 460 515"
+      fill="none"
+      stroke="url(#promptiaPurpleGrad)"
+      stroke-width="24"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <!-- Node circle at end of circuit trace -->
+    <circle cx="460" cy="515" r="24" fill="url(#promptiaPurpleGrad)" />
+
+    <!-- Letter A -->
+    <!-- Left diagonal stem -->
+    <path
+      d="M 525 350
+         L 570 215"
+      stroke="url(#promptiaPurpleGrad)"
+      stroke-width="36"
+      stroke-linecap="round"
+    />
+    <!-- Right diagonal stem -->
+    <path
+      d="M 570 215
+         L 615 350"
+      stroke="url(#promptiaPurpleGrad)"
+      stroke-width="36"
+      stroke-linecap="round"
+    />
+    <!-- Crossbar of A -->
+    <path
+      d="M 545 305
+         L 595 305"
+      stroke="url(#promptiaPurpleGrad)"
+      stroke-width="28"
+      stroke-linecap="round"
+    />
+
+    <!-- BOTTOM TEXT: "Promptia.lat" -->
+    <g font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', 'Inter', sans-serif" font-weight="800" font-size="82" letter-spacing="-1.5">
+      <!-- "Promptia" in Vibrant Cyan Blue -->
+      <text x="70" y="665" fill="#00C4FF">Promptia</text>
+      <!-- ".lat" in Vibrant Purple -->
+      <text x="475" y="665" fill="#9333EA">.lat</text>
+    </g>
+  </g>
+</svg>
