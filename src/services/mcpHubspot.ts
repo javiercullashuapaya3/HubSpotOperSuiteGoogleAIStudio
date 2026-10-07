@@ -12,6 +12,7 @@ import {
   McpToolLog,
   NotificationConfig,
 } from '../types';
+import { supabase } from '../supabase';
 
 // Empty dataset by default - populated dynamically from HubSpot API
 const INITIAL_OWNERS: HubSpotOwner[] = [];
@@ -48,14 +49,55 @@ class McpHubspotService {
       // Auto verify stored token in background
       this.verifyAndSyncWithHubspot(savedToken);
     } else {
-      this.recordLog(
-        'hubspot_get_owners',
-        'success',
-        30,
-        'params: {}',
-        `Iniciado en modo local. Ingresa tu HubSpot Token para cargar tu CRM real.`,
-      );
+      // Cargar token directamente desde la tabla companies en Supabase
+      this.ensureToken().then((t) => {
+        if (t) {
+          this.verifyAndSyncWithHubspot(t);
+        }
+      });
     }
+  }
+
+  // Garantiza la obtención del token desde memoria, localStorage o la tabla companies de Supabase
+  public async ensureToken(overrideClientId?: number | string): Promise<string> {
+    if (this.connectionState.privateAppToken && this.connectionState.privateAppToken.trim().length > 0) {
+      return this.connectionState.privateAppToken.trim();
+    }
+
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('hubspot_token');
+      if (saved && saved.trim().length > 0) {
+        this.connectionState.privateAppToken = saved.trim();
+        this.connectionState.isConnected = true;
+        return saved.trim();
+      }
+    }
+
+    try {
+      let query = supabase.from('companies').select('id, name, hubspot_token');
+      if (overrideClientId && !isNaN(Number(overrideClientId))) {
+        query = query.eq('id', Number(overrideClientId));
+      } else {
+        query = query.order('id', { ascending: true });
+      }
+
+      const { data, error } = await query.limit(1).maybeSingle();
+
+      if (data?.hubspot_token && data.hubspot_token.trim().length > 0) {
+        const token = data.hubspot_token.trim();
+        this.connectionState.privateAppToken = token;
+        this.connectionState.isConnected = true;
+        this.connectionState.mode = 'live_mcp';
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('hubspot_token', token);
+        }
+        return token;
+      }
+    } catch (err) {
+      console.warn('Error al consultar hubspot_token en companies de Supabase:', err);
+    }
+
+    return '';
   }
 
   public isConnectedToRealCRM(): boolean {
@@ -203,7 +245,7 @@ class McpHubspotService {
   // Tool 1: hubspot_get_owners (Queries Real HubSpot API if token exists)
   public async hubspot_get_owners(): Promise<HubSpotOwner[]> {
     const startTime = performance.now();
-    const token = this.connectionState.privateAppToken;
+    const token = await this.ensureToken();
 
     if (token) {
       try {
@@ -217,6 +259,9 @@ class McpHubspotService {
           const data = await res.json();
           if (data.owners && data.owners.length > 0) {
             this.owners = data.owners;
+            this.isUsingRealHubspot = true;
+            this.connectionState.isConnected = true;
+            this.connectionState.mode = 'live_mcp';
             const latency = Math.round(performance.now() - startTime);
             this.recordLog(
               'hubspot_get_owners',
@@ -224,6 +269,10 @@ class McpHubspotService {
               latency,
               'call: /api/hubspot/owners',
               `Cargados ${this.owners.length} propietarios reales de tu HubSpot CRM`,
+            );
+            this.notifyStatus(
+              true,
+              `Conectado a tu portal de HubSpot CRM (${this.owners.length} asesores cargados)`,
             );
             return [...this.owners];
           }
@@ -249,7 +298,7 @@ class McpHubspotService {
   // Tool 2: hubspot_search_contacts (Queries Real HubSpot API if token exists)
   public async hubspot_search_contacts(filters: FilterCriteria): Promise<HubSpotContact[]> {
     const startTime = performance.now();
-    const token = this.connectionState.privateAppToken;
+    const token = await this.ensureToken();
 
     if (token) {
       try {
@@ -266,6 +315,8 @@ class McpHubspotService {
           const data = await res.json();
           if (Array.isArray(data.contacts)) {
             this.contacts = data.contacts;
+            this.isUsingRealHubspot = true;
+            this.connectionState.isConnected = true;
             const latency = Math.round(performance.now() - startTime);
             const pageStr = data.pagesFetched ? ` en ${data.pagesFetched} páginas (100 por pág)` : '';
             this.recordLog(
@@ -383,7 +434,7 @@ class McpHubspotService {
     // Enforce 100ms rate limiting
     await new Promise((r) => setTimeout(r, 100));
 
-    const token = this.connectionState.privateAppToken;
+    const token = await this.ensureToken();
     const clearProps = Array.isArray(updates.clearProperties) ? updates.clearProperties : [];
 
     if (token) {
@@ -807,7 +858,7 @@ class McpHubspotService {
   // Tool 5: hubspot_get_contact_properties (generic schema reader for standard and custom portal properties)
   public async hubspot_get_contact_properties(): Promise<HubSpotProperty[]> {
     const startTime = performance.now();
-    const token = this.connectionState.privateAppToken;
+    const token = await this.ensureToken();
 
     if (token) {
       try {

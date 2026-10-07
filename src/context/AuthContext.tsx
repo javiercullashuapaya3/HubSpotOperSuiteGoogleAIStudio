@@ -70,33 +70,32 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         if (profileData) clientId = profileData.client_id;
       }
 
-      // PASO 4: Fallback de seguridad si no existe en BD (evita que la UI truene)
+      // PASO 4: Si no se detectó clientId en metadata ni en user_companies, usar 1 por defecto (Promptia.lat)
       if (!clientId) {
-        setCompany({
-          id: 'fallback',
-          client_id: 1, // Fallback por defecto
-          name: 'Empresa (ID no detectado)',
-          logo: '',
-        });
-        return;
+        clientId = 1;
       }
 
       // PASO 5: Consultar la tabla 'companies' usando el clientId resuelto
-      // Intento A: por columna 'id'
-      let { data: companyData } = await supabase
-        .from('companies')
-        .select('*')
-        .eq('id', clientId)
-        .maybeSingle();
+      const compIdNum = Number(clientId);
+      let companyData: any = null;
 
-      // Intento B: por columna 'client_id' (si el schema usa client_id)
-      if (!companyData) {
-        const { data: retryData } = await supabase
+      if (!isNaN(compIdNum)) {
+        const { data } = await supabase
           .from('companies')
           .select('*')
-          .eq('client_id', clientId)
+          .eq('id', compIdNum)
           .maybeSingle();
-        companyData = retryData;
+        companyData = data;
+      }
+
+      if (!companyData) {
+        const { data } = await supabase
+          .from('companies')
+          .select('*')
+          .order('id', { ascending: true })
+          .limit(1)
+          .maybeSingle();
+        companyData = data;
       }
 
       // PASO 6: Mapear y guardar la empresa en el estado global
@@ -230,34 +229,26 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const updateCompanyHubspotToken = useCallback(
     async (newToken: string): Promise<{ success: boolean; error?: string }> => {
       const currentCompany = companyRef.current;
-      if (!currentCompany || !currentCompany.client_id) {
-        return { success: false, error: 'No hay empresa o client_id activo para asociar el token.' };
-      }
-
+      const targetId = currentCompany?.id || currentCompany?.client_id || 1;
+      const compIdNum = Number(targetId);
       const cleanToken = newToken.trim();
 
       try {
-        // 1. Intentar actualizar por 'id'
-        let updateResult = await supabase
-          .from('companies')
-          .update({ hubspot_token: cleanToken })
-          .eq('id', currentCompany.id || currentCompany.client_id);
-
-        // 2. Si falló o no modificó registros, reintentar por 'client_id'
-        if (updateResult.error || (updateResult.count !== null && updateResult.count === 0)) {
-          const retryResult = await supabase
+        let updateResult: any;
+        if (!isNaN(compIdNum)) {
+          updateResult = await supabase
             .from('companies')
             .update({ hubspot_token: cleanToken })
-            .eq('client_id', currentCompany.client_id);
-
-          if (retryResult.error) {
-            console.warn('Fallo al actualizar por client_id:', retryResult.error);
-          } else {
-            updateResult = retryResult;
-          }
+            .eq('id', compIdNum);
+        } else {
+          updateResult = await supabase
+            .from('companies')
+            .update({ hubspot_token: cleanToken })
+            .eq('id', targetId);
         }
 
         if (updateResult.error) {
+          console.error('Error al actualizar hubspot_token en companies:', updateResult.error);
           return { success: false, error: updateResult.error.message };
         }
 

@@ -25,7 +25,7 @@ import { HubSpotOwner } from './types';
 import { mcpHubspot } from './services/mcpHubspot';
 
 function AppContent() {
-  const { session, loading } = useAuth();
+  const { session, loading, company } = useAuth();
   const [activeTab, setActiveTab] = useState<'bulk' | 'monitor' | 'config'>('bulk');
   const [owners, setOwners] = useState<HubSpotOwner[]>([]);
   const [lastSync, setLastSync] = useState<string>(new Date().toLocaleTimeString());
@@ -40,9 +40,10 @@ function AppContent() {
   };
 
   useEffect(() => {
-    if (session) {
-      refreshOwners();
-    }
+    if (!session) return;
+
+    refreshOwners();
+
     const unsub = mcpHubspot.subscribeStatus((st) => {
       setIsRealConnected(st.isReal);
       setLastSync(new Date().toLocaleTimeString());
@@ -59,7 +60,7 @@ function AppContent() {
       unsub();
       window.removeEventListener('switch-to-tab', handleTabSwitch);
     };
-  }, [session]);
+  }, [session, company?.hubspot_token]);
 
   if (loading) {
     return (
