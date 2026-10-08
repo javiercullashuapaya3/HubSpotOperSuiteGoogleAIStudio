@@ -135,6 +135,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           public_client_id: companyData.public_client_id,
           api_key: companyData.api_key, // Llave interna para webhooks (ej. n8n)
           hubspot_token: tokenFromDb,
+          smtp_from: companyData.smtp_from || '',
+          smtp_apikey: companyData.smtp_apikey || '',
           hubspot_report_config: validConfig,
         };
 

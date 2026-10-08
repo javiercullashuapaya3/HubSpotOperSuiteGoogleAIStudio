@@ -30,6 +30,7 @@ import {
   FileSpreadsheet,
 } from 'lucide-react';
 import { HubSpotExcelReportPanel } from './HubSpotExcelReportPanel';
+import { ScheduledAdvisorReportsModule } from './ScheduledAdvisorReportsModule';
 import {
   AgentHealthStatus,
   AgentMetric,
@@ -451,687 +452,205 @@ export const AgentDailyMonitor: React.FC<AgentDailyMonitorProps> = ({ owners }) 
         </div>
       </div>
 
-      {/* Main Grid: Agent Performance Table & Auto-Dispatch Bot */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-        {/* Agent Performance Dashboard Table (7 cols) */}
-        <div className="lg:col-span-7 bg-white rounded-xl border border-slate-200 shadow-xs overflow-hidden" id="agent-performance-table">
-          <div className="p-4 border-b border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 bg-slate-50/50">
-            <div className="flex items-center gap-2">
-              <Users className="w-4 h-4 text-indigo-600" />
-              <h3 className="text-sm font-semibold text-slate-900 uppercase tracking-wide">
-                1. Dashboard de Desempeño Individual de Asesores
-              </h3>
-            </div>
-            <span className="text-xs text-slate-500 font-medium">
-              Meta diaria operativa: 25 contactos por asesor
-            </span>
+      {/* Main Grid: Agent Performance Table */}
+      <div className="bg-white rounded-xl border border-slate-200 shadow-xs overflow-hidden" id="agent-performance-table">
+        <div className="p-4 border-b border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 bg-slate-50/50">
+          <div className="flex items-center gap-2">
+            <Users className="w-4 h-4 text-indigo-600" />
+            <h3 className="text-sm font-semibold text-slate-900 uppercase tracking-wide">
+              1. Dashboard de Desempeño Individual de Asesores
+            </h3>
           </div>
+          <span className="text-xs text-slate-500 font-medium">
+            Meta diaria operativa: 25 contactos por asesor
+          </span>
+        </div>
 
-          {/* Guía Explicativa de Salud Operativa */}
-          <div className="mx-4 mt-3.5 p-3 bg-gradient-to-r from-slate-50 to-indigo-50/30 border border-slate-200 rounded-lg text-xs">
-            <div className="flex items-center gap-1.5 font-semibold text-slate-800 mb-1">
-              <ShieldCheck className="w-4 h-4 text-indigo-600" />
-              <span>¿Cómo se calcula la «Salud Operativa»?</span>
+        {/* Guía Explicativa de Salud Operativa */}
+        <div className="mx-4 mt-3.5 p-3 bg-gradient-to-r from-slate-50 to-indigo-50/30 border border-slate-200 rounded-lg text-xs">
+          <div className="flex items-center gap-1.5 font-semibold text-slate-800 mb-1">
+            <ShieldCheck className="w-4 h-4 text-indigo-600" />
+            <span>¿Cómo se calcula la «Salud Operativa»?</span>
+          </div>
+          <p className="text-[11px] text-slate-600 mb-2">
+            Mide la gestión del asesor comparando los contactos de hoy contra la meta diaria (25) y auditando leads activos sin gestión por más de 24 horas:
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px]">
+            <div className="p-2 bg-white rounded border border-emerald-200 text-emerald-800">
+              <span className="font-bold flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-emerald-600" /> Al día:</span>
+              <span className="text-[10px] text-slate-600 block mt-0.5">Avance ≥80% y ≤1 lead con &gt;24h sin actividad.</span>
             </div>
-            <p className="text-[11px] text-slate-600 mb-2">
-              Mide la gestión del asesor comparando los contactos de hoy contra la meta diaria (25) y auditando leads activos sin gestión por más de 24 horas:
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px]">
-              <div className="p-2 bg-white rounded border border-emerald-200 text-emerald-800">
-                <span className="font-bold flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-emerald-600" /> Al día:</span>
-                <span className="text-[10px] text-slate-600 block mt-0.5">Avance ≥80% y ≤1 lead con &gt;24h sin actividad.</span>
-              </div>
-              <div className="p-2 bg-white rounded border border-amber-200 text-amber-800">
-                <span className="font-bold flex items-center gap-1"><AlertTriangle className="w-3 h-3 text-amber-600" /> En riesgo:</span>
-                <span className="text-[10px] text-slate-600 block mt-0.5">Avance 40-79% o entre 2 y 5 leads con &gt;24h sin actividad.</span>
-              </div>
-              <div className="p-2 bg-white rounded border border-rose-200 text-rose-800">
-                <span className="font-bold flex items-center gap-1"><AlertCircle className="w-3 h-3 text-rose-600" /> Retrasado:</span>
-                <span className="text-[10px] text-slate-600 block mt-0.5">Avance &lt;40% o más de 5 leads sin actividad en &gt;24h.</span>
-              </div>
+            <div className="p-2 bg-white rounded border border-amber-200 text-amber-800">
+              <span className="font-bold flex items-center gap-1"><AlertTriangle className="w-3 h-3 text-amber-600" /> En riesgo:</span>
+              <span className="text-[10px] text-slate-600 block mt-0.5">Avance 40-79% o entre 2 y 5 leads con &gt;24h sin actividad.</span>
+            </div>
+            <div className="p-2 bg-white rounded border border-rose-200 text-rose-800">
+              <span className="font-bold flex items-center gap-1"><AlertCircle className="w-3 h-3 text-rose-600" /> Retrasado:</span>
+              <span className="text-[10px] text-slate-600 block mt-0.5">Avance &lt;40% o más de 5 leads sin actividad en &gt;24h.</span>
             </div>
           </div>
+        </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse text-xs">
-              <thead>
-                <tr className="border-b border-slate-200 bg-slate-50 text-slate-600 font-semibold uppercase tracking-wider text-[11px]">
-                  <th className="py-2.5 px-3">Asesor / Equipo</th>
-                  <th className="py-2.5 px-3 text-center">Contactados Hoy</th>
-                  <th className="py-2.5 px-3 text-center">Sin Actividad (&gt;24h)</th>
-                  <th className="py-2.5 px-3">Cumplimiento Cuota</th>
-                  <th
-                    className="py-2.5 px-3 text-center cursor-help"
-                    title="Salud Operativa: Evalúa el ratio de contactos diarios logrados frente a la meta (25) y los leads estancados sin actividad en más de 24 horas."
-                  >
-                    <span className="inline-flex items-center gap-1 justify-center">
-                      Salud Operativa
-                      <ShieldCheck className="w-3 h-3 text-indigo-500" />
-                    </span>
-                  </th>
-                  <th className="py-2.5 px-3 text-right">Acción</th>
+        <div className="overflow-x-auto">
+          <table className="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr className="border-b border-slate-200 bg-slate-50 text-slate-600 font-semibold uppercase tracking-wider text-[11px]">
+                <th className="py-2.5 px-3">Asesor / Equipo</th>
+                <th className="py-2.5 px-3 text-center">Contactados Hoy</th>
+                <th className="py-2.5 px-3 text-center">Sin Actividad (&gt;24h)</th>
+                <th className="py-2.5 px-3">Cumplimiento Cuota</th>
+                <th
+                  className="py-2.5 px-3 text-center cursor-help"
+                  title="Salud Operativa: Evalúa el ratio de contactos diarios logrados frente a la meta (25) y los leads estancados sin actividad en más de 24 horas."
+                >
+                  <span className="inline-flex items-center gap-1 justify-center">
+                    Salud Operativa
+                    <ShieldCheck className="w-3 h-3 text-indigo-500" />
+                  </span>
+                </th>
+                <th className="py-2.5 px-3 text-right">Acción</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100">
+              {metrics.length === 0 ? (
+                <tr>
+                  <td colSpan={6} className="py-12 px-4 text-center text-slate-500">
+                    <Users className="w-10 h-10 mx-auto text-slate-300 mb-2.5" />
+                    <p className="font-bold text-slate-700 text-sm">No hay asesores sincronizados</p>
+                    <p className="text-xs text-slate-500 max-w-md mx-auto mt-1">
+                      Para ver tus asesores y sus métricas reales de HubSpot CRM, ingresa tu <strong>Private App Token</strong> en la pestaña <em>Configuración del Sistema</em>.
+                    </p>
+                  </td>
                 </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100">
-                {metrics.length === 0 ? (
-                  <tr>
-                    <td colSpan={6} className="py-12 px-4 text-center text-slate-500">
-                      <Users className="w-10 h-10 mx-auto text-slate-300 mb-2.5" />
-                      <p className="font-bold text-slate-700 text-sm">No hay asesores sincronizados</p>
-                      <p className="text-xs text-slate-500 max-w-md mx-auto mt-1">
-                        Para ver tus asesores y sus métricas reales de HubSpot CRM, ingresa tu <strong>Private App Token</strong> en la pestaña <em>Configuración del Sistema</em>.
-                      </p>
-                    </td>
-                  </tr>
-                ) : (
-                  metrics.map((metric, idx) => {
-                  const health = HEALTH_BADGES[metric.healthStatus];
-                  const Icon = health.icon;
+              ) : (
+                metrics.map((metric, idx) => {
+                const health = HEALTH_BADGES[metric.healthStatus];
+                const Icon = health.icon;
 
-                  return (
-                    <tr
-                      key={metric.owner.id}
-                      className={`hover:bg-slate-50 transition-colors ${
-                        previewAgentIndex === idx ? 'bg-indigo-50/30' : ''
-                      }`}
-                    >
-                      {/* Asesor */}
-                      <td className="py-3 px-3">
-                        <div className="flex items-center gap-2.5">
-                          <img
-                            src={metric.owner.avatarUrl || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150'}
-                            alt={metric.owner.firstName}
-                            className="w-8 h-8 rounded-full object-cover border border-slate-200"
-                          />
-                          <div>
-                            <div className="font-semibold text-slate-900">
-                              {metric.owner.firstName} {metric.owner.lastName}
-                            </div>
-                            <div className="text-slate-500 text-[11px]">{metric.owner.email}</div>
-                            <div className="text-[10px] text-indigo-600 font-medium mt-0.5">
-                              {metric.owner.team}
-                            </div>
+                return (
+                  <tr
+                    key={metric.owner.id}
+                    className={`hover:bg-slate-50 transition-colors ${
+                      previewAgentIndex === idx ? 'bg-indigo-50/30' : ''
+                    }`}
+                  >
+                    {/* Asesor */}
+                    <td className="py-3 px-3">
+                      <div className="flex items-center gap-2.5">
+                        <img
+                          src={metric.owner.avatarUrl || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150'}
+                          alt={metric.owner.firstName}
+                          className="w-8 h-8 rounded-full object-cover border border-slate-200"
+                        />
+                        <div>
+                          <div className="font-semibold text-slate-900">
+                            {metric.owner.firstName} {metric.owner.lastName}
+                          </div>
+                          <div className="text-slate-500 text-[11px]">{metric.owner.email}</div>
+                          <div className="text-[10px] text-indigo-600 font-medium mt-0.5">
+                            {metric.owner.team}
                           </div>
                         </div>
-                      </td>
+                      </div>
+                    </td>
 
-                      {/* Contactados */}
-                      <td className="py-3 px-3 text-center">
-                        <div className="text-sm font-bold text-slate-900">
-                          {metric.contactedToday}
-                        </div>
-                        <div className="text-[10px] text-slate-500">
-                          de {metric.dailyTarget} meta
-                        </div>
-                      </td>
+                    {/* Contactados */}
+                    <td className="py-3 px-3 text-center">
+                      <div className="text-sm font-bold text-slate-900">
+                        {metric.contactedToday}
+                      </div>
+                      <div className="text-[10px] text-slate-500">
+                        de {metric.dailyTarget} meta
+                      </div>
+                    </td>
 
-                      {/* Vencidos */}
-                      <td className="py-3 px-3 text-center">
-                        <span
-                          className={`inline-flex items-center gap-1 font-bold text-xs px-2 py-0.5 rounded-full ${
-                            metric.pendingOverdue > 2
-                              ? 'bg-rose-100 text-rose-700'
-                              : metric.pendingOverdue > 0
-                              ? 'bg-amber-100 text-amber-700'
-                              : 'bg-emerald-100 text-emerald-700'
-                          }`}
-                        >
-                          <Clock className="w-3 h-3" />
-                          {metric.pendingOverdue}
-                        </span>
-                      </td>
-
-                      {/* Cumplimiento Bar */}
-                      <td className="py-3 px-3 min-w-[130px]">
-                        <div className="flex justify-between text-[11px] mb-1 font-semibold">
-                          <span className="text-slate-700">{metric.progressPct}%</span>
-                          <span className="text-slate-400">{metric.lastActivityTime}</span>
-                        </div>
-                        <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                          <div
-                            className={`h-2 rounded-full ${
-                              metric.progressPct >= 80
-                                ? 'bg-emerald-500'
-                                : metric.progressPct >= 50
-                                ? 'bg-amber-500'
-                                : 'bg-rose-500'
-                            }`}
-                            style={{ width: `${Math.min(100, metric.progressPct)}%` }}
-                          />
-                        </div>
-                      </td>
-
-                      {/* Salud Badge */}
-                      <td className="py-3 px-3 text-center">
-                        <span
-                          className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold border ${health.bg} ${health.text} ${health.border}`}
-                        >
-                          <Icon className="w-3.5 h-3.5" />
-                          {health.label}
-                        </span>
-                      </td>
-
-                      {/* Botón Preview e Individual */}
-                      <td className="py-3 px-3 text-right">
-                        <div className="flex items-center justify-end gap-1.5">
-                          <button
-                            onClick={() => setPreviewAgentIndex(idx)}
-                            title="Previsualizar mensaje de este asesor"
-                            className={`px-2 py-1 text-[11px] font-semibold rounded-md border transition-colors cursor-pointer ${
-                              previewAgentIndex === idx
-                                ? 'bg-indigo-600 text-white border-indigo-600'
-                                : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-50'
-                            }`}
-                          >
-                            Vista
-                          </button>
-                          <button
-                            onClick={() => handleImmediateDispatch(metric)}
-                            title="Despachar notificación individual a este asesor (A demanda)"
-                            className="p-1 text-slate-600 hover:text-emerald-700 hover:bg-emerald-50 rounded border border-slate-200 transition-colors cursor-pointer"
-                          >
-                            <Zap className="w-3.5 h-3.5" />
-                          </button>
-                          <a
-                            href="#hubspot-excel-reporter-module"
-                            title={`Generar reporte Excel (.xlsx) para ${metric.owner.firstName}`}
-                            className="p-1 text-emerald-600 hover:text-emerald-800 hover:bg-emerald-50 rounded border border-emerald-200 transition-colors cursor-pointer inline-flex items-center"
-                          >
-                            <FileSpreadsheet className="w-3.5 h-3.5" />
-                          </a>
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })
-              )}
-            </tbody>
-            </table>
-          </div>
-        </div>
-
-        {/* Ultra-Flexible Notification Bot Configurator (5 cols) */}
-        <div className="lg:col-span-5 bg-white rounded-xl border border-slate-200 p-5 shadow-xs" id="dispatch-bot-panel">
-          <div className="flex items-center justify-between pb-3 mb-4 border-b border-slate-100">
-            <div className="flex items-center gap-2">
-              <Send className="w-4 h-4 text-indigo-600" />
-              <h3 className="text-sm font-semibold text-slate-900 uppercase tracking-wide">
-                2. Planificador de Envíos Flexible
-              </h3>
-            </div>
-            <span className="text-[10px] font-mono bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded font-bold">
-              Cron &amp; On-Demand
-            </span>
-          </div>
-
-          <div className="space-y-4 text-xs">
-            {/* Modalidad de Envío (Tabs) */}
-            <div>
-              <label className="block font-semibold text-slate-700 mb-1.5">
-                Modalidad de Envío
-              </label>
-              <div className="grid grid-cols-2 gap-1.5 p-1 bg-slate-100 rounded-lg">
-                <button
-                  type="button"
-                  onClick={() => setConfig({ ...config, mode: 'fixed_times' })}
-                  className={`py-1.5 px-2 rounded-md font-semibold text-[11px] transition-all cursor-pointer flex items-center justify-center gap-1 ${
-                    config.mode === 'fixed_times'
-                      ? 'bg-white text-indigo-700 shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900'
-                  }`}
-                >
-                  <Clock className="w-3.5 h-3.5" />
-                  Horas Fijas
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setConfig({ ...config, mode: 'interval_cron' })}
-                  className={`py-1.5 px-2 rounded-md font-semibold text-[11px] transition-all cursor-pointer flex items-center justify-center gap-1 ${
-                    config.mode === 'interval_cron'
-                      ? 'bg-white text-indigo-700 shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900'
-                  }`}
-                >
-                  <Calendar className="w-3.5 h-3.5" />
-                  Intervalo Recurrente
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setConfig({ ...config, mode: 'conditional_alert' })}
-                  className={`py-1.5 px-2 rounded-md font-semibold text-[11px] transition-all cursor-pointer flex items-center justify-center gap-1 ${
-                    config.mode === 'conditional_alert'
-                      ? 'bg-white text-indigo-700 shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900'
-                  }`}
-                >
-                  <AlertTriangle className="w-3.5 h-3.5" />
-                  Por Desvío / Alerta
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setConfig({ ...config, mode: 'on_demand' })}
-                  className={`py-1.5 px-2 rounded-md font-semibold text-[11px] transition-all cursor-pointer flex items-center justify-center gap-1 ${
-                    config.mode === 'on_demand'
-                      ? 'bg-white text-indigo-700 shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900'
-                  }`}
-                >
-                  <Zap className="w-3.5 h-3.5 text-amber-500" />
-                  Solo A Demanda
-                </button>
-              </div>
-            </div>
-
-            {/* Sub-configuración según el modo */}
-            {config.mode === 'fixed_times' && (
-              <div className="p-3 bg-indigo-50/50 rounded-lg border border-indigo-100 space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="font-semibold text-slate-800 text-[11px] flex items-center gap-1.5">
-                    <Clock className="w-3.5 h-3.5 text-indigo-600" />
-                    Horas exactas programadas
-                  </span>
-                  <div className="flex items-center gap-1 text-[10px]">
-                    <span className="text-slate-500">Presets:</span>
-                    <button
-                      type="button"
-                      onClick={() => applyPreset('three_cuts')}
-                      className="text-indigo-600 hover:underline font-semibold cursor-pointer"
-                    >
-                      3 cortes
-                    </button>
-                    <span>•</span>
-                    <button
-                      type="button"
-                      onClick={() => applyPreset('open_close')}
-                      className="text-indigo-600 hover:underline font-semibold cursor-pointer"
-                    >
-                      Apertura/Cierre
-                    </button>
-                  </div>
-                </div>
-
-                {/* Chips de horas */}
-                <div className="flex flex-wrap gap-1.5">
-                  {(config?.scheduledTimes || []).map((time) => (
-                    <span
-                      key={time}
-                      className="inline-flex items-center gap-1.5 bg-white border border-indigo-200 text-indigo-900 font-mono font-bold text-xs px-2.5 py-1 rounded-md shadow-2xs"
-                    >
-                      {time} hrs
-                      <button
-                        type="button"
-                        onClick={() => handleRemoveScheduledTime(time)}
-                        className="text-slate-400 hover:text-rose-600 cursor-pointer"
-                      >
-                        <Trash2 className="w-3 h-3" />
-                      </button>
-                    </span>
-                  ))}
-                </div>
-
-                {/* Añadir hora */}
-                <div className="flex items-center gap-2">
-                  <input
-                    type="time"
-                    value={newTimeInput}
-                    onChange={(e) => setNewTimeInput(e.target.value)}
-                    className="bg-white border border-slate-300 rounded px-2 py-1 text-slate-800 font-mono text-xs focus:ring-1 focus:ring-indigo-500"
-                  />
-                  <button
-                    type="button"
-                    onClick={handleAddScheduledTime}
-                    className="inline-flex items-center gap-1 px-3 py-1 bg-indigo-600 hover:bg-indigo-700 text-white rounded font-semibold text-[11px] transition-colors cursor-pointer"
-                  >
-                    <Plus className="w-3 h-3" />
-                    Añadir Hora
-                  </button>
-                </div>
-              </div>
-            )}
-
-            {config.mode === 'interval_cron' && (
-              <div className="p-3 bg-indigo-50/50 rounded-lg border border-indigo-100 space-y-3">
-                <div className="grid grid-cols-2 gap-2">
-                  <div>
-                    <label className="block text-[11px] font-semibold text-slate-700 mb-1">
-                      Frecuencia
-                    </label>
-                    <select
-                      value={config.intervalMinutes}
-                      onChange={(e) =>
-                        setConfig({ ...config, intervalMinutes: parseInt(e.target.value, 10) })
-                      }
-                      className="w-full bg-white border border-slate-300 rounded px-2 py-1 text-xs text-slate-800"
-                    >
-                      <option value={30}>Cada 30 minutos</option>
-                      <option value={60}>Cada 1 hora</option>
-                      <option value={120}>Cada 2 horas</option>
-                      <option value={240}>Cada 4 horas</option>
-                      <option value={480}>Cada 8 horas</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-[11px] font-semibold text-slate-700 mb-1">
-                      Horario Laboral
-                    </label>
-                    <div className="flex items-center gap-1">
-                      <input
-                        type="time"
-                        value={config.workHoursStart}
-                        onChange={(e) => setConfig({ ...config, workHoursStart: e.target.value })}
-                        className="w-1/2 bg-white border border-slate-300 rounded px-1 py-1 text-[11px] font-mono"
-                      />
-                      <span className="text-slate-400">a</span>
-                      <input
-                        type="time"
-                        value={config.workHoursEnd}
-                        onChange={(e) => setConfig({ ...config, workHoursEnd: e.target.value })}
-                        className="w-1/2 bg-white border border-slate-300 rounded px-1 py-1 text-[11px] font-mono"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {config.mode === 'conditional_alert' && (
-              <div className="p-3 bg-amber-50 rounded-lg border border-amber-200 space-y-2">
-                <div className="font-semibold text-amber-900 text-[11px] flex items-center gap-1.5">
-                  <AlertTriangle className="w-3.5 h-3.5 text-amber-600" />
-                  Regla de Disparo por Excepción
-                </div>
-                <p className="text-[11px] text-amber-800 leading-relaxed">
-                  El bot evaluará periódicamente el CRM y solo disparará alertas inmediatas cuando un asesor tenga:
-                </p>
-                <div className="flex items-center gap-2">
-                  <span className="text-slate-700 text-[11px] font-medium">Mínimo de leads vencidos (&gt;24h):</span>
-                  <select
-                    value={config.minOverdueFilter}
-                    onChange={(e) =>
-                      setConfig({ ...config, minOverdueFilter: parseInt(e.target.value, 10) })
-                    }
-                    className="bg-white border border-slate-300 rounded px-2 py-1 text-xs text-slate-800 font-bold"
-                  >
-                    <option value={1}>≥ 1 lead vencido</option>
-                    <option value={2}>≥ 2 leads vencidos</option>
-                    <option value={3}>≥ 3 leads vencidos</option>
-                    <option value={5}>≥ 5 leads vencidos</option>
-                  </select>
-                </div>
-              </div>
-            )}
-
-            {config.mode === 'on_demand' && (
-              <div className="p-3 bg-slate-100 rounded-lg border border-slate-200 space-y-1 text-slate-700">
-                <div className="font-semibold text-slate-900 text-[11px] flex items-center gap-1.5">
-                  <Zap className="w-3.5 h-3.5 text-amber-600" />
-                  Modo Bajo Demanda Activado
-                </div>
-                <p className="text-[11px] text-slate-600">
-                  Las alertas automáticas periódicas están pausadas. El envío se realizará exclusivamente cuando pulses el botón manual o invoques el endpoint de la API.
-                </p>
-              </div>
-            )}
-
-            {/* Días Activos (si no es a demanda pura) */}
-            {config.mode !== 'on_demand' && (
-              <div>
-                <div className="flex items-center justify-between mb-1.5">
-                  <label className="font-semibold text-slate-700">Días de la semana activos</label>
-                  <div className="flex items-center gap-2 text-[10px]">
-                    <button
-                      type="button"
-                      onClick={() => applyPreset('weekdays')}
-                      className="text-indigo-600 hover:underline font-semibold cursor-pointer"
-                    >
-                      Lun-Vie
-                    </button>
-                    <span>•</span>
-                    <button
-                      type="button"
-                      onClick={() => applyPreset('all_days')}
-                      className="text-indigo-600 hover:underline font-semibold cursor-pointer"
-                    >
-                      Todos
-                    </button>
-                  </div>
-                </div>
-                <div className="grid grid-cols-7 gap-1">
-                  {DAY_NAMES.map((day) => {
-                    const isActive = config.activeDays.includes(day.id);
-                    return (
-                      <button
-                        key={day.id}
-                        type="button"
-                        onClick={() => toggleDay(day.id)}
-                        className={`py-1.5 text-center font-bold text-[11px] rounded border transition-all cursor-pointer ${
-                          isActive
-                            ? 'bg-indigo-600 text-white border-indigo-600'
-                            : 'bg-slate-50 text-slate-500 border-slate-200 hover:bg-slate-100'
+                    {/* Vencidos */}
+                    <td className="py-3 px-3 text-center">
+                      <span
+                        className={`inline-flex items-center gap-1 font-bold text-xs px-2 py-0.5 rounded-full ${
+                          metric.pendingOverdue > 2
+                            ? 'bg-rose-100 text-rose-700'
+                            : metric.pendingOverdue > 0
+                            ? 'bg-amber-100 text-amber-700'
+                            : 'bg-emerald-100 text-emerald-700'
                         }`}
                       >
-                        {day.short}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
+                        <Clock className="w-3 h-3" />
+                        {metric.pendingOverdue}
+                      </span>
+                    </td>
+
+                    {/* Cumplimiento Bar */}
+                    <td className="py-3 px-3 min-w-[130px]">
+                      <div className="flex justify-between text-[11px] mb-1 font-semibold">
+                        <span className="text-slate-700">{metric.progressPct}%</span>
+                        <span className="text-slate-400">{metric.lastActivityTime}</span>
+                      </div>
+                      <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                        <div
+                          className={`h-2 rounded-full ${
+                            metric.progressPct >= 80
+                              ? 'bg-emerald-500'
+                              : metric.progressPct >= 50
+                              ? 'bg-amber-500'
+                              : 'bg-rose-500'
+                          }`}
+                          style={{ width: `${Math.min(100, metric.progressPct)}%` }}
+                        />
+                      </div>
+                    </td>
+
+                    {/* Salud Badge */}
+                    <td className="py-3 px-3 text-center">
+                      <span
+                        className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold border ${health.bg} ${health.text} ${health.border}`}
+                      >
+                        <Icon className="w-3.5 h-3.5" />
+                        {health.label}
+                      </span>
+                    </td>
+
+                    {/* Botón Preview e Individual */}
+                    <td className="py-3 px-3 text-right">
+                      <div className="flex items-center justify-end gap-1.5">
+                        <button
+                          onClick={() => setPreviewAgentIndex(idx)}
+                          title="Previsualizar mensaje de este asesor"
+                          className={`px-2 py-1 text-[11px] font-semibold rounded-md border transition-colors cursor-pointer ${
+                            previewAgentIndex === idx
+                              ? 'bg-indigo-600 text-white border-indigo-600'
+                              : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-50'
+                          }`}
+                        >
+                          Vista
+                        </button>
+                        <button
+                          onClick={() => handleImmediateDispatch(metric)}
+                          title="Despachar notificación individual a este asesor (A demanda)"
+                          className="p-1 text-slate-600 hover:text-emerald-700 hover:bg-emerald-50 rounded border border-slate-200 transition-colors cursor-pointer"
+                        >
+                          <Zap className="w-3.5 h-3.5" />
+                        </button>
+                        <a
+                          href="#hubspot-excel-reporter-module"
+                          title={`Generar reporte Excel (.xlsx) para ${metric.owner.firstName}`}
+                          className="p-1 text-emerald-600 hover:text-emerald-800 hover:bg-emerald-50 rounded border border-emerald-200 transition-colors cursor-pointer inline-flex items-center"
+                        >
+                          <FileSpreadsheet className="w-3.5 h-3.5" />
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })
             )}
-
-            {/* Audiencia Destino */}
-            <div>
-              <label className="block font-semibold text-slate-700 mb-1">
-                Audiencia Destino del Reporte
-              </label>
-              <select
-                value={config.targetAudience}
-                onChange={(e) =>
-                  setConfig({
-                    ...config,
-                    targetAudience: e.target.value as 'all' | 'lagging_only' | 'at_risk_or_lagging',
-                  })
-                }
-                className="w-full bg-slate-50 border border-slate-300 rounded-lg px-2.5 py-1.5 text-slate-800 text-xs font-medium focus:ring-1 focus:ring-indigo-500"
-              >
-                <option value="all">👥 Toda la fuerza de ventas ({metrics.length} asesores)</option>
-                <option value="lagging_only">
-                  ⚠️ Solo asesores retrasados ({totals.laggingCount} asesores)
-                </option>
-                <option value="at_risk_or_lagging">
-                  🚨 Asesores en riesgo o retrasados ({totals.atRiskCount + totals.laggingCount} asesores)
-                </option>
-              </select>
-            </div>
-
-            {/* Canales de Notificación */}
-            <div>
-              <label className="block font-semibold text-slate-700 mb-1.5">
-                Canales Habilitados
-              </label>
-              <div className="grid grid-cols-4 gap-1.5">
-                <button
-                  type="button"
-                  onClick={() => toggleChannel('slack')}
-                  className={`p-1.5 rounded-lg border text-center font-semibold text-[11px] flex flex-col items-center gap-0.5 transition-all cursor-pointer ${
-                    config.channels.includes('slack')
-                      ? 'bg-indigo-50 border-indigo-300 text-indigo-700'
-                      : 'bg-slate-50 border-slate-200 text-slate-500 hover:bg-slate-100'
-                  }`}
-                >
-                  <MessageSquare className="w-3.5 h-3.5" />
-                  Slack
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => toggleChannel('whatsapp')}
-                  className={`p-1.5 rounded-lg border text-center font-semibold text-[11px] flex flex-col items-center gap-0.5 transition-all cursor-pointer ${
-                    config.channels.includes('whatsapp')
-                      ? 'bg-emerald-50 border-emerald-300 text-emerald-700'
-                      : 'bg-slate-50 border-slate-200 text-slate-500 hover:bg-slate-100'
-                  }`}
-                >
-                  <Smartphone className="w-3.5 h-3.5" />
-                  WhatsApp
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => toggleChannel('email')}
-                  className={`p-1.5 rounded-lg border text-center font-semibold text-[11px] flex flex-col items-center gap-0.5 transition-all cursor-pointer ${
-                    config.channels.includes('email')
-                      ? 'bg-sky-50 border-sky-300 text-sky-700'
-                      : 'bg-slate-50 border-slate-200 text-slate-500 hover:bg-slate-100'
-                  }`}
-                >
-                  <Mail className="w-3.5 h-3.5" />
-                  Email CRM
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => toggleChannel('webhook')}
-                  className={`p-1.5 rounded-lg border text-center font-semibold text-[11px] flex flex-col items-center gap-0.5 transition-all cursor-pointer ${
-                    config.channels.includes('webhook')
-                      ? 'bg-purple-50 border-purple-300 text-purple-700'
-                      : 'bg-slate-50 border-slate-200 text-slate-500 hover:bg-slate-100'
-                  }`}
-                >
-                  <Globe className="w-3.5 h-3.5" />
-                  Webhook
-                </button>
-              </div>
-
-              {config.channels.includes('webhook') && (
-                <div className="mt-2">
-                  <input
-                    type="url"
-                    placeholder="https://tu-empresa.com/webhook o Zapier"
-                    value={config.webhookUrl || ''}
-                    onChange={(e) => setConfig({ ...config, webhookUrl: e.target.value })}
-                    className="w-full bg-slate-50 border border-purple-200 rounded px-2 py-1 text-slate-800 text-[11px] placeholder:text-slate-400"
-                  />
-                </div>
-              )}
-            </div>
-
-            {/* Visualizador de Expresión Cron Generada */}
-            <div className="p-2.5 bg-slate-900 rounded-lg text-slate-300 border border-slate-800 space-y-1.5">
-              <div className="flex items-center justify-between text-[10px]">
-                <span className="text-slate-400 uppercase font-mono font-semibold flex items-center gap-1">
-                  <Calendar className="w-3 h-3 text-indigo-400" />
-                  Sintaxis Cron Estándar
-                </span>
-                <button
-                  type="button"
-                  onClick={handleCopyCron}
-                  className="text-indigo-400 hover:text-indigo-300 flex items-center gap-1 font-mono cursor-pointer"
-                >
-                  {copiedCron ? (
-                    <>
-                      <Check className="w-3 h-3 text-emerald-400" />
-                      <span className="text-emerald-400">Copiado</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-3 h-3" />
-                      <span>Copiar Cron</span>
-                    </>
-                  )}
-                </button>
-              </div>
-              <div className="font-mono text-emerald-400 text-xs font-bold bg-slate-950 px-2 py-1 rounded">
-                {computedCron}
-              </div>
-              <p className="text-[10px] text-slate-400 leading-tight">
-                {config.mode === 'fixed_times' &&
-                  `Disparo a las ${config.scheduledTimes.join(', ')} hrs los días seleccionados.`}
-                {config.mode === 'interval_cron' &&
-                  `Disparo cada ${config.intervalMinutes} min entre ${config.workHoursStart} y ${config.workHoursEnd} hrs.`}
-                {config.mode === 'conditional_alert' &&
-                  'Monitoreo activo para alertar desvíos críticos en tiempo real.'}
-                {config.mode === 'on_demand' &&
-                  'Listo para ser activado manualmente cuando lo requieras.'}
-              </p>
-            </div>
-
-            {/* Plantilla Dinámica */}
-            <div>
-              <div className="flex items-center justify-between mb-1">
-                <label className="font-semibold text-slate-700">
-                  Plantilla del Mensaje
-                </label>
-                <span className="text-[10px] text-indigo-600 font-mono">
-                  {'{nombre}'} {'{contactados}'} {'{meta}'} {'{pendientes}'}
-                </span>
-              </div>
-              <textarea
-                rows={2}
-                value={config.customTemplate}
-                onChange={(e) => setConfig({ ...config, customTemplate: e.target.value })}
-                className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2 text-slate-800 text-[11px] focus:outline-none focus:ring-2 focus:ring-indigo-500 leading-relaxed"
-              />
-            </div>
-
-            {/* Live Message Preview for Selected Agent */}
-            <div className="p-2.5 bg-slate-900 rounded-lg text-slate-200 border border-slate-800">
-              <div className="flex items-center justify-between pb-1.5 border-b border-slate-800 text-[10px] text-slate-400">
-                <div className="flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                  <span>
-                    Vista previa para:{' '}
-                    <strong className="text-white">
-                      {metrics[previewAgentIndex]?.owner.firstName || 'Asesor'}
-                    </strong>
-                  </span>
-                </div>
-                <span className="font-mono uppercase text-indigo-400">Preview</span>
-              </div>
-              <p className="text-[11px] text-slate-300 mt-1.5 leading-relaxed italic">
-                "{compiledPreviewMessage}"
-              </p>
-            </div>
-
-            {/* Notices */}
-            {saveSuccessNotice && (
-              <div className="p-2 bg-indigo-50 border border-indigo-200 text-indigo-800 text-[11px] rounded-lg font-medium flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
-                <span>{saveSuccessNotice}</span>
-              </div>
-            )}
-
-            {dispatchSuccessNotice && (
-              <div className="p-2 bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] rounded-lg font-medium flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                <span>{dispatchSuccessNotice}</span>
-              </div>
-            )}
-
-            {/* Action Buttons: Guardar Planificador + Disparar A Demanda */}
-            <div className="grid grid-cols-2 gap-2 pt-1">
-              <button
-                type="button"
-                onClick={handleSaveConfig}
-                disabled={isSavingConfig}
-                className="w-full bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 font-semibold text-xs py-2.5 px-3 rounded-lg shadow-2xs transition-all flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-50"
-              >
-                <Settings className={`w-3.5 h-3.5 text-indigo-600 ${isSavingConfig ? 'animate-spin' : ''}`} />
-                {isSavingConfig ? 'Guardando...' : 'Guardar Planificador'}
-              </button>
-
-              <button
-                type="button"
-                onClick={() => handleImmediateDispatch()}
-                disabled={isDispatching || metrics.length === 0}
-                className="w-full bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-semibold text-xs py-2.5 px-3 rounded-lg shadow-sm transition-all disabled:opacity-50 flex items-center justify-center gap-1.5 cursor-pointer"
-              >
-                <Zap className="w-3.5 h-3.5" />
-                {isDispatching ? 'Despachando...' : '🚀 Despachar Ahora'}
-              </button>
-            </div>
-          </div>
+          </tbody>
+          </table>
         </div>
       </div>
+
+      {/* Programador de Despacho de Reportes Excel a Asesores */}
+      <ScheduledAdvisorReportsModule owners={owners} />
 
       {/* HubSpot CRM Automated Excel (.xlsx) Report Generator & Email Distribution */}
       <HubSpotExcelReportPanel owners={owners} />

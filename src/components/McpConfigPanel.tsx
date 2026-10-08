@@ -327,17 +327,14 @@ st.success("✓ Conexión activa y catálogo de asesores sincronizado.")
                 <div className="flex items-center gap-2">
                   <PromptiaLogo variant="icon" size={20} />
                   <span>
-                    Empresa: <strong>{company?.name || 'Promptia.lat'}</strong> (cliente_id: <code>{company?.client_id || company?.id || '1'}</code>)
+                    Empresa: <strong>{company?.name || 'Promptia.lat'}</strong>
                   </span>
                 </div>
-                <span className="text-[11px] font-medium text-indigo-700 bg-white px-2.5 py-0.5 rounded border border-indigo-200 shrink-0">
-                  Campo BD: <code>companies.hubspot_token</code>
-                </span>
               </div>
 
               <div className="flex items-center justify-between mb-1.5">
                 <label className="block text-xs font-semibold text-slate-800">
-                  HubSpot Private App Token (`companies.hubspot_token`)
+                  Token de Aplicación Privada de HubSpot
                 </label>
                 {company && (
                   <span className="text-[11px] text-indigo-700 bg-indigo-50 border border-indigo-200 px-2 py-0.5 rounded-md font-medium flex items-center gap-1">
@@ -360,7 +357,7 @@ st.success("✓ Conexión activa y catálogo de asesores sincronizado.")
                   className="bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white text-xs font-semibold px-5 py-2.5 rounded-lg transition-all shadow-xs cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50 shrink-0"
                 >
                   <RefreshCw className={`w-3.5 h-3.5 ${isVerifying ? 'animate-spin' : ''}`} />
-                  {isVerifying ? 'Guardando en BD...' : '🔑 Guardar Token en Tabla companies'}
+                  {isVerifying ? 'Guardando...' : '🔑 Guardar y Conectar Token'}
                 </button>
               </div>
 
@@ -475,7 +472,7 @@ st.success("✓ Conexión activa y catálogo de asesores sincronizado.")
                 </pre>
               ) : (
                 <div className="text-slate-500 py-6 text-center italic">
-                  Haz clic en "Ejecutar" para enviar una llamada JSON-RPC a la tool y visualizar la estructura de datos retornada de tu CRM.
+                  Haz clic en "Ejecutar" para consultar los datos en tiempo real de tu HubSpot CRM.
                 </div>
               )}
             </div>

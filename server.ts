@@ -8,6 +8,18 @@ import {
   HubSpotReportOwner,
   ReportGenerationOptions,
 } from './src/services/hubspotExcelReporter';
+import {
+  getTasks,
+  createTask,
+  updateTask,
+  deleteTask,
+  executeSingleTask,
+  initializeTaskSchedulerWorker,
+  getAdvisorDispatchConfig,
+  saveAdvisorDispatchConfig,
+  getAdvisorDispatchLogs,
+  dispatchAdvisorReportsNow,
+} from './src/services/taskSchedulerService';
 
 const SUPABASE_URL =
   process.env.SUPABASE_URL ||
@@ -24,6 +36,9 @@ const supabaseServer = createClient(SUPABASE_URL, SUPABASE_ANON);
 async function startServer() {
   const app = express();
   const PORT = 3000;
+
+  // Inicializar Worker persistente de tareas programadas (node-cron cada minuto)
+  initializeTaskSchedulerWorker();
 
   // CORS headers allowing frontend connection from any port, Nginx proxy or domain
   app.use((req: Request, res: Response, next) => {
@@ -1126,6 +1141,194 @@ async function startServer() {
       success: true,
       options: baseOptions,
     });
+  });
+
+  // --- Task Scheduler Endpoints ---
+  // GET /api/tasks: Lista todas las tareas registradas ordenadas por scheduledAt descendente
+  app.get('/api/tasks', (req: Request, res: Response) => {
+    try {
+      const tasks = getTasks();
+      return res.json({
+        success: true,
+        tasks,
+      });
+    } catch (err: any) {
+      return res.status(500).json({
+        success: false,
+        error: `Error al obtener tareas: ${err.message}`,
+      });
+    }
+  });
+
+  // POST /api/tasks: Crea una nueva tarea con status "pending". Valida campos mínimos requeridos
+  app.post('/api/tasks', (req: Request, res: Response) => {
+    try {
+      const { type, title, scheduledAt, payload, maxAttempts } = req.body;
+      if (!type || !scheduledAt) {
+        return res.status(400).json({
+          success: false,
+          error: 'Los campos "type" y "scheduledAt" son requeridos.',
+        });
+      }
+
+      const task = createTask({
+        type,
+        title,
+        scheduledAt,
+        payload,
+        maxAttempts,
+      });
+
+      return res.status(201).json({
+        success: true,
+        task,
+      });
+    } catch (err: any) {
+      return res.status(400).json({
+        success: false,
+        error: `Error al crear tarea: ${err.message}`,
+      });
+    }
+  });
+
+  // PUT /api/tasks/:id: Permite actualizar fecha (scheduledAt) o cancelar la tarea cambiando status a "cancelled", siempre que no esté en "completed" o "processing"
+  app.put('/api/tasks/:id', (req: Request, res: Response) => {
+    try {
+      const { id } = req.params;
+      const { scheduledAt, status } = req.body;
+
+      const updated = updateTask(id, { scheduledAt, status });
+      return res.json({
+        success: true,
+        task: updated,
+      });
+    } catch (err: any) {
+      return res.status(400).json({
+        success: false,
+        error: err.message,
+      });
+    }
+  });
+
+  // DELETE /api/tasks/:id: Elimina una tarea del listado
+  app.delete('/api/tasks/:id', (req: Request, res: Response) => {
+    try {
+      const { id } = req.params;
+      const deleted = deleteTask(id);
+      if (!deleted) {
+        return res.status(404).json({
+          success: false,
+          error: `Tarea con ID "${id}" no encontrada.`,
+        });
+      }
+      return res.json({
+        success: true,
+        message: 'Tarea eliminada exitosamente.',
+      });
+    } catch (err: any) {
+      return res.status(500).json({
+        success: false,
+        error: err.message,
+      });
+    }
+  });
+
+  // POST /api/tasks/:id/run: Ejecución inmediata bajo demanda
+  app.post('/api/tasks/:id/run', async (req: Request, res: Response) => {
+    try {
+      const { id } = req.params;
+      const tasks = getTasks();
+      const task = tasks.find((t) => t.id === id);
+      if (!task) {
+        return res.status(404).json({
+          success: false,
+          error: `Tarea "${id}" no encontrada.`,
+        });
+      }
+
+      await executeSingleTask(task);
+      const updated = updateTask(id, { status: 'completed' as any });
+
+      return res.json({
+        success: true,
+        message: `Tarea "${task.title}" ejecutada exitosamente.`,
+        task: updated,
+      });
+    } catch (err: any) {
+      return res.status(500).json({
+        success: false,
+        error: `Error al ejecutar tarea: ${err.message}`,
+      });
+    }
+  });
+
+  // GET /api/advisor-dispatch/config: Obtiene la configuración permanente del planificador de asesores
+  app.get('/api/advisor-dispatch/config', (req: Request, res: Response) => {
+    try {
+      const config = getAdvisorDispatchConfig();
+      return res.json({
+        success: true,
+        config,
+      });
+    } catch (err: any) {
+      return res.status(500).json({
+        success: false,
+        error: `Error al obtener configuración: ${err.message}`,
+      });
+    }
+  });
+
+  // POST /api/advisor-dispatch/config: Guarda permanentemente la configuración del planificador flexible
+  app.post('/api/advisor-dispatch/config', (req: Request, res: Response) => {
+    try {
+      const updated = saveAdvisorDispatchConfig(req.body);
+      return res.json({
+        success: true,
+        message: 'Planificador de despacho guardado exitosamente.',
+        config: updated,
+      });
+    } catch (err: any) {
+      return res.status(500).json({
+        success: false,
+        error: `Error al guardar configuración: ${err.message}`,
+      });
+    }
+  });
+
+  // GET /api/advisor-dispatch/logs: Obtiene el historial de despachos a asesores
+  app.get('/api/advisor-dispatch/logs', (req: Request, res: Response) => {
+    try {
+      const logs = getAdvisorDispatchLogs();
+      return res.json({
+        success: true,
+        logs,
+      });
+    } catch (err: any) {
+      return res.status(500).json({
+        success: false,
+        error: `Error al obtener logs de despacho: ${err.message}`,
+      });
+    }
+  });
+
+  // POST /api/advisor-dispatch/send-now: Ejecuta inmediatamente el despacho de reportes Excel a asesores
+  app.post('/api/advisor-dispatch/send-now', async (req: Request, res: Response) => {
+    try {
+      const { overrideConfig, advisors } = req.body || {};
+      const result = await dispatchAdvisorReportsNow(overrideConfig, advisors);
+      return res.json({
+        success: result.success,
+        summary: result.summary,
+        totalRecipients: result.totalRecipients,
+        excludedCount: result.excludedCount,
+        results: result.results,
+      });
+    } catch (err: any) {
+      return res.status(500).json({
+        success: false,
+        error: `Error en el despacho inmediato de reportes: ${err.message}`,
+      });
+    }
   });
 
   // Global error handler for /api routes (ensures all API errors return clean JSON, never HTML)

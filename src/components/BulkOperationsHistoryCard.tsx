@@ -8,17 +8,15 @@ import {
   User,
   Calendar,
   Search,
-  Copy,
-  Check,
   Database,
   Layers,
   History,
   RefreshCw,
-  FileCode,
-  ShieldAlert,
+  ShieldCheck,
   AlertCircle,
+  Check,
 } from 'lucide-react';
-import { BulkUpdateJob, MYSQL_BULK_LOGS_DDL, SUPABASE_BULK_LOGS_DDL } from '../types/bulkHistory';
+import { BulkUpdateJob } from '../types/bulkHistory';
 import { bulkHistoryService } from '../services/bulkHistoryService';
 
 interface BulkOperationsHistoryCardProps {
@@ -32,10 +30,6 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
   isEmbeddedInResults = false,
 }) => {
   const [historyList, setHistoryList] = useState<BulkUpdateJob[]>(() => bulkHistoryService.getAll());
-  const [activeTab, setActiveTab] = useState<'history' | 'mysql_schema'>('history');
-  const [ddlDialect, setDdlDialect] = useState<'supabase' | 'mysql'>('supabase');
-  const [copiedDdl, setCopiedDdl] = useState(false);
-  const [copiedFixSql, setCopiedFixSql] = useState(false);
   const [expandedJobId, setExpandedJobId] = useState<string | null>(currentJobId || null);
   const [isRetryingSync, setIsRetryingSync] = useState<string | null>(null);
   const [isSyncingAll, setIsSyncingAll] = useState(false);
@@ -166,23 +160,6 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
     });
   }, [historyList, searchQuery, filterUser, filterMode, filterStatus, filterDate]);
 
-  const handleCopyDdl = () => {
-    const textToCopy = ddlDialect === 'supabase' ? SUPABASE_BULK_LOGS_DDL : MYSQL_BULK_LOGS_DDL;
-    navigator.clipboard.writeText(textToCopy);
-    setCopiedDdl(true);
-    setTimeout(() => setCopiedDdl(false), 2500);
-  };
-
-  const RLS_FIX_SQL = `-- Deshabilitar RLS en tablas de auditoria para permitir el guardado directo (Igual a tabla companies):
-ALTER TABLE public.bulk_update_jobs DISABLE ROW LEVEL SECURITY;
-ALTER TABLE public.bulk_update_job_items DISABLE ROW LEVEL SECURITY;`;
-
-  const handleCopyFixSql = () => {
-    navigator.clipboard.writeText(RLS_FIX_SQL);
-    setCopiedFixSql(true);
-    setTimeout(() => setCopiedFixSql(false), 2500);
-  };
-
   const formatDate = (isoStr: string) => {
     try {
       const d = new Date(isoStr);
@@ -208,103 +185,35 @@ ALTER TABLE public.bulk_update_job_items DISABLE ROW LEVEL SECURITY;`;
           </div>
           <div>
             <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wide">
-              Historial de Actualizaciones Masivas &amp; Auditoría Supabase
+              Historial de Operaciones Masivas &amp; Auditoría
             </h3>
             <p className="text-[11px] text-slate-500">
-              Auditoría en tiempo real con persistencia en <code>bulk_update_jobs</code> y <code>bulk_update_job_items</code>.
+              Registro cronológico y trazabilidad de cambios en leads de HubSpot CRM.
             </p>
           </div>
         </div>
 
-        {/* View Switcher Tabs */}
+        {/* View Controls */}
         <div className="flex items-center gap-2">
-          <div className="inline-flex rounded-lg border border-slate-200 bg-white p-0.5 text-xs font-medium">
-            <button
-              onClick={() => setActiveTab('history')}
-              className={`px-3 py-1 rounded-md transition-colors cursor-pointer flex items-center gap-1.5 ${
-                activeTab === 'history'
-                  ? 'bg-indigo-600 text-white font-semibold shadow-2xs'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              <History className="w-3.5 h-3.5" />
-              <span>Historial ({historyList.length})</span>
-            </button>
-            <button
-              onClick={() => setActiveTab('mysql_schema')}
-              className={`px-3 py-1 rounded-md transition-colors cursor-pointer flex items-center gap-1.5 ${
-                activeTab === 'mysql_schema'
-                  ? 'bg-indigo-600 text-white font-semibold shadow-2xs'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              <Database className="w-3.5 h-3.5" />
-              <span>Esquema SQL ({ddlDialect === 'supabase' ? 'Supabase' : 'MySQL'})</span>
-            </button>
-          </div>
-
           <button
             onClick={refreshList}
-            className="p-1.5 rounded-md hover:bg-slate-200 text-slate-500 hover:text-slate-800 transition-colors cursor-pointer"
-            title="Refrescar historial y verificar conexión"
+            className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium transition-colors cursor-pointer inline-flex items-center gap-1.5"
+            title="Refrescar historial"
           >
             <RefreshCw className="w-3.5 h-3.5" />
+            <span>Actualizar ({historyList.length})</span>
           </button>
         </div>
       </div>
 
-      {activeTab === 'history' ? (
-        <div className="p-4 space-y-4">
-          {/* Supabase Status Alert Banner */}
-          {supabaseHealth?.rlsBlocked && (
-            <div className="p-3.5 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 space-y-2 text-xs">
-              <div className="flex items-start justify-between gap-2">
-                <div className="flex items-center gap-2 font-bold text-amber-950">
-                  <ShieldAlert className="w-4 h-4 text-amber-600 shrink-0" />
-                  <span>Atención: Supabase bloqueó la inserción por Row Level Security (Error 42501)</span>
-                </div>
-                <button
-                  onClick={handleCopyFixSql}
-                  className="px-2.5 py-1 rounded bg-amber-600 hover:bg-amber-700 text-white font-semibold text-[11px] shadow-2xs cursor-pointer inline-flex items-center gap-1 shrink-0"
-                >
-                  {copiedFixSql ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
-                  <span>{copiedFixSql ? '¡SQL Copiado!' : 'Copiar Solución SQL'}</span>
-                </button>
-              </div>
-
-              <p className="text-[11px] text-amber-800 leading-relaxed">
-                Las tablas <code>bulk_update_jobs</code> y <code>bulk_update_job_items</code> existen en tu base de datos Supabase, pero tienen RLS habilitado sin políticas de inserción. Para que se guarden automáticamente, ejecuta en el SQL Editor de tu Supabase:
-              </p>
-
-              <pre className="p-2 rounded bg-amber-100/80 border border-amber-200 text-[11px] font-mono text-amber-950 overflow-x-auto select-all">
-                {RLS_FIX_SQL}
-              </pre>
-
-              {pendingCount > 0 && (
-                <div className="flex items-center justify-between pt-1">
-                  <span className="text-[11px] text-amber-700">
-                    Hay <strong>{pendingCount}</strong> operaciones en cola local listas para sincronizarse.
-                  </span>
-                  <button
-                    onClick={handleSyncAllPending}
-                    disabled={isSyncingAll}
-                    className="px-3 py-1 rounded bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-[11px] cursor-pointer inline-flex items-center gap-1 disabled:opacity-50"
-                  >
-                    <RefreshCw className={`w-3 h-3 ${isSyncingAll ? 'animate-spin' : ''}`} />
-                    <span>{isSyncingAll ? 'Sincronizando...' : 'Reintentar sincronización ahora'}</span>
-                  </button>
-                </div>
-              )}
-            </div>
-          )}
-
+      <div className="p-4 space-y-4">
           {/* Connected status badge if operational */}
           {supabaseHealth && !supabaseHealth.rlsBlocked && supabaseHealth.tableExists && (
             <div className="px-3 py-2 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] flex items-center justify-between">
               <div className="flex items-center gap-2 font-medium">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                 <span>
-                  Supabase conectado: Tablas <code>bulk_update_jobs</code> ({supabaseHealth.jobsCount} registros) y <code>bulk_update_job_items</code> activas.
+                  Sincronización en la nube activa ({supabaseHealth.jobsCount} registros guardados)
                 </span>
               </div>
               {pendingCount > 0 && (
@@ -419,7 +328,7 @@ ALTER TABLE public.bulk_update_job_items DISABLE ROW LEVEL SECURITY;`;
                 No hay operaciones registradas aún
               </h4>
               <p className="text-[11px] text-slate-500 max-w-md mx-auto leading-relaxed">
-                Cada vez que ejecutes una actualización masiva o individual en el CRM de HubSpot, se registrará aquí en tiempo real y se guardará en tus tablas de Supabase (<code>bulk_update_jobs</code> y <code>bulk_update_job_items</code>).
+                Cada vez que ejecutes una actualización masiva o individual en el CRM de HubSpot, se registrará aquí en tiempo real con trazabilidad completa de cambios.
               </p>
             </div>
           ) : filteredHistory.length === 0 ? (
@@ -480,21 +389,21 @@ ALTER TABLE public.bulk_update_job_items DISABLE ROW LEVEL SECURITY;`;
                                 : 'Individual'}
                             </span>
 
-                            {/* Supabase Sync Status Badge */}
+                            {/* Sync Status Badge */}
                             {job.supabaseSyncStatus === 'synced' ? (
                               <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center gap-1">
                                 <Database className="w-2.5 h-2.5" />
-                                <span>Supabase (ID: #{job.id})</span>
+                                <span>Sincronizado</span>
                               </span>
                             ) : job.supabaseSyncStatus === 'rls_blocked' ? (
-                              <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-50 text-amber-800 border border-amber-300 flex items-center gap-1">
-                                <ShieldAlert className="w-2.5 h-2.5 text-amber-600" />
-                                <span>Bloqueado por RLS</span>
+                              <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-slate-100 text-slate-700 border border-slate-200 flex items-center gap-1">
+                                <ShieldCheck className="w-2.5 h-2.5 text-slate-600" />
+                                <span>Guardado local</span>
                               </span>
                             ) : job.supabaseSyncStatus === 'failed' ? (
-                              <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-rose-50 text-rose-700 border border-rose-200 flex items-center gap-1">
-                                <AlertCircle className="w-2.5 h-2.5 text-rose-600" />
-                                <span>Error Supabase</span>
+                              <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-50 text-amber-700 border border-amber-200 flex items-center gap-1">
+                                <AlertCircle className="w-2.5 h-2.5 text-amber-600" />
+                                <span>Pendiente de respaldo</span>
                               </span>
                             ) : (
                               <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-blue-50 text-blue-700 border border-blue-200">
@@ -632,24 +541,20 @@ ALTER TABLE public.bulk_update_job_items DISABLE ROW LEVEL SECURITY;`;
                           </div>
                         </div>
 
-                        {/* Technical Metadata Bar for Reference */}
-                        <div className="p-2.5 bg-slate-100/70 rounded-lg text-[10px] font-mono text-slate-600 flex flex-wrap items-center justify-between gap-2 border border-slate-200">
+                        {/* Metadata Bar */}
+                        <div className="p-2.5 bg-slate-100/70 rounded-lg text-[10px] font-medium text-slate-600 flex flex-wrap items-center justify-between gap-2 border border-slate-200">
                           <div>
-                            <span className="text-slate-400">client_id:</span>{' '}
-                            <strong className="text-slate-800">{job.clientId}</strong>
+                            <span className="text-slate-400">Identificador:</span>{' '}
+                            <strong className="text-slate-800 font-mono">{job.jobUuid}</strong>
                           </div>
                           <div>
-                            <span className="text-slate-400">job_uuid:</span>{' '}
-                            <strong className="text-slate-800">{job.jobUuid}</strong>
-                          </div>
-                          <div>
-                            <span className="text-slate-400">usuario:</span>{' '}
+                            <span className="text-slate-400">Operador:</span>{' '}
                             <strong className="text-slate-800">{job.executedByUsername}</strong>
                           </div>
                           <div>
-                            <span className="text-slate-400">supabase_sync:</span>{' '}
+                            <span className="text-slate-400">Estado de sincronización:</span>{' '}
                             <strong className={job.supabaseSyncStatus === 'synced' ? 'text-emerald-700' : 'text-amber-700'}>
-                              {job.supabaseSyncStatus || 'pending'}
+                              {job.supabaseSyncStatus === 'synced' ? 'Sincronizado' : 'Guardado local'}
                             </strong>
                           </div>
                         </div>
@@ -698,87 +603,6 @@ ALTER TABLE public.bulk_update_job_items DISABLE ROW LEVEL SECURITY;`;
             </div>
           )}
         </div>
-      ) : (
-        /* Database Schema & Architecture Tab */
-        <div className="p-5 space-y-4">
-          <div className="p-4 bg-slate-900 rounded-xl border border-slate-800 text-slate-100 space-y-3">
-            <div className="flex items-center justify-between flex-wrap gap-2">
-              <div className="flex items-center gap-2">
-                <FileCode className="w-4 h-4 text-emerald-400" />
-                <span className="text-xs font-bold text-white uppercase tracking-wider">
-                  Script DDL de Tablas Genéricas ({ddlDialect === 'supabase' ? 'Supabase / PostgreSQL' : 'MySQL 8.0+'})
-                </span>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <div className="flex bg-slate-800 p-0.5 rounded-lg border border-slate-700 text-xs">
-                  <button
-                    type="button"
-                    onClick={() => setDdlDialect('supabase')}
-                    className={`px-2.5 py-1 rounded-md font-semibold transition-all cursor-pointer ${
-                      ddlDialect === 'supabase'
-                        ? 'bg-emerald-600 text-white shadow-xs'
-                        : 'text-slate-400 hover:text-white'
-                    }`}
-                  >
-                    Supabase (PostgreSQL)
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setDdlDialect('mysql')}
-                    className={`px-2.5 py-1 rounded-md font-semibold transition-all cursor-pointer ${
-                      ddlDialect === 'mysql'
-                        ? 'bg-indigo-600 text-white shadow-xs'
-                        : 'text-slate-400 hover:text-white'
-                    }`}
-                  >
-                    MySQL
-                  </button>
-                </div>
-
-                <button
-                  onClick={handleCopyDdl}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold shadow-sm transition-all cursor-pointer"
-                >
-                  {copiedDdl ? <Check className="w-3.5 h-3.5 text-white" /> : <Copy className="w-3.5 h-3.5" />}
-                  {copiedDdl ? '¡DDL Copiado!' : `Copiar DDL ${ddlDialect === 'supabase' ? 'Supabase' : 'MySQL'}`}
-                </button>
-              </div>
-            </div>
-
-            <p className="text-xs text-slate-300 leading-relaxed">
-              Estructura normalizada en 2 tablas (<strong>Cabecera y Detalle</strong>) con nombres de tablas y campos en inglés (<code>bulk_update_jobs</code>, <code>client_id</code>, <code>executed_by_username</code>, etc.), snapshots en JSON y valores de estados/modos en español (<code>'lote'</code>, <code>'individual'</code>, <code>'completado'</code>, <code>'exitoso'</code>).
-            </p>
-
-            <pre className="bg-slate-950 p-4 rounded-lg overflow-x-auto text-[11px] font-mono text-emerald-400 border border-slate-800 max-h-96 leading-relaxed selection:bg-indigo-800 selection:text-white">
-              {ddlDialect === 'supabase' ? SUPABASE_BULK_LOGS_DDL : MYSQL_BULK_LOGS_DDL}
-            </pre>
-          </div>
-
-          {/* Quick Summary of Tables */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-            <div className="p-3.5 rounded-xl border border-slate-200 bg-slate-50 space-y-1.5">
-              <span className="font-bold text-slate-900 text-xs flex items-center gap-1.5">
-                <Database className="w-3.5 h-3.5 text-emerald-600" />
-                Tabla 1: <code>bulk_update_jobs</code> (Cabecera)
-              </span>
-              <p className="text-slate-600 text-[11px]">
-                Registra la operación maestra: <code>client_id</code>, <code>executed_by_username</code>, fecha, duración, total de leads modificados, <code>execution_mode</code> ('lote'/'individual'), <code>status</code> ('pendiente', 'en_proceso', 'completado', 'parcialmente_fallido', 'fallido') y snapshots JSON de filtros y cambios.
-              </p>
-            </div>
-
-            <div className="p-3.5 rounded-xl border border-slate-200 bg-slate-50 space-y-1.5">
-              <span className="font-bold text-slate-900 text-xs flex items-center gap-1.5">
-                <Layers className="w-3.5 h-3.5 text-emerald-600" />
-                Tabla 2: <code>bulk_update_job_items</code> (Detalle)
-              </span>
-              <p className="text-slate-600 text-[11px]">
-                Almacena el resultado puntual de cada contacto individual (<code>record_id</code>, nombre/email, número de lote, código de respuesta HTTP, valores asignados y estado de éxito/error).
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
+      </div>
   );
 };

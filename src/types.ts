@@ -185,6 +185,8 @@ export interface TenantCompany {
   public_client_id?: string;
   api_key?: string;
   hubspot_token?: string;
+  smtp_from?: string;
+  smtp_apikey?: string;
   hubspot_report_config?: HubSpotReportConfig;
 }
 

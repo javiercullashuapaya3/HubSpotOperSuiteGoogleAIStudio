@@ -60,7 +60,7 @@ function AppContent() {
     });
 
     const handleTabSwitch = (e: any) => {
-      if (e.detail === 'bulk' || e.detail === 'monitor' || e.detail === 'config') {
+      if (e.detail === 'bulk' || e.detail === 'monitor' || e.detail === 'scheduler' || e.detail === 'config') {
         setActiveTab(e.detail);
       }
     };
