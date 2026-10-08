@@ -479,6 +479,28 @@ st.success("✓ Conexión activa y catálogo de asesores sincronizado.")
                 </div>
               )}
             </div>
+
+            {/* VPS Deployment Helper Notice for Nginx/Node.js */}
+            <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-700 text-[11px] space-y-1.5">
+              <div className="font-semibold text-slate-900 flex items-center gap-1.5">
+                <Server className="w-3.5 h-3.5 text-indigo-600" />
+                <span>Configuración de Nginx en VPS (para evitar respuestas HTML 502/404):</span>
+              </div>
+              <p className="text-slate-600 leading-relaxed">
+                Si tu VPS usa Nginx, agrega este bloque dentro de tu <code>server &#123; ... &#125;</code> para que Nginx no devuelva <code>index.html</code> en las rutas de API:
+              </p>
+              <pre className="bg-slate-900 text-indigo-200 p-2 rounded text-[10px] overflow-x-auto font-mono">
+{`location /api/ {
+    proxy_pass http://127.0.0.1:3000;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+}`}
+              </pre>
+              <p className="text-[10px] text-slate-500">
+                Comando para iniciar Node en tu VPS: <code>npm run build &amp;&amp; npm start</code> (o <code>pm2 start dist/server.cjs --name hubops</code>).
+              </p>
+            </div>
           </div>
         </div>
       )}

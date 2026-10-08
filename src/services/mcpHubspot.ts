@@ -81,6 +81,87 @@ class McpHubspotService {
     return this.activeClientId;
   }
 
+  private apiBaseUrl: string = '';
+
+  // Helper centralizado para llamadas al backend con fallback inteligente si el proxy web del VPS (Nginx) retorna HTML
+  public async fetchApi(endpoint: string, options: RequestInit = {}): Promise<{ res: Response; data: any }> {
+    const urlsToTry: string[] = [];
+
+    if (this.apiBaseUrl) {
+      urlsToTry.push(`${this.apiBaseUrl}${endpoint}`);
+    } else {
+      urlsToTry.push(endpoint);
+      // Si estamos en el navegador y el puerto no es 3000 (ej. usuario en Nginx en puerto 80/443 sin proxy /api)
+      if (typeof window !== 'undefined' && window.location.port !== '3000') {
+        const hostname = window.location.hostname || 'localhost';
+        const directBackend = `${window.location.protocol}//${hostname}:3000${endpoint}`;
+        if (!urlsToTry.includes(directBackend)) {
+          urlsToTry.push(directBackend);
+        }
+      }
+    }
+
+    let lastError: Error | null = null;
+
+    for (let i = 0; i < urlsToTry.length; i++) {
+      const url = urlsToTry[i];
+      try {
+        const res = await fetch(url, options);
+        const rawText = await res.text();
+
+        // Verificar si la respuesta es HTML
+        const isHtml =
+          rawText.trim().startsWith('<') ||
+          rawText.toLowerCase().includes('<!doctype') ||
+          rawText.toLowerCase().includes('<html');
+
+        if (isHtml) {
+          // Si falló la ruta relativa y tenemos la opción de probar el puerto 3000 directamente, probar la siguiente URL
+          if (i < urlsToTry.length - 1) {
+            console.warn(`[HubSpot MCP] La ruta ${url} retornó HTML (proxy Nginx sin configurar). Probando backend directo: ${urlsToTry[i + 1]}`);
+            continue;
+          }
+
+          let helpfulMsg = '';
+          if (rawText.includes('502 Bad Gateway')) {
+            helpfulMsg = 'Error 502 Bad Gateway: Tu servidor Node.js en el VPS no está corriendo en el puerto 3000 o Nginx no puede comunicarse con él. Inicia tu backend con `npm start` en tu VPS.';
+          } else if (rawText.includes('504 Gateway Time-out')) {
+            helpfulMsg = 'Error 504 Gateway Time-out: El servidor Node.js en el VPS tardó demasiado en responder.';
+          } else if (rawText.includes('404 Not Found')) {
+            helpfulMsg = 'Error 404 Not Found: Nginx en tu VPS no está reenviando las peticiones /api hacia Node.js (puerto 3000). Revisa tu configuración de Nginx (proxy_pass http://localhost:3000).';
+          } else {
+            helpfulMsg = 'El servidor web del VPS (Nginx/Apache) retornó una página HTML en lugar de responder la API de Node.js. Asegúrate de tener el backend corriendo en el puerto 3000 (`npm start`) y que Nginx tenga la regla: `location /api/ { proxy_pass http://127.0.0.1:3000; }`.';
+          }
+          throw new Error(helpfulMsg);
+        }
+
+        // Parsear JSON
+        let data: any;
+        try {
+          data = JSON.parse(rawText);
+        } catch (_) {
+          throw new Error(`Respuesta inválida del servidor (no es JSON): ${rawText.substring(0, 100)}`);
+        }
+
+        // Si esta URL funcionó y era diferente de endpoint, memorizar apiBaseUrl
+        if (url !== endpoint && typeof window !== 'undefined') {
+          const hostname = window.location.hostname || 'localhost';
+          this.apiBaseUrl = `${window.location.protocol}//${hostname}:3000`;
+        }
+
+        return { res, data };
+      } catch (err: any) {
+        lastError = err;
+        // Si hay otra URL para intentar (ej. puerto 3000 directo), continuar
+        if (i < urlsToTry.length - 1) {
+          continue;
+        }
+      }
+    }
+
+    throw lastError || new Error('No se pudo conectar con el servidor.');
+  }
+
   // Garantiza la obtención del token desde memoria, localStorage o la tabla companies de Supabase
   public async ensureToken(overrideClientId?: number | string): Promise<string> {
     if (this.connectionState.privateAppToken && this.connectionState.privateAppToken.trim().length > 0) {
@@ -218,17 +299,18 @@ class McpHubspotService {
 
     const startTime = performance.now();
     try {
-      const res = await fetch('/api/hubspot/verify', {
+      const { res, data } = await this.fetchApi('/api/hubspot/verify', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${cleanToken}`,
+          'x-hubspot-token': cleanToken,
+          'x-client-id': String(this.activeClientId || 1),
         },
         body: JSON.stringify({ token: cleanToken }),
       });
 
       const latency = Math.round(performance.now() - startTime);
-      const data = await res.json();
 
       if (!res.ok || !data.success) {
         const errorMsg = data.error || 'Token inválido o sin permisos.';
@@ -301,8 +383,7 @@ class McpHubspotService {
         headers['x-hubspot-token'] = token;
       }
 
-      const res = await fetch('/api/hubspot/owners', { headers });
-      const data = await res.json();
+      const { res, data } = await this.fetchApi('/api/hubspot/owners', { headers });
 
       if (res.ok && data.success && Array.isArray(data.owners)) {
         this.owners = data.owners;
@@ -355,13 +436,11 @@ class McpHubspotService {
         headers['x-hubspot-token'] = token;
       }
 
-      const res = await fetch('/api/hubspot/contacts/search', {
+      const { res, data } = await this.fetchApi('/api/hubspot/contacts/search', {
         method: 'POST',
         headers,
         body: JSON.stringify(filters),
       });
-
-      const data = await res.json();
 
       if (res.ok && data.success && Array.isArray(data.contacts)) {
         this.contacts = data.contacts;
@@ -549,12 +628,18 @@ class McpHubspotService {
           }
         }
 
-        const res = await fetch(`/api/hubspot/contacts/${contactId}`, {
+        const headers: Record<string, string> = {
+          'Content-Type': 'application/json',
+          'x-client-id': String(this.activeClientId || 1),
+        };
+        if (token) {
+          headers['Authorization'] = `Bearer ${token}`;
+          headers['x-hubspot-token'] = token;
+        }
+
+        const { res } = await this.fetchApi(`/api/hubspot/contacts/${contactId}`, {
           method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
+          headers,
           body: JSON.stringify({ properties: props }),
         });
 
@@ -733,12 +818,18 @@ class McpHubspotService {
       for (let cIdx = 0; cIdx < chunks.length; cIdx++) {
         const chunk = chunks[cIdx];
         try {
-          const res = await fetch('/api/hubspot/contacts/batch-update', {
+          const headers: Record<string, string> = {
+            'Content-Type': 'application/json',
+            'x-client-id': String(this.activeClientId || 1),
+          };
+          if (token) {
+            headers['Authorization'] = `Bearer ${token}`;
+            headers['x-hubspot-token'] = token;
+          }
+
+          const { res, data } = await this.fetchApi('/api/hubspot/contacts/batch-update', {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${token}`,
-            },
+            headers,
             body: JSON.stringify({
               contactIds: chunk,
               updates,
@@ -746,7 +837,6 @@ class McpHubspotService {
           });
 
           if (res.ok) {
-            const data = await res.json();
             const chunkSuccess = data.successful ?? chunk.length;
             const chunkFailed = data.failed ?? 0;
             successful += chunkSuccess;
@@ -927,10 +1017,9 @@ class McpHubspotService {
         headers['x-hubspot-token'] = token;
       }
 
-      const res = await fetch('/api/hubspot/properties/contacts', { headers });
+      const { res, data } = await this.fetchApi('/api/hubspot/properties/contacts', { headers });
 
       if (res.ok) {
-        const data = await res.json();
         if (Array.isArray(data.properties)) {
           this.contactProperties = data.properties;
           const latency = Math.round(performance.now() - startTime);

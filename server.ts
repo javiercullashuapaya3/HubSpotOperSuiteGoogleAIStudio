@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import path from 'path';
+import fs from 'fs';
 import { createServer as createViteServer } from 'vite';
 import { createClient } from '@supabase/supabase-js';
 import {
@@ -8,13 +9,32 @@ import {
   ReportGenerationOptions,
 } from './src/services/hubspotExcelReporter';
 
-const SUPABASE_URL = "https://dhbdgmuuciwosiwpznrs.supabase.co";
-const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRoYmRnbXV1Y2l3b3Npd3B6bnJzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA2ODM3ODQsImV4cCI6MjA2NjI1OTc4NH0.Qh9g4FWSYKZcOOYm7WJeJyv1QgI2r5ZDn7CcU3oT7gs";
+const SUPABASE_URL =
+  process.env.SUPABASE_URL ||
+  process.env.VITE_SUPABASE_URL ||
+  "https://dhbdgmuuciwosiwpznrs.supabase.co";
+
+const SUPABASE_ANON =
+  process.env.SUPABASE_ANON_KEY ||
+  process.env.VITE_SUPABASE_ANON_KEY ||
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRoYmRnbXV1Y2l3b3Npd3B6bnJzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA2ODM3ODQsImV4cCI6MjA2NjI1OTc4NH0.Qh9g4FWSYKZcOOYm7WJeJyv1QgI2r5ZDn7CcU3oT7gs";
+
 const supabaseServer = createClient(SUPABASE_URL, SUPABASE_ANON);
 
 async function startServer() {
   const app = express();
   const PORT = 3000;
+
+  // CORS headers allowing frontend connection from any port, Nginx proxy or domain
+  app.use((req: Request, res: Response, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, x-client-id, x-hubspot-token');
+    if (req.method === 'OPTIONS') {
+      return res.sendStatus(200);
+    }
+    next();
+  });
 
   app.use(express.json({ limit: '50mb' }));
   app.use(express.urlencoded({ limit: '50mb', extended: true }));
@@ -1121,8 +1141,29 @@ async function startServer() {
     });
   });
 
-  // Vite middleware setup
-  if (process.env.NODE_ENV !== 'production') {
+  // Ensure that ANY route starting with /api that did not match returns JSON 404, NEVER HTML!
+  app.all('/api/*', (req: Request, res: Response) => {
+    return res.status(404).json({
+      success: false,
+      error: `Ruta de API no encontrada: ${req.method} ${req.originalUrl}`,
+    });
+  });
+
+  // Determine if running in production mode
+  const distPath = path.join(process.cwd(), 'dist');
+  const isProduction =
+    process.env.NODE_ENV === 'production' ||
+    process.argv.includes('--production') ||
+    (typeof __filename !== 'undefined' && __filename.endsWith('.cjs')) ||
+    (fs.existsSync(path.join(distPath, 'index.html')) && !process.env.VITE_DEV_MODE);
+
+  if (isProduction) {
+    app.use(express.static(distPath));
+    app.get('*', (req: Request, res: Response) => {
+      res.sendFile(path.join(distPath, 'index.html'));
+    });
+  } else {
+    // Development mode with Vite middleware
     const vite = await createViteServer({
       server: {
         middlewareMode: true,
@@ -1131,12 +1172,6 @@ async function startServer() {
       appType: 'spa',
     });
     app.use(vite.middlewares);
-  } else {
-    const distPath = path.join(process.cwd(), 'dist');
-    app.use(express.static(distPath));
-    app.get('*', (req: Request, res: Response) => {
-      res.sendFile(path.join(distPath, 'index.html'));
-    });
   }
 
   app.listen(PORT, '0.0.0.0', () => {
