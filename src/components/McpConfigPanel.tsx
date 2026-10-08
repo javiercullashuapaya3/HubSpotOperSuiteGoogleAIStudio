@@ -174,6 +174,11 @@ export const McpConfigPanel: React.FC<McpConfigPanelProps> = ({ onTokenSynced })
         const res = await mcpHubspot.hubspot_get_agent_metrics();
         setTestResult(res);
       }
+    } catch (err: any) {
+      setTestResult({
+        status: 'ERROR',
+        error: err.message || 'Error al invocar tool',
+      });
     } finally {
       setIsTesting(false);
     }
@@ -460,12 +465,12 @@ st.success("✓ Conexión activa y catálogo de asesores sincronizado.")
             <div className="bg-slate-950 rounded-xl p-3 font-mono text-[11px] text-slate-200 max-h-72 overflow-y-auto border border-slate-800">
               <div className="text-slate-500 border-b border-slate-800 pb-1.5 mb-2 flex justify-between">
                 <span>RESPUESTA ({testTool})</span>
-                <span className="text-emerald-400">
-                  {testResult ? 'STATUS_200_OK' : 'READY'}
+                <span className={testResult?.status === 'ERROR' ? 'text-rose-400 font-bold' : 'text-emerald-400'}>
+                  {testResult ? (testResult?.status === 'ERROR' ? 'STATUS_500_ERROR' : 'STATUS_200_OK') : 'READY'}
                 </span>
               </div>
               {testResult ? (
-                <pre className="text-emerald-300 whitespace-pre-wrap">
+                <pre className={`${testResult?.status === 'ERROR' ? 'text-rose-300' : 'text-emerald-300'} whitespace-pre-wrap`}>
                   {JSON.stringify(testResult, null, 2)}
                 </pre>
               ) : (

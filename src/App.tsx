@@ -33,15 +33,25 @@ function AppContent() {
 
   // Load owners and listen to status changes
   const refreshOwners = async () => {
-    const data = await mcpHubspot.hubspot_get_owners();
-    setOwners(data);
-    setLastSync(new Date().toLocaleTimeString());
-    setIsRealConnected(mcpHubspot.isConnectedToRealCRM());
+    try {
+      if (company) {
+        mcpHubspot.setActiveCompany(company);
+      }
+      const data = await mcpHubspot.hubspot_get_owners();
+      setOwners(data);
+      setLastSync(new Date().toLocaleTimeString());
+      setIsRealConnected(mcpHubspot.isConnectedToRealCRM());
+    } catch (err) {
+      console.warn('Advertencia al sincronizar asesores desde HubSpot CRM:', err);
+    }
   };
 
   useEffect(() => {
     if (!session) return;
 
+    if (company) {
+      mcpHubspot.setActiveCompany(company);
+    }
     refreshOwners();
 
     const unsub = mcpHubspot.subscribeStatus((st) => {
@@ -60,7 +70,7 @@ function AppContent() {
       unsub();
       window.removeEventListener('switch-to-tab', handleTabSwitch);
     };
-  }, [session, company?.hubspot_token]);
+  }, [session, company?.client_id, company?.hubspot_token]);
 
   if (loading) {
     return (

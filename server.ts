@@ -1,11 +1,16 @@
 import express, { Request, Response } from 'express';
 import path from 'path';
 import { createServer as createViteServer } from 'vite';
+import { createClient } from '@supabase/supabase-js';
 import {
   executeHubSpotReportGeneration,
   HubSpotReportOwner,
   ReportGenerationOptions,
 } from './src/services/hubspotExcelReporter';
+
+const SUPABASE_URL = "https://dhbdgmuuciwosiwpznrs.supabase.co";
+const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRoYmRnbXV1Y2l3b3Npd3B6bnJzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA2ODM3ODQsImV4cCI6MjA2NjI1OTc4NH0.Qh9g4FWSYKZcOOYm7WJeJyv1QgI2r5ZDn7CcU3oT7gs";
+const supabaseServer = createClient(SUPABASE_URL, SUPABASE_ANON);
 
 async function startServer() {
   const app = express();
@@ -14,19 +19,92 @@ async function startServer() {
   app.use(express.json({ limit: '50mb' }));
   app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
-  // Helper to extract HubSpot Token from Authorization header or body
-  const getHubSpotToken = (req: Request): string => {
+  // Helper to extract or resolve HubSpot Token from request headers OR directly from the 'companies' table in Supabase
+  const getHubSpotToken = async (req: Request): Promise<string> => {
+    // 1. Authorization header: Bearer <token>
     const authHeader = req.headers.authorization;
     if (authHeader && authHeader.startsWith('Bearer ')) {
-      return authHeader.substring(7).trim();
+      const bearer = authHeader.substring(7).trim();
+      if (bearer && bearer !== 'undefined' && bearer !== 'null' && bearer !== '') {
+        return bearer;
+      }
     }
-    const customHeader = req.headers['x-hubspot-token'] as string;
-    if (customHeader) {
+
+    // 2. Custom header
+    const customHeader = (req.headers['x-hubspot-token'] as string) || '';
+    if (customHeader && customHeader !== 'undefined' && customHeader !== 'null') {
       return customHeader.trim();
     }
-    if (req.body && req.body.token) {
-      return req.body.token.trim();
+
+    // 3. Body token
+    if (req.body && req.body.token && typeof req.body.token === 'string') {
+      const bToken = req.body.token.trim();
+      if (bToken && bToken !== 'undefined' && bToken !== 'null') {
+        return bToken;
+      }
     }
+
+    // 4. Query param token
+    if (req.query && req.query.token && typeof req.query.token === 'string') {
+      const qToken = req.query.token.trim();
+      if (qToken && qToken !== 'undefined' && qToken !== 'null') {
+        return qToken;
+      }
+    }
+
+    // 5. OBTENER DINÁMICAMENTE DE LA TABLA 'companies' EN SUPABASE PARA EL CLIENTE_ID
+    try {
+      const rawClientId =
+        (req.headers['x-client-id'] as string) ||
+        (req.query.clientId as string) ||
+        (req.query.client_id as string) ||
+        (req.body?.clientId) ||
+        (req.body?.client_id);
+
+      if (rawClientId) {
+        const compIdNum = Number(rawClientId);
+        if (!isNaN(compIdNum)) {
+          const { data } = await supabaseServer
+            .from('companies')
+            .select('id, hubspot_token')
+            .eq('id', compIdNum)
+            .maybeSingle();
+
+          if (data?.hubspot_token && data.hubspot_token.trim().length > 0) {
+            return data.hubspot_token.trim();
+          }
+        }
+
+        // Buscar por public_client_id si es string
+        const { data: byPublic } = await supabaseServer
+          .from('companies')
+          .select('id, hubspot_token')
+          .eq('public_client_id', String(rawClientId))
+          .maybeSingle();
+
+        if (byPublic?.hubspot_token && byPublic.hubspot_token.trim().length > 0) {
+          return byPublic.hubspot_token.trim();
+        }
+      }
+
+      // Si no se especificó clientId o no tenía token, obtener la primera empresa activa con hubspot_token
+      const { data: defaultCompany } = await supabaseServer
+        .from('companies')
+        .select('id, hubspot_token')
+        .not('hubspot_token', 'is', null)
+        .neq('hubspot_token', '')
+        .order('id', { ascending: true })
+        .limit(1)
+        .maybeSingle();
+
+      if (defaultCompany?.hubspot_token && defaultCompany.hubspot_token.trim().length > 0) {
+        return defaultCompany.hubspot_token.trim();
+      }
+    } catch (err: any) {
+      console.warn('[Server] Error al consultar hubspot_token en companies de Supabase:', err.message);
+    }
+
+    // 6. Fallback final opcional (variable de entorno)
     return process.env.HUBSPOT_ACCESS_TOKEN || '';
   };
 
@@ -35,9 +113,19 @@ async function startServer() {
     res.json({ status: 'ok', time: new Date().toISOString() });
   });
 
+  // Status route to inform if a token exists in DB companies or headers
+  app.get('/api/hubspot/status', async (req: Request, res: Response) => {
+    const token = await getHubSpotToken(req);
+    res.json({
+      success: true,
+      hasToken: Boolean(token && token.length > 5),
+      tokenPrefix: token ? token.substring(0, 8) + '...' : null,
+    });
+  });
+
   // Verify HubSpot Token
   app.post('/api/hubspot/verify', async (req: Request, res: Response) => {
-    const token = getHubSpotToken(req);
+    const token = await getHubSpotToken(req);
     if (!token) {
       return res.status(400).json({
         success: false,
@@ -89,7 +177,7 @@ async function startServer() {
 
   // Fetch Owners from real HubSpot API
   app.get('/api/hubspot/owners', async (req: Request, res: Response) => {
-    const token = getHubSpotToken(req);
+    const token = await getHubSpotToken(req);
     if (!token) {
       return res.status(401).json({
         success: false,
@@ -148,7 +236,7 @@ async function startServer() {
 
   // Search Contacts in real HubSpot API
   app.post('/api/hubspot/contacts/search', async (req: Request, res: Response) => {
-    const token = getHubSpotToken(req);
+    const token = await getHubSpotToken(req);
     if (!token) {
       return res.status(401).json({
         success: false,
@@ -398,7 +486,7 @@ async function startServer() {
 
   // Retrieve contact properties (both standard and custom properties defined in client's portal)
   app.get('/api/hubspot/properties/contacts', async (req: Request, res: Response) => {
-    const token = getHubSpotToken(req);
+    const token = await getHubSpotToken(req);
     if (!token) {
       return res.status(401).json({ success: false, error: 'Token requerido.' });
     }
@@ -458,7 +546,7 @@ async function startServer() {
 
   // Update a single contact in HubSpot
   app.patch('/api/hubspot/contacts/:id', async (req: Request, res: Response) => {
-    const token = getHubSpotToken(req);
+    const token = await getHubSpotToken(req);
     if (!token) {
       return res.status(401).json({ success: false, error: 'Token requerido.' });
     }
@@ -497,7 +585,7 @@ async function startServer() {
 
   // Batch update contacts in HubSpot partitioned in safe chunks of 100 with rate limiting
   app.post('/api/hubspot/contacts/batch-update', async (req: Request, res: Response) => {
-    const token = getHubSpotToken(req);
+    const token = await getHubSpotToken(req);
     if (!token) {
       return res.status(401).json({ success: false, error: 'Token requerido.' });
     }
@@ -768,7 +856,7 @@ async function startServer() {
 
   // POST /api/reports/generate-excel
   app.post('/api/reports/generate-excel', async (req: Request, res: Response) => {
-    const token = getHubSpotToken(req);
+    const token = await getHubSpotToken(req);
     const {
       ownerId,
       generateForAll,
@@ -903,7 +991,7 @@ async function startServer() {
 
   // GET /api/reports/filter-options
   app.get('/api/reports/filter-options', async (req: Request, res: Response) => {
-    const token = getHubSpotToken(req);
+    const token = await getHubSpotToken(req);
 
     // Baseline fallback options
     const baseOptions: Record<string, string[]> = {

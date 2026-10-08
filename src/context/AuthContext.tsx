@@ -127,7 +127,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
         const validConfig = sanitizeReportConfig(reportConfigFromDb);
 
-        setCompany({
+        const mappedCompany: TenantCompany = {
           id: companyData.id || '',
           client_id: clientId,
           name: companyData.name || 'Mi Empresa',
@@ -136,7 +136,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           api_key: companyData.api_key, // Llave interna para webhooks (ej. n8n)
           hubspot_token: tokenFromDb,
           hubspot_report_config: validConfig,
-        });
+        };
+
+        setCompany(mappedCompany);
+        mcpHubspot.setActiveCompany(mappedCompany);
 
         // Extraer y sincronizar automáticamente el token de HubSpot si viene de la tabla companies
         if (tokenFromDb && tokenFromDb.trim().length > 0) {
