@@ -32,6 +32,10 @@ jobs:
           npm install --legacy-peer-deps
           npm run build
 
-          # 5. Reiniciar o levantar el proceso en PM2 en el puerto 3001
-          pm2 reload hubspot-suite || PORT=3001 pm2 start dist/server.cjs --name hubspot-suite -- --port 3001
+          # 5. Asegurar puerto 3001 inmediatamente despues de compilar
+          sed -i 's/3000/3001/g' dist/server.cjs 2>/dev/null || true
+          sed -i 's/app.listen(PORT, "0.0.0.0"/app.listen(process.env.PORT || 3001, "0.0.0.0"/g' dist/server.cjs 2>/dev/null || true
+
+          # 6. Reiniciar PM2 con el entorno actualizado
+          PORT=3001 pm2 restart hubspot-suite --update-env || PORT=3001 pm2 start dist/server.cjs --name hubspot-suite --update-env
           pm2 save
