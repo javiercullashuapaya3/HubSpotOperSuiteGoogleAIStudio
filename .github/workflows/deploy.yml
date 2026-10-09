@@ -3,13 +3,14 @@ name: Deploy to VPS
 on:
   push:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Executing remote ssh commands using ssh key
       uses: appleboy/ssh-action@master
@@ -32,10 +33,11 @@ jobs:
           npm install --legacy-peer-deps
           npm run build
 
-          # 5. Asegurar puerto 3001 inmediatamente despues de compilar
-          sed -i 's/3000/3001/g' dist/server.cjs 2>/dev/null || true
-          sed -i 's/app.listen(PORT, "0.0.0.0"/app.listen(process.env.PORT || 3001, "0.0.0.0"/g' dist/server.cjs 2>/dev/null || true
+          # 5. Parchear puertos (cubre tanto 3000 como la notacion cientifica 3e3 generada por esbuild)
+          sed -i 's/\b3000\b/3001/g' dist/server.cjs 2>/dev/null || true
+          sed -i 's/\b3e3\b/3001/g' dist/server.cjs 2>/dev/null || true
+          sed -i '1s/^/process.env.PORT = "3001";\n/' dist/server.cjs 2>/dev/null || true
 
-          # 6. Reiniciar PM2 con el entorno actualizado
-          PORT=3001 pm2 restart hubspot-suite --update-env || PORT=3001 pm2 start dist/server.cjs --name hubspot-suite --update-env
+          # 6. Reiniciar proceso en PM2 o levantarlo si no existe
+          PORT=3001 pm2 restart hubspot-suite --update-env || PORT=3001 pm2 start dist/server.cjs --name "hubspot-suite" --update-env
           pm2 save
