@@ -1,0 +1,43 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Executing remote ssh commands using ssh key
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          # 1. Cargar paths del sistema para Node, NPM y PM2
+          export PATH=$PATH:/usr/local/bin:/usr/bin:~/.nvm/versions/node/$(ls ~/.nvm/versions/node 2>/dev/null | tail -n 1)/bin
+
+          # 2. Ir a la carpeta del proyecto
+          cd /var/www/HubSpotOperSuite
+
+          # 3. Forzar sincronizacion limpia con la rama main
+          git fetch origin main
+          git reset --hard origin/main
+
+          # 4. Instalar librerias y compilar frontend + backend
+          npm install --legacy-peer-deps
+          npm run build
+
+          # 5. Parchear puertos (cubre tanto 3000 como la notacion cientifica 3e3 generada por esbuild)
+          sed -i 's/\b3000\b/3001/g' dist/server.cjs 2>/dev/null || true
+          sed -i 's/\b3e3\b/3001/g' dist/server.cjs 2>/dev/null || true
+          sed -i '1s/^/process.env.PORT = "3001";\n/' dist/server.cjs 2>/dev/null || true
+
+          # 6. Reiniciar proceso en PM2 o levantarlo si no existe
+          PORT=3001 pm2 restart hubspot-suite --update-env || PORT=3001 pm2 start dist/server.cjs --name "hubspot-suite" --update-env
+          pm2 save

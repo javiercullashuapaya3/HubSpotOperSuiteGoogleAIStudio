@@ -1,0 +1,22 @@
+{
+  "enabled": true,
+  "activeDays": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "scheduledTimes": [
+    "09:00",
+    "14:00",
+    "18:00"
+  ],
+  "validUntilDate": null,
+  "senderName": "Dirección Comercial Promptia",
+  "senderEmail": "notificaciones@promptia.lat",
+  "subjectTemplate": "Reporte de Contactos Asignados - {{nombre_asesor}}",
+  "bodyTemplate": "Hola {{nombre_asesor}},\n\nAdjunto encontrarás tu reporte consolidado en Excel con tus contactos asignados y métricas comerciales de HubSpot CRM.\n\nPor favor prioriza tus contactos con más de 24 horas sin actividad reciente para el cumplimiento de meta.\n\nAtentamente,\n{{remitente}}",
+  "excludedOwnerIds": [],
+  "cronExpression": "0 9,14,18 * * 1-5"
+}

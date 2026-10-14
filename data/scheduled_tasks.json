@@ -1,0 +1,37 @@
+[
+  {
+    "id": "task_1791466600605_otyj5o",
+    "type": "SEND_EMAIL",
+    "title": "Despacho de Reportes Excel a Asesores (1 asesor)",
+    "scheduledAt": "2026-10-10T14:30:00.000Z",
+    "status": "pending",
+    "payload": {
+      "senderName": "Dirección Comercial Promptia",
+      "subjectTemplate": "Reporte Semanal - {{nombre_asesor}}",
+      "bodyTemplate": "Hola {{nombre_asesor}}, se adjunta tu base Excel.",
+      "excludedOwnerIds": [
+        "2"
+      ],
+      "targetAdvisors": [
+        {
+          "id": "1",
+          "firstName": "Leslie",
+          "lastName": "Alvarez",
+          "email": "leslie.alvarez@ejemplo.com"
+        },
+        {
+          "id": "2",
+          "firstName": "Javier",
+          "lastName": "Cullas",
+          "email": "javier.cullas@ejemplo.com"
+        }
+      ],
+      "attachExcel": true
+    },
+    "createdAt": "2026-10-08T13:36:40.605Z",
+    "executedAt": null,
+    "error": null,
+    "attempts": 0,
+    "maxAttempts": 3
+  }
+]

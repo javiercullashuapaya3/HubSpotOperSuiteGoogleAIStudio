@@ -1,0 +1,6 @@
+{
+  "name": "HubOps Suite de Promptia.lat",
+  "description": "Suite ejecutiva para operaciones comerciales y gestión masiva de leads en HubSpot CRM con sincronización segura en tiempo real.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
