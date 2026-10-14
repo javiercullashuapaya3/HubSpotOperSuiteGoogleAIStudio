@@ -9,15 +9,13 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
     - name: Executing remote ssh commands using ssh key
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.VPS_HOST }}
         username: ${{ secrets.VPS_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: 22
         script: |
           # 1. Cargar paths del sistema para Node, NPM y PM2
           export PATH=$PATH:/usr/local/bin:/usr/bin:~/.nvm/versions/node/$(ls ~/.nvm/versions/node 2>/dev/null | tail -n 1)/bin
@@ -25,9 +23,10 @@ jobs:
           # 2. Ir a la carpeta del proyecto
           cd /var/www/HubSpotOperSuite
 
-          # 3. Forzar sincronizacion limpia con la rama main
+          # 3. Forzar sincronizacion limpia con la rama main y purgar archivos huerfanos (protegiendo .env y data/)
           git fetch origin main
           git reset --hard origin/main
+          git clean -fd -e .env -e data/
 
           # 4. Instalar librerias y compilar frontend + backend
           npm install --legacy-peer-deps
