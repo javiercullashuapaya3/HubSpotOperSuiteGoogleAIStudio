@@ -35,7 +35,7 @@ const supabaseServer = createClient(SUPABASE_URL, SUPABASE_ANON);
 
 async function startServer() {
   const app = express();
-  const PORT = 3000;
+  const PORT = Number(process.env.PORT) || 3000;
 
   // Inicializar Worker persistente de tareas programadas (node-cron cada minuto)
   initializeTaskSchedulerWorker();
@@ -1352,15 +1352,14 @@ async function startServer() {
     });
   });
 
-  // Determine if running in production mode
+  // Determine if running in production mode (compiled server.cjs or explicit NODE_ENV=production)
   const distPath = path.join(process.cwd(), 'dist');
   const isProduction =
     process.env.NODE_ENV === 'production' ||
     process.argv.includes('--production') ||
-    (typeof __filename !== 'undefined' && __filename.endsWith('.cjs')) ||
-    (fs.existsSync(path.join(distPath, 'index.html')) && !process.env.VITE_DEV_MODE);
+    (typeof __filename !== 'undefined' && __filename.endsWith('.cjs'));
 
-  if (isProduction) {
+  if (isProduction && fs.existsSync(path.join(distPath, 'index.html'))) {
     app.use(express.static(distPath));
     app.get('*', (req: Request, res: Response) => {
       res.sendFile(path.join(distPath, 'index.html'));
@@ -1370,7 +1369,7 @@ async function startServer() {
     const vite = await createViteServer({
       server: {
         middlewareMode: true,
-        hmr: process.env.DISABLE_HMR === 'true' ? false : undefined,
+        hmr: false, // HMR disabled in dev container to avoid port conflicts
       },
       appType: 'spa',
     });

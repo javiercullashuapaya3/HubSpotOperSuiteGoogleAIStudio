@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {
   Settings,
   Key,
-  Terminal,
   Activity,
   CheckCircle2,
   AlertCircle,
@@ -13,7 +12,6 @@ import {
   Layers,
   Code2,
   FileText,
-  Play,
   ShieldCheck,
   Zap,
   Trash2,
@@ -50,11 +48,6 @@ export const McpConfigPanel: React.FC<McpConfigPanelProps> = ({ onTokenSynced })
     type: 'idle',
     message: '',
   });
-
-  // Test Runner State
-  const [testTool, setTestTool] = useState<string>('hubspot_get_owners');
-  const [isTesting, setIsTesting] = useState<boolean>(false);
-  const [testResult, setTestResult] = useState<any>(null);
 
   // Sincronizar tokenInput si la empresa cambia o se carga el token desde Supabase (tabla companies)
   useEffect(() => {
@@ -154,35 +147,7 @@ export const McpConfigPanel: React.FC<McpConfigPanelProps> = ({ onTokenSynced })
     }
   };
 
-  const handleRunToolTest = async () => {
-    setIsTesting(true);
-    setTestResult(null);
-    try {
-      if (testTool === 'hubspot_get_owners') {
-        const res = await mcpHubspot.hubspot_get_owners();
-        setTestResult(res);
-      } else if (testTool === 'hubspot_search_contacts') {
-        const res = await mcpHubspot.hubspot_search_contacts({
-          ownerId: 'ALL',
-          leadStatus: 'ALL',
-          lifecycleStage: 'ALL',
-          campaign: 'ALL',
-          searchKeyword: '',
-        });
-        setTestResult(res);
-      } else if (testTool === 'hubspot_get_agent_metrics') {
-        const res = await mcpHubspot.hubspot_get_agent_metrics();
-        setTestResult(res);
-      }
-    } catch (err: any) {
-      setTestResult({
-        status: 'ERROR',
-        error: err.message || 'Error al invocar tool',
-      });
-    } finally {
-      setIsTesting(false);
-    }
-  };
+
 
   const copyToClipboard = (text: string, sectionId: string) => {
     navigator.clipboard.writeText(text);
@@ -299,9 +264,9 @@ st.success("✓ Conexión activa y catálogo de asesores sincronizado.")
       </div>
 
       {activeSubTab === 'connection' && (
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-          {/* Connection Parameters & Token Form (7 cols) */}
-          <div className="lg:col-span-7 bg-white rounded-xl border border-slate-200 p-5 shadow-xs space-y-4">
+        <div className="max-w-4xl mx-auto space-y-6">
+          {/* Connection Parameters & Token Form */}
+          <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-xs space-y-5">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <div className="flex items-center gap-2">
                 <Key className="w-4 h-4 text-indigo-600" />
@@ -401,7 +366,7 @@ st.success("✓ Conexión activa y catálogo de asesores sincronizado.")
             )}
 
             {/* Scopes Guide */}
-            <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 text-xs space-y-2">
+            <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs space-y-2.5">
               <div className="font-semibold text-slate-800 flex items-center gap-1.5">
                 <ShieldCheck className="w-4 h-4 text-indigo-600" />
                 Permisos requeridos en tu aplicación privada de HubSpot:
@@ -409,94 +374,20 @@ st.success("✓ Conexión activa y catálogo de asesores sincronizado.")
               <p className="text-slate-600 text-[11px] leading-relaxed">
                 En tu portal de HubSpot ve a <strong>Configuración &gt; Integraciones &gt; Aplicaciones privadas</strong> y asegúrate de otorgar los siguientes scopes:
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 font-mono text-[10px]">
-                <div className="bg-white p-2 rounded border border-slate-200">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 font-mono text-[10px]">
+                <div className="bg-white p-2.5 rounded-lg border border-slate-200 shadow-2xs">
                   <span className="text-indigo-600 font-bold block">crm.objects.contacts.read</span>
                   <span className="text-slate-500">Buscar contactos</span>
                 </div>
-                <div className="bg-white p-2 rounded border border-slate-200">
+                <div className="bg-white p-2.5 rounded-lg border border-slate-200 shadow-2xs">
                   <span className="text-indigo-600 font-bold block">crm.objects.contacts.write</span>
                   <span className="text-slate-500">Actualizar masivo</span>
                 </div>
-                <div className="bg-white p-2 rounded border border-slate-200">
+                <div className="bg-white p-2.5 rounded-lg border border-slate-200 shadow-2xs">
                   <span className="text-indigo-600 font-bold block">crm.objects.owners.read</span>
                   <span className="text-slate-500">Listar asesores</span>
                 </div>
               </div>
-            </div>
-          </div>
-
-          {/* Tool Tester & Inspector (5 cols) */}
-          <div className="lg:col-span-5 bg-white rounded-xl border border-slate-200 p-5 shadow-xs space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-              <div className="flex items-center gap-2">
-                <Terminal className="w-4 h-4 text-indigo-600" />
-                <h3 className="text-sm font-semibold text-slate-900 uppercase tracking-wide">
-                  Probador de Conexión en Vivo
-                </h3>
-              </div>
-              <span className="text-[10px] text-slate-400 font-mono">HubSpot API</span>
-            </div>
-
-            <div className="flex gap-2">
-              <select
-                value={testTool}
-                onChange={(e) => setTestTool(e.target.value)}
-                className="w-full text-xs bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-slate-800 font-mono"
-              >
-                <option value="hubspot_get_owners">tool: hubspot_get_owners</option>
-                <option value="hubspot_search_contacts">tool: hubspot_search_contacts</option>
-                <option value="hubspot_get_agent_metrics">tool: hubspot_get_agent_metrics</option>
-              </select>
-              <button
-                onClick={handleRunToolTest}
-                disabled={isTesting}
-                className="bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white text-xs font-semibold px-4 py-2 rounded-lg flex items-center gap-1.5 shrink-0 cursor-pointer"
-              >
-                <Play className="w-3.5 h-3.5" />
-                {isTesting ? 'Invocando...' : 'Ejecutar'}
-              </button>
-            </div>
-
-            {/* Response Viewer */}
-            <div className="bg-slate-950 rounded-xl p-3 font-mono text-[11px] text-slate-200 max-h-72 overflow-y-auto border border-slate-800">
-              <div className="text-slate-500 border-b border-slate-800 pb-1.5 mb-2 flex justify-between">
-                <span>RESPUESTA ({testTool})</span>
-                <span className={testResult?.status === 'ERROR' ? 'text-rose-400 font-bold' : 'text-emerald-400'}>
-                  {testResult ? (testResult?.status === 'ERROR' ? 'STATUS_500_ERROR' : 'STATUS_200_OK') : 'READY'}
-                </span>
-              </div>
-              {testResult ? (
-                <pre className={`${testResult?.status === 'ERROR' ? 'text-rose-300' : 'text-emerald-300'} whitespace-pre-wrap`}>
-                  {JSON.stringify(testResult, null, 2)}
-                </pre>
-              ) : (
-                <div className="text-slate-500 py-6 text-center italic">
-                  Haz clic en "Ejecutar" para consultar los datos en tiempo real de tu HubSpot CRM.
-                </div>
-              )}
-            </div>
-
-            {/* VPS Deployment Helper Notice for Nginx/Node.js */}
-            <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-700 text-[11px] space-y-1.5">
-              <div className="font-semibold text-slate-900 flex items-center gap-1.5">
-                <Server className="w-3.5 h-3.5 text-indigo-600" />
-                <span>Configuración de Nginx en VPS (para evitar respuestas HTML 502/404):</span>
-              </div>
-              <p className="text-slate-600 leading-relaxed">
-                Si tu VPS usa Nginx, agrega este bloque dentro de tu <code>server &#123; ... &#125;</code> para que Nginx no devuelva <code>index.html</code> en las rutas de API:
-              </p>
-              <pre className="bg-slate-900 text-indigo-200 p-2 rounded text-[10px] overflow-x-auto font-mono">
-{`location /api/ {
-    proxy_pass http://127.0.0.1:3000;
-    proxy_http_version 1.1;
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-}`}
-              </pre>
-              <p className="text-[10px] text-slate-500">
-                Comando para iniciar Node en tu VPS: <code>npm run build &amp;&amp; npm start</code> (o <code>pm2 start dist/server.cjs --name hubops</code>).
-              </p>
             </div>
           </div>
         </div>
