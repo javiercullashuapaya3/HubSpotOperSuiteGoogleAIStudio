@@ -1,22 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Settings,
   Key,
   Activity,
   CheckCircle2,
   AlertCircle,
-  Copy,
-  Check,
   RefreshCw,
   Server,
-  Layers,
-  Code2,
-  FileText,
   ShieldCheck,
-  Zap,
   Trash2,
-  CheckCircle,
-  ExternalLink,
   Building2,
 } from 'lucide-react';
 import { McpConnectionState, McpToolLog } from '../types';
@@ -34,9 +25,8 @@ export const McpConfigPanel: React.FC<McpConfigPanelProps> = ({ onTokenSynced })
   const [tokenInput, setTokenInput] = useState<string>(
     company?.hubspot_token || connState.privateAppToken || ''
   );
-  const [activeSubTab, setActiveSubTab] = useState<'connection' | 'telemetry' | 'python_export'>('connection');
+  const [activeSubTab, setActiveSubTab] = useState<'connection' | 'telemetry'>('connection');
   const [logs, setLogs] = useState<McpToolLog[]>([]);
-  const [copiedSection, setCopiedSection] = useState<string | null>(null);
 
   // Sync / Verification State
   const [isVerifying, setIsVerifying] = useState<boolean>(false);
@@ -149,66 +139,6 @@ export const McpConfigPanel: React.FC<McpConfigPanelProps> = ({ onTokenSynced })
 
 
 
-  const copyToClipboard = (text: string, sectionId: string) => {
-    navigator.clipboard.writeText(text);
-    setCopiedSection(sectionId);
-    setTimeout(() => setCopiedSection(null), 2500);
-  };
-
-  const pythonStreamlitCode = `# app.py - HUB OPS SUITE (STREAMLIT + HUBSPOT CLIENT)
-import asyncio
-import json
-import streamlit as st
-import pandas as pd
-from mcp import ClientSession, StdioServerParameters
-from mcp.client.stdio import stdio_client
-
-st.set_page_config(
-    page_title="HubOps Suite de Promptia.lat - HubSpot CRM",
-    page_icon="⚡",
-    layout="wide"
-)
-
-# 1. AUTENTICACIÓN Y CONEXIÓN CON HUBSPOT CRM
-st.sidebar.title("⚡ HubOps Suite de Promptia.lat")
-st.sidebar.caption("Operaciones Comerciales & Gestión Masiva de Leads")
-
-token = st.sidebar.text_input(
-    "HubSpot Private App Token (HUBSPOT_ACCESS_TOKEN):",
-    type="password",
-    help="Ingresa el token de aplicación privada generado en tu portal de HubSpot con scopes crm.objects.contacts.read y write."
-)
-
-if not token:
-    st.info("👋 Ingresa tu Private App Token en la barra lateral para inicializar la conexión con tu portal de HubSpot.")
-    st.stop()
-
-# Helper asíncrono para invocar herramientas vía npx @axonops/hubspot-mcp
-async def run_mcp_tool(tool_name: str, arguments: dict = {}):
-    server_params = StdioServerParameters(
-        command="npx",
-        args=["-y", "@axonops/hubspot-mcp"],
-        env={"HUBSPOT_ACCESS_TOKEN": token}
-    )
-    async with stdio_client(server_params) as (read, write):
-        async with ClientSession(read, write) as session:
-            await session.initialize()
-            result = await session.call_tool(tool_name, arguments)
-            return result
-
-# 2. CARGA DINÁMICA DE METADATOS (OWNERS/ASESORES)
-if "owners" not in st.session_state:
-    with st.spinner("Cargando catálogo de asesores desde HubSpot CRM..."):
-        try:
-            owners_res = asyncio.run(run_mcp_tool("hubspot_get_owners"))
-            st.session_state["owners"] = owners_res
-        except Exception as e:
-            st.error(f"Error al conectar con el servidor: {str(e)}")
-            st.stop()
-
-st.success("✓ Conexión activa y catálogo de asesores sincronizado.")
-`;
-
   const isRealConnected = mcpHubspot.isConnectedToRealCRM();
 
   return (
@@ -216,9 +146,9 @@ st.success("✓ Conexión activa y catálogo de asesores sincronizado.")
       {/* Header */}
       <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-slate-100 text-slate-800 text-xs font-semibold uppercase tracking-wider mb-2">
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-700 text-xs font-semibold uppercase tracking-wider mb-2 border border-indigo-100">
             <Server className="w-3.5 h-3.5 text-indigo-600" />
-            Pestaña 3: Protocolo &amp; Conectividad
+            Integración &amp; Conectividad HubSpot CRM
           </div>
           <h2 className="text-xl font-bold text-slate-900 tracking-tight">
             Configuración y Conexión de tu HubSpot CRM
@@ -249,16 +179,6 @@ st.success("✓ Conexión activa y catálogo de asesores sincronizado.")
             }`}
           >
             <span>Registro de Actividad ({logs.length})</span>
-          </button>
-          <button
-            onClick={() => setActiveSubTab('python_export')}
-            className={`px-3 py-1.5 rounded-md transition-colors cursor-pointer ${
-              activeSubTab === 'python_export'
-                ? 'bg-white text-indigo-700 shadow-xs'
-                : 'text-slate-600 hover:text-slate-900'
-            }`}
-          >
-            Código Python (app.py)
           </button>
         </div>
       </div>
@@ -447,36 +367,6 @@ st.success("✓ Conexión activa y catálogo de asesores sincronizado.")
                 ))}
               </tbody>
             </table>
-          </div>
-        </div>
-      )}
-
-      {activeSubTab === 'python_export' && (
-        <div className="space-y-6">
-          <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-xs">
-            <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
-              <div className="flex items-center gap-2">
-                <Code2 className="w-4 h-4 text-indigo-600" />
-                <h3 className="text-sm font-semibold text-slate-900 uppercase tracking-wide">
-                  Código Python Oficial (Streamlit + HubSpot API)
-                </h3>
-              </div>
-              <button
-                onClick={() => copyToClipboard(pythonStreamlitCode, 'pycode')}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold rounded-lg transition-colors cursor-pointer"
-              >
-                {copiedSection === 'pycode' ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5 text-slate-600" />}
-                {copiedSection === 'pycode' ? '¡Copiado!' : 'Copiar app.py'}
-              </button>
-            </div>
-
-            <p className="text-xs text-slate-600 mb-3">
-              Este script implementa el flujo con <code className="text-indigo-600 font-mono font-bold">mcp.client.stdio.stdio_client</code> ejecutando <code className="text-indigo-600 font-mono font-bold">npx -y @axonops/hubspot-mcp</code> directamente en Python 3.10+.
-            </p>
-
-            <div className="bg-slate-950 text-slate-200 p-4 rounded-xl font-mono text-xs max-h-96 overflow-y-auto border border-slate-800">
-              <pre className="whitespace-pre-wrap">{pythonStreamlitCode}</pre>
-            </div>
           </div>
         </div>
       )}
