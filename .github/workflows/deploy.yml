@@ -28,15 +28,18 @@ jobs:
           git reset --hard origin/main
           git clean -fd -e .env -e data/
 
-          # 4. Instalar librerias y compilar frontend + backend
+          # 4. Vincular al centro unico de credenciales de Supabase
+          ln -sf /etc/promptia/supabase.env .env
+
+          # 5. Instalar librerias y compilar frontend + backend
           npm install --legacy-peer-deps
           npm run build
 
-          # 5. Parchear puertos (cubre tanto 3000 como la notacion cientifica 3e3 generada por esbuild)
+          # 6. Parchear puertos (cubre tanto 3000 como la notacion cientifica 3e3 generada por esbuild)
           sed -i 's/\b3000\b/3001/g' dist/server.cjs 2>/dev/null || true
           sed -i 's/\b3e3\b/3001/g' dist/server.cjs 2>/dev/null || true
           sed -i '1s/^/process.env.PORT = "3001";\n/' dist/server.cjs 2>/dev/null || true
 
-          # 6. Reiniciar proceso en PM2 o levantarlo si no existe
+          # 7. Reiniciar proceso en PM2 o levantarlo si no existe
           PORT=3001 pm2 restart hubspot-suite --update-env || PORT=3001 pm2 start dist/server.cjs --name "hubspot-suite" --update-env
           pm2 save
