@@ -108,9 +108,6 @@ function AppContent() {
                     <span className="text-[#9333EA] font-black mr-1.5">.lat</span>
                     <span className="text-slate-800 font-extrabold">HubOps Suite</span>
                   </h1>
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200 tracking-wide uppercase">
-                    v2.4
-                  </span>
                 </div>
                 <p className="text-[11px] text-slate-500 font-medium">
                   Operaciones Comerciales &amp; Gestión Masiva HubSpot CRM

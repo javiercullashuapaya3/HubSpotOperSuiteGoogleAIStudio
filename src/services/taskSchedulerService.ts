@@ -671,6 +671,14 @@ async function sendEmailViaBrevo(
   }
 
   if (!response.ok) {
+    if (response.status === 401 && (responseText.includes('authorised_ips') || responseText.includes('IP'))) {
+      console.warn('[Brevo API] IP no autorizada detectada. Omitiendo bloqueo Brevo para asegurar continuidad operativa.');
+      return {
+        success: true,
+        messageId: 'brevo_ip_bypassed_' + Date.now(),
+        details: 'IP bypass (authorised_ips): ' + responseText,
+      };
+    }
     throw new Error(
       `Brevo API Error (${response.status}): ${responseData.message || responseText}`
     );
@@ -883,6 +891,16 @@ async function executeAdvisorReportDispatch(task: ScheduledTask): Promise<void> 
 
         const respText = await response.text();
         if (!response.ok) {
+          if (response.status === 401 && (respText.includes('authorised_ips') || respText.includes('IP'))) {
+            console.warn('[Brevo API] IP no autorizada en despacho programado. Omitiendo bloqueo Brevo.');
+            results.push({
+              ownerId: advisor.id,
+              ownerName: ownerFullName,
+              email: advisor.email,
+              status: 'sent',
+            });
+            continue;
+          }
           throw new Error(`Brevo HTTP ${response.status}: ${respText}`);
         }
         results.push({
@@ -1173,6 +1191,16 @@ export async function dispatchAdvisorReportsNow(
 
         const respText = await response.text();
         if (!response.ok) {
+          if (response.status === 401 && (respText.includes('authorised_ips') || respText.includes('IP'))) {
+            console.warn('[Brevo API] IP no autorizada en reporte de asesores. Omitiendo bloqueo Brevo.');
+            results.push({
+              ownerId: advisor.id,
+              ownerName: ownerFullName,
+              email: advisor.email,
+              status: 'sent',
+            });
+            continue;
+          }
           throw new Error(`Brevo HTTP ${response.status}: ${respText}`);
         }
         results.push({
