@@ -2484,9 +2484,9 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
           >
             <ArrowRightLeft className="w-4 h-4" />
             {isUpdatingByFilterCriteriaDirectly ? (
-              <>⚡ Ejecutar Modificación Masiva por Criterios de Búsqueda</>
+              <>⚡ Ejecutar por Criterios</>
             ) : (
-              <>⚡ Ejecutar Modificación Masiva ({selectedContactIds.size} Leads Seleccionados)</>
+              <>⚡ Ejecutar ({selectedContactIds.size} Leads)</>
             )}
           </button>
         </div>
