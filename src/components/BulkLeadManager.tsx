@@ -2474,21 +2474,23 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
           </div>
 
           {/* Submit Button */}
-          <button
-            onClick={() => {
-              setConfirmKeyword('');
-              setIsConfirmModalOpen(true);
-            }}
-            disabled={!hasChangesConfigured || isExecuting}
-            className="w-full mt-4 bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-semibold text-xs py-3 px-4 rounded-lg shadow-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer"
-          >
-            <ArrowRightLeft className="w-4 h-4" />
-            {isUpdatingByFilterCriteriaDirectly ? (
-              <>⚡ Ejecutar por Criterios</>
-            ) : (
-              <>⚡ Ejecutar ({selectedContactIds.size} Leads)</>
-            )}
-          </button>
+          <div className="flex justify-center mt-4">
+            <button
+              onClick={() => {
+                setConfirmKeyword('');
+                setIsConfirmModalOpen(true);
+              }}
+              disabled={!hasChangesConfigured || isExecuting}
+              className="bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-semibold text-xs py-2.5 px-6 rounded-lg shadow-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <ArrowRightLeft className="w-4 h-4" />
+              {isUpdatingByFilterCriteriaDirectly ? (
+                <>⚡ Ejecutar por Criterios</>
+              ) : (
+                <>⚡ Ejecutar ({selectedContactIds.size} Leads)</>
+              )}
+            </button>
+          </div>
         </div>
 
       {/* Barra flotante rápida para ir a Modificaciones o abrir Emergente */}
