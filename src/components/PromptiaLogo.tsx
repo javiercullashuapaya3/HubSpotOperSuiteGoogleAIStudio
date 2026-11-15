@@ -27,15 +27,15 @@ export const PromptiaLogo: React.FC<PromptiaLogoProps> = ({
       >
         <defs>
           <linearGradient id="pCyanGradIcon" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#00E5FF" />
-            <stop offset="45%" stopColor="#00A3FF" />
-            <stop offset="100%" stopColor="#2563EB" />
+            <stop offset="0%" stopColor="#00CFA7" />
+            <stop offset="55%" stopColor="#00A887" />
+            <stop offset="100%" stopColor="#007F66" />
           </linearGradient>
 
           <linearGradient id="pPurpleGradIcon" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#7C3AED" />
-            <stop offset="50%" stopColor="#8B5CF6" />
-            <stop offset="100%" stopColor="#A855F7" />
+            <stop offset="0%" stopColor="#041050" />
+            <stop offset="60%" stopColor="#0B2287" />
+            <stop offset="100%" stopColor="#00CFA7" />
           </linearGradient>
         </defs>
 
@@ -148,10 +148,10 @@ export const PromptiaLogo: React.FC<PromptiaLogoProps> = ({
         {showText && (
           <div className="flex flex-col leading-none">
             <span className="font-extrabold tracking-tight text-[15px] sm:text-base flex items-baseline">
-              <span className="text-[#00C4FF] font-black">Promptia</span>
-              <span className="text-[#9333EA] font-black">.lat</span>
+              <span className="text-[#007F66] dark:text-[#00CFA7] font-black">Promptia</span>
+              <span className="text-[#041050] dark:text-white font-black">.lat</span>
             </span>
-            <span className="text-[10px] text-slate-400 font-semibold tracking-wider uppercase mt-0.5">
+            <span className="text-[10px] text-slate-600 dark:text-slate-300 font-semibold tracking-wider uppercase mt-0.5">
               HubOps Suite
             </span>
           </div>
@@ -166,8 +166,8 @@ export const PromptiaLogo: React.FC<PromptiaLogoProps> = ({
       <PromptiaLogo variant="icon" size={typeof size === 'number' ? size * 1.5 : size} />
       {showText && (
         <div className="mt-2.5 flex items-baseline justify-center">
-          <span className="text-2xl sm:text-3xl font-black text-[#00C4FF] tracking-tight">Promptia</span>
-          <span className="text-2xl sm:text-3xl font-black text-[#9333EA] tracking-tight">.lat</span>
+          <span className="text-2xl sm:text-3xl font-black text-[#007F66] dark:text-[#00CFA7] tracking-tight">Promptia</span>
+          <span className="text-2xl sm:text-3xl font-black text-[#041050] dark:text-white tracking-tight">.lat</span>
         </div>
       )}
     </div>

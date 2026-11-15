@@ -399,45 +399,34 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
 
   return (
     <div
-      className="bg-white rounded-xl border border-slate-200 shadow-xs p-5 space-y-5"
+      className="bg-white dark:bg-[#041050] rounded-xl border border-[#DCE1EB] dark:border-[#1B2F8A] shadow-xs p-5 space-y-5 transition-colors"
       id="unified-advisor-reports-planner-section"
     >
       {/* Header Unificado */}
-      <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+      <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 pb-4 border-b border-[#EEF1F9] dark:border-[#1B2F8A]">
         <div>
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-800 text-xs font-semibold uppercase tracking-wider mb-2">
-            <CalendarClock className="w-3.5 h-3.5 text-indigo-600" />
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-[#EEF1F9] dark:bg-[#0A1E7A] text-[#041050] dark:text-[#00CFA7] border border-[#041050]/15 dark:border-[#00CFA7]/30 text-xs font-semibold uppercase tracking-wider mb-2">
+            <CalendarClock className="w-3.5 h-3.5 text-[#007F66] dark:text-[#00CFA7]" />
             Planificador Unificado & Automatización Comercial
           </div>
-          <h3 className="text-lg font-bold text-slate-900 tracking-tight flex items-center gap-2">
+          <h3 className="text-lg font-bold text-[#041050] dark:text-white tracking-tight flex items-center gap-2">
             Planificador Flexible de Despacho de Reportes a Asesores
           </h3>
-          <p className="text-xs text-slate-600 mt-0.5">
+          <p className="text-xs text-slate-600 dark:text-slate-300 mt-0.5">
             Configura en un solo lugar qué días, a qué horas y hasta cuándo se despacharán automáticamente los
             reportes Excel a cada asesor, con opción de despacho inmediato en cualquier momento.
           </p>
         </div>
 
         <div className="flex flex-wrap items-center gap-2 w-full lg:w-auto justify-start lg:justify-end">
-          {/* Botón ¿Cómo funciona en VPS? */}
-          <button
-            type="button"
-            onClick={() => setShowVpsInfo(!showVpsInfo)}
-            className="px-2.5 py-1.5 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-600 text-xs font-medium transition-colors flex items-center gap-1.5 cursor-pointer"
-            title="Información de arquitectura de persistencia para VPS"
-          >
-            <Server className="w-3.5 h-3.5 text-slate-500" />
-            <span>Persistencia VPS</span>
-          </button>
-
           {/* Botón Refrescar */}
           <button
             onClick={loadPlannerData}
             disabled={loading}
-            className="px-2.5 py-1.5 rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold transition-colors flex items-center gap-1.5 cursor-pointer"
+            className="px-2.5 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#1E3599] bg-white dark:bg-[#06155E] hover:bg-[#F7F8FC] dark:hover:bg-[#0A1E7A] text-[#041050] dark:text-slate-100 text-xs font-semibold transition-colors flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0"
             title="Actualizar datos del planificador"
           >
-            <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin text-indigo-600' : ''}`} />
+            <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin text-[#007F66] dark:text-[#00CFA7]' : ''}`} />
             <span>Refrescar</span>
           </button>
 
@@ -446,7 +435,7 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
             type="button"
             onClick={handleSendImmediately}
             disabled={isSendingImmediate || owners.length === 0}
-            className="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white text-xs font-bold transition-all flex items-center gap-2 cursor-pointer shadow-xs disabled:opacity-50"
+            className="px-4 py-2 rounded-lg bg-[#00CFA7] hover:bg-[#00B894] active:bg-[#009F80] text-[#041050] text-xs font-bold transition-all flex items-center gap-2 cursor-pointer shadow-xs disabled:opacity-50 whitespace-nowrap shrink-0"
             title="Ejecutar despacho inmediato a todos los asesores activos en este momento"
           >
             {isSendingImmediate ? (
@@ -466,10 +455,10 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
           <button
             type="button"
             onClick={() => setIsEditorOpen(!isEditorOpen)}
-            className={`px-3.5 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-xs ${
+            className={`px-3.5 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-xs whitespace-nowrap shrink-0 ${
               isEditorOpen
-                ? 'bg-slate-200 hover:bg-slate-300 text-slate-800'
-                : 'bg-indigo-600 hover:bg-indigo-700 text-white'
+                ? 'bg-[#EEF1F9] dark:bg-[#0A1E7A] hover:bg-[#DCE1EB] dark:hover:bg-[#142D9E] text-[#041050] dark:text-white border border-[#CBD5E1] dark:border-[#2C45B8]'
+                : 'bg-[#041050] hover:bg-[#081C7A] text-white dark:bg-[#06155E] dark:hover:bg-[#0A1E7A] dark:border dark:border-[#00CFA7]/45'
             }`}
           >
             <CalendarClock className="w-3.5 h-3.5" />
@@ -478,111 +467,65 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
         </div>
       </div>
 
-      {/* Explicativo VPS si está expandido */}
-      {showVpsInfo && (
-        <div className="bg-slate-900 text-slate-200 p-4 rounded-xl text-xs space-y-2 border border-slate-800 animate-in fade-in">
-          <div className="flex items-center justify-between font-bold text-white">
-            <span className="flex items-center gap-2">
-              <Server className="w-4 h-4 text-emerald-400" />
-              Arquitectura de Persistencia para Despliegue en VPS
-            </span>
-            <button
-              onClick={() => setShowVpsInfo(false)}
-              className="text-slate-400 hover:text-white cursor-pointer"
-            >
-              ✕
-            </button>
-          </div>
-          <p className="text-slate-300 leading-relaxed">
-            <strong>¿Dónde se guarda la configuración del remitente, mensaje, asunto y horarios?</strong>
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
-            <div className="bg-slate-800/80 p-3 rounded-lg border border-slate-700">
-              <div className="flex items-center gap-2 font-bold text-emerald-300 mb-1">
-                <FileSpreadsheet className="w-4 h-4" />
-                1. Archivo Local en Disco (VPS)
-              </div>
-              <p className="text-[11px] text-slate-300">
-                Ubicación: <code className="text-amber-300 bg-slate-950 px-1 py-0.5 rounded">data/advisor_dispatch_config.json</code>.
-                El worker cron interno lo lee localmente sin latencia de red en cada ciclo. Al reiniciar tu VPS o reiniciar PM2/Node,
-                permanece intacto en el disco duro.
-              </p>
-            </div>
-            <div className="bg-slate-800/80 p-3 rounded-lg border border-slate-700">
-              <div className="flex items-center gap-2 font-bold text-sky-300 mb-1">
-                <Database className="w-4 h-4" />
-                2. Respaldo Sincronizado en Supabase
-              </div>
-              <p className="text-[11px] text-slate-300">
-                Se sincroniza de forma segura en la tabla <code className="text-sky-300 bg-slate-950 px-1 py-0.5 rounded">companies.hubspot_report_config</code>.
-                Si migras de VPS o destruyes el contenedor Docker, el sistema restaura automáticamente tu configuración desde la nube.
-              </p>
-            </div>
-          </div>
-          <p className="text-[11px] text-slate-400 pt-1">
-            💡 <strong>Consejo para VPS Docker:</strong> Si usas contenedores, mapea el volumen persistente:{' '}
-            <code className="text-emerald-400 bg-slate-950 px-1 py-0.5 rounded">-v ./data:/app/data</code> para garantizar que no se borren archivos al regenerar la imagen.
-          </p>
-        </div>
-      )}
-
       {/* Banner de Aviso/Alerta */}
       {notice && (
         <div
           className={`p-3.5 rounded-xl border text-xs flex items-center justify-between gap-3 animate-in fade-in ${
             notice.type === 'success'
-              ? 'bg-emerald-50 border-emerald-200 text-emerald-800'
+              ? 'bg-[#E6FAF5] dark:bg-[#00CFA7]/15 border-[#00CFA7]/40 text-[#007F66] dark:text-[#00CFA7]'
               : notice.type === 'error'
-              ? 'bg-rose-50 border-rose-200 text-rose-800'
-              : 'bg-indigo-50 border-indigo-200 text-indigo-800'
+              ? 'bg-rose-50 dark:bg-rose-500/15 border-rose-200 dark:border-rose-500/35 text-rose-800 dark:text-rose-200'
+              : 'bg-[#EEF1F9] dark:bg-[#0A1E7A] border-[#041050]/20 dark:border-[#2C45B8] text-[#041050] dark:text-slate-100'
           }`}
         >
           <div className="flex items-center gap-2">
             {notice.type === 'success' ? (
-              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+              <CheckCircle2 className="w-4 h-4 text-[#007F66] dark:text-[#00CFA7] shrink-0" />
             ) : notice.type === 'error' ? (
-              <AlertCircle className="w-4 h-4 text-rose-600 shrink-0" />
+              <AlertCircle className="w-4 h-4 text-rose-600 dark:text-rose-400 shrink-0" />
             ) : (
-              <Info className="w-4 h-4 text-indigo-600 shrink-0" />
+              <Info className="w-4 h-4 text-[#041050] dark:text-[#00CFA7] shrink-0" />
             )}
             <span className="font-medium">{notice.message}</span>
           </div>
           <button
             onClick={() => setNotice(null)}
-            className="text-slate-400 hover:text-slate-600 cursor-pointer font-bold"
+            className="text-slate-500 dark:text-slate-300 hover:text-[#041050] dark:hover:text-white cursor-pointer font-bold"
           >
             ✕
           </button>
         </div>
       )}
 
-      {/* TARJETA DE ESTADO EN VIVO DEL PLANIFICADOR ACTIVO (Visible permanentemente) */}
-      <div className="p-4 rounded-xl border border-indigo-100 bg-linear-to-r from-indigo-50/70 via-slate-50 to-white">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3 border-b border-indigo-100/80">
+      {/* TARJETA DE ESTADO EN VIVO DEL PLANIFICADOR ACTIVO */}
+      <div className="p-4 rounded-xl border border-[#DCE1EB] dark:border-[#1B2F8A] bg-[#F7F8FC] dark:bg-[#06155E]">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3 border-b border-[#DCE1EB] dark:border-[#1B2F8A]">
           <div className="flex items-center gap-3">
             <div
-              className={`w-9 h-9 rounded-lg flex items-center justify-center font-bold ${
-                enabled ? 'bg-emerald-600 text-white shadow-xs' : 'bg-slate-300 text-slate-600'
+              className={`w-9 h-9 rounded-lg flex items-center justify-center font-bold shrink-0 ${
+                enabled
+                  ? 'bg-[#00CFA7] text-[#041050] shadow-xs'
+                  : 'bg-slate-200 dark:bg-[#0A1E7A] text-slate-600 dark:text-slate-300'
               }`}
             >
               {enabled ? <Clock className="w-5 h-5" /> : <Pause className="w-5 h-5" />}
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <h4 className="font-bold text-sm text-slate-900">
+              <div className="flex flex-wrap items-center gap-2">
+                <h4 className="font-bold text-sm text-[#041050] dark:text-white">
                   {enabled ? 'Planificador Automático en Ejecución' : 'Planificador en Pausa'}
                 </h4>
                 <span
-                  className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
+                  className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider border ${
                     enabled
-                      ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
-                      : 'bg-slate-100 text-slate-700 border border-slate-300'
+                      ? 'bg-[#E6FAF5] dark:bg-[#00CFA7]/15 text-[#007F66] dark:text-[#00CFA7] border-[#00CFA7]/40'
+                      : 'bg-slate-100 dark:bg-[#0A1E7A] text-slate-700 dark:text-slate-300 border-slate-300 dark:border-[#2C45B8]'
                   }`}
                 >
-                  {enabled ? '● Cron Activo (* * * * *)' : 'Pausado'}
+                  {enabled ? '● Cron Activo' : 'Pausado'}
                 </span>
               </div>
-              <p className="text-[11px] text-slate-600">
+              <p className="text-[11px] text-slate-600 dark:text-slate-300">
                 {enabled
                   ? 'El motor cron en background verifica cada minuto los horarios configurados.'
                   : 'Las ejecuciones automáticas están suspendidas. Puedes enviar manualmente en cualquier momento.'}
@@ -594,10 +537,10 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
             <button
               type="button"
               onClick={handleToggleEnable}
-              className={`px-3 py-1.5 rounded-lg border text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer ${
+              className={`px-3 py-1.5 rounded-lg border text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
                 enabled
-                  ? 'border-amber-300 bg-amber-50 hover:bg-amber-100 text-amber-800'
-                  : 'border-emerald-300 bg-emerald-50 hover:bg-emerald-100 text-emerald-800'
+                  ? 'border-amber-300 dark:border-amber-500/40 bg-amber-50 dark:bg-amber-500/15 hover:bg-amber-100 dark:hover:bg-amber-500/25 text-amber-800 dark:text-amber-300'
+                  : 'border-[#00CFA7]/40 bg-[#E6FAF5] dark:bg-[#00CFA7]/15 hover:bg-[#D1F5EB] dark:hover:bg-[#00CFA7]/25 text-[#007F66] dark:text-[#00CFA7]'
               }`}
             >
               {enabled ? (
@@ -616,9 +559,9 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
             <button
               type="button"
               onClick={() => setIsEditorOpen(!isEditorOpen)}
-              className="px-3 py-1.5 rounded-lg border border-indigo-200 bg-white hover:bg-indigo-50 text-indigo-700 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+              className="px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#2C45B8] bg-white dark:bg-[#041050] hover:bg-[#EEF1F9] dark:hover:bg-[#0A1E7A] text-[#041050] dark:text-white text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer whitespace-nowrap shrink-0"
             >
-              <CalendarClock className="w-3.5 h-3.5" />
+              <CalendarClock className="w-3.5 h-3.5 text-[#007F66] dark:text-[#00CFA7]" />
               <span>{isEditorOpen ? 'Cerrar Edición' : 'Editar Reglas'}</span>
             </button>
           </div>
@@ -626,50 +569,50 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
 
         {/* Resumen de Reglas Actuales */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 text-xs">
-          <div className="bg-white/80 p-2.5 rounded-lg border border-slate-200">
-            <div className="text-[10px] uppercase font-bold text-slate-500 mb-0.5">📅 Días Activos</div>
-            <div className="font-semibold text-slate-900 truncate">
+          <div className="bg-white dark:bg-[#041050] p-2.5 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A]">
+            <div className="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400 mb-0.5">📅 Días Activos</div>
+            <div className="font-semibold text-[#041050] dark:text-white truncate">
               {activeDays.length === 7 ? 'Todos los días' : activeDays.length === 5 && !activeDays.includes(0) && !activeDays.includes(6) ? 'Lunes a Viernes' : selectedDayNames || 'Ninguno'}
             </div>
           </div>
 
-          <div className="bg-white/80 p-2.5 rounded-lg border border-slate-200">
-            <div className="text-[10px] uppercase font-bold text-slate-500 mb-0.5">⏰ Horas de Envío</div>
-            <div className="font-semibold text-slate-900 truncate">
+          <div className="bg-white dark:bg-[#041050] p-2.5 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A]">
+            <div className="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400 mb-0.5">⏰ Horas de Envío</div>
+            <div className="font-semibold text-[#041050] dark:text-white truncate tabular-nums">
               {scheduledTimes.join(', ')} hrs
             </div>
           </div>
 
-          <div className="bg-white/80 p-2.5 rounded-lg border border-slate-200">
-            <div className="text-[10px] uppercase font-bold text-slate-500 mb-0.5">⏳ Vigencia</div>
-            <div className="font-semibold text-slate-900 truncate">
+          <div className="bg-white dark:bg-[#041050] p-2.5 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A]">
+            <div className="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400 mb-0.5">⏳ Vigencia</div>
+            <div className="font-semibold text-[#041050] dark:text-white truncate">
               {isPermanent || !validUntilDate ? 'Permanente (Sin límite)' : `Hasta ${validUntilDate}`}
             </div>
           </div>
 
-          <div className="bg-white/80 p-2.5 rounded-lg border border-slate-200">
-            <div className="text-[10px] uppercase font-bold text-slate-500 mb-0.5">👥 Destinatarios</div>
-            <div className="font-semibold text-emerald-700 truncate">
+          <div className="bg-white dark:bg-[#041050] p-2.5 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A]">
+            <div className="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400 mb-0.5">👥 Destinatarios</div>
+            <div className="font-semibold text-[#007F66] dark:text-[#00CFA7] truncate tabular-nums">
               {activeAdvisorsCount} de {owners.length} asesores
             </div>
           </div>
         </div>
       </div>
 
-      {/* FORMULARIO UNIFICADO DEL PLANIFICADOR (Cuando isEditorOpen está activo) */}
+      {/* FORMULARIO UNIFICADO DEL PLANIFICADOR */}
       {isEditorOpen && (
         <form
           onSubmit={handleSavePlanner}
-          className="bg-slate-50/70 rounded-xl border border-indigo-200 p-5 space-y-5 animate-in fade-in"
+          className="bg-[#F7F8FC] dark:bg-[#06155E] rounded-xl border border-[#CBD5E1] dark:border-[#1B2F8A] p-5 space-y-5 animate-in fade-in"
         >
-          <div className="flex items-center justify-between pb-3 border-b border-slate-200">
+          <div className="flex items-center justify-between pb-3 border-b border-[#DCE1EB] dark:border-[#1B2F8A]">
             <div className="flex items-center gap-2">
-              <CalendarClock className="w-5 h-5 text-indigo-600" />
+              <CalendarClock className="w-5 h-5 text-[#007F66] dark:text-[#00CFA7]" />
               <div>
-                <h4 className="text-sm font-bold text-slate-900">
+                <h4 className="text-sm font-bold text-[#041050] dark:text-white">
                   Configuración del Planificador Flexible & Permanente
                 </h4>
-                <p className="text-[11px] text-slate-500">
+                <p className="text-[11px] text-slate-600 dark:text-slate-300">
                   Define las reglas periódicas de envío, remitente, asunto y personalización para la fuerza de ventas.
                 </p>
               </div>
@@ -677,46 +620,46 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
             <button
               type="button"
               onClick={() => setIsEditorOpen(false)}
-              className="text-slate-500 hover:text-slate-700 text-xs font-semibold cursor-pointer"
+              className="text-slate-500 dark:text-slate-300 hover:text-[#041050] dark:hover:text-white text-xs font-semibold cursor-pointer"
             >
               ✕ Cerrar
             </button>
           </div>
 
           {/* 1. SECCIÓN DE PLANIFICACIÓN: DÍAS, HORAS Y VIGENCIA */}
-          <div className="p-4 bg-white rounded-xl border border-slate-200 space-y-4">
-            <div className="flex items-center gap-2 text-xs font-bold text-slate-800 uppercase tracking-wide pb-1 border-b border-slate-100">
-              <Clock className="w-4 h-4 text-indigo-600" />
+          <div className="p-4 bg-white dark:bg-[#041050] rounded-xl border border-[#DCE1EB] dark:border-[#1B2F8A] space-y-4">
+            <div className="flex items-center gap-2 text-xs font-bold text-[#041050] dark:text-white uppercase tracking-wide pb-2 border-b border-[#EEF1F9] dark:border-[#1B2F8A]">
+              <Clock className="w-4 h-4 text-[#007F66] dark:text-[#00CFA7]" />
               1. Frecuencia y Horarios de Despacho Automático
             </div>
 
             {/* Días de la semana */}
             <div>
-              <div className="flex items-center justify-between mb-1.5">
-                <label className="block text-xs font-bold text-slate-700 uppercase">
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+                <label className="block text-xs font-bold text-[#041050] dark:text-slate-200 uppercase">
                   📅 ¿Qué días se ejecutará el envío? *
                 </label>
                 <div className="flex items-center gap-2 text-xs">
                   <button
                     type="button"
                     onClick={() => setPresetDays('weekdays')}
-                    className="text-indigo-600 hover:underline font-semibold cursor-pointer"
+                    className="text-[#041050] dark:text-[#00CFA7] hover:underline font-semibold cursor-pointer"
                   >
                     Lun a Vie
                   </button>
-                  <span className="text-slate-300">•</span>
+                  <span className="text-slate-300 dark:text-slate-600">•</span>
                   <button
                     type="button"
                     onClick={() => setPresetDays('all')}
-                    className="text-indigo-600 hover:underline font-semibold cursor-pointer"
+                    className="text-[#041050] dark:text-[#00CFA7] hover:underline font-semibold cursor-pointer"
                   >
                     Todos los días
                   </button>
-                  <span className="text-slate-300">•</span>
+                  <span className="text-slate-300 dark:text-slate-600">•</span>
                   <button
                     type="button"
                     onClick={() => setPresetDays('weekend')}
-                    className="text-indigo-600 hover:underline font-semibold cursor-pointer"
+                    className="text-[#041050] dark:text-[#00CFA7] hover:underline font-semibold cursor-pointer"
                   >
                     Fines de semana
                   </button>
@@ -733,8 +676,8 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
                       onClick={() => toggleDay(day.id)}
                       className={`py-2 text-center font-bold text-xs rounded-lg border transition-all cursor-pointer ${
                         isActive
-                          ? 'bg-indigo-600 text-white border-indigo-600 shadow-2xs'
-                          : 'bg-slate-50 text-slate-500 border-slate-200 hover:bg-slate-100'
+                          ? 'bg-[#041050] text-white border-[#041050] dark:bg-[#00CFA7] dark:text-[#041050] dark:border-[#00CFA7] shadow-2xs'
+                          : 'bg-[#F7F8FC] dark:bg-[#06155E] text-slate-600 dark:text-slate-300 border-[#DCE1EB] dark:border-[#1B2F8A] hover:bg-[#EEF1F9] dark:hover:bg-[#0A1E7A]'
                       }`}
                     >
                       {day.short}
@@ -746,20 +689,20 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
 
             {/* Horas de despacho */}
             <div>
-              <label className="block text-xs font-bold text-slate-700 uppercase mb-1.5">
+              <label className="block text-xs font-bold text-[#041050] dark:text-slate-200 uppercase mb-1.5">
                 ⏰ ¿A qué hora(s) se enviará el reporte? *
               </label>
               <div className="flex flex-wrap items-center gap-1.5 mb-2.5">
                 {scheduledTimes.map((time) => (
                   <span
                     key={time}
-                    className="inline-flex items-center gap-1.5 bg-indigo-50 border border-indigo-200 text-indigo-900 font-mono font-bold text-xs px-2.5 py-1 rounded-md"
+                    className="inline-flex items-center gap-1.5 bg-[#EEF1F9] dark:bg-[#0A1E7A] border border-[#CBD5E1] dark:border-[#2C45B8] text-[#041050] dark:text-[#00CFA7] font-mono font-bold text-xs px-2.5 py-1 rounded-md tabular-nums"
                   >
                     {time} hrs
                     <button
                       type="button"
                       onClick={() => handleRemoveTime(time)}
-                      className="text-slate-400 hover:text-rose-600 cursor-pointer text-xs"
+                      className="text-slate-500 dark:text-slate-300 hover:text-rose-600 dark:hover:text-rose-400 cursor-pointer text-xs"
                       title="Quitar hora"
                     >
                       ✕
@@ -773,56 +716,41 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
                   type="time"
                   value={newTimeInput}
                   onChange={(e) => setNewTimeInput(e.target.value)}
-                  className="bg-slate-50 border border-slate-300 rounded-lg px-2.5 py-1.5 text-slate-900 font-mono text-xs focus:ring-1 focus:ring-indigo-500"
+                  className="bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-2.5 py-1.5 text-[#041050] dark:text-white font-mono text-xs focus:outline-none focus:ring-2 focus:ring-[#00CFA7]"
                 />
                 <button
                   type="button"
                   onClick={handleAddTime}
-                  className="inline-flex items-center gap-1 px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold text-xs transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1 px-3 py-1.5 bg-[#041050] hover:bg-[#081C7A] text-white dark:bg-[#00CFA7] dark:hover:bg-[#00B894] dark:text-[#041050] rounded-lg font-semibold text-xs transition-colors cursor-pointer"
                 >
                   <Plus className="w-3.5 h-3.5" />
                   Añadir Hora
                 </button>
-                <div className="flex items-center gap-1.5 text-[11px] text-slate-500 pl-2">
+                <div className="flex items-center gap-1.5 text-[11px] text-slate-600 dark:text-slate-300 pl-2">
                   <span>Sugerencias rápidas:</span>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (!scheduledTimes.includes('09:00')) setScheduledTimes([...scheduledTimes, '09:00'].sort());
-                    }}
-                    className="underline hover:text-indigo-600 cursor-pointer"
-                  >
-                    09:00
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (!scheduledTimes.includes('14:00')) setScheduledTimes([...scheduledTimes, '14:00'].sort());
-                    }}
-                    className="underline hover:text-indigo-600 cursor-pointer"
-                  >
-                    14:00
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (!scheduledTimes.includes('18:00')) setScheduledTimes([...scheduledTimes, '18:00'].sort());
-                    }}
-                    className="underline hover:text-indigo-600 cursor-pointer"
-                  >
-                    18:00
-                  </button>
+                  {['09:00', '14:00', '18:00'].map((t) => (
+                    <button
+                      key={t}
+                      type="button"
+                      onClick={() => {
+                        if (!scheduledTimes.includes(t)) setScheduledTimes([...scheduledTimes, t].sort());
+                      }}
+                      className="underline hover:text-[#007F66] dark:hover:text-[#00CFA7] cursor-pointer tabular-nums"
+                    >
+                      {t}
+                    </button>
+                  ))}
                 </div>
               </div>
             </div>
 
             {/* Hasta cuándo (Vigencia) */}
-            <div className="pt-2 border-t border-slate-100">
-              <label className="block text-xs font-bold text-slate-700 uppercase mb-1.5">
+            <div className="pt-2 border-t border-[#EEF1F9] dark:border-[#1B2F8A]">
+              <label className="block text-xs font-bold text-[#041050] dark:text-slate-200 uppercase mb-1.5">
                 ⏳ ¿Hasta cuándo estará activo este planificador? *
               </label>
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-                <label className="flex items-center gap-2 cursor-pointer text-xs font-semibold text-slate-800">
+                <label className="flex items-center gap-2 cursor-pointer text-xs font-semibold text-[#041050] dark:text-slate-200">
                   <input
                     type="radio"
                     name="duration_type"
@@ -831,18 +759,18 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
                       setIsPermanent(true);
                       setValidUntilDate('');
                     }}
-                    className="text-indigo-600 focus:ring-indigo-500"
+                    className="accent-[#041050] dark:accent-[#00CFA7]"
                   />
                   <span>Permanente (Sin fecha límite, se ejecuta indefinidamente)</span>
                 </label>
 
-                <label className="flex items-center gap-2 cursor-pointer text-xs font-semibold text-slate-800">
+                <label className="flex items-center gap-2 cursor-pointer text-xs font-semibold text-[#041050] dark:text-slate-200">
                   <input
                     type="radio"
                     name="duration_type"
                     checked={!isPermanent}
                     onChange={() => setIsPermanent(false)}
-                    className="text-indigo-600 focus:ring-indigo-500"
+                    className="accent-[#041050] dark:accent-[#00CFA7]"
                   />
                   <span>Hasta una fecha específica:</span>
                 </label>
@@ -853,24 +781,24 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
                     required={!isPermanent}
                     value={validUntilDate}
                     onChange={(e) => setValidUntilDate(e.target.value)}
-                    className="bg-slate-50 border border-slate-300 rounded-lg px-2.5 py-1 text-slate-900 text-xs font-medium focus:ring-1 focus:ring-indigo-500"
+                    className="bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-2.5 py-1 text-[#041050] dark:text-white text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#00CFA7]"
                   />
                 )}
               </div>
             </div>
           </div>
 
-          {/* 2. SECCIÓN DE CONFIGURACIÓN DEL CORREO: REMITENTE, ASUNTO Y CUERPO */}
-          <div className="p-4 bg-white rounded-xl border border-slate-200 space-y-4">
-            <div className="flex items-center gap-2 text-xs font-bold text-slate-800 uppercase tracking-wide pb-1 border-b border-slate-100">
-              <Mail className="w-4 h-4 text-indigo-600" />
+          {/* 2. SECCIÓN DE CONFIGURACIÓN DEL CORREO */}
+          <div className="p-4 bg-white dark:bg-[#041050] rounded-xl border border-[#DCE1EB] dark:border-[#1B2F8A] space-y-4">
+            <div className="flex items-center gap-2 text-xs font-bold text-[#041050] dark:text-white uppercase tracking-wide pb-2 border-b border-[#EEF1F9] dark:border-[#1B2F8A]">
+              <Mail className="w-4 h-4 text-[#007F66] dark:text-[#00CFA7]" />
               2. Configuración de Remitente, Asunto y Mensaje
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Nombre del Remitente */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
+                <label className="block text-xs font-bold text-[#041050] dark:text-slate-200 uppercase mb-1">
                   👤 Nombre del Remitente *
                 </label>
                 <input
@@ -878,17 +806,17 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
                   required
                   value={senderName}
                   onChange={(e) => setSenderName(e.target.value)}
-                  placeholder="Ej. Dirección Comercial Promptia"
-                  className="w-full text-xs bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-slate-900 font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  placeholder="Ej. Dirección Comercial"
+                  className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-3 py-2 text-[#041050] dark:text-white font-medium focus:outline-none focus:ring-2 focus:ring-[#00CFA7]"
                 />
-                <p className="text-[11px] text-slate-500 mt-1">
+                <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-1">
                   Nombre que aparecerá en el "De:" del correo.
                 </p>
               </div>
 
               {/* Correo del Remitente */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
+                <label className="block text-xs font-bold text-[#041050] dark:text-slate-200 uppercase mb-1">
                   ✉️ Correo del Remitente (Brevo / SMTP) *
                 </label>
                 <input
@@ -897,32 +825,32 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
                   value={senderEmail}
                   onChange={(e) => setSenderEmail(e.target.value)}
                   placeholder="notificaciones@promptia.lat"
-                  className="w-full text-xs bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-slate-900 font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono"
+                  className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-3 py-2 text-[#041050] dark:text-white font-medium focus:outline-none focus:ring-2 focus:ring-[#00CFA7] font-mono"
                 />
-                <p className="text-[11px] text-slate-500 mt-1">
+                <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-1">
                   Dirección verificada en tu cuenta de Brevo o servidor SMTP.
                 </p>
               </div>
 
               {/* Asunto Parametrizable */}
               <div className="md:col-span-2">
-                <div className="flex items-center justify-between mb-1">
-                  <label className="block text-xs font-bold text-slate-700 uppercase">
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-1">
+                  <label className="block text-xs font-bold text-[#041050] dark:text-slate-200 uppercase">
                     📝 Asunto del Correo (Parametrizable con Variables) *
                   </label>
                   <div className="flex items-center gap-1.5">
-                    <span className="text-[11px] text-slate-500">Insertar:</span>
+                    <span className="text-[11px] text-slate-600 dark:text-slate-300">Insertar:</span>
                     <button
                       type="button"
                       onClick={() => setSubjectTemplate((prev) => `${prev} {{nombre_asesor}}`)}
-                      className="px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 hover:bg-indigo-100 text-[10px] font-mono font-bold border border-indigo-200 cursor-pointer"
+                      className="px-2 py-0.5 rounded bg-[#EEF1F9] dark:bg-[#0A1E7A] text-[#041050] dark:text-[#00CFA7] hover:bg-[#DCE1EB] dark:hover:bg-[#142D9E] text-[10px] font-mono font-bold border border-[#CBD5E1] dark:border-[#2C45B8] cursor-pointer"
                     >
                       + {'{{nombre_asesor}}'}
                     </button>
                     <button
                       type="button"
                       onClick={() => setSubjectTemplate((prev) => `${prev} {{fecha}}`)}
-                      className="px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 hover:bg-indigo-100 text-[10px] font-mono font-bold border border-indigo-200 cursor-pointer"
+                      className="px-2 py-0.5 rounded bg-[#EEF1F9] dark:bg-[#0A1E7A] text-[#041050] dark:text-[#00CFA7] hover:bg-[#DCE1EB] dark:hover:bg-[#142D9E] text-[10px] font-mono font-bold border border-[#CBD5E1] dark:border-[#2C45B8] cursor-pointer"
                     >
                       + {'{{fecha}}'}
                     </button>
@@ -934,10 +862,10 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
                   value={subjectTemplate}
                   onChange={(e) => setSubjectTemplate(e.target.value)}
                   placeholder="Ej. Reporte de Contactos Asignados - {{nombre_asesor}}"
-                  className="w-full text-xs font-mono bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full text-xs font-mono bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-3 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7]"
                 />
-                <div className="mt-1.5 flex items-center gap-2 text-[11px] text-slate-600 bg-indigo-50/60 p-2 rounded border border-indigo-100">
-                  <Sparkles className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
+                <div className="mt-1.5 flex items-center gap-2 text-[11px] text-[#041050] dark:text-slate-200 bg-[#EEF1F9] dark:bg-[#06155E] p-2 rounded border border-[#DCE1EB] dark:border-[#1B2F8A]">
+                  <Sparkles className="w-3.5 h-3.5 text-[#007F66] dark:text-[#00CFA7] shrink-0" />
                   <span>
                     Vista previa para <strong>{sampleFullName}</strong>: "{sampleSubjectPreview}"
                   </span>
@@ -946,7 +874,7 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
 
               {/* Cuerpo del Mensaje */}
               <div className="md:col-span-2">
-                <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
+                <label className="block text-xs font-bold text-[#041050] dark:text-slate-200 uppercase mb-1">
                   📄 Mensaje / Plantilla del Correo
                 </label>
                 <textarea
@@ -954,10 +882,10 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
                   value={bodyTemplate}
                   onChange={(e) => setBodyTemplate(e.target.value)}
                   placeholder="Hola {{nombre_asesor}}, se adjunta tu reporte..."
-                  className="w-full text-xs bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 leading-relaxed"
+                  className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-3 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7] leading-relaxed"
                 />
-                <div className="mt-1 text-[11px] text-emerald-700 flex items-center gap-1 font-medium">
-                  <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-600" />
+                <div className="mt-1 text-[11px] text-[#007F66] dark:text-[#00CFA7] flex items-center gap-1 font-medium">
+                  <FileSpreadsheet className="w-3.5 h-3.5 shrink-0" />
                   <span>
                     El archivo Excel (.xlsx) con los datos y métricas comerciales de HubSpot CRM se adjunta de forma automatizada a cada correo.
                   </span>
@@ -967,42 +895,42 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
           </div>
 
           {/* 3. SECCIÓN DE ASESORES DESTINATARIOS */}
-          <div className="p-4 bg-white rounded-xl border border-slate-200 space-y-3">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-100">
+          <div className="p-4 bg-white dark:bg-[#041050] rounded-xl border border-[#DCE1EB] dark:border-[#1B2F8A] space-y-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-[#EEF1F9] dark:border-[#1B2F8A]">
               <div>
                 <div className="flex items-center gap-2">
-                  <Users className="w-4 h-4 text-indigo-600" />
-                  <span className="text-xs font-bold text-slate-800 uppercase">
+                  <Users className="w-4 h-4 text-[#007F66] dark:text-[#00CFA7]" />
+                  <span className="text-xs font-bold text-[#041050] dark:text-white uppercase">
                     3. Asesores Destinatarios ({owners.length})
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-500">
+                <p className="text-[11px] text-slate-600 dark:text-slate-300">
                   Haz clic en cualquier asesor para incluirlo o excluirlo del despacho programado.
                 </p>
               </div>
 
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-semibold px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-xs font-semibold px-2.5 py-1 rounded-md bg-[#E6FAF5] dark:bg-[#00CFA7]/15 text-[#007F66] dark:text-[#00CFA7] border border-[#00CFA7]/40 tabular-nums">
                   {activeAdvisorsCount} incluidos
                 </span>
                 {excludedOwnerIds.length > 0 && (
-                  <span className="text-xs font-semibold px-2.5 py-1 rounded-md bg-rose-50 text-rose-800 border border-rose-200">
+                  <span className="text-xs font-semibold px-2.5 py-1 rounded-md bg-rose-50 dark:bg-rose-500/15 text-rose-800 dark:text-rose-300 border border-rose-200 dark:border-rose-500/35 tabular-nums">
                     {excludedOwnerIds.length} excluidos
                   </span>
                 )}
-                <div className="flex items-center gap-1 pl-2 border-l border-slate-200 text-xs">
+                <div className="flex items-center gap-1 pl-2 border-l border-[#DCE1EB] dark:border-[#1B2F8A] text-xs">
                   <button
                     type="button"
                     onClick={handleIncludeAll}
-                    className="text-indigo-600 hover:text-indigo-800 font-semibold cursor-pointer"
+                    className="text-[#041050] dark:text-[#00CFA7] hover:underline font-semibold cursor-pointer"
                   >
                     Incluir Todos
                   </button>
-                  <span className="text-slate-300">|</span>
+                  <span className="text-slate-300 dark:text-slate-600">|</span>
                   <button
                     type="button"
                     onClick={handleExcludeAll}
-                    className="text-slate-500 hover:text-slate-700 font-semibold cursor-pointer"
+                    className="text-slate-600 dark:text-slate-300 hover:text-[#041050] dark:hover:text-white font-semibold cursor-pointer"
                   >
                     Excluir Todos
                   </button>
@@ -1012,7 +940,7 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
 
             {/* Grid de Asesores */}
             {owners.length === 0 ? (
-              <div className="py-6 text-center text-slate-400 text-xs">
+              <div className="py-6 text-center text-slate-500 dark:text-slate-400 text-xs">
                 No se encontraron asesores de HubSpot CRM.
               </div>
             ) : (
@@ -1020,6 +948,7 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
                 {owners.map((owner) => {
                   const isExcluded = excludedOwnerIds.includes(owner.id);
                   const isIncluded = !isExcluded;
+                  const initials = `${owner.firstName?.[0] || ''}${owner.lastName?.[0] || ''}`.toUpperCase() || 'A';
 
                   return (
                     <div
@@ -1027,24 +956,27 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
                       onClick={() => toggleExcludeAdvisor(owner.id)}
                       className={`p-2.5 rounded-lg border flex items-center justify-between gap-2 cursor-pointer transition-all ${
                         isIncluded
-                          ? 'bg-slate-50/90 border-slate-200 hover:border-indigo-300'
-                          : 'bg-rose-50/30 border-rose-200 opacity-60'
+                          ? 'bg-[#F7F8FC] dark:bg-[#06155E] border-[#DCE1EB] dark:border-[#1B2F8A] hover:border-[#00CFA7]'
+                          : 'bg-rose-50/40 dark:bg-rose-500/10 border-rose-200 dark:border-rose-500/30 opacity-65'
                       }`}
                     >
                       <div className="flex items-center gap-2 min-w-0">
-                        <img
-                          src={
-                            owner.avatarUrl ||
-                            'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150'
-                          }
-                          alt={owner.firstName}
-                          className="w-7 h-7 rounded-full object-cover border border-slate-200 shrink-0"
-                        />
+                        {owner.avatarUrl ? (
+                          <img
+                            src={owner.avatarUrl}
+                            alt={owner.firstName}
+                            className="w-7 h-7 rounded-full object-cover border border-[#CBD5E1] dark:border-[#2C45B8] shrink-0"
+                          />
+                        ) : (
+                          <div className="w-7 h-7 rounded-full bg-[#041050] dark:bg-[#00CFA7] text-white dark:text-[#041050] text-[10px] font-bold flex items-center justify-center shrink-0">
+                            {initials}
+                          </div>
+                        )}
                         <div className="min-w-0">
-                          <div className="font-semibold text-xs text-slate-900 truncate">
+                          <div className="font-semibold text-xs text-[#041050] dark:text-white truncate">
                             {owner.firstName} {owner.lastName}
                           </div>
-                          <div className="text-[10px] text-slate-500 truncate">{owner.email}</div>
+                          <div className="text-[10px] text-slate-600 dark:text-slate-300 truncate">{owner.email}</div>
                         </div>
                       </div>
 
@@ -1052,8 +984,8 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
                         type="button"
                         className={`text-[10px] font-bold px-2 py-0.5 rounded-full border shrink-0 transition-colors ${
                           isIncluded
-                            ? 'bg-emerald-50 text-emerald-700 border-emerald-300'
-                            : 'bg-rose-50 text-rose-700 border-rose-300'
+                            ? 'bg-[#E6FAF5] dark:bg-[#00CFA7]/15 text-[#007F66] dark:text-[#00CFA7] border-[#00CFA7]/40'
+                            : 'bg-rose-50 dark:bg-rose-500/15 text-rose-700 dark:text-rose-300 border-rose-300 dark:border-rose-500/35'
                         }`}
                       >
                         {isIncluded ? 'Incluido' : 'Excluido'}
@@ -1067,12 +999,12 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
 
           {/* ACCIONES DEL FORMULARIO UNIFICADO */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
-            {/* Opción 1: Enviar en este momento (Bajo demanda) */}
+            {/* Opción 1: Enviar en este momento */}
             <button
               type="button"
               onClick={handleSendImmediately}
               disabled={isSendingImmediate || isSaving || activeAdvisorsCount === 0}
-              className="w-full sm:w-auto px-4 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 shadow-xs"
+              className="w-full sm:w-auto px-4 py-2.5 rounded-lg bg-[#00CFA7] hover:bg-[#00B894] text-[#041050] text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 shadow-xs"
               title="Disparar inmediatamente el despacho a todos los asesores sin esperar al cron"
             >
               {isSendingImmediate ? (
@@ -1093,7 +1025,7 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
               <button
                 type="button"
                 onClick={() => setIsEditorOpen(false)}
-                className="px-4 py-2.5 rounded-lg border border-slate-300 text-slate-700 text-xs font-semibold hover:bg-slate-100 transition-colors cursor-pointer"
+                className="px-4 py-2.5 rounded-lg border border-[#CBD5E1] dark:border-[#1E3599] text-[#041050] dark:text-slate-200 text-xs font-semibold hover:bg-[#EEF1F9] dark:hover:bg-[#0A1E7A] transition-colors cursor-pointer"
               >
                 Cancelar
               </button>
@@ -1101,7 +1033,7 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
               <button
                 type="submit"
                 disabled={isSaving || isSendingImmediate || activeAdvisorsCount === 0}
-                className="px-5 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 shadow-xs"
+                className="px-5 py-2.5 rounded-lg bg-[#041050] hover:bg-[#081C7A] text-white dark:bg-[#00CFA7] dark:hover:bg-[#00B894] dark:text-[#041050] text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 shadow-xs"
               >
                 {isSaving ? (
                   <>
@@ -1122,32 +1054,32 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
 
       {/* HISTORIAL DE DESPACHOS Y REGISTRO DE ENTREGAS */}
       <div className="space-y-3 pt-2">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <Clock className="w-4 h-4 text-slate-500" />
-            <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wide">
+            <Clock className="w-4 h-4 text-[#007F66] dark:text-[#00CFA7]" />
+            <h4 className="text-xs font-bold text-[#041050] dark:text-white uppercase tracking-wide">
               Historial de Despachos Ejecutados ({dispatchLogs.length})
             </h4>
           </div>
-          <span className="text-[11px] text-slate-500">
+          <span className="text-[11px] text-slate-600 dark:text-slate-300">
             Registro automático de envíos inmediatos y cron programados
           </span>
         </div>
 
         {loading && dispatchLogs.length === 0 ? (
-          <div className="py-8 text-center text-slate-400 text-xs flex items-center justify-center gap-2">
-            <Loader2 className="w-4 h-4 animate-spin text-indigo-600" />
+          <div className="py-8 text-center text-slate-500 dark:text-slate-300 text-xs flex items-center justify-center gap-2">
+            <Loader2 className="w-4 h-4 animate-spin text-[#007F66] dark:text-[#00CFA7]" />
             <span>Consultando historial de despachos...</span>
           </div>
         ) : dispatchLogs.length === 0 ? (
-          <div className="py-8 px-4 text-center rounded-xl bg-slate-50/70 border border-dashed border-slate-200 space-y-2">
-            <div className="w-10 h-10 mx-auto rounded-full bg-indigo-50 border border-indigo-200 flex items-center justify-center text-indigo-600">
+          <div className="py-8 px-4 text-center rounded-xl bg-[#F7F8FC] dark:bg-[#06155E] border border-dashed border-[#CBD5E1] dark:border-[#1E3599] space-y-2">
+            <div className="w-10 h-10 mx-auto rounded-full bg-[#EEF1F9] dark:bg-[#0A1E7A] border border-[#CBD5E1] dark:border-[#2C45B8] flex items-center justify-center text-[#041050] dark:text-[#00CFA7]">
               <CalendarClock className="w-5 h-5" />
             </div>
-            <h5 className="text-xs font-bold text-slate-800 uppercase">
+            <h5 className="text-xs font-bold text-[#041050] dark:text-white uppercase">
               No hay ejecuciones registradas todavía
             </h5>
-            <p className="text-[11px] text-slate-500 max-w-md mx-auto">
+            <p className="text-[11px] text-slate-600 dark:text-slate-300 max-w-md mx-auto">
               Cuando el cron se ejecute a las horas programadas o hagas clic en "Enviar en este momento",
               los resultados y confirmaciones de entrega se mostrarán aquí.
             </p>
@@ -1171,36 +1103,36 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
               return (
                 <div
                   key={log.id}
-                  className="bg-white border border-slate-200 rounded-lg p-3 text-xs shadow-2xs hover:border-slate-300 transition-all"
+                  className="bg-white dark:bg-[#06155E] border border-[#DCE1EB] dark:border-[#1B2F8A] rounded-lg p-3 text-xs shadow-2xs hover:border-[#00CFA7]/60 transition-all"
                 >
                   <div
                     className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 cursor-pointer"
                     onClick={() => setExpandedLogId(isExpanded ? null : log.id)}
                   >
                     <div className="flex items-center gap-2.5">
-                      <span className="w-6 h-6 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-xs">
+                      <span className="w-6 h-6 rounded-full bg-[#E6FAF5] dark:bg-[#00CFA7]/15 text-[#007F66] dark:text-[#00CFA7] flex items-center justify-center font-bold text-xs shrink-0">
                         ✓
                       </span>
                       <div>
-                        <div className="font-semibold text-slate-900">{log.subject}</div>
-                        <div className="text-[11px] text-slate-500 flex items-center gap-2 mt-0.5">
+                        <div className="font-semibold text-[#041050] dark:text-white">{log.subject}</div>
+                        <div className="text-[11px] text-slate-600 dark:text-slate-300 flex items-center gap-2 mt-0.5">
                           <span>Remitente: {log.senderName}</span>
                           <span>•</span>
-                          <span>{formattedDate}</span>
+                          <span className="tabular-nums">{formattedDate}</span>
                         </div>
                       </div>
                     </div>
 
                     <div className="flex items-center gap-3 self-end sm:self-auto">
-                      <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                      <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-[#E6FAF5] dark:bg-[#00CFA7]/15 text-[#007F66] dark:text-[#00CFA7] border border-[#00CFA7]/40 tabular-nums">
                         {sentCount} enviados
                       </span>
                       {failedCount > 0 && (
-                        <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-rose-50 text-rose-800 border border-rose-200">
+                        <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-rose-50 dark:bg-rose-500/15 text-rose-800 dark:text-rose-300 border border-rose-200 dark:border-rose-500/35 tabular-nums">
                           {failedCount} fallidos
                         </span>
                       )}
-                      <span className="text-slate-400 hover:text-slate-600">
+                      <span className="text-slate-500 dark:text-slate-300 hover:text-[#041050] dark:hover:text-white">
                         {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                       </span>
                     </div>
@@ -1208,27 +1140,27 @@ export const ScheduledAdvisorReportsModule: React.FC<ScheduledAdvisorReportsModu
 
                   {/* Detalle expandido de asesores */}
                   {isExpanded && (
-                    <div className="mt-3 pt-3 border-t border-slate-100 space-y-1.5 animate-in fade-in">
-                      <div className="font-bold text-[11px] text-slate-700 uppercase">
+                    <div className="mt-3 pt-3 border-t border-[#EEF1F9] dark:border-[#1B2F8A] space-y-1.5 animate-in fade-in">
+                      <div className="font-bold text-[11px] text-[#041050] dark:text-slate-200 uppercase">
                         Detalle por asesor destinatario:
                       </div>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         {log.results.map((r, idx) => (
                           <div
                             key={idx}
-                            className="bg-slate-50 p-2 rounded border border-slate-200 flex items-center justify-between text-[11px]"
+                            className="bg-[#F7F8FC] dark:bg-[#041050] p-2 rounded border border-[#DCE1EB] dark:border-[#1B2F8A] flex items-center justify-between text-[11px]"
                           >
                             <div className="min-w-0 pr-2">
-                              <span className="font-semibold text-slate-900 block truncate">
+                              <span className="font-semibold text-[#041050] dark:text-white block truncate">
                                 {r.ownerName}
                               </span>
-                              <span className="text-slate-500 block truncate">{r.email}</span>
+                              <span className="text-slate-600 dark:text-slate-300 block truncate">{r.email}</span>
                             </div>
                             <span
-                              className={`px-1.5 py-0.5 rounded font-bold uppercase text-[9px] ${
+                              className={`px-1.5 py-0.5 rounded font-bold uppercase text-[9px] shrink-0 ${
                                 r.status === 'sent'
-                                  ? 'bg-emerald-100 text-emerald-800'
-                                  : 'bg-rose-100 text-rose-800'
+                                  ? 'bg-[#E6FAF5] dark:bg-[#00CFA7]/15 text-[#007F66] dark:text-[#00CFA7]'
+                                  : 'bg-rose-100 dark:bg-rose-500/20 text-rose-800 dark:text-rose-300'
                               }`}
                             >
                               {r.status === 'sent' ? 'Entregado' : 'Fallido'}

@@ -1,1 +1,48 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-brand-prussian: #041050;
+  --color-brand-prussian-hover: #081c7a;
+  --color-brand-lagoon: #00cfa7;
+  --color-brand-lagoon-hover: #00b894;
+  --color-brand-lagoon-deep: #007f66;
+  --color-brand-chalk: #f0f0f0;
+  --color-brand-white: #ffffff;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --bg-canvas: #f0f0f0;
+    --bg-surface: #ffffff;
+    --bg-subtle: #f7f8fc;
+    --text-primary: #041050;
+    --text-body: #1e293b;
+    --text-muted: #475569;
+    --border-hairline: #dce1eb;
+  }
+
+  .dark {
+    color-scheme: dark;
+    --bg-canvas: #020829;
+    --bg-surface: #041050;
+    --bg-subtle: #08186b;
+    --text-primary: #ffffff;
+    --text-body: #e2e8f0;
+    --text-muted: #b8c4e0;
+    --border-hairline: #1b2f8a;
+  }
+
+  html,
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-canvas);
+    color: var(--text-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
