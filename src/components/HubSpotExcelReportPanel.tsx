@@ -1158,17 +1158,17 @@ runReports().catch(console.error);`;
 
   return (
     <div
-      className="bg-white dark:bg-[#041050] rounded-xl border border-[#DCE1EB] dark:border-[#1B2F8A] shadow-xs overflow-hidden transition-colors"
+      className="bg-white dark:bg-[#1E293B] rounded-xl border border-[#E2E8F0] dark:border-[#334155] shadow-xs overflow-hidden transition-colors"
       id="hubspot-excel-reporter-module"
     >
       {/* Module Header */}
-      <div className="p-5 border-b border-[#DCE1EB] dark:border-[#1B2F8A] bg-gradient-to-r from-[#F7F8FC] via-[#EEF1F9]/70 to-white dark:from-[#06155E] dark:via-[#041050] dark:to-[#041050] flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-5 border-b border-[#E2E8F0] dark:border-[#334155] bg-gradient-to-r from-[#F8FAFC] via-[#EBF8FD]/70 to-white dark:from-[#0F172A] dark:via-[#1E293B] dark:to-[#1E293B] flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-[#EEF1F9] dark:bg-[#0A1E7A] text-[#041050] dark:text-[#00CFA7] border border-[#041050]/15 dark:border-[#00CFA7]/30 text-xs font-semibold uppercase tracking-wider mb-1.5">
-            <FileSpreadsheet className="w-3.5 h-3.5 text-[#007F66] dark:text-[#00CFA7]" />
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-[#E8F7FD] dark:bg-[#21B6EA]/15 text-[#0369A1] dark:text-[#21B6EA] border border-[#21B6EA]/35 text-xs font-semibold uppercase tracking-wider mb-1.5">
+            <FileSpreadsheet className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#21B6EA]" />
             Automatización CRM &amp; Distribución Excel
           </div>
-          <h3 className="text-lg font-bold text-[#041050] dark:text-white tracking-tight">
+          <h3 className="text-lg font-bold text-[#0B0F19] dark:text-white tracking-tight">
             Generador y Distribuidor de Reportes Excel (.xlsx) CRM
           </h3>
           <p className="text-xs text-slate-600 dark:text-slate-300 mt-0.5">
@@ -1178,19 +1178,19 @@ runReports().catch(console.error);`;
 
         <div className="flex items-center gap-2">
           {/* Tab Navigation Pill Buttons */}
-          <div className="flex items-center bg-[#F0F0F0] dark:bg-[#020829] p-1 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A]">
+          <div className="flex items-center bg-[#F4F7FA] dark:bg-[#0B0F19] p-1 rounded-lg border border-[#E2E8F0] dark:border-[#334155]">
             <button
               type="button"
               onClick={() => setActiveTab('config')}
               className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0 ${
                 activeTab === 'config'
-                  ? 'bg-white dark:bg-[#06155E] text-[#041050] dark:text-[#00CFA7] shadow-2xs border border-[#DCE1EB] dark:border-[#00CFA7]/35'
-                  : 'text-slate-600 dark:text-slate-300 hover:text-[#041050] dark:hover:text-white'
+                  ? 'bg-white dark:bg-[#1E293B] text-[#0B0F19] dark:text-[#21B6EA] shadow-2xs border border-[#E2E8F0] dark:border-[#21B6EA]/40'
+                  : 'text-slate-600 dark:text-slate-300 hover:text-[#0B0F19] dark:hover:text-white'
               }`}
             >
               <Sliders className="w-3.5 h-3.5" />
               <span>Configurar Columnas &amp; Matriz</span>
-              <span className="bg-[#EEF1F9] dark:bg-[#0A1E7A] text-[#041050] dark:text-[#00CFA7] text-[10px] px-1.5 py-0.2 rounded-full font-mono tabular-nums">
+              <span className="bg-[#E8F7FD] dark:bg-[#21B6EA]/15 text-[#0369A1] dark:text-[#21B6EA] text-[10px] px-1.5 py-0.2 rounded-full font-mono tabular-nums">
                 {enabledCount}
               </span>
             </button>
@@ -1199,8 +1199,8 @@ runReports().catch(console.error);`;
               onClick={() => setActiveTab('generator')}
               className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0 ${
                 activeTab === 'generator'
-                  ? 'bg-white dark:bg-[#06155E] text-[#041050] dark:text-[#00CFA7] shadow-2xs border border-[#DCE1EB] dark:border-[#00CFA7]/35'
-                  : 'text-slate-600 dark:text-slate-300 hover:text-[#041050] dark:hover:text-white'
+                  ? 'bg-white dark:bg-[#1E293B] text-[#0B0F19] dark:text-[#21B6EA] shadow-2xs border border-[#E2E8F0] dark:border-[#21B6EA]/40'
+                  : 'text-slate-600 dark:text-slate-300 hover:text-[#0B0F19] dark:hover:text-white'
               }`}
             >
               <FileSpreadsheet className="w-3.5 h-3.5" />
@@ -1211,20 +1211,20 @@ runReports().catch(console.error);`;
       </div>
 
       {/* Sync Status Banner */}
-      <div className="px-5 py-2.5 bg-[#EEF1F9] dark:bg-[#06155E] border-b border-[#DCE1EB] dark:border-[#1B2F8A] flex flex-wrap items-center justify-between gap-2 text-xs">
+      <div className="px-5 py-2.5 bg-[#EBF8FD] dark:bg-[#0F172A] border-b border-[#BAE6FD] dark:border-[#334155] flex flex-wrap items-center justify-between gap-2 text-xs">
         <div className="flex flex-wrap items-center gap-2 text-slate-600 dark:text-slate-300">
-          <Database className="w-3.5 h-3.5 text-[#007F66] dark:text-[#00CFA7]" />
+          <Database className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#21B6EA]" />
           <span>
-            Estado: <strong className="text-[#041050] dark:text-white">Sincronización activa</strong>
+            Estado: <strong className="text-[#0B0F19] dark:text-white">Sincronización activa</strong>
           </span>
           <span className="text-slate-400 dark:text-slate-500">•</span>
-          <span className="text-[#041050] dark:text-slate-200 font-medium">
+          <span className="text-[#0B0F19] dark:text-slate-200 font-medium">
             Matriz: <strong>{rowLabelDisplay}</strong> (Filas) vs{' '}
             <strong>{columnLabelDisplay}</strong> (Columnas)
           </span>
           <span className="text-slate-400 dark:text-slate-500">•</span>
-          <span className="text-[#041050] dark:text-[#00CFA7] font-bold bg-white dark:bg-[#0A1E7A] border border-[#CBD5E1] dark:border-[#2C45B8] px-2 py-0.5 rounded text-[11px] inline-flex items-center gap-1">
-            <span className="text-[#007F66] dark:text-[#00CFA7] font-mono">{reportConfig.pivotConfig.aggregator || 'COUNT'}:</span>
+          <span className="text-[#0B0F19] dark:text-[#21B6EA] font-bold bg-white dark:bg-[#1E293B] border border-[#CBD5E1] dark:border-[#475569] px-2 py-0.5 rounded text-[11px] inline-flex items-center gap-1">
+            <span className="text-[#0369A1] dark:text-[#21B6EA] font-mono">{reportConfig.pivotConfig.aggregator || 'COUNT'}:</span>
             <span>{reportConfig.pivotConfig.metricLabel}</span>
           </span>
           <span className="text-slate-400 dark:text-slate-500">•</span>
@@ -1233,13 +1233,13 @@ runReports().catch(console.error);`;
 
         <div className="flex items-center gap-2">
           {isSavingConfig && (
-            <span className="text-[#007F66] dark:text-[#00CFA7] text-[11px] flex items-center gap-1 font-medium">
+            <span className="text-[#0369A1] dark:text-[#21B6EA] text-[11px] flex items-center gap-1 font-medium">
               <RefreshCw className="w-3 h-3 animate-spin" />
               Sincronizando con BD...
             </span>
           )}
           {saveSuccessMessage && (
-            <span className="text-[#007F66] dark:text-[#00CFA7] bg-[#E6FAF5] dark:bg-[#00CFA7]/15 border border-[#00CFA7]/40 px-2 py-0.5 rounded text-[11px] font-medium flex items-center gap-1">
+            <span className="text-[#0369A1] dark:text-[#21B6EA] bg-[#E8F7FD] dark:bg-[#21B6EA]/15 border border-[#21B6EA]/40 px-2 py-0.5 rounded text-[11px] font-medium flex items-center gap-1">
               <Check className="w-3 h-3" />
               {saveSuccessMessage}
             </span>
@@ -1248,7 +1248,7 @@ runReports().catch(console.error);`;
             type="button"
             onClick={handleManualSaveConfig}
             disabled={isSavingConfig}
-            className="inline-flex items-center gap-1 text-[11px] font-bold text-white bg-[#041050] hover:bg-[#081C7A] dark:bg-[#00CFA7] dark:hover:bg-[#00B894] dark:text-[#041050] px-2.5 py-1 rounded transition-colors cursor-pointer whitespace-nowrap shrink-0"
+            className="inline-flex items-center gap-1 text-[11px] font-bold text-white bg-[#0B0F19] hover:bg-[#1E293B] dark:bg-[#21B6EA] dark:hover:bg-[#38C4F3] dark:text-[#0B0F19] px-2.5 py-1 rounded transition-colors cursor-pointer whitespace-nowrap shrink-0"
           >
             <Save className="w-3 h-3" />
             <span>Guardar Configuración</span>
@@ -1259,17 +1259,17 @@ runReports().catch(console.error);`;
       {/* TAB 1: GENERATOR & DISPATCH */}
       {activeTab === 'generator' && (
         <>
-          <div className="p-5 border-b border-[#DCE1EB] dark:border-[#1B2F8A] bg-[#F7F8FC] dark:bg-[#06155E]/60 space-y-4">
+          <div className="p-5 border-b border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0F172A]/60 space-y-4">
             {/* Header info */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#DCE1EB] dark:border-[#1B2F8A]">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#E2E8F0] dark:border-[#334155]">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#041050] dark:bg-[#00CFA7] flex items-center justify-center text-white dark:text-[#041050] shadow-sm shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-[#0B0F19] dark:bg-[#21B6EA] flex items-center justify-center text-white dark:text-[#0B0F19] shadow-sm shrink-0">
                   <FileSpreadsheet className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-[#041050] dark:text-white text-sm sm:text-base flex flex-wrap items-center gap-2">
+                  <h4 className="font-bold text-[#0B0F19] dark:text-white text-sm sm:text-base flex flex-wrap items-center gap-2">
                     <span>Estructura del Archivo Excel (.xlsx) y Generador</span>
-                    <span className="text-[10px] font-semibold text-[#041050] dark:text-[#00CFA7] bg-[#EEF1F9] dark:bg-[#0A1E7A] border border-[#CBD5E1] dark:border-[#00CFA7]/35 px-2 py-0.5 rounded-full">
+                    <span className="text-[10px] font-semibold text-[#0369A1] dark:text-[#21B6EA] bg-[#E8F7FD] dark:bg-[#21B6EA]/15 border border-[#BAE6FD] dark:border-[#21B6EA]/35 px-2 py-0.5 rounded-full">
                       Solo Informativo
                     </span>
                   </h4>
@@ -1283,10 +1283,10 @@ runReports().catch(console.error);`;
                 <button
                   type="button"
                   onClick={() => setActiveTab('config')}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#2C45B8] bg-white dark:bg-[#041050] hover:bg-[#EEF1F9] dark:hover:bg-[#0A1E7A] text-[#041050] dark:text-white text-xs font-bold transition-colors cursor-pointer shadow-2xs whitespace-nowrap shrink-0"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#475569] bg-white dark:bg-[#1E293B] hover:bg-[#F4F7FA] dark:hover:bg-[#334155] text-[#0B0F19] dark:text-white text-xs font-bold transition-colors cursor-pointer shadow-2xs whitespace-nowrap shrink-0"
                   title="Ir a modificar la configuración de columnas, matriz y filtros"
                 >
-                  <Sliders className="w-3.5 h-3.5 text-[#007F66] dark:text-[#00CFA7]" />
+                  <Sliders className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#21B6EA]" />
                   <span>Configurar Columnas &amp; Matriz</span>
                 </button>
               </div>
@@ -1295,14 +1295,14 @@ runReports().catch(console.error);`;
             {/* Informative Structure Cards Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 text-xs">
               {/* Card 1: Hoja 1 - Tabla Dinámica / Matriz Cruzada */}
-              <div className="bg-white dark:bg-[#041050] rounded-xl border border-[#DCE1EB] dark:border-[#1B2F8A] shadow-2xs p-4 flex flex-col justify-between space-y-3">
+              <div className="bg-white dark:bg-[#1E293B] rounded-xl border border-[#E2E8F0] dark:border-[#334155] shadow-2xs p-4 flex flex-col justify-between space-y-3">
                 <div>
-                  <div className="flex items-center justify-between border-b border-[#EEF1F9] dark:border-[#1B2F8A] pb-2 mb-2.5">
-                    <span className="font-bold text-[#041050] dark:text-white text-xs flex items-center gap-1.5">
-                      <Table className="w-4 h-4 text-[#007F66] dark:text-[#00CFA7]" />
+                  <div className="flex items-center justify-between border-b border-[#E2E8F0] dark:border-[#334155] pb-2 mb-2.5">
+                    <span className="font-bold text-[#0B0F19] dark:text-white text-xs flex items-center gap-1.5">
+                      <Table className="w-4 h-4 text-[#0369A1] dark:text-[#21B6EA]" />
                       Hoja 1: Tabla Dinámica / Matriz
                     </span>
-                    <span className="text-[10px] bg-[#EEF1F9] dark:bg-[#0A1E7A] text-[#041050] dark:text-[#00CFA7] font-mono font-bold px-1.5 py-0.5 rounded border border-[#CBD5E1] dark:border-[#2C45B8]">
+                    <span className="text-[10px] bg-[#E8F7FD] dark:bg-[#0F172A] text-[#0369A1] dark:text-[#21B6EA] font-mono font-bold px-1.5 py-0.5 rounded border border-[#BAE6FD] dark:border-[#475569]">
                       Celda A1:Z100
                     </span>
                   </div>
@@ -1310,35 +1310,35 @@ runReports().catch(console.error);`;
                   <ul className="space-y-2 text-slate-700 dark:text-slate-200">
                     <li className="flex items-start justify-between gap-2">
                       <span className="text-slate-600 dark:text-slate-300 font-medium">Filtro Interactivo (A1:B1):</span>
-                      <span className="font-bold text-[#041050] dark:text-white text-right">
+                      <span className="font-bold text-[#0B0F19] dark:text-white text-right">
                         {reportConfig.pivotConfig.filterFieldLabel || reportConfig.pivotConfig.filterField || 'Campaña'} ={' '}
-                        <span className="text-[#007F66] dark:text-[#00CFA7] font-mono font-bold">
+                        <span className="text-[#0369A1] dark:text-[#21B6EA] font-mono font-bold">
                           [{filterValue || reportConfig.filters?.filterValue || '(Todos)'}]
                         </span>
                       </span>
                     </li>
                     <li className="flex items-start justify-between gap-2">
                       <span className="text-slate-600 dark:text-slate-300 font-medium flex items-center gap-1">
-                        <ArrowDown className="w-3 h-3 text-[#007F66] dark:text-[#00CFA7]" />
+                        <ArrowDown className="w-3 h-3 text-[#0369A1] dark:text-[#21B6EA]" />
                         Campo en Filas (Celda A3):
                       </span>
-                      <span className="font-bold text-[#041050] dark:text-white text-right">
+                      <span className="font-bold text-[#0B0F19] dark:text-white text-right">
                         {rowLabelDisplay} <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 font-normal">({reportConfig.pivotConfig.rowField})</span>
                       </span>
                     </li>
                     <li className="flex items-start justify-between gap-2">
                       <span className="text-slate-600 dark:text-slate-300 font-medium flex items-center gap-1">
-                        <ArrowUp className="w-3 h-3 text-[#007F66] dark:text-[#00CFA7] rotate-90" />
+                        <ArrowUp className="w-3 h-3 text-[#0369A1] dark:text-[#21B6EA] rotate-90" />
                         Campo en Columnas (Celda B2):
                       </span>
-                      <span className="font-bold text-[#041050] dark:text-white text-right">
+                      <span className="font-bold text-[#0B0F19] dark:text-white text-right">
                         {columnLabelDisplay} <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 font-normal">({reportConfig.pivotConfig.columnField})</span>
                       </span>
                     </li>
                     <li className="flex items-start justify-between gap-2">
                       <span className="text-slate-600 dark:text-slate-300 font-medium">Función &amp; Métrica (Celda A2):</span>
-                      <span className="font-bold text-[#041050] dark:text-white text-right">
-                        <span className="bg-[#E6FAF5] dark:bg-[#00CFA7]/15 text-[#007F66] dark:text-[#00CFA7] border border-[#00CFA7]/35 px-1.5 py-0.5 rounded font-mono text-[10px] mr-1 font-bold">
+                      <span className="font-bold text-[#0B0F19] dark:text-white text-right">
+                        <span className="bg-[#E8F7FD] dark:bg-[#21B6EA]/15 text-[#0369A1] dark:text-[#21B6EA] border border-[#21B6EA]/35 px-1.5 py-0.5 rounded font-mono text-[10px] mr-1 font-bold">
                           {reportConfig.pivotConfig.aggregator || 'COUNT'}
                         </span>
                         {reportConfig.pivotConfig.metricLabel}
@@ -1347,21 +1347,21 @@ runReports().catch(console.error);`;
                   </ul>
                 </div>
 
-                <div className="pt-2 border-t border-[#EEF1F9] dark:border-[#1B2F8A] flex items-center justify-between text-[11px] text-slate-600 dark:text-slate-300">
+                <div className="pt-2 border-t border-[#E2E8F0] dark:border-[#334155] flex items-center justify-between text-[11px] text-slate-600 dark:text-slate-300">
                   <span>Fórmulas automáticas:</span>
-                  <span className="font-mono text-[#041050] dark:text-[#00CFA7] font-semibold">=COUNTIFS(...) dinámico</span>
+                  <span className="font-mono text-[#0369A1] dark:text-[#21B6EA] font-semibold">=COUNTIFS(...) dinámico</span>
                 </div>
               </div>
 
               {/* Card 2: Hoja 2 - Contactos Registrados */}
-              <div className="bg-white dark:bg-[#041050] rounded-xl border border-[#DCE1EB] dark:border-[#1B2F8A] shadow-2xs p-4 flex flex-col justify-between space-y-3">
+              <div className="bg-white dark:bg-[#1E293B] rounded-xl border border-[#E2E8F0] dark:border-[#334155] shadow-2xs p-4 flex flex-col justify-between space-y-3">
                 <div>
-                  <div className="flex items-center justify-between border-b border-[#EEF1F9] dark:border-[#1B2F8A] pb-2 mb-2.5">
-                    <span className="font-bold text-[#041050] dark:text-white text-xs flex items-center gap-1.5">
-                      <Layers className="w-4 h-4 text-[#007F66] dark:text-[#00CFA7]" />
+                  <div className="flex items-center justify-between border-b border-[#E2E8F0] dark:border-[#334155] pb-2 mb-2.5">
+                    <span className="font-bold text-[#0B0F19] dark:text-white text-xs flex items-center gap-1.5">
+                      <Layers className="w-4 h-4 text-[#0369A1] dark:text-[#21B6EA]" />
                       Hoja 2: Contactos (Base Detallada)
                     </span>
-                    <span className="text-[10px] bg-[#E6FAF5] dark:bg-[#00CFA7]/15 text-[#007F66] dark:text-[#00CFA7] font-mono font-bold px-1.5 py-0.5 rounded border border-[#00CFA7]/40 tabular-nums">
+                    <span className="text-[10px] bg-[#E8F7FD] dark:bg-[#21B6EA]/15 text-[#0369A1] dark:text-[#21B6EA] font-mono font-bold px-1.5 py-0.5 rounded border border-[#21B6EA]/40 tabular-nums">
                       {enabledCount} Columnas
                     </span>
                   </div>
@@ -1377,31 +1377,31 @@ runReports().catch(console.error);`;
                       .map((p) => (
                         <span
                           key={p.name}
-                          className="text-[10px] bg-[#F7F8FC] dark:bg-[#06155E] text-[#041050] dark:text-slate-200 border border-[#DCE1EB] dark:border-[#1B2F8A] px-1.5 py-0.5 rounded font-medium"
+                          className="text-[10px] bg-[#F8FAFC] dark:bg-[#0F172A] text-[#0B0F19] dark:text-slate-200 border border-[#E2E8F0] dark:border-[#334155] px-1.5 py-0.5 rounded font-medium"
                           title={`${p.label} (${p.name})`}
                         >
                           {p.label}
                         </span>
                       ))}
                     {enabledCount > 10 && (
-                      <span className="text-[10px] bg-[#EEF1F9] dark:bg-[#0A1E7A] text-[#041050] dark:text-[#00CFA7] border border-[#CBD5E1] dark:border-[#2C45B8] px-1.5 py-0.5 rounded font-bold tabular-nums">
+                      <span className="text-[10px] bg-[#E8F7FD] dark:bg-[#0F172A] text-[#0369A1] dark:text-[#21B6EA] border border-[#BAE6FD] dark:border-[#475569] px-1.5 py-0.5 rounded font-bold tabular-nums">
                         +{enabledCount - 10} más...
                       </span>
                     )}
                   </div>
                 </div>
 
-                <div className="pt-2 border-t border-[#EEF1F9] dark:border-[#1B2F8A] flex items-center justify-between text-[11px] text-slate-600 dark:text-slate-300">
+                <div className="pt-2 border-t border-[#E2E8F0] dark:border-[#334155] flex items-center justify-between text-[11px] text-slate-600 dark:text-slate-300">
                   <span>Contactos incluidos:</span>
-                  <span className="text-[#041050] dark:text-white font-medium">Asignados al asesor con filtros</span>
+                  <span className="text-[#0B0F19] dark:text-white font-medium">Asignados al asesor con filtros</span>
                 </div>
               </div>
 
               {/* Card 3: Filtros Globales y Segmentación */}
-              <div className="bg-white dark:bg-[#041050] rounded-xl border border-[#DCE1EB] dark:border-[#1B2F8A] shadow-2xs p-4 flex flex-col justify-between space-y-3">
+              <div className="bg-white dark:bg-[#1E293B] rounded-xl border border-[#E2E8F0] dark:border-[#334155] shadow-2xs p-4 flex flex-col justify-between space-y-3">
                 <div>
-                  <div className="flex items-center justify-between border-b border-[#EEF1F9] dark:border-[#1B2F8A] pb-2 mb-2.5">
-                    <span className="font-bold text-[#041050] dark:text-white text-xs flex items-center gap-1.5">
+                  <div className="flex items-center justify-between border-b border-[#E2E8F0] dark:border-[#334155] pb-2 mb-2.5">
+                    <span className="font-bold text-[#0B0F19] dark:text-white text-xs flex items-center gap-1.5">
                       <Filter className="w-4 h-4 text-amber-600 dark:text-amber-400" />
                       Filtros y Segmentación Seleccionados
                     </span>
@@ -1413,11 +1413,11 @@ runReports().catch(console.error);`;
                   <ul className="space-y-1.5 text-[11px] text-slate-600 dark:text-slate-300">
                     <li className="flex items-center justify-between">
                       <span className="text-slate-600 dark:text-slate-300">Fecha de Creación:</span>
-                      <span className="font-semibold text-[#041050] dark:text-white">{dateRangeLabel}</span>
+                      <span className="font-semibold text-[#0B0F19] dark:text-white">{dateRangeLabel}</span>
                     </li>
                     <li className="flex items-center justify-between">
                       <span className="text-slate-600 dark:text-slate-300">Estado del Lead:</span>
-                      <span className="font-semibold text-[#041050] dark:text-white">
+                      <span className="font-semibold text-[#0B0F19] dark:text-white">
                         {reportConfig.filters?.leadStatus && reportConfig.filters.leadStatus !== 'ALL'
                           ? reportConfig.filters.leadStatus
                           : 'Todos los Estados'}
@@ -1425,7 +1425,7 @@ runReports().catch(console.error);`;
                     </li>
                     <li className="flex items-center justify-between">
                       <span className="text-slate-600 dark:text-slate-300">Etapa del Ciclo:</span>
-                      <span className="font-semibold text-[#041050] dark:text-white">
+                      <span className="font-semibold text-[#0B0F19] dark:text-white">
                         {reportConfig.filters?.lifecycleStage && reportConfig.filters.lifecycleStage !== 'ALL'
                           ? reportConfig.filters.lifecycleStage
                           : 'Todas las Etapas'}
@@ -1433,7 +1433,7 @@ runReports().catch(console.error);`;
                     </li>
                     <li className="flex items-center justify-between">
                       <span className="text-slate-600 dark:text-slate-300">Canal / Fuente:</span>
-                      <span className="font-semibold text-[#041050] dark:text-white">
+                      <span className="font-semibold text-[#0B0F19] dark:text-white">
                         {reportConfig.filters?.source && reportConfig.filters.source !== 'ALL'
                           ? reportConfig.filters.source
                           : 'Todos los Canales'}
@@ -1441,7 +1441,7 @@ runReports().catch(console.error);`;
                     </li>
                     <li className="flex items-center justify-between">
                       <span className="text-slate-600 dark:text-slate-300">Reglas Personalizadas:</span>
-                      <span className="font-semibold text-[#041050] dark:text-white">
+                      <span className="font-semibold text-[#0B0F19] dark:text-white">
                         {(reportConfig.filters?.customFilters || []).length > 0
                           ? `${(reportConfig.filters?.customFilters || []).length} regla(s) guardada(s)`
                           : 'Sin reglas adicionales'}
@@ -1450,21 +1450,21 @@ runReports().catch(console.error);`;
                   </ul>
                 </div>
 
-                <div className="pt-2 border-t border-[#EEF1F9] dark:border-[#1B2F8A] flex items-center justify-between text-[11px]">
+                <div className="pt-2 border-t border-[#E2E8F0] dark:border-[#334155] flex items-center justify-between text-[11px]">
                   <span className="text-slate-600 dark:text-slate-300">Despacho por email:</span>
-                  <span className={sendEmail ? 'font-bold text-[#007F66] dark:text-[#00CFA7]' : 'text-slate-600 dark:text-slate-300'}>
+                  <span className={sendEmail ? 'font-bold text-[#0369A1] dark:text-[#21B6EA]' : 'text-slate-600 dark:text-slate-300'}>
                     {sendEmail ? '✓ Activo' : 'Solo descarga'}
                   </span>
                 </div>
               </div>
             </div>
 
-            {/* Execution Panel: ELITEC Prussian Authority Banner */}
-            <div className="bg-gradient-to-r from-[#020829] via-[#041050] to-[#081C7A] rounded-xl p-4 sm:p-5 text-white shadow-md border border-[#1B2F8A] flex flex-col md:flex-row items-center justify-between gap-4">
+            {/* Execution Panel: Promptia.lat Obsidian Authority Banner */}
+            <div className="bg-gradient-to-r from-[#0B0F19] via-[#131C31] to-[#1E293B] rounded-xl p-4 sm:p-5 text-white shadow-md border border-[#334155] flex flex-col md:flex-row items-center justify-between gap-4">
               <div className="space-y-1 text-center md:text-left">
                 <div className="flex items-center justify-center md:justify-start gap-2">
-                  <span className="bg-[#00CFA7]/20 text-[#00CFA7] border border-[#00CFA7]/40 text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
-                    <CheckCircle2 className="w-3 h-3 text-[#00CFA7]" />
+                  <span className="bg-[#21B6EA]/20 text-[#21B6EA] border border-[#21B6EA]/40 text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
+                    <CheckCircle2 className="w-3 h-3 text-[#21B6EA]" />
                     Listo para Generar
                   </span>
                   <span className="text-xs text-slate-200">
@@ -1475,7 +1475,7 @@ runReports().catch(console.error);`;
                   Generación de Reportes Excel CRM para Asesores Comerciales
                 </h5>
                 <p className="text-xs text-slate-200 max-w-xl">
-                  Se iterará sobre los <strong className="text-[#00CFA7]">{(owners || []).length} asesores activos</strong> en tu portal de HubSpot CRM, creando un archivo .xlsx individualizado para cada uno con la matriz cruzada y sus contactos asignados.
+                  Se iterará sobre los <strong className="text-[#21B6EA]">{(owners || []).length} asesores activos</strong> en tu portal de HubSpot CRM, creando un archivo .xlsx individualizado para cada uno con la matriz cruzada y sus contactos asignados.
                 </p>
               </div>
 
@@ -1494,17 +1494,17 @@ runReports().catch(console.error);`;
                         sendEmailDefault: val,
                       }));
                     }}
-                    className="w-4 h-4 accent-[#00CFA7] rounded border-white/40 cursor-pointer"
+                    className="w-4 h-4 accent-[#21B6EA] rounded border-white/40 cursor-pointer"
                   />
                   <span className="text-white font-medium">Enviar copia por Correo</span>
                 </label>
 
-                {/* Primary Action Button: Lagoon Blue with Prussian Blue text (WCAG AA) */}
+                {/* Primary Action Button: Capri Blue with Obsidian Black text (WCAG AA) */}
                 <button
                   type="button"
                   onClick={() => handleGenerateReports('ALL')}
                   disabled={isGenerating}
-                  className="w-full sm:w-auto bg-[#00CFA7] hover:bg-[#00B894] active:bg-[#009F80] text-[#041050] font-extrabold text-sm py-2.5 px-6 rounded-lg shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 whitespace-nowrap shrink-0"
+                  className="w-full sm:w-auto bg-[#21B6EA] hover:bg-[#38C4F3] active:bg-[#1AA3D4] text-[#0B0F19] font-extrabold text-sm py-2.5 px-6 rounded-lg shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 whitespace-nowrap shrink-0"
                 >
                   <RefreshCw className={`w-4 h-4 ${isGenerating ? 'animate-spin' : ''}`} />
                   <span>
@@ -1518,15 +1518,15 @@ runReports().catch(console.error);`;
 
             {/* Live Generation Progress Indicator */}
             {isGenerating && (
-              <div className="mt-4 p-3 bg-[#EEF1F9] dark:bg-[#06155E] border border-[#CBD5E1] dark:border-[#1B2F8A] rounded-lg flex items-center gap-3">
-                <RefreshCw className="w-5 h-5 text-[#041050] dark:text-[#00CFA7] animate-spin shrink-0" />
+              <div className="mt-4 p-3 bg-[#EBF8FD] dark:bg-[#0F172A] border border-[#BAE6FD] dark:border-[#334155] rounded-lg flex items-center gap-3">
+                <RefreshCw className="w-5 h-5 text-[#0369A1] dark:text-[#21B6EA] animate-spin shrink-0" />
                 <div className="flex-1">
-                  <div className="flex items-center justify-between text-xs font-semibold text-[#041050] dark:text-white mb-1">
+                  <div className="flex items-center justify-between text-xs font-semibold text-[#0B0F19] dark:text-white mb-1">
                     <span>{currentStep}</span>
-                    <span className="font-mono text-[10px] text-[#007F66] dark:text-[#00CFA7]">Procesando CRM...</span>
+                    <span className="font-mono text-[10px] text-[#0369A1] dark:text-[#21B6EA]">Procesando CRM...</span>
                   </div>
-                  <div className="w-full bg-[#DCE1EB] dark:bg-[#020829] h-1.5 rounded-full overflow-hidden">
-                    <div className="bg-[#00CFA7] h-1.5 rounded-full animate-pulse w-3/4" />
+                  <div className="w-full bg-[#E2E8F0] dark:bg-[#0B0F19] h-1.5 rounded-full overflow-hidden">
+                    <div className="bg-[#21B6EA] h-1.5 rounded-full animate-pulse w-3/4" />
                   </div>
                 </div>
               </div>
@@ -1534,7 +1534,7 @@ runReports().catch(console.error);`;
 
             {/* Success or Error Notice */}
             {successNotice && (
-              <div className="mt-4 p-3 bg-[#E6FAF5] dark:bg-[#00CFA7]/15 border border-[#00CFA7]/40 text-[#007F66] dark:text-[#00CFA7] text-xs rounded-lg font-medium flex items-center justify-between">
+              <div className="mt-4 p-3 bg-[#E8F7FD] dark:bg-[#21B6EA]/15 border border-[#21B6EA]/40 text-[#0369A1] dark:text-[#21B6EA] text-xs rounded-lg font-medium flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 shrink-0" />
                   <span>{successNotice}</span>
@@ -1568,8 +1568,8 @@ runReports().catch(console.error);`;
           <div className="p-5">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
-                <Table className="w-4 h-4 text-[#007F66] dark:text-[#00CFA7]" />
-                <h4 className="text-sm font-bold text-[#041050] dark:text-white uppercase tracking-wide">
+                <Table className="w-4 h-4 text-[#0369A1] dark:text-[#21B6EA]" />
+                <h4 className="text-sm font-bold text-[#0B0F19] dark:text-white uppercase tracking-wide">
                   Reportes Excel Generados &amp; Auditoría de Envíos
                 </h4>
               </div>
@@ -1580,9 +1580,9 @@ runReports().catch(console.error);`;
             </div>
 
             {generatedReports.length === 0 ? (
-              <div className="text-center py-10 bg-[#F7F8FC] dark:bg-[#06155E] rounded-xl border border-dashed border-[#CBD5E1] dark:border-[#1E3599]">
+              <div className="text-center py-10 bg-[#F8FAFC] dark:bg-[#0F172A] rounded-xl border border-dashed border-[#CBD5E1] dark:border-[#334155]">
                 <FileSpreadsheet className="w-10 h-10 text-slate-400 dark:text-slate-500 mx-auto mb-2" />
-                <p className="text-xs font-semibold text-[#041050] dark:text-white">
+                <p className="text-xs font-semibold text-[#0B0F19] dark:text-white">
                   Aún no se han generado reportes en esta sesión
                 </p>
                 <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">
@@ -1691,24 +1691,24 @@ runReports().catch(console.error);`;
                   return (
                     <div
                       key={report.reportId}
-                      className="bg-white dark:bg-[#06155E] border border-[#DCE1EB] dark:border-[#1B2F8A] rounded-xl overflow-hidden shadow-2xs hover:border-[#00CFA7]/60 transition-all"
+                      className="bg-white dark:bg-[#0F172A] border border-[#E2E8F0] dark:border-[#334155] rounded-xl overflow-hidden shadow-2xs hover:border-[#21B6EA]/60 transition-all"
                     >
                       {/* Report Card Header */}
-                      <div className="p-4 bg-[#F7F8FC] dark:bg-[#041050] border-b border-[#DCE1EB] dark:border-[#1B2F8A] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+                      <div className="p-4 bg-[#F8FAFC] dark:bg-[#1E293B] border-b border-[#E2E8F0] dark:border-[#334155] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
                         <div className="flex items-center gap-3">
-                          <div className="w-9 h-9 rounded-lg bg-[#E6FAF5] dark:bg-[#00CFA7]/15 text-[#007F66] dark:text-[#00CFA7] border border-[#00CFA7]/35 flex items-center justify-center font-bold shrink-0">
+                          <div className="w-9 h-9 rounded-lg bg-[#E8F7FD] dark:bg-[#21B6EA]/15 text-[#0369A1] dark:text-[#21B6EA] border border-[#21B6EA]/35 flex items-center justify-center font-bold shrink-0">
                             <FileSpreadsheet className="w-5 h-5" />
                           </div>
                           <div>
                             <div className="flex flex-wrap items-center gap-2">
-                              <span className="font-bold text-[#041050] dark:text-white text-sm">{report.fileName}</span>
-                              <span className="text-[10px] font-mono bg-[#EEF1F9] dark:bg-[#0A1E7A] text-[#041050] dark:text-[#00CFA7] px-1.5 py-0.5 rounded tabular-nums">
+                              <span className="font-bold text-[#0B0F19] dark:text-white text-sm">{report.fileName}</span>
+                              <span className="text-[10px] font-mono bg-[#E8F7FD] dark:bg-[#0F172A] text-[#0369A1] dark:text-[#21B6EA] px-1.5 py-0.5 rounded tabular-nums">
                                 {report.totalContacts} contactos
                               </span>
                             </div>
                             <div className="text-slate-600 dark:text-slate-300 text-[11px] flex flex-wrap items-center gap-2 mt-0.5">
                               <span>
-                                Responsable: <strong className="text-[#041050] dark:text-white">{report.ownerName}</strong>
+                                Responsable: <strong className="text-[#0B0F19] dark:text-white">{report.ownerName}</strong>
                               </span>
                               <span>•</span>
                               <span>{report.ownerEmail || 'Sin email'}</span>
@@ -1723,7 +1723,7 @@ runReports().catch(console.error);`;
                           {report.emailSent ? (
                             <span
                               title={report.emailMessage || 'Correo entregado'}
-                              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold bg-[#E6FAF5] dark:bg-[#00CFA7]/15 text-[#007F66] dark:text-[#00CFA7] border border-[#00CFA7]/40"
+                              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold bg-[#E8F7FD] dark:bg-[#21B6EA]/15 text-[#0369A1] dark:text-[#21B6EA] border border-[#21B6EA]/40"
                             >
                               <CheckCircle2 className="w-3 h-3" />
                               {report.emailStatus === 'simulated' ? 'Email Simulado OK' : 'Email Entregado'}
@@ -1737,7 +1737,7 @@ runReports().catch(console.error);`;
                               Fallo de Correo
                             </span>
                           ) : (
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold bg-[#EEF1F9] dark:bg-[#0A1E7A] text-slate-700 dark:text-slate-200">
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold bg-[#F4F7FA] dark:bg-[#0F172A] text-slate-700 dark:text-slate-200">
                               Solo Descarga
                             </span>
                           )}
@@ -1746,7 +1746,7 @@ runReports().catch(console.error);`;
                           <button
                             type="button"
                             onClick={() => handleDownload(report)}
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#041050] hover:bg-[#081C7A] text-white dark:bg-[#00CFA7] dark:hover:bg-[#00B894] dark:text-[#041050] rounded-lg font-bold text-xs shadow-2xs transition-colors cursor-pointer whitespace-nowrap shrink-0"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#0B0F19] hover:bg-[#1E293B] text-white dark:bg-[#21B6EA] dark:hover:bg-[#38C4F3] dark:text-[#0B0F19] rounded-lg font-bold text-xs shadow-2xs transition-colors cursor-pointer whitespace-nowrap shrink-0"
                           >
                             <Download className="w-3.5 h-3.5" />
                             Descargar .xlsx
@@ -1759,7 +1759,7 @@ runReports().catch(console.error);`;
                               onClick={() =>
                                 setExpandedMatrixReportId(isExpanded ? null : report.reportId)
                               }
-                              className="p-1.5 text-slate-600 dark:text-slate-300 hover:text-[#041050] dark:hover:text-white hover:bg-[#EEF1F9] dark:hover:bg-[#0A1E7A] rounded-lg border border-[#CBD5E1] dark:border-[#1E3599] transition-colors cursor-pointer"
+                              className="p-1.5 text-slate-600 dark:text-slate-300 hover:text-[#0B0F19] dark:hover:text-white hover:bg-[#F4F7FA] dark:hover:bg-[#334155] rounded-lg border border-[#CBD5E1] dark:border-[#475569] transition-colors cursor-pointer"
                               title={isExpanded ? 'Contraer vista previa' : 'Ver Matriz Cruzada (Hoja 1)'}
                             >
                               {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
@@ -1770,20 +1770,20 @@ runReports().catch(console.error);`;
 
                       {/* Matrix Preview for Sheet 1 */}
                       {isExpanded && matrix && (
-                        <div className="p-4 bg-white dark:bg-[#041050] border-t border-[#DCE1EB] dark:border-[#1B2F8A]">
+                        <div className="p-4 bg-white dark:bg-[#1E293B] border-t border-[#E2E8F0] dark:border-[#334155]">
                           <div className="flex flex-wrap items-center justify-between gap-2 mb-3 text-xs">
                             <div className="flex flex-wrap items-center gap-2">
-                              <span className="font-semibold text-[#041050] dark:text-white">
+                              <span className="font-semibold text-[#0B0F19] dark:text-white">
                                 Vista Previa de Hoja 1: Matriz Cruzada ({report.periodName})
                               </span>
-                              <span className="text-[10px] bg-[#EEF1F9] dark:bg-[#0A1E7A] text-[#041050] dark:text-[#00CFA7] px-2 py-0.5 rounded font-mono font-bold flex items-center gap-1">
+                              <span className="text-[10px] bg-[#E8F7FD] dark:bg-[#0F172A] text-[#0369A1] dark:text-[#21B6EA] px-2 py-0.5 rounded font-mono font-bold flex items-center gap-1">
                                 <Filter className="w-3 h-3" />
                                 {reportConfig.pivotConfig.filterFieldLabel || 'Filtro'}: {activeFilterValue} ({filteredCount} de {report.totalContacts} contactos)
                               </span>
-                              <span className="text-[10px] bg-[#F7F8FC] dark:bg-[#06155E] text-slate-700 dark:text-slate-200 px-2 py-0.5 rounded font-medium border border-[#DCE1EB] dark:border-[#1B2F8A]">
+                              <span className="text-[10px] bg-[#F8FAFC] dark:bg-[#0F172A] text-slate-700 dark:text-slate-200 px-2 py-0.5 rounded font-medium border border-[#E2E8F0] dark:border-[#334155]">
                                 {rowLabelDisplay} vs {columnLabelDisplay}
                               </span>
-                              <span className="text-[10px] bg-[#E6FAF5] dark:bg-[#00CFA7]/15 text-[#007F66] dark:text-[#00CFA7] border border-[#00CFA7]/40 px-2 py-0.5 rounded font-mono font-bold">
+                              <span className="text-[10px] bg-[#E8F7FD] dark:bg-[#21B6EA]/15 text-[#0369A1] dark:text-[#21B6EA] border border-[#21B6EA]/40 px-2 py-0.5 rounded font-mono font-bold">
                                 {aggActive}: {metricLabelActive}
                               </span>
                             </div>
@@ -1792,43 +1792,43 @@ runReports().catch(console.error);`;
                             </span>
                           </div>
 
-                          <div className="overflow-x-auto border border-[#DCE1EB] dark:border-[#1B2F8A] rounded-lg">
+                          <div className="overflow-x-auto border border-[#E2E8F0] dark:border-[#334155] rounded-lg">
                             <table className="w-full text-xs text-left border-collapse tabular-nums">
                               <thead>
                                 {/* Row 1 header in Excel */}
-                                <tr className="bg-[#F7F8FC] dark:bg-[#06155E] border-b border-[#DCE1EB] dark:border-[#1B2F8A] text-[#041050] dark:text-slate-200 font-semibold text-[11px]">
-                                  <th className="py-2 px-3 border-r border-[#DCE1EB] dark:border-[#1B2F8A] bg-[#EEF1F9] dark:bg-[#0A1E7A]">
+                                <tr className="bg-[#F8FAFC] dark:bg-[#0F172A] border-b border-[#E2E8F0] dark:border-[#334155] text-[#0B0F19] dark:text-slate-200 font-semibold text-[11px]">
+                                  <th className="py-2 px-3 border-r border-[#E2E8F0] dark:border-[#334155] bg-[#E8F7FD] dark:bg-[#0F172A]">
                                     {metricLabelActive} ({aggActive})
                                   </th>
                                   <th
                                     colSpan={columnHeaders.length + 1}
-                                    className="py-2 px-3 text-center bg-[#041050] text-white font-bold"
+                                    className="py-2 px-3 text-center bg-[#0B0F19] dark:bg-[#0B0F19] text-white font-bold"
                                   >
                                     Etiquetas de columna ({colLabelActive})
                                   </th>
                                 </tr>
                                 {/* Row 2 headers */}
-                                <tr className="bg-[#F7F8FC] dark:bg-[#06155E] border-b border-[#DCE1EB] dark:border-[#1B2F8A] text-[#041050] dark:text-white font-bold text-[11px]">
-                                  <th className="py-2 px-3 border-r border-[#DCE1EB] dark:border-[#1B2F8A]">
+                                <tr className="bg-[#F8FAFC] dark:bg-[#0F172A] border-b border-[#E2E8F0] dark:border-[#334155] text-[#0B0F19] dark:text-white font-bold text-[11px]">
+                                  <th className="py-2 px-3 border-r border-[#E2E8F0] dark:border-[#334155]">
                                     Etiquetas de fila ({rowLabelActive})
                                   </th>
                                   {columnHeaders.map((col) => (
                                     <th
                                       key={col}
-                                      className="py-2 px-3 text-center border-r border-[#DCE1EB] dark:border-[#1B2F8A] bg-[#EEF1F9]/70 dark:bg-[#0A1E7A]"
+                                      className="py-2 px-3 text-center border-r border-[#E2E8F0] dark:border-[#334155] bg-[#EBF8FD]/70 dark:bg-[#0F172A]"
                                     >
                                       {col}
                                     </th>
                                   ))}
-                                  <th className="py-2 px-3 text-right bg-[#EEF1F9] dark:bg-[#0A1E7A] font-black text-[#041050] dark:text-[#00CFA7]">
+                                  <th className="py-2 px-3 text-right bg-[#E8F7FD] dark:bg-[#0F172A] font-black text-[#0369A1] dark:text-[#21B6EA]">
                                     Total general
                                   </th>
                                 </tr>
                               </thead>
-                              <tbody className="divide-y divide-[#EEF1F9] dark:divide-[#1B2F8A]">
+                              <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#334155]">
                                 {rowHeaders.map((rowKey) => (
-                                  <tr key={rowKey} className="hover:bg-[#F7F8FC] dark:hover:bg-[#06155E]">
-                                    <td className="py-2 px-3 font-semibold text-[#041050] dark:text-white border-r border-[#DCE1EB] dark:border-[#1B2F8A] bg-[#F7F8FC]/60 dark:bg-[#06155E]/60">
+                                  <tr key={rowKey} className="hover:bg-[#F8FAFC] dark:hover:bg-[#0F172A]">
+                                    <td className="py-2 px-3 font-semibold text-[#0B0F19] dark:text-white border-r border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC]/60 dark:bg-[#0F172A]/60">
                                       {rowKey}
                                     </td>
                                     {columnHeaders.map((col) => {
@@ -1836,31 +1836,31 @@ runReports().catch(console.error);`;
                                       return (
                                         <td
                                           key={col}
-                                          className="py-2 px-3 text-center border-r border-[#DCE1EB] dark:border-[#1B2F8A] font-mono text-slate-700 dark:text-slate-200"
+                                          className="py-2 px-3 text-center border-r border-[#E2E8F0] dark:border-[#334155] font-mono text-slate-700 dark:text-slate-200"
                                         >
                                           {formatCellValue(val)}
                                         </td>
                                       );
                                     })}
-                                    <td className="py-2 px-3 text-right font-bold text-[#041050] dark:text-white bg-[#F7F8FC] dark:bg-[#06155E] font-mono">
+                                    <td className="py-2 px-3 text-right font-bold text-[#0B0F19] dark:text-white bg-[#F8FAFC] dark:bg-[#0F172A] font-mono">
                                       {formatCellValue(rowTotals[rowKey])}
                                     </td>
                                   </tr>
                                 ))}
                                 {/* Total general row */}
-                                <tr className="bg-[#EEF1F9] dark:bg-[#06155E] font-bold border-t-2 border-[#CBD5E1] dark:border-[#2C45B8] text-[#041050] dark:text-white">
-                                  <td className="py-2.5 px-3 border-r border-[#DCE1EB] dark:border-[#1B2F8A] font-black">
+                                <tr className="bg-[#EBF8FD] dark:bg-[#0F172A] font-bold border-t-2 border-[#CBD5E1] dark:border-[#475569] text-[#0B0F19] dark:text-white">
+                                  <td className="py-2.5 px-3 border-r border-[#E2E8F0] dark:border-[#334155] font-black">
                                     Total general
                                   </td>
                                   {columnHeaders.map((col) => (
                                     <td
                                       key={col}
-                                      className="py-2.5 px-3 text-center border-r border-[#DCE1EB] dark:border-[#1B2F8A] font-mono font-black"
+                                      className="py-2.5 px-3 text-center border-r border-[#E2E8F0] dark:border-[#334155] font-mono font-black"
                                     >
                                       {formatCellValue(columnTotals[col])}
                                     </td>
                                   ))}
-                                  <td className="py-2.5 px-3 text-right font-black text-[#041050] bg-[#00CFA7] font-mono text-sm">
+                                  <td className="py-2.5 px-3 text-right font-black text-[#0B0F19] bg-[#21B6EA] font-mono text-sm">
                                     {formatCellValue(grandTotal)}
                                   </td>
                                 </tr>
@@ -1870,14 +1870,14 @@ runReports().catch(console.error);`;
 
                           <div className="mt-2 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-600 dark:text-slate-300">
                             <span className="flex items-center gap-1">
-                              <CheckCircle2 className="w-3.5 h-3.5 text-[#007F66] dark:text-[#00CFA7]" />
+                              <CheckCircle2 className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#21B6EA]" />
                               Hoja 2 <strong>"Contactos"</strong> incluye los{' '}
                               {report.totalContacts} registros con las {enabledCount} columnas configuradas.
                             </span>
                             <button
                               type="button"
                               onClick={() => handleDownload(report)}
-                              className="text-[#041050] dark:text-[#00CFA7] hover:underline font-semibold cursor-pointer"
+                              className="text-[#0369A1] dark:text-[#21B6EA] hover:underline font-semibold cursor-pointer"
                             >
                               Descargar archivo completo (.xlsx)
                             </button>
@@ -1897,10 +1897,10 @@ runReports().catch(console.error);`;
       {activeTab === 'config' && (
         <div className="p-5 space-y-6">
           {/* Header Explanation */}
-          <div className="bg-[#EEF1F9] dark:bg-[#06155E] border border-[#CBD5E1] dark:border-[#1B2F8A] rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="bg-[#EBF8FD] dark:bg-[#0F172A] border border-[#BAE6FD] dark:border-[#334155] rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="space-y-1">
-              <h4 className="text-sm font-bold text-[#041050] dark:text-white flex items-center gap-2">
-                <Database className="w-4 h-4 text-[#007F66] dark:text-[#00CFA7]" />
+              <h4 className="text-sm font-bold text-[#0B0F19] dark:text-white flex items-center gap-2">
+                <Database className="w-4 h-4 text-[#0369A1] dark:text-[#21B6EA]" />
                 Configuración de Reportes y Tabla Dinámica
               </h4>
               <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
@@ -1911,7 +1911,7 @@ runReports().catch(console.error);`;
               <button
                 type="button"
                 onClick={handleResetToDefault}
-                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#1E3599] bg-white dark:bg-[#041050] hover:bg-[#F7F8FC] dark:hover:bg-[#0A1E7A] text-[#041050] dark:text-slate-100 text-xs font-semibold shadow-2xs transition-colors cursor-pointer whitespace-nowrap shrink-0"
+                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#475569] bg-white dark:bg-[#1E293B] hover:bg-[#F8FAFC] dark:hover:bg-[#334155] text-[#0B0F19] dark:text-slate-100 text-xs font-semibold shadow-2xs transition-colors cursor-pointer whitespace-nowrap shrink-0"
               >
                 <RotateCcw className="w-3.5 h-3.5 text-slate-500 dark:text-slate-300" />
                 <span>21 Campos Estándar</span>
@@ -1920,7 +1920,7 @@ runReports().catch(console.error);`;
                 type="button"
                 onClick={handleManualSaveConfig}
                 disabled={isSavingConfig}
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#041050] hover:bg-[#081C7A] text-white dark:bg-[#00CFA7] dark:hover:bg-[#00B894] dark:text-[#041050] text-xs font-bold shadow-2xs transition-colors cursor-pointer whitespace-nowrap shrink-0"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#0B0F19] hover:bg-[#1E293B] text-white dark:bg-[#21B6EA] dark:hover:bg-[#38C4F3] dark:text-[#0B0F19] text-xs font-bold shadow-2xs transition-colors cursor-pointer whitespace-nowrap shrink-0"
               >
                 <Save className="w-3.5 h-3.5" />
                 <span>{isSavingConfig ? 'Guardando...' : 'Guardar Configuración'}</span>
@@ -1929,11 +1929,11 @@ runReports().catch(console.error);`;
           </div>
 
           {/* Section 1: Dynamic Pivot Table Matrix Config (Sheet 1) */}
-          <div className="bg-white dark:bg-[#041050] border border-[#DCE1EB] dark:border-[#1B2F8A] rounded-xl p-5 shadow-2xs space-y-4">
-            <div className="border-b border-[#EEF1F9] dark:border-[#1B2F8A] pb-3 flex items-center justify-between">
+          <div className="bg-white dark:bg-[#1E293B] border border-[#E2E8F0] dark:border-[#334155] rounded-xl p-5 shadow-2xs space-y-4">
+            <div className="border-b border-[#E2E8F0] dark:border-[#334155] pb-3 flex items-center justify-between">
               <div>
-                <h5 className="text-sm font-bold text-[#041050] dark:text-white flex items-center gap-2">
-                  <Table className="w-4 h-4 text-[#007F66] dark:text-[#00CFA7]" />
+                <h5 className="text-sm font-bold text-[#0B0F19] dark:text-white flex items-center gap-2">
+                  <Table className="w-4 h-4 text-[#0369A1] dark:text-[#21B6EA]" />
                   1. Configuración de la Tabla Dinámica / Matriz Cruzada (Hoja 1)
                 </h5>
                 <p className="text-xs text-slate-600 dark:text-slate-300 mt-0.5">
@@ -1944,14 +1944,14 @@ runReports().catch(console.error);`;
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3.5 text-xs">
               {/* Row Field */}
-              <div className="bg-[#F7F8FC] dark:bg-[#06155E] p-3.5 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] space-y-2.5">
-                <label className="block font-bold text-[#041050] dark:text-white">
+              <div className="bg-[#F8FAFC] dark:bg-[#0F172A] p-3.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] space-y-2.5">
+                <label className="block font-bold text-[#0B0F19] dark:text-white">
                   1. Campo en FILAS (Row Field)
                 </label>
                 <select
                   value={reportConfig.pivotConfig.rowField}
                   onChange={(e) => handleUpdatePivotConfig('rowField', e.target.value)}
-                  className="w-full bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-md px-2.5 py-1.5 text-xs text-[#041050] dark:text-white font-medium focus:ring-2 focus:ring-[#00CFA7] focus:outline-none shadow-2xs"
+                  className="w-full bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-md px-2.5 py-1.5 text-xs text-[#0B0F19] dark:text-white font-medium focus:ring-2 focus:ring-[#21B6EA] focus:outline-none shadow-2xs"
                 >
                   <option value="fuente">fuente (FUENTE)</option>
                   <option value="lifecyclestage">lifecyclestage (Etapa del ciclo de vida)</option>
@@ -1977,21 +1977,21 @@ runReports().catch(console.error);`;
                     type="text"
                     value={reportConfig.pivotConfig.rowFieldLabel || ''}
                     onChange={(e) => handleUpdatePivotConfig('rowFieldLabel', e.target.value)}
-                    className="w-full bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] text-[#041050] dark:text-white rounded px-2 py-1 text-xs focus:ring-2 focus:ring-[#00CFA7] focus:outline-none"
+                    className="w-full bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] text-[#0B0F19] dark:text-white rounded px-2 py-1 text-xs focus:ring-2 focus:ring-[#21B6EA] focus:outline-none"
                     placeholder="Ej. FUENTE"
                   />
                 </div>
               </div>
 
               {/* Column Field */}
-              <div className="bg-[#F7F8FC] dark:bg-[#06155E] p-3.5 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] space-y-2.5">
-                <label className="block font-bold text-[#041050] dark:text-white">
+              <div className="bg-[#F8FAFC] dark:bg-[#0F172A] p-3.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] space-y-2.5">
+                <label className="block font-bold text-[#0B0F19] dark:text-white">
                   2. Campo en COLUMNAS (Column Field)
                 </label>
                 <select
                   value={reportConfig.pivotConfig.columnField}
                   onChange={(e) => handleUpdatePivotConfig('columnField', e.target.value)}
-                  className="w-full bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-md px-2.5 py-1.5 text-xs text-[#041050] dark:text-white font-medium focus:ring-2 focus:ring-[#00CFA7] focus:outline-none shadow-2xs"
+                  className="w-full bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-md px-2.5 py-1.5 text-xs text-[#0B0F19] dark:text-white font-medium focus:ring-2 focus:ring-[#21B6EA] focus:outline-none shadow-2xs"
                 >
                   <option value="lifecyclestage">lifecyclestage (Etapa del ciclo de vida)</option>
                   <option value="hs_lead_status">hs_lead_status (Estado del lead)</option>
@@ -2015,21 +2015,21 @@ runReports().catch(console.error);`;
                     type="text"
                     value={reportConfig.pivotConfig.columnFieldLabel || ''}
                     onChange={(e) => handleUpdatePivotConfig('columnFieldLabel', e.target.value)}
-                    className="w-full bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] text-[#041050] dark:text-white rounded px-2 py-1 text-xs focus:ring-2 focus:ring-[#00CFA7] focus:outline-none"
+                    className="w-full bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] text-[#0B0F19] dark:text-white rounded px-2 py-1 text-xs focus:ring-2 focus:ring-[#21B6EA] focus:outline-none"
                     placeholder="Ej. Etapa del ciclo de vida"
                   />
                 </div>
               </div>
 
               {/* Report Filter Field (A1:B1) */}
-              <div className="bg-[#F7F8FC] dark:bg-[#06155E] p-3.5 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] space-y-2.5">
-                <label className="block font-bold text-[#041050] dark:text-white">
+              <div className="bg-[#F8FAFC] dark:bg-[#0F172A] p-3.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] space-y-2.5">
+                <label className="block font-bold text-[#0B0F19] dark:text-white">
                   3. Campo de FILTRO (Celda A1:B1)
                 </label>
                 <select
                   value={reportConfig.pivotConfig.filterField || 'campana'}
                   onChange={(e) => handleFilterPropertyChange(e.target.value)}
-                  className="w-full bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-md px-2.5 py-1.5 text-xs text-[#041050] dark:text-white font-medium focus:ring-2 focus:ring-[#00CFA7] focus:outline-none shadow-2xs"
+                  className="w-full bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-md px-2.5 py-1.5 text-xs text-[#0B0F19] dark:text-white font-medium focus:ring-2 focus:ring-[#21B6EA] focus:outline-none shadow-2xs"
                 >
                   <optgroup label="Campos Principales">
                     <option value="campana">campana (Campaña)</option>
@@ -2060,7 +2060,7 @@ runReports().catch(console.error);`;
                     type="text"
                     value={reportConfig.pivotConfig.filterFieldLabel || ''}
                     onChange={(e) => handleUpdatePivotConfig('filterFieldLabel', e.target.value)}
-                    className="w-full bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded px-2 py-1 text-xs text-[#041050] dark:text-white font-medium focus:ring-2 focus:ring-[#00CFA7] focus:outline-none"
+                    className="w-full bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded px-2 py-1 text-xs text-[#0B0F19] dark:text-white font-medium focus:ring-2 focus:ring-[#21B6EA] focus:outline-none"
                     placeholder="Ej. Seleccionar Campaña"
                   />
                 </div>
@@ -2087,7 +2087,7 @@ runReports().catch(console.error);`;
                             }));
                           }
                         }}
-                        className="w-full bg-white dark:bg-[#020829] border border-[#00CFA7]/60 rounded px-2 py-1 text-xs text-[#041050] dark:text-white font-bold focus:ring-2 focus:ring-[#00CFA7] focus:outline-none shadow-2xs"
+                        className="w-full bg-white dark:bg-[#0B0F19] border border-[#21B6EA]/60 rounded px-2 py-1 text-xs text-[#0B0F19] dark:text-white font-bold focus:ring-2 focus:ring-[#21B6EA] focus:outline-none shadow-2xs"
                       >
                         {availableOptionsForCurrentField.map((opt) => (
                           <option key={opt} value={opt}>
@@ -2099,7 +2099,7 @@ runReports().catch(console.error);`;
                       <button
                         type="button"
                         onClick={() => setIsManualFilterInput(true)}
-                        className="p-1 text-slate-500 dark:text-slate-300 hover:text-[#041050] dark:hover:text-[#00CFA7] bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded transition-colors cursor-pointer shrink-0"
+                        className="p-1 text-slate-500 dark:text-slate-300 hover:text-[#0B0F19] dark:hover:text-[#21B6EA] bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded transition-colors cursor-pointer shrink-0"
                         title="Escribir texto manual libre"
                       >
                         <Pencil className="w-3 h-3" />
@@ -2121,12 +2121,12 @@ runReports().catch(console.error);`;
                           }));
                         }}
                         placeholder="Escribe el valor..."
-                        className="w-full bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded px-2 py-1 text-xs text-[#041050] dark:text-white focus:ring-2 focus:ring-[#00CFA7] focus:outline-none font-medium pr-12"
+                        className="w-full bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded px-2 py-1 text-xs text-[#0B0F19] dark:text-white focus:ring-2 focus:ring-[#21B6EA] focus:outline-none font-medium pr-12"
                       />
                       <button
                         type="button"
                         onClick={() => setIsManualFilterInput(false)}
-                        className="absolute right-1 text-[9px] text-[#041050] dark:text-[#00CFA7] bg-[#EEF1F9] dark:bg-[#0A1E7A] px-1 py-0.5 rounded font-bold cursor-pointer"
+                        className="absolute right-1 text-[9px] text-[#0369A1] dark:text-[#21B6EA] bg-[#E8F7FD] dark:bg-[#1E293B] px-1 py-0.5 rounded font-bold cursor-pointer"
                         title="Ver lista de opciones"
                       >
                         Lista
@@ -2137,17 +2137,17 @@ runReports().catch(console.error);`;
               </div>
 
               {/* Metric Aggregator Function */}
-              <div className="bg-[#F7F8FC] dark:bg-[#06155E] p-3.5 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] space-y-2.5">
-                <label className="block font-bold text-[#041050] dark:text-white flex items-center justify-between">
+              <div className="bg-[#F8FAFC] dark:bg-[#0F172A] p-3.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] space-y-2.5">
+                <label className="block font-bold text-[#0B0F19] dark:text-white flex items-center justify-between">
                   <span>4. Función Agregación</span>
-                  <span className="font-mono text-[10px] bg-[#E6FAF5] dark:bg-[#00CFA7]/15 text-[#007F66] dark:text-[#00CFA7] px-1.5 py-0.5 rounded font-bold">
+                  <span className="font-mono text-[10px] bg-[#E8F7FD] dark:bg-[#21B6EA]/15 text-[#0369A1] dark:text-[#21B6EA] px-1.5 py-0.5 rounded font-bold">
                     {reportConfig.pivotConfig.aggregator || 'COUNT'}
                   </span>
                 </label>
                 <select
                   value={reportConfig.pivotConfig.aggregator || 'COUNT'}
                   onChange={(e) => handleUpdatePivotConfig('aggregator', e.target.value)}
-                  className="w-full bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-md px-2.5 py-1.5 text-xs text-[#041050] dark:text-white font-bold focus:ring-2 focus:ring-[#00CFA7] focus:outline-none shadow-2xs"
+                  className="w-full bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-md px-2.5 py-1.5 text-xs text-[#0B0F19] dark:text-white font-bold focus:ring-2 focus:ring-[#21B6EA] focus:outline-none shadow-2xs"
                 >
                   <option value="COUNT">🔢 COUNT (Recuento)</option>
                   <option value="SUM">➕ SUM (Suma numérica)</option>
@@ -2169,14 +2169,14 @@ runReports().catch(console.error);`;
               </div>
 
               {/* Metric Field & Cell A2 */}
-              <div className="bg-[#F7F8FC] dark:bg-[#06155E] p-3.5 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] space-y-2.5">
-                <label className="block font-bold text-[#041050] dark:text-white">
+              <div className="bg-[#F8FAFC] dark:bg-[#0F172A] p-3.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] space-y-2.5">
+                <label className="block font-bold text-[#0B0F19] dark:text-white">
                   5. Campo Evaluar y Celda A2
                 </label>
                 <select
                   value={reportConfig.pivotConfig.metricField || 'hs_lead_status'}
                   onChange={(e) => handleUpdatePivotConfig('metricField', e.target.value)}
-                  className="w-full bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-md px-2.5 py-1.5 text-xs text-[#041050] dark:text-white font-medium focus:ring-2 focus:ring-[#00CFA7] focus:outline-none shadow-2xs"
+                  className="w-full bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-md px-2.5 py-1.5 text-xs text-[#0B0F19] dark:text-white font-medium focus:ring-2 focus:ring-[#21B6EA] focus:outline-none shadow-2xs"
                 >
                   <optgroup label="Campos Numéricos (Para SUM/AVG/MAX/MIN)">
                     <option value="num_notes">num_notes (Actividades de ventas)</option>
@@ -2208,59 +2208,59 @@ runReports().catch(console.error);`;
                     type="text"
                     value={reportConfig.pivotConfig.metricLabel}
                     onChange={(e) => handleUpdatePivotConfig('metricLabel', e.target.value)}
-                    className="w-full bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded px-2 py-1 text-xs font-semibold text-[#041050] dark:text-white shadow-2xs focus:ring-2 focus:ring-[#00CFA7] focus:outline-none"
+                    className="w-full bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded px-2 py-1 text-xs font-semibold text-[#0B0F19] dark:text-white shadow-2xs focus:ring-2 focus:ring-[#21B6EA] focus:outline-none"
                     placeholder="Ej. Cuenta de Estado del lead"
                   />
                 </div>
               </div>
             </div>
 
-            {/* Live Visual Preview of Sheet 1 Grid - ELITEC Prussian Blueprint */}
-            <div className="p-3 bg-[#020829] text-slate-200 rounded-lg text-xs font-mono border border-[#1B2F8A]">
+            {/* Live Visual Preview of Sheet 1 Grid - Promptia.lat Obsidian Blueprint */}
+            <div className="p-3 bg-[#0B0F19] text-slate-200 rounded-lg text-xs font-mono border border-[#334155]">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-[#00CFA7] font-semibold block">
+                <span className="text-[#21B6EA] font-semibold block">
                   Esquema generado para la Hoja 1 del Excel (.xlsx):
                 </span>
-                <span className="text-[10px] bg-[#041050] text-[#00CFA7] px-2 py-0.5 rounded font-mono font-bold border border-[#00CFA7]/40">
+                <span className="text-[10px] bg-[#1E293B] text-[#21B6EA] px-2 py-0.5 rounded font-mono font-bold border border-[#21B6EA]/40">
                   Agregador: {reportConfig.pivotConfig.aggregator || 'COUNT'}
                 </span>
               </div>
-              <div className="grid grid-cols-4 gap-1 text-[11px] text-center border border-[#1B2F8A] p-2 bg-[#041050] rounded">
-                <div className="bg-[#06155E] p-1.5 font-bold text-slate-200">
+              <div className="grid grid-cols-4 gap-1 text-[11px] text-center border border-[#334155] p-2 bg-[#0F172A] rounded">
+                <div className="bg-[#1E293B] p-1.5 font-bold text-slate-200">
                   A1: {reportConfig.pivotConfig.filterFieldLabel || 'Seleccionar Campaña'}
                 </div>
-                <div className="col-span-3 bg-[#06155E]/80 p-1.5 text-[#00CFA7] font-semibold">
+                <div className="col-span-3 bg-[#1E293B]/80 p-1.5 text-[#21B6EA] font-semibold">
                   B1: {filterValue || '(Varios elementos)'}
                 </div>
 
-                <div className="bg-[#06155E] p-1.5 font-bold text-slate-200">
+                <div className="bg-[#1E293B] p-1.5 font-bold text-slate-200">
                   A2: {reportConfig.pivotConfig.metricLabel} [{reportConfig.pivotConfig.aggregator || 'COUNT'}]
                 </div>
-                <div className="col-span-3 bg-[#0A1E7A] text-white p-1.5 font-bold">
+                <div className="col-span-3 bg-[#334155] text-white p-1.5 font-bold">
                   B2: Etiquetas de columna ({columnLabelDisplay})
                 </div>
 
-                <div className="bg-[#0A1E7A] text-white p-1.5 font-bold">
+                <div className="bg-[#334155] text-white p-1.5 font-bold">
                   A3: Etiquetas de fila ({rowLabelDisplay})
                 </div>
-                <div className="bg-[#020829] p-1.5 text-slate-300">Columna 1</div>
-                <div className="bg-[#020829] p-1.5 text-slate-300">Columna 2...</div>
-                <div className="bg-[#06155E] text-[#00CFA7] font-bold p-1.5">Total general ({reportConfig.pivotConfig.aggregator || 'COUNT'})</div>
+                <div className="bg-[#0B0F19] p-1.5 text-slate-300">Columna 1</div>
+                <div className="bg-[#0B0F19] p-1.5 text-slate-300">Columna 2...</div>
+                <div className="bg-[#1E293B] text-[#21B6EA] font-bold p-1.5">Total general ({reportConfig.pivotConfig.aggregator || 'COUNT'})</div>
 
-                <div className="bg-[#020829] p-1.5 text-slate-300">Fila 1 ({rowLabelDisplay})</div>
-                <div className="bg-[#020829]/70 p-1.5 text-slate-400">[{reportConfig.pivotConfig.aggregator || 'COUNT'}]</div>
-                <div className="bg-[#020829]/70 p-1.5 text-slate-400">[{reportConfig.pivotConfig.aggregator || 'COUNT'}]</div>
-                <div className="bg-[#06155E] text-white font-bold p-1.5">Total</div>
+                <div className="bg-[#0B0F19] p-1.5 text-slate-300">Fila 1 ({rowLabelDisplay})</div>
+                <div className="bg-[#0B0F19]/70 p-1.5 text-slate-400">[{reportConfig.pivotConfig.aggregator || 'COUNT'}]</div>
+                <div className="bg-[#0B0F19]/70 p-1.5 text-slate-400">[{reportConfig.pivotConfig.aggregator || 'COUNT'}]</div>
+                <div className="bg-[#1E293B] text-white font-bold p-1.5">Total</div>
               </div>
             </div>
           </div>
 
           {/* Section 2: Properties for Sheet 2 ("Contactos") */}
-          <div className="bg-white dark:bg-[#041050] border border-[#DCE1EB] dark:border-[#1B2F8A] rounded-xl p-5 shadow-2xs space-y-4">
-            <div className="border-b border-[#EEF1F9] dark:border-[#1B2F8A] pb-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div className="bg-white dark:bg-[#1E293B] border border-[#E2E8F0] dark:border-[#334155] rounded-xl p-5 shadow-2xs space-y-4">
+            <div className="border-b border-[#E2E8F0] dark:border-[#334155] pb-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
               <div>
-                <h5 className="text-sm font-bold text-[#041050] dark:text-white flex items-center gap-2">
-                  <Sliders className="w-4 h-4 text-[#007F66] dark:text-[#00CFA7]" />
+                <h5 className="text-sm font-bold text-[#0B0F19] dark:text-white flex items-center gap-2">
+                  <Sliders className="w-4 h-4 text-[#0369A1] dark:text-[#21B6EA]" />
                   2. Selección y Orden de Columnas para la Hoja 2 ("Contactos")
                 </h5>
                 <p className="text-xs text-slate-600 dark:text-slate-300 mt-0.5">
@@ -2272,7 +2272,7 @@ runReports().catch(console.error);`;
                 <button
                   type="button"
                   onClick={() => setShowAddCustomModal(true)}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#EEF1F9] dark:bg-[#0A1E7A] hover:bg-[#DCE1EB] dark:hover:bg-[#142D9E] text-[#041050] dark:text-[#00CFA7] rounded-lg text-xs font-bold transition-colors cursor-pointer border border-[#CBD5E1] dark:border-[#2C45B8] whitespace-nowrap shrink-0"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#E8F7FD] dark:bg-[#0F172A] hover:bg-[#D5EFFA] dark:hover:bg-[#334155] text-[#0369A1] dark:text-[#21B6EA] rounded-lg text-xs font-bold transition-colors cursor-pointer border border-[#BAE6FD] dark:border-[#475569] whitespace-nowrap shrink-0"
                 >
                   <Plus className="w-3.5 h-3.5" />
                   <span>Añadir Campo Personalizado</span>
@@ -2289,17 +2289,17 @@ runReports().catch(console.error);`;
                   value={propertyFilterKeyword}
                   onChange={(e) => setPropertyFilterKeyword(e.target.value)}
                   placeholder="Buscar propiedades por nombre o etiqueta (ej. carrera, telefono, whatsapp)..."
-                  className="w-full pl-9 pr-3 py-1.5 bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg text-xs text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7]"
+                  className="w-full pl-9 pr-3 py-1.5 bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg text-xs text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA]"
                 />
               </div>
 
               <div className="flex flex-wrap items-center gap-2">
-                <div className="flex items-center bg-[#F0F0F0] dark:bg-[#020829] p-0.5 rounded-lg text-xs border border-[#DCE1EB] dark:border-[#1B2F8A]">
+                <div className="flex items-center bg-[#F4F7FA] dark:bg-[#0B0F19] p-0.5 rounded-lg text-xs border border-[#E2E8F0] dark:border-[#334155]">
                   <button
                     type="button"
                     onClick={() => setPropertyFilterCategory('all')}
                     className={`px-2.5 py-1 rounded-md font-medium cursor-pointer ${
-                      propertyFilterCategory === 'all' ? 'bg-white dark:bg-[#06155E] text-[#041050] dark:text-white shadow-2xs font-bold' : 'text-slate-600 dark:text-slate-300'
+                      propertyFilterCategory === 'all' ? 'bg-white dark:bg-[#1E293B] text-[#0B0F19] dark:text-white shadow-2xs font-bold' : 'text-slate-600 dark:text-slate-300'
                     }`}
                   >
                     Todas ({reportConfig.selectedProperties.length})
@@ -2308,7 +2308,7 @@ runReports().catch(console.error);`;
                     type="button"
                     onClick={() => setPropertyFilterCategory('selected')}
                     className={`px-2.5 py-1 rounded-md font-medium cursor-pointer ${
-                      propertyFilterCategory === 'selected' ? 'bg-white dark:bg-[#06155E] text-[#007F66] dark:text-[#00CFA7] shadow-2xs font-bold' : 'text-slate-600 dark:text-slate-300'
+                      propertyFilterCategory === 'selected' ? 'bg-white dark:bg-[#1E293B] text-[#0369A1] dark:text-[#21B6EA] shadow-2xs font-bold' : 'text-slate-600 dark:text-slate-300'
                     }`}
                   >
                     Activas ({enabledCount})
@@ -2317,7 +2317,7 @@ runReports().catch(console.error);`;
                     type="button"
                     onClick={() => setPropertyFilterCategory('standard')}
                     className={`px-2.5 py-1 rounded-md font-medium cursor-pointer ${
-                      propertyFilterCategory === 'standard' ? 'bg-white dark:bg-[#06155E] text-[#041050] dark:text-white shadow-2xs font-bold' : 'text-slate-600 dark:text-slate-300'
+                      propertyFilterCategory === 'standard' ? 'bg-white dark:bg-[#1E293B] text-[#0B0F19] dark:text-white shadow-2xs font-bold' : 'text-slate-600 dark:text-slate-300'
                     }`}
                   >
                     Estándar
@@ -2326,7 +2326,7 @@ runReports().catch(console.error);`;
                     type="button"
                     onClick={() => setPropertyFilterCategory('custom')}
                     className={`px-2.5 py-1 rounded-md font-medium cursor-pointer ${
-                      propertyFilterCategory === 'custom' ? 'bg-white dark:bg-[#06155E] text-[#041050] dark:text-white shadow-2xs font-bold' : 'text-slate-600 dark:text-slate-300'
+                      propertyFilterCategory === 'custom' ? 'bg-white dark:bg-[#1E293B] text-[#0B0F19] dark:text-white shadow-2xs font-bold' : 'text-slate-600 dark:text-slate-300'
                     }`}
                   >
                     Personalizadas
@@ -2336,7 +2336,7 @@ runReports().catch(console.error);`;
                 <button
                   type="button"
                   onClick={() => handleSelectAllProperties(true)}
-                  className="text-[11px] text-[#041050] dark:text-[#00CFA7] hover:underline font-semibold cursor-pointer px-1"
+                  className="text-[11px] text-[#0369A1] dark:text-[#21B6EA] hover:underline font-semibold cursor-pointer px-1"
                 >
                   Marcar todas
                 </button>
@@ -2351,9 +2351,9 @@ runReports().catch(console.error);`;
             </div>
 
             {/* Properties Table List */}
-            <div className="border border-[#DCE1EB] dark:border-[#1B2F8A] rounded-lg overflow-hidden max-h-[460px] overflow-y-auto">
+            <div className="border border-[#E2E8F0] dark:border-[#334155] rounded-lg overflow-hidden max-h-[460px] overflow-y-auto">
               <table className="w-full text-left text-xs border-collapse">
-                <thead className="bg-[#F7F8FC] dark:bg-[#06155E] border-b border-[#DCE1EB] dark:border-[#1B2F8A] text-[#041050] dark:text-slate-200 font-semibold sticky top-0 z-10">
+                <thead className="bg-[#F8FAFC] dark:bg-[#0F172A] border-b border-[#E2E8F0] dark:border-[#334155] text-[#0B0F19] dark:text-slate-200 font-semibold sticky top-0 z-10">
                   <tr>
                     <th className="py-2.5 px-3 w-12 text-center">Incluir</th>
                     <th className="py-2.5 px-3 w-16 text-center">Orden</th>
@@ -2363,7 +2363,7 @@ runReports().catch(console.error);`;
                     <th className="py-2.5 px-3 w-14 text-center">Acción</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#EEF1F9] dark:divide-[#1B2F8A] bg-white dark:bg-[#041050]">
+                <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#334155] bg-white dark:bg-[#1E293B]">
                   {filteredProperties.length === 0 ? (
                     <tr>
                       <td colSpan={6} className="py-8 text-center text-slate-500 dark:text-slate-400 text-xs">
@@ -2378,8 +2378,8 @@ runReports().catch(console.error);`;
                       return (
                         <tr
                           key={prop.name}
-                          className={`hover:bg-[#F7F8FC] dark:hover:bg-[#06155E] transition-colors ${
-                            prop.enabled ? 'bg-[#EEF1F9]/35 dark:bg-[#06155E]/40' : 'opacity-65'
+                          className={`hover:bg-[#F8FAFC] dark:hover:bg-[#0F172A] transition-colors ${
+                            prop.enabled ? 'bg-[#EBF8FD]/35 dark:bg-[#0F172A]/40' : 'opacity-65'
                           }`}
                         >
                           {/* Checkbox */}
@@ -2388,7 +2388,7 @@ runReports().catch(console.error);`;
                               type="checkbox"
                               checked={Boolean(prop.enabled)}
                               onChange={() => handleToggleProperty(prop.name)}
-                              className="w-4 h-4 accent-[#041050] dark:accent-[#00CFA7] rounded border-[#CBD5E1] cursor-pointer"
+                              className="w-4 h-4 accent-[#0B0F19] dark:accent-[#21B6EA] rounded border-[#CBD5E1] cursor-pointer"
                             />
                           </td>
 
@@ -2400,7 +2400,7 @@ runReports().catch(console.error);`;
                                   type="button"
                                   disabled={selectedIndex === 0}
                                   onClick={() => handleMoveProperty(selectedIndex, 'up')}
-                                  className="p-1 text-slate-500 dark:text-slate-300 hover:text-[#041050] dark:hover:text-[#00CFA7] disabled:opacity-20 cursor-pointer"
+                                  className="p-1 text-slate-500 dark:text-slate-300 hover:text-[#0B0F19] dark:hover:text-[#21B6EA] disabled:opacity-20 cursor-pointer"
                                   title="Subir columna"
                                 >
                                   <ArrowUp className="w-3.5 h-3.5" />
@@ -2409,7 +2409,7 @@ runReports().catch(console.error);`;
                                   type="button"
                                   disabled={selectedIndex === reportConfig.selectedProperties.length - 1}
                                   onClick={() => handleMoveProperty(selectedIndex, 'down')}
-                                  className="p-1 text-slate-500 dark:text-slate-300 hover:text-[#041050] dark:hover:text-[#00CFA7] disabled:opacity-20 cursor-pointer"
+                                  className="p-1 text-slate-500 dark:text-slate-300 hover:text-[#0B0F19] dark:hover:text-[#21B6EA] disabled:opacity-20 cursor-pointer"
                                   title="Bajar columna"
                                 >
                                   <ArrowDown className="w-3.5 h-3.5" />
@@ -2423,7 +2423,7 @@ runReports().catch(console.error);`;
                           {/* Internal HubSpot Property Name */}
                           <td className="py-2 px-3">
                             <div className="flex items-center gap-2">
-                              <code className="font-mono text-xs text-[#041050] dark:text-[#00CFA7] bg-[#EEF1F9] dark:bg-[#020829] px-1.5 py-0.5 rounded font-bold">
+                              <code className="font-mono text-xs text-[#0369A1] dark:text-[#21B6EA] bg-[#E8F7FD] dark:bg-[#0B0F19] px-1.5 py-0.5 rounded font-bold">
                                 {prop.name}
                               </code>
                               {prop.isCustom ? (
@@ -2431,7 +2431,7 @@ runReports().catch(console.error);`;
                                   Personalizado
                                 </span>
                               ) : (
-                                <span className="text-[10px] font-semibold bg-[#F7F8FC] dark:bg-[#06155E] text-slate-600 dark:text-slate-300 px-1.5 py-0.2 rounded border border-[#DCE1EB] dark:border-[#1B2F8A]">
+                                <span className="text-[10px] font-semibold bg-[#F8FAFC] dark:bg-[#0F172A] text-slate-600 dark:text-slate-300 px-1.5 py-0.2 rounded border border-[#E2E8F0] dark:border-[#334155]">
                                   Estándar
                                 </span>
                               )}
@@ -2445,7 +2445,7 @@ runReports().catch(console.error);`;
                               value={prop.label}
                               onChange={(e) => handleEditPropertyLabel(prop.name, e.target.value)}
                               placeholder="Nombre de columna en Excel"
-                              className="w-full bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded px-2.5 py-1 text-xs text-[#041050] dark:text-white font-medium focus:bg-white dark:focus:bg-[#06155E] focus:border-[#00CFA7] focus:outline-none"
+                              className="w-full bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded px-2.5 py-1 text-xs text-[#0B0F19] dark:text-white font-medium focus:bg-white dark:focus:bg-[#0F172A] focus:border-[#21B6EA] focus:outline-none"
                             />
                           </td>
 
@@ -2477,7 +2477,7 @@ runReports().catch(console.error);`;
 
             <div className="text-[11px] text-slate-600 dark:text-slate-300 flex items-center justify-between">
               <span>
-                Total de columnas habilitadas para la Hoja 2: <strong className="text-[#041050] dark:text-[#00CFA7] tabular-nums">{enabledCount} columnas</strong>.
+                Total de columnas habilitadas para la Hoja 2: <strong className="text-[#0B0F19] dark:text-[#21B6EA] tabular-nums">{enabledCount} columnas</strong>.
               </span>
               <span>
                 Se exportarán exactamente en el orden mostrado arriba.
@@ -2487,16 +2487,16 @@ runReports().catch(console.error);`;
 
           {/* Modal / Dialog to add custom property */}
           {showAddCustomModal && (
-            <div className="p-4 bg-[#EEF1F9] dark:bg-[#06155E] border border-[#CBD5E1] dark:border-[#1B2F8A] rounded-xl space-y-3 text-xs">
-              <div className="flex items-center justify-between border-b border-[#DCE1EB] dark:border-[#1B2F8A] pb-2">
-                <span className="font-bold text-[#041050] dark:text-white flex items-center gap-1.5">
-                  <Plus className="w-4 h-4 text-[#007F66] dark:text-[#00CFA7]" />
+            <div className="p-4 bg-[#EBF8FD] dark:bg-[#0F172A] border border-[#BAE6FD] dark:border-[#334155] rounded-xl space-y-3 text-xs">
+              <div className="flex items-center justify-between border-b border-[#BAE6FD] dark:border-[#334155] pb-2">
+                <span className="font-bold text-[#0B0F19] dark:text-white flex items-center gap-1.5">
+                  <Plus className="w-4 h-4 text-[#0369A1] dark:text-[#21B6EA]" />
                   Añadir Propiedad Personalizada de tu Portal de HubSpot CRM
                 </span>
                 <button
                   type="button"
                   onClick={() => setShowAddCustomModal(false)}
-                  className="text-slate-600 dark:text-slate-300 hover:text-[#041050] dark:hover:text-white text-sm font-bold cursor-pointer"
+                  className="text-slate-600 dark:text-slate-300 hover:text-[#0B0F19] dark:hover:text-white text-sm font-bold cursor-pointer"
                 >
                   ×
                 </button>
@@ -2504,7 +2504,7 @@ runReports().catch(console.error);`;
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-[11px] font-bold text-[#041050] dark:text-slate-200 mb-1">
+                  <label className="block text-[11px] font-bold text-[#0B0F19] dark:text-slate-200 mb-1">
                     Nombre Interno de la Propiedad en HubSpot CRM:
                   </label>
                   <input
@@ -2512,7 +2512,7 @@ runReports().catch(console.error);`;
                     value={newCustomPropName}
                     onChange={(e) => setNewCustomPropName(e.target.value)}
                     placeholder="ej. carrera_de_interes, sede_matricula"
-                    className="w-full bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded px-2.5 py-1.5 text-xs text-[#041050] dark:text-white font-mono focus:ring-2 focus:ring-[#00CFA7] focus:outline-none"
+                    className="w-full bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded px-2.5 py-1.5 text-xs text-[#0B0F19] dark:text-white font-mono focus:ring-2 focus:ring-[#21B6EA] focus:outline-none"
                   />
                   <span className="text-[10px] text-slate-600 dark:text-slate-300 mt-0.5 block">
                     El identificador exacto de HubSpot (API internal name)
@@ -2520,7 +2520,7 @@ runReports().catch(console.error);`;
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-bold text-[#041050] dark:text-slate-200 mb-1">
+                  <label className="block text-[11px] font-bold text-[#0B0F19] dark:text-slate-200 mb-1">
                     Encabezado para el Archivo Excel:
                   </label>
                   <input
@@ -2528,7 +2528,7 @@ runReports().catch(console.error);`;
                     value={newCustomPropLabel}
                     onChange={(e) => setNewCustomPropLabel(e.target.value)}
                     placeholder="ej. Carrera de Interés"
-                    className="w-full bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded px-2.5 py-1.5 text-xs text-[#041050] dark:text-white focus:ring-2 focus:ring-[#00CFA7] focus:outline-none"
+                    className="w-full bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded px-2.5 py-1.5 text-xs text-[#0B0F19] dark:text-white focus:ring-2 focus:ring-[#21B6EA] focus:outline-none"
                   />
                   <span className="text-[10px] text-slate-600 dark:text-slate-300 mt-0.5 block">
                     El título que aparecerá en la fila 1 de la Hoja 2
@@ -2536,13 +2536,13 @@ runReports().catch(console.error);`;
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-bold text-[#041050] dark:text-slate-200 mb-1">
+                  <label className="block text-[11px] font-bold text-[#0B0F19] dark:text-slate-200 mb-1">
                     Tipo de Campo:
                   </label>
                   <select
                     value={newCustomPropType}
                     onChange={(e) => setNewCustomPropType(e.target.value)}
-                    className="w-full bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded px-2.5 py-1.5 text-xs text-[#041050] dark:text-white focus:ring-2 focus:ring-[#00CFA7] focus:outline-none"
+                    className="w-full bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded px-2.5 py-1.5 text-xs text-[#0B0F19] dark:text-white focus:ring-2 focus:ring-[#21B6EA] focus:outline-none"
                   >
                     <option value="string">Texto / Cadena</option>
                     <option value="number">Número</option>
@@ -2557,7 +2557,7 @@ runReports().catch(console.error);`;
                 <button
                   type="button"
                   onClick={() => setShowAddCustomModal(false)}
-                  className="px-3 py-1.5 border border-[#CBD5E1] dark:border-[#1E3599] bg-white dark:bg-[#041050] rounded text-[#041050] dark:text-slate-200 font-medium cursor-pointer"
+                  className="px-3 py-1.5 border border-[#CBD5E1] dark:border-[#475569] bg-white dark:bg-[#1E293B] rounded text-[#0B0F19] dark:text-slate-200 font-medium cursor-pointer"
                 >
                   Cancelar
                 </button>
@@ -2565,7 +2565,7 @@ runReports().catch(console.error);`;
                   type="button"
                   onClick={handleAddCustomProperty}
                   disabled={!newCustomPropName.trim()}
-                  className="px-4 py-1.5 bg-[#041050] hover:bg-[#081C7A] text-white dark:bg-[#00CFA7] dark:hover:bg-[#00B894] dark:text-[#041050] rounded font-bold disabled:opacity-40 cursor-pointer"
+                  className="px-4 py-1.5 bg-[#0B0F19] hover:bg-[#1E293B] text-white dark:bg-[#21B6EA] dark:hover:bg-[#38C4F3] dark:text-[#0B0F19] rounded font-bold disabled:opacity-40 cursor-pointer"
                 >
                   Guardar Propiedad
                 </button>
@@ -2574,14 +2574,14 @@ runReports().catch(console.error);`;
           )}
 
           {/* Section 3: Filtros de Búsqueda, Segmentación y Propiedades CRM */}
-          <div className="bg-white dark:bg-[#041050] border border-[#DCE1EB] dark:border-[#1B2F8A] rounded-xl p-5 shadow-2xs space-y-4">
-            <div className="border-b border-[#EEF1F9] dark:border-[#1B2F8A] pb-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div className="bg-white dark:bg-[#1E293B] border border-[#E2E8F0] dark:border-[#334155] rounded-xl p-5 shadow-2xs space-y-4">
+            <div className="border-b border-[#E2E8F0] dark:border-[#334155] pb-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
               <div className="flex flex-wrap items-center gap-2">
-                <Filter className="w-4 h-4 text-[#007F66] dark:text-[#00CFA7]" />
-                <h5 className="text-sm font-bold text-[#041050] dark:text-white uppercase tracking-wide">
+                <Filter className="w-4 h-4 text-[#0369A1] dark:text-[#21B6EA]" />
+                <h5 className="text-sm font-bold text-[#0B0F19] dark:text-white uppercase tracking-wide">
                   3. Filtros Predefinidos de Búsqueda, Segmentación y Propiedades CRM
                 </h5>
-                <span className="text-[11px] bg-[#EEF1F9] dark:bg-[#0A1E7A] text-[#041050] dark:text-[#00CFA7] border border-[#CBD5E1] dark:border-[#2C45B8] px-2 py-0.5 rounded-full font-bold tabular-nums">
+                <span className="text-[11px] bg-[#E8F7FD] dark:bg-[#0F172A] text-[#0369A1] dark:text-[#21B6EA] border border-[#BAE6FD] dark:border-[#475569] px-2 py-0.5 rounded-full font-bold tabular-nums">
                   {activeFiltersCount} Activo{activeFiltersCount !== 1 ? 's' : ''}
                 </span>
               </div>
@@ -2590,7 +2590,7 @@ runReports().catch(console.error);`;
                 <button
                   type="button"
                   onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
-                  className="text-xs font-semibold text-[#041050] dark:text-[#00CFA7] hover:underline flex items-center gap-1 transition-colors cursor-pointer"
+                  className="text-xs font-semibold text-[#0369A1] dark:text-[#21B6EA] hover:underline flex items-center gap-1 transition-colors cursor-pointer"
                 >
                   <SlidersHorizontal className="w-3.5 h-3.5" />
                   {showAdvancedFilters ? 'Ocultar Filtros Secundarios' : 'Mostrar Todos los Filtros'}
@@ -2599,7 +2599,7 @@ runReports().catch(console.error);`;
                 <button
                   type="button"
                   onClick={handleResetFiltersToAll}
-                  className="text-xs font-medium text-slate-600 dark:text-slate-300 hover:text-[#041050] dark:hover:text-white flex items-center gap-1.5 transition-colors cursor-pointer"
+                  className="text-xs font-medium text-slate-600 dark:text-slate-300 hover:text-[#0B0F19] dark:hover:text-white flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <RefreshCw className="w-3 h-3" />
                   Restablecer Filtros
@@ -2615,14 +2615,14 @@ runReports().catch(console.error);`;
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 pt-1">
               {/* Asesor Asignado */}
               <div>
-                <label className="block text-xs font-semibold text-[#041050] dark:text-slate-200 mb-1.5 flex items-center gap-1">
-                  <UserCheck className="w-3.5 h-3.5 text-[#007F66] dark:text-[#00CFA7]" />
+                <label className="block text-xs font-semibold text-[#0B0F19] dark:text-slate-200 mb-1.5 flex items-center gap-1">
+                  <UserCheck className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#21B6EA]" />
                   Asesor Asignado
                 </label>
                 <select
                   value={reportConfig.filters?.ownerId || 'ALL'}
                   onChange={(e) => handleUpdateFilterCriterion('ownerId', e.target.value)}
-                  className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-2.5 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7] font-medium"
+                  className="w-full text-xs bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-2.5 py-2 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA] font-medium"
                 >
                   <option value="ALL">Todos los Asesores</option>
                   <option value="__UNASSIGNED__">⚠️ Sin Asesor (Cartera Libre)</option>
@@ -2636,13 +2636,13 @@ runReports().catch(console.error);`;
 
               {/* Estado del Lead */}
               <div>
-                <label className="block text-xs font-semibold text-[#041050] dark:text-slate-200 mb-1.5">
+                <label className="block text-xs font-semibold text-[#0B0F19] dark:text-slate-200 mb-1.5">
                   Estado del Lead (`hs_lead_status`)
                 </label>
                 <select
                   value={reportConfig.filters?.leadStatus || 'ALL'}
                   onChange={(e) => handleUpdateFilterCriterion('leadStatus', e.target.value)}
-                  className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-2.5 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7] font-medium"
+                  className="w-full text-xs bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-2.5 py-2 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA] font-medium"
                 >
                   <option value="ALL">Todos los Estados</option>
                   {LEAD_STATUS_OPTIONS.map((opt) => (
@@ -2655,13 +2655,13 @@ runReports().catch(console.error);`;
 
               {/* Etapa del Ciclo de Vida */}
               <div>
-                <label className="block text-xs font-semibold text-[#041050] dark:text-slate-200 mb-1.5">
+                <label className="block text-xs font-semibold text-[#0B0F19] dark:text-slate-200 mb-1.5">
                   Etapa del Ciclo (`lifecyclestage`)
                 </label>
                 <select
                   value={reportConfig.filters?.lifecycleStage || 'ALL'}
                   onChange={(e) => handleUpdateFilterCriterion('lifecycleStage', e.target.value)}
-                  className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-2.5 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7] font-medium"
+                  className="w-full text-xs bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-2.5 py-2 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA] font-medium"
                 >
                   <option value="ALL">Todas las Etapas</option>
                   {LIFECYCLE_OPTIONS.map((opt) => (
@@ -2674,8 +2674,8 @@ runReports().catch(console.error);`;
 
               {/* Período de Creación */}
               <div>
-                <label className="block text-xs font-semibold text-[#041050] dark:text-slate-200 mb-1.5 flex items-center gap-1">
-                  <Calendar className="w-3.5 h-3.5 text-[#007F66] dark:text-[#00CFA7]" />
+                <label className="block text-xs font-semibold text-[#0B0F19] dark:text-slate-200 mb-1.5 flex items-center gap-1">
+                  <Calendar className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#21B6EA]" />
                   Período de Creación
                 </label>
                 <select
@@ -2685,7 +2685,7 @@ runReports().catch(console.error);`;
                     setDateRange(val);
                     handleUpdateFilterCriterion('dateRange', val);
                   }}
-                  className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-2.5 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7] font-medium"
+                  className="w-full text-xs bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-2.5 py-2 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA] font-medium"
                 >
                   <option value="last_365d">📅 Último año (365 días) [Por defecto]</option>
                   <option value="ALL">🌟 Todo el histórico disponible</option>
@@ -2701,14 +2701,14 @@ runReports().catch(console.error);`;
 
               {/* Canal / Fuente */}
               <div>
-                <label className="block text-xs font-semibold text-[#041050] dark:text-slate-200 mb-1.5 flex items-center gap-1">
-                  <Globe className="w-3.5 h-3.5 text-[#007F66] dark:text-[#00CFA7]" />
+                <label className="block text-xs font-semibold text-[#0B0F19] dark:text-slate-200 mb-1.5 flex items-center gap-1">
+                  <Globe className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#21B6EA]" />
                   Canal / Fuente (`fuente`)
                 </label>
                 <select
                   value={reportConfig.filters?.source || 'ALL'}
                   onChange={(e) => handleUpdateFilterCriterion('source', e.target.value)}
-                  className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-2.5 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7] font-medium"
+                  className="w-full text-xs bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-2.5 py-2 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA] font-medium"
                 >
                   <option value="ALL">Todos los Canales</option>
                   {(getOptionsForProperty('fuente').length > 0 ? getOptionsForProperty('fuente') : SOURCE_OPTIONS).map(
@@ -2724,9 +2724,9 @@ runReports().catch(console.error);`;
 
             {/* Inline Custom Date Picker when 'custom' is active */}
             {dateRange === 'custom' && (
-              <div className="p-3 bg-[#EEF1F9] dark:bg-[#06155E] border border-[#CBD5E1] dark:border-[#1B2F8A] rounded-lg grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-xs">
+              <div className="p-3 bg-[#EBF8FD] dark:bg-[#0F172A] border border-[#BAE6FD] dark:border-[#334155] rounded-lg grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-xs">
                 <div>
-                  <label className="block text-[#041050] dark:text-slate-200 font-semibold mb-1">Fecha Inicio (Desde):</label>
+                  <label className="block text-[#0B0F19] dark:text-slate-200 font-semibold mb-1">Fecha Inicio (Desde):</label>
                   <input
                     type="date"
                     value={startDate}
@@ -2735,11 +2735,11 @@ runReports().catch(console.error);`;
                       setStartDate(val);
                       handleUpdateFilterCriterion('startDate', val);
                     }}
-                    className="w-full bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded px-2.5 py-1.5 text-xs text-[#041050] dark:text-white font-medium"
+                    className="w-full bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded px-2.5 py-1.5 text-xs text-[#0B0F19] dark:text-white font-medium"
                   />
                 </div>
                 <div>
-                  <label className="block text-[#041050] dark:text-slate-200 font-semibold mb-1">Fecha Fin (Hasta):</label>
+                  <label className="block text-[#0B0F19] dark:text-slate-200 font-semibold mb-1">Fecha Fin (Hasta):</label>
                   <input
                     type="date"
                     value={endDate}
@@ -2748,14 +2748,14 @@ runReports().catch(console.error);`;
                       setEndDate(val);
                       handleUpdateFilterCriterion('endDate', val);
                     }}
-                    className="w-full bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded px-2.5 py-1.5 text-xs text-[#041050] dark:text-white font-medium"
+                    className="w-full bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded px-2.5 py-1.5 text-xs text-[#0B0F19] dark:text-white font-medium"
                   />
                 </div>
                 <div className="flex items-end">
-                  <div className="w-full p-2 bg-white dark:bg-[#041050] border border-[#DCE1EB] dark:border-[#1B2F8A] rounded text-[11px] text-slate-600 dark:text-slate-300">
+                  <div className="w-full p-2 bg-white dark:bg-[#1E293B] border border-[#E2E8F0] dark:border-[#334155] rounded text-[11px] text-slate-600 dark:text-slate-300">
                     Rango activo:{' '}
-                    <strong className="text-[#041050] dark:text-[#00CFA7] font-semibold">{startDate || '...'}</strong> al{' '}
-                    <strong className="text-[#041050] dark:text-[#00CFA7] font-semibold">{endDate || '...'}</strong>
+                    <strong className="text-[#0369A1] dark:text-[#21B6EA] font-semibold">{startDate || '...'}</strong> al{' '}
+                    <strong className="text-[#0369A1] dark:text-[#21B6EA] font-semibold">{endDate || '...'}</strong>
                   </div>
                 </div>
               </div>
@@ -2763,10 +2763,10 @@ runReports().catch(console.error);`;
 
             {/* Secondary / Advanced Filters Row */}
             {showAdvancedFilters && (
-              <div className="pt-3 border-t border-[#EEF1F9] dark:border-[#1B2F8A] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 animate-in fade-in duration-150">
+              <div className="pt-3 border-t border-[#E2E8F0] dark:border-[#334155] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 animate-in fade-in duration-150">
                 {/* Campaña UTM / CRM */}
                 <div>
-                  <label className="block text-xs font-semibold text-[#041050] dark:text-slate-200 mb-1.5">
+                  <label className="block text-xs font-semibold text-[#0B0F19] dark:text-slate-200 mb-1.5">
                     Campaña (`utm_campaign`)
                   </label>
                   <select
@@ -2778,7 +2778,7 @@ runReports().catch(console.error);`;
                       setFilterValue(val);
                       setCampaign(val);
                     }}
-                    className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-2.5 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7] font-medium"
+                    className="w-full text-xs bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-2.5 py-2 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA] font-medium"
                   >
                     <option value="ALL">Todas las Campañas</option>
                     {getOptionsForProperty('campana').map((camp) => (
@@ -2791,14 +2791,14 @@ runReports().catch(console.error);`;
 
                 {/* Inactividad & SLA */}
                 <div>
-                  <label className="block text-xs font-semibold text-[#041050] dark:text-slate-200 mb-1.5 flex items-center gap-1">
+                  <label className="block text-xs font-semibold text-[#0B0F19] dark:text-slate-200 mb-1.5 flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
                     Inactividad &amp; SLA
                   </label>
                   <select
                     value={reportConfig.filters?.inactivityRange || 'ALL'}
                     onChange={(e) => handleUpdateFilterCriterion('inactivityRange', e.target.value)}
-                    className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-2.5 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7] font-medium"
+                    className="w-full text-xs bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-2.5 py-2 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA] font-medium"
                   >
                     <option value="ALL">Cualquier Inactividad</option>
                     <option value="overdue_24h">🚨 SLA Vencido (&gt; 24h sin contacto)</option>
@@ -2810,7 +2810,7 @@ runReports().catch(console.error);`;
 
                 {/* Ciudad / Región */}
                 <div>
-                  <label className="block text-xs font-semibold text-[#041050] dark:text-slate-200 mb-1.5 flex items-center gap-1">
+                  <label className="block text-xs font-semibold text-[#0B0F19] dark:text-slate-200 mb-1.5 flex items-center gap-1">
                     <Building2 className="w-3.5 h-3.5 text-slate-500 dark:text-slate-300" />
                     Ciudad / Región (`city`)
                   </label>
@@ -2840,7 +2840,7 @@ runReports().catch(console.error);`;
                         ]);
                       }
                     }}
-                    className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-2.5 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7] font-medium"
+                    className="w-full text-xs bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-2.5 py-2 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA] font-medium"
                   >
                     <option value="ALL">Todas las Ciudades</option>
                     {getOptionsForProperty('city').map((c) => (
@@ -2853,14 +2853,14 @@ runReports().catch(console.error);`;
 
                 {/* Industria / Sector */}
                 <div>
-                  <label className="block text-xs font-semibold text-[#041050] dark:text-slate-200 mb-1.5 flex items-center gap-1">
+                  <label className="block text-xs font-semibold text-[#0B0F19] dark:text-slate-200 mb-1.5 flex items-center gap-1">
                     <Building2 className="w-3.5 h-3.5 text-slate-500 dark:text-slate-300" />
                     Industria / Sector
                   </label>
                   <select
                     value={reportConfig.filters?.industry || 'ALL'}
                     onChange={(e) => handleUpdateFilterCriterion('industry', e.target.value)}
-                    className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-2.5 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7] font-medium"
+                    className="w-full text-xs bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-2.5 py-2 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA] font-medium"
                   >
                     <option value="ALL">Todas las Industrias</option>
                     {INDUSTRY_OPTIONS.map((ind) => (
@@ -2874,12 +2874,12 @@ runReports().catch(console.error);`;
             )}
 
             {/* Custom Property Rules Subsection */}
-            <div className="pt-4 border-t border-[#EEF1F9] dark:border-[#1B2F8A] space-y-3">
+            <div className="pt-4 border-t border-[#E2E8F0] dark:border-[#334155] space-y-3">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div>
-                  <h6 className="text-xs font-bold text-[#041050] dark:text-white flex items-center gap-1.5">
+                  <h6 className="text-xs font-bold text-[#0B0F19] dark:text-white flex items-center gap-1.5">
                     <span>Reglas Adicionales por Propiedades Personalizadas y Campos Específicos</span>
-                    <span className="bg-[#EEF1F9] dark:bg-[#0A1E7A] text-[#041050] dark:text-[#00CFA7] px-1.5 py-0.2 rounded-full font-mono text-[10px] font-bold tabular-nums">
+                    <span className="bg-[#E8F7FD] dark:bg-[#0F172A] text-[#0369A1] dark:text-[#21B6EA] px-1.5 py-0.2 rounded-full font-mono text-[10px] font-bold tabular-nums">
                       {(reportConfig.filters?.customFilters || []).length}
                     </span>
                   </h6>
@@ -2891,7 +2891,7 @@ runReports().catch(console.error);`;
                 <button
                   type="button"
                   onClick={handleAddCustomFilter}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#EEF1F9] dark:bg-[#0A1E7A] hover:bg-[#DCE1EB] dark:hover:bg-[#142D9E] text-[#041050] dark:text-[#00CFA7] rounded-lg text-xs font-bold transition-colors cursor-pointer border border-[#CBD5E1] dark:border-[#2C45B8] shrink-0"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#E8F7FD] dark:bg-[#0F172A] hover:bg-[#D5EFFA] dark:hover:bg-[#334155] text-[#0369A1] dark:text-[#21B6EA] rounded-lg text-xs font-bold transition-colors cursor-pointer border border-[#BAE6FD] dark:border-[#475569] shrink-0"
                 >
                   <Plus className="w-3.5 h-3.5" />
                   <span>Añadir Regla de Filtro</span>
@@ -2900,12 +2900,12 @@ runReports().catch(console.error);`;
 
               {/* List of rules */}
               {(reportConfig.filters?.customFilters || []).length === 0 ? (
-                <div className="p-4 bg-[#F7F8FC] dark:bg-[#06155E] border border-dashed border-[#CBD5E1] dark:border-[#1E3599] rounded-lg text-center text-xs text-slate-600 dark:text-slate-300">
+                <div className="p-4 bg-[#F8FAFC] dark:bg-[#0F172A] border border-dashed border-[#CBD5E1] dark:border-[#475569] rounded-lg text-center text-xs text-slate-600 dark:text-slate-300">
                   <p className="mb-2">No hay reglas de filtros personalizadas adicionales.</p>
                   <button
                     type="button"
                     onClick={handleAddCustomFilter}
-                    className="inline-flex items-center gap-1 px-3 py-1 bg-white dark:bg-[#041050] border border-[#CBD5E1] dark:border-[#2C45B8] text-[#041050] dark:text-[#00CFA7] hover:bg-[#EEF1F9] dark:hover:bg-[#0A1E7A] rounded-md text-xs font-semibold cursor-pointer"
+                    className="inline-flex items-center gap-1 px-3 py-1 bg-white dark:bg-[#1E293B] border border-[#CBD5E1] dark:border-[#475569] text-[#0369A1] dark:text-[#21B6EA] hover:bg-[#E8F7FD] dark:hover:bg-[#334155] rounded-md text-xs font-semibold cursor-pointer"
                   >
                     <Plus className="w-3.5 h-3.5" />
                     <span>Crear regla de filtro por propiedad</span>
@@ -2921,7 +2921,7 @@ runReports().catch(console.error);`;
                     return (
                       <div
                         key={rule.id || `tab2_filter_${idx}`}
-                        className="p-3 bg-[#F7F8FC] dark:bg-[#06155E] border border-[#DCE1EB] dark:border-[#1B2F8A] rounded-lg grid grid-cols-1 md:grid-cols-12 gap-3 items-center text-xs"
+                        className="p-3 bg-[#F8FAFC] dark:bg-[#0F172A] border border-[#E2E8F0] dark:border-[#334155] rounded-lg grid grid-cols-1 md:grid-cols-12 gap-3 items-center text-xs"
                       >
                         {/* Property selection */}
                         <div className="md:col-span-4">
@@ -2938,7 +2938,7 @@ runReports().catch(console.error);`;
                                 handleUpdateCustomFilter(rule.id || '', 'value', newOpts[0]);
                               }
                             }}
-                            className="w-full bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded px-2.5 py-1.5 text-xs text-[#041050] dark:text-white font-medium focus:ring-2 focus:ring-[#00CFA7] focus:outline-none"
+                            className="w-full bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded px-2.5 py-1.5 text-xs text-[#0B0F19] dark:text-white font-medium focus:ring-2 focus:ring-[#21B6EA] focus:outline-none"
                           >
                             <optgroup label="Propiedades Personalizadas Más Usadas">
                               <option value="carrera_de_interes">carrera_de_interes (Carrera de Interés)</option>
@@ -3000,7 +3000,7 @@ runReports().catch(console.error);`;
                           <select
                             value={rule.operator}
                             onChange={(e) => handleUpdateCustomFilter(rule.id || '', 'operator', e.target.value)}
-                            className="w-full bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded px-2.5 py-1.5 text-xs text-[#041050] dark:text-white font-medium focus:ring-2 focus:ring-[#00CFA7] focus:outline-none"
+                            className="w-full bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded px-2.5 py-1.5 text-xs text-[#0B0F19] dark:text-white font-medium focus:ring-2 focus:ring-[#21B6EA] focus:outline-none"
                           >
                             <option value="EQ">Igual a (=)</option>
                             <option value="NEQ">Diferente de (≠)</option>
@@ -3023,7 +3023,7 @@ runReports().catch(console.error);`;
                               <button
                                 type="button"
                                 onClick={() => toggleRuleInputMode(rule.id || '')}
-                                className="text-[10px] text-[#041050] dark:text-[#00CFA7] hover:underline font-medium flex items-center gap-0.5 cursor-pointer"
+                                className="text-[10px] text-[#0369A1] dark:text-[#21B6EA] hover:underline font-medium flex items-center gap-0.5 cursor-pointer"
                                 title={
                                   isFreeTextMode
                                     ? 'Ver valores sugeridos del CRM'
@@ -3050,7 +3050,7 @@ runReports().catch(console.error);`;
                               type="text"
                               disabled
                               value="(No requiere valor)"
-                              className="w-full bg-[#EEF1F9] dark:bg-[#020829]/60 border border-[#DCE1EB] dark:border-[#1B2F8A] rounded px-2.5 py-1.5 text-xs text-slate-500 dark:text-slate-400 cursor-not-allowed"
+                              className="w-full bg-[#F4F7FA] dark:bg-[#0B0F19]/60 border border-[#E2E8F0] dark:border-[#334155] rounded px-2.5 py-1.5 text-xs text-slate-500 dark:text-slate-400 cursor-not-allowed"
                             />
                           ) : propOptions.length > 0 && !isFreeTextMode ? (
                             <div className="relative flex items-center">
@@ -3064,7 +3064,7 @@ runReports().catch(console.error);`;
                                     handleUpdateCustomFilter(rule.id || '', 'value', val);
                                   }
                                 }}
-                                className="w-full bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded px-2.5 py-1.5 text-xs text-[#041050] dark:text-white font-medium focus:ring-2 focus:ring-[#00CFA7] focus:outline-none"
+                                className="w-full bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded px-2.5 py-1.5 text-xs text-[#0B0F19] dark:text-white font-medium focus:ring-2 focus:ring-[#21B6EA] focus:outline-none"
                               >
                                 <option value="">-- Seleccionar valor ({propOptions.length} disponibles) --</option>
                                 {propOptions.map((opt) => (
@@ -3086,7 +3086,7 @@ runReports().catch(console.error);`;
                                 }
                                 value={rule.value || ''}
                                 onChange={(e) => handleUpdateCustomFilter(rule.id || '', 'value', e.target.value)}
-                                className="w-full bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded px-2.5 py-1.5 text-xs text-[#041050] dark:text-white focus:ring-2 focus:ring-[#00CFA7] focus:outline-none font-medium"
+                                className="w-full bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded px-2.5 py-1.5 text-xs text-[#0B0F19] dark:text-white focus:ring-2 focus:ring-[#21B6EA] focus:outline-none font-medium"
                               />
                             </div>
                           )}
@@ -3116,7 +3116,7 @@ runReports().catch(console.error);`;
             <button
               type="button"
               onClick={() => setActiveTab('generator')}
-              className="text-xs text-[#041050] dark:text-[#00CFA7] hover:underline font-bold flex items-center gap-1 cursor-pointer"
+              className="text-xs text-[#0369A1] dark:text-[#21B6EA] hover:underline font-bold flex items-center gap-1 cursor-pointer"
             >
               Ir al Generador de Reportes →
             </button>
@@ -3125,7 +3125,7 @@ runReports().catch(console.error);`;
               type="button"
               onClick={handleManualSaveConfig}
               disabled={isSavingConfig}
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#041050] hover:bg-[#081C7A] text-white dark:bg-[#00CFA7] dark:hover:bg-[#00B894] dark:text-[#041050] rounded-lg text-xs font-bold shadow-sm transition-all cursor-pointer disabled:opacity-50"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0B0F19] hover:bg-[#1E293B] text-white dark:bg-[#21B6EA] dark:hover:bg-[#38C4F3] dark:text-[#0B0F19] rounded-lg text-xs font-bold shadow-sm transition-all cursor-pointer disabled:opacity-50"
             >
               <Save className="w-4 h-4" />
               <span>Guardar Configuración de Reportes</span>

@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <title>HubOps Suite de Promptia.lat</title>
@@ -19,7 +19,7 @@
     <script>
       (function () {
         try {
-          var saved = localStorage.getItem('elitec_theme');
+          var saved = localStorage.getItem('promptia_theme') || localStorage.getItem('elitec_theme');
           if (saved === 'dark') {
             document.documentElement.classList.add('dark');
           } else {

@@ -144,13 +144,13 @@ export const McpConfigPanel: React.FC<McpConfigPanelProps> = ({ onTokenSynced })
   return (
     <div className="space-y-6" id="mcp-config-panel-container">
       {/* Header */}
-      <div className="bg-white dark:bg-[#041050] rounded-xl border border-[#DCE1EB] dark:border-[#1B2F8A] p-5 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="bg-white dark:bg-[#1E293B] rounded-xl border border-[#E2E8F0] dark:border-[#334155] p-5 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-[#E6FAF5] dark:bg-[#00CFA7]/15 text-[#007F66] dark:text-[#00CFA7] text-xs font-semibold uppercase tracking-wider mb-2 border border-[#00CFA7]/40">
-            <Server className="w-3.5 h-3.5 text-[#007F66] dark:text-[#00CFA7]" />
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-[#E8F7FD] dark:bg-[#21B6EA]/15 text-[#0369A1] dark:text-[#21B6EA] text-xs font-semibold uppercase tracking-wider mb-2 border border-[#21B6EA]/40">
+            <Server className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#21B6EA]" />
             Integración &amp; Conectividad HubSpot CRM
           </div>
-          <h2 className="text-xl font-bold text-[#041050] dark:text-white tracking-tight">
+          <h2 className="text-xl font-bold text-[#0B0F19] dark:text-white tracking-tight">
             Configuración y Conexión de tu HubSpot CRM
           </h2>
           <p className="text-sm text-slate-600 dark:text-slate-300 mt-0.5">
@@ -159,13 +159,13 @@ export const McpConfigPanel: React.FC<McpConfigPanelProps> = ({ onTokenSynced })
         </div>
 
         {/* Sub Navigation */}
-        <div className="flex items-center gap-1 bg-[#F0F0F0] dark:bg-[#020829] p-1 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] text-xs font-semibold">
+        <div className="flex items-center gap-1 bg-[#F4F7FA] dark:bg-[#0B0F19] p-1 rounded-lg border border-[#E2E8F0] dark:border-[#334155] text-xs font-semibold">
           <button
             onClick={() => setActiveSubTab('connection')}
             className={`px-3 py-1.5 rounded-md transition-colors cursor-pointer ${
               activeSubTab === 'connection'
-                ? 'bg-white dark:bg-[#06155E] text-[#041050] dark:text-[#00CFA7] shadow-xs'
-                : 'text-slate-600 dark:text-slate-300 hover:text-[#041050] dark:hover:text-white'
+                ? 'bg-white dark:bg-[#1E293B] text-[#0B0F19] dark:text-[#21B6EA] shadow-xs'
+                : 'text-slate-600 dark:text-slate-300 hover:text-[#0B0F19] dark:hover:text-white'
             }`}
           >
             Conexión &amp; Token
@@ -174,8 +174,8 @@ export const McpConfigPanel: React.FC<McpConfigPanelProps> = ({ onTokenSynced })
             onClick={() => setActiveSubTab('telemetry')}
             className={`px-3 py-1.5 rounded-md transition-colors cursor-pointer ${
               activeSubTab === 'telemetry'
-                ? 'bg-white dark:bg-[#06155E] text-[#041050] dark:text-[#00CFA7] shadow-xs'
-                : 'text-slate-600 dark:text-slate-300 hover:text-[#041050] dark:hover:text-white'
+                ? 'bg-white dark:bg-[#1E293B] text-[#0B0F19] dark:text-[#21B6EA] shadow-xs'
+                : 'text-slate-600 dark:text-slate-300 hover:text-[#0B0F19] dark:hover:text-white'
             }`}
           >
             <span>Registro de Actividad ({logs.length})</span>
@@ -186,29 +186,29 @@ export const McpConfigPanel: React.FC<McpConfigPanelProps> = ({ onTokenSynced })
       {activeSubTab === 'connection' && (
         <div className="max-w-4xl mx-auto space-y-6">
           {/* Connection Parameters & Token Form */}
-          <div className="bg-white dark:bg-[#041050] rounded-xl border border-[#DCE1EB] dark:border-[#1B2F8A] p-6 shadow-xs space-y-5">
-            <div className="flex items-center justify-between pb-3 border-b border-[#DCE1EB] dark:border-[#1B2F8A]">
+          <div className="bg-white dark:bg-[#1E293B] rounded-xl border border-[#E2E8F0] dark:border-[#334155] p-6 shadow-xs space-y-5">
+            <div className="flex items-center justify-between pb-3 border-b border-[#E2E8F0] dark:border-[#334155]">
               <div className="flex items-center gap-2">
-                <Key className="w-4 h-4 text-[#041050] dark:text-[#00CFA7]" />
-                <h3 className="text-sm font-semibold text-[#041050] dark:text-white uppercase tracking-wide">
+                <Key className="w-4 h-4 text-[#0369A1] dark:text-[#21B6EA]" />
+                <h3 className="text-sm font-semibold text-[#0B0F19] dark:text-white uppercase tracking-wide">
                   Autenticación con tu HubSpot CRM
                 </h3>
               </div>
               <span
                 className={`text-xs font-semibold px-2.5 py-0.5 rounded-full flex items-center gap-1 border ${
                   isRealConnected
-                    ? 'bg-[#E6FAF5] dark:bg-[#00CFA7]/15 text-[#007F66] dark:text-[#00CFA7] border-[#00CFA7]/40'
+                    ? 'bg-[#E8F7FD] dark:bg-[#21B6EA]/15 text-[#0369A1] dark:text-[#21B6EA] border-[#21B6EA]/40'
                     : 'bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-amber-200 border-amber-200 dark:border-amber-700'
                 }`}
               >
-                <span className={`w-2 h-2 rounded-full ${isRealConnected ? 'bg-[#00CFA7]' : 'bg-amber-500'}`} />
+                <span className={`w-2 h-2 rounded-full ${isRealConnected ? 'bg-[#21B6EA]' : 'bg-amber-500'}`} />
                 {isRealConnected ? 'Conectado a HubSpot Real' : 'Modo Standalone / Prueba'}
               </span>
             </div>
 
             {/* Token Input Form */}
             <div>
-              <div className="mb-3 p-3 rounded-lg bg-[#F7F8FC] dark:bg-[#06155E] border border-[#DCE1EB] dark:border-[#1B2F8A] text-[#041050] dark:text-white text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div className="mb-3 p-3 rounded-lg bg-[#EBF8FD] dark:bg-[#0F172A] border border-[#BAE6FD] dark:border-[#334155] text-[#0B0F19] dark:text-white text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
                   <PromptiaLogo variant="icon" size={20} />
                   <span>
@@ -218,12 +218,12 @@ export const McpConfigPanel: React.FC<McpConfigPanelProps> = ({ onTokenSynced })
               </div>
 
               <div className="flex items-center justify-between mb-1.5">
-                <label className="block text-xs font-semibold text-[#041050] dark:text-slate-200">
+                <label className="block text-xs font-semibold text-[#0B0F19] dark:text-slate-200">
                   Token de Aplicación Privada de HubSpot
                 </label>
                 {company && (
-                  <span className="text-[11px] text-[#041050] dark:text-[#00CFA7] bg-[#F7F8FC] dark:bg-[#06155E] border border-[#DCE1EB] dark:border-[#1B2F8A] px-2 py-0.5 rounded-md font-medium flex items-center gap-1">
-                    <Building2 className="w-3 h-3 text-[#007F66] dark:text-[#00CFA7]" />
+                  <span className="text-[11px] text-[#0B0F19] dark:text-[#21B6EA] bg-[#F8FAFC] dark:bg-[#0F172A] border border-[#E2E8F0] dark:border-[#334155] px-2 py-0.5 rounded-md font-medium flex items-center gap-1">
+                    <Building2 className="w-3 h-3 text-[#0369A1] dark:text-[#21B6EA]" />
                     Cliente: {company.name}
                   </span>
                 )}
@@ -234,12 +234,12 @@ export const McpConfigPanel: React.FC<McpConfigPanelProps> = ({ onTokenSynced })
                   value={tokenInput}
                   onChange={(e) => setTokenInput(e.target.value)}
                   placeholder="pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-                  className="flex-1 text-xs font-mono bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-3 py-2.5 text-[#041050] dark:text-white placeholder:text-slate-400 focus:bg-white dark:focus:bg-[#06155E] focus:outline-none focus:ring-2 focus:ring-[#00CFA7] shadow-2xs"
+                  className="flex-1 text-xs font-mono bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#334155] rounded-lg px-3 py-2.5 text-[#0B0F19] dark:text-white placeholder:text-slate-400 focus:bg-white dark:focus:bg-[#0F172A] focus:outline-none focus:ring-2 focus:ring-[#21B6EA] shadow-2xs"
                 />
                 <button
                   onClick={handleSaveAndConnectToken}
                   disabled={isVerifying || !tokenInput.trim()}
-                  className="bg-[#041050] hover:bg-[#081C7A] active:bg-[#020829] text-white dark:bg-[#00CFA7] dark:hover:bg-[#00B894] dark:text-[#041050] text-xs font-semibold px-5 py-2.5 rounded-lg transition-all shadow-xs cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50 shrink-0"
+                  className="bg-[#0B0F19] hover:bg-[#1E293B] active:bg-[#0B0F19] text-white dark:bg-[#21B6EA] dark:hover:bg-[#38C4F3] dark:text-[#0B0F19] text-xs font-semibold px-5 py-2.5 rounded-lg transition-all shadow-xs cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50 shrink-0"
                 >
                   <RefreshCw className={`w-3.5 h-3.5 ${isVerifying ? 'animate-spin' : ''}`} />
                   {isVerifying ? 'Guardando...' : '🔑 Guardar y Conectar Token'}
@@ -261,10 +261,10 @@ export const McpConfigPanel: React.FC<McpConfigPanelProps> = ({ onTokenSynced })
 
             {/* Status Feedback Notice */}
             {syncStatus.type === 'success' && (
-              <div className="p-3.5 rounded-xl bg-[#E6FAF5] dark:bg-[#00CFA7]/15 border border-[#00CFA7]/40 text-xs text-[#041050] dark:text-white flex items-start gap-2.5 animate-in fade-in">
-                <CheckCircle2 className="w-4 h-4 text-[#007F66] dark:text-[#00CFA7] shrink-0 mt-0.5" />
+              <div className="p-3.5 rounded-xl bg-[#E8F7FD] dark:bg-[#21B6EA]/15 border border-[#21B6EA]/40 text-xs text-[#0B0F19] dark:text-white flex items-start gap-2.5 animate-in fade-in">
+                <CheckCircle2 className="w-4 h-4 text-[#0369A1] dark:text-[#21B6EA] shrink-0 mt-0.5" />
                 <div>
-                  <div className="font-bold text-[#041050] dark:text-[#00CFA7]">¡Conexión Exitosa con tu HubSpot CRM!</div>
+                  <div className="font-bold text-[#0B0F19] dark:text-[#21B6EA]">¡Conexión Exitosa con tu HubSpot CRM!</div>
                   <p className="mt-0.5 text-slate-700 dark:text-slate-200 leading-relaxed">{syncStatus.message}</p>
                 </div>
               </div>
@@ -277,7 +277,7 @@ export const McpConfigPanel: React.FC<McpConfigPanelProps> = ({ onTokenSynced })
                   <div className="font-bold text-rose-900 dark:text-rose-100">Error al Conectar con HubSpot</div>
                   <p className="mt-0.5 text-rose-700 dark:text-rose-200">{syncStatus.message}</p>
                   {syncStatus.details && (
-                    <div className="mt-1 font-mono text-[11px] bg-white/80 dark:bg-[#020829] p-2 rounded border border-rose-200 dark:border-rose-800 text-rose-950 dark:text-rose-100 whitespace-pre-wrap">
+                    <div className="mt-1 font-mono text-[11px] bg-white/80 dark:bg-[#0B0F19] p-2 rounded border border-rose-200 dark:border-rose-800 text-rose-950 dark:text-rose-100 whitespace-pre-wrap">
                       {syncStatus.details}
                     </div>
                   )}
@@ -286,25 +286,25 @@ export const McpConfigPanel: React.FC<McpConfigPanelProps> = ({ onTokenSynced })
             )}
 
             {/* Scopes Guide */}
-            <div className="p-4 bg-[#F7F8FC] dark:bg-[#06155E] rounded-xl border border-[#DCE1EB] dark:border-[#1B2F8A] text-xs space-y-2.5">
-              <div className="font-semibold text-[#041050] dark:text-white flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-[#007F66] dark:text-[#00CFA7]" />
+            <div className="p-4 bg-[#F8FAFC] dark:bg-[#0F172A] rounded-xl border border-[#E2E8F0] dark:border-[#334155] text-xs space-y-2.5">
+              <div className="font-semibold text-[#0B0F19] dark:text-white flex items-center gap-1.5">
+                <ShieldCheck className="w-4 h-4 text-[#0369A1] dark:text-[#21B6EA]" />
                 Permisos requeridos en tu aplicación privada de HubSpot:
               </div>
               <p className="text-slate-600 dark:text-slate-300 text-[11px] leading-relaxed">
-                En tu portal de HubSpot ve a <strong className="text-[#041050] dark:text-white">Configuración &gt; Integraciones &gt; Aplicaciones privadas</strong> y asegúrate de otorgar los siguientes scopes:
+                En tu portal de HubSpot ve a <strong className="text-[#0B0F19] dark:text-white">Configuración &gt; Integraciones &gt; Aplicaciones privadas</strong> y asegúrate de otorgar los siguientes scopes:
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 font-mono text-[10px]">
-                <div className="bg-white dark:bg-[#041050] p-2.5 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] shadow-2xs">
-                  <span className="text-[#041050] dark:text-[#00CFA7] font-bold block">crm.objects.contacts.read</span>
+                <div className="bg-white dark:bg-[#1E293B] p-2.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] shadow-2xs">
+                  <span className="text-[#0369A1] dark:text-[#21B6EA] font-bold block">crm.objects.contacts.read</span>
                   <span className="text-slate-600 dark:text-slate-300">Buscar contactos</span>
                 </div>
-                <div className="bg-white dark:bg-[#041050] p-2.5 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] shadow-2xs">
-                  <span className="text-[#041050] dark:text-[#00CFA7] font-bold block">crm.objects.contacts.write</span>
+                <div className="bg-white dark:bg-[#1E293B] p-2.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] shadow-2xs">
+                  <span className="text-[#0369A1] dark:text-[#21B6EA] font-bold block">crm.objects.contacts.write</span>
                   <span className="text-slate-600 dark:text-slate-300">Actualizar masivo</span>
                 </div>
-                <div className="bg-white dark:bg-[#041050] p-2.5 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] shadow-2xs">
-                  <span className="text-[#041050] dark:text-[#00CFA7] font-bold block">crm.objects.owners.read</span>
+                <div className="bg-white dark:bg-[#1E293B] p-2.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] shadow-2xs">
+                  <span className="text-[#0369A1] dark:text-[#21B6EA] font-bold block">crm.objects.owners.read</span>
                   <span className="text-slate-600 dark:text-slate-300">Listar asesores</span>
                 </div>
               </div>
@@ -314,11 +314,11 @@ export const McpConfigPanel: React.FC<McpConfigPanelProps> = ({ onTokenSynced })
       )}
 
       {activeSubTab === 'telemetry' && (
-        <div className="bg-white dark:bg-[#041050] rounded-xl border border-[#DCE1EB] dark:border-[#1B2F8A] p-5 shadow-xs">
-          <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#DCE1EB] dark:border-[#1B2F8A]">
+        <div className="bg-white dark:bg-[#1E293B] rounded-xl border border-[#E2E8F0] dark:border-[#334155] p-5 shadow-xs">
+          <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#E2E8F0] dark:border-[#334155]">
             <div className="flex items-center gap-2">
-              <Activity className="w-4 h-4 text-[#007F66] dark:text-[#00CFA7]" />
-              <h3 className="text-sm font-semibold text-[#041050] dark:text-white uppercase tracking-wide">
+              <Activity className="w-4 h-4 text-[#0369A1] dark:text-[#21B6EA]" />
+              <h3 className="text-sm font-semibold text-[#0B0F19] dark:text-white uppercase tracking-wide">
                 Registro de Actividad y Peticiones al CRM en Tiempo Real
               </h3>
             </div>
@@ -330,7 +330,7 @@ export const McpConfigPanel: React.FC<McpConfigPanelProps> = ({ onTokenSynced })
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-xs">
               <thead>
-                <tr className="border-b border-[#DCE1EB] dark:border-[#1B2F8A] bg-[#F7F8FC] dark:bg-[#06155E] text-[#041050] dark:text-slate-200 font-semibold uppercase tracking-wider text-[11px]">
+                <tr className="border-b border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0F172A] text-[#0B0F19] dark:text-slate-200 font-semibold uppercase tracking-wider text-[11px]">
                   <th className="py-2.5 px-3">Hora</th>
                   <th className="py-2.5 px-3">Tool Invocada</th>
                   <th className="py-2.5 px-3">Estado</th>
@@ -338,16 +338,16 @@ export const McpConfigPanel: React.FC<McpConfigPanelProps> = ({ onTokenSynced })
                   <th className="py-2.5 px-3">Detalle / Respuesta</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#DCE1EB] dark:divide-[#1B2F8A] font-mono tabular-nums text-[11px]">
+              <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#334155] font-mono tabular-nums text-[11px]">
                 {(logs || []).map((log) => (
-                  <tr key={log.id} className="hover:bg-[#F7F8FC] dark:hover:bg-[#06155E]/70">
+                  <tr key={log.id} className="hover:bg-[#F8FAFC] dark:hover:bg-[#0F172A]/70">
                     <td className="py-2.5 px-3 text-slate-600 dark:text-slate-300">{log.timestamp}</td>
-                    <td className="py-2.5 px-3 text-[#041050] dark:text-[#00CFA7] font-semibold">{log.tool}</td>
+                    <td className="py-2.5 px-3 text-[#0369A1] dark:text-[#21B6EA] font-semibold">{log.tool}</td>
                     <td className="py-2.5 px-3">
                       <span
                         className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold border ${
                           log.status === 'success'
-                            ? 'text-[#007F66] dark:text-[#00CFA7] bg-[#E6FAF5] dark:bg-[#00CFA7]/15 border-[#00CFA7]/40'
+                            ? 'text-[#0369A1] dark:text-[#21B6EA] bg-[#E8F7FD] dark:bg-[#21B6EA]/15 border-[#21B6EA]/40'
                             : 'text-rose-700 dark:text-rose-200 bg-rose-50 dark:bg-rose-950/60 border-rose-200 dark:border-rose-700'
                         }`}
                       >
@@ -360,7 +360,7 @@ export const McpConfigPanel: React.FC<McpConfigPanelProps> = ({ onTokenSynced })
                       </span>
                     </td>
                     <td className="py-2.5 px-3 text-slate-600 dark:text-slate-300">{log.latencyMs} ms</td>
-                    <td className="py-2.5 px-3 text-[#041050] dark:text-slate-200 max-w-md truncate">
+                    <td className="py-2.5 px-3 text-[#0B0F19] dark:text-slate-200 max-w-md truncate">
                       {log.responseSummary}
                     </td>
                   </tr>

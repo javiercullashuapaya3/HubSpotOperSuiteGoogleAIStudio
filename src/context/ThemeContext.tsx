@@ -10,13 +10,14 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-const THEME_STORAGE_KEY = 'elitec_theme';
+const THEME_STORAGE_KEY = 'promptia_theme';
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [theme, setThemeState] = useState<ThemeMode>(() => {
     if (typeof window !== 'undefined') {
       try {
-        const stored = localStorage.getItem(THEME_STORAGE_KEY);
+        const stored =
+          localStorage.getItem(THEME_STORAGE_KEY) || localStorage.getItem('elitec_theme');
         if (stored === 'dark' || stored === 'light') return stored;
       } catch {}
     }

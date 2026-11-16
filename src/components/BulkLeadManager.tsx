@@ -63,8 +63,8 @@ interface BulkLeadManagerProps {
 const LEAD_STATUS_LABELS: Record<LeadStatus, { label: string; color: string }> = {
   NEW: { label: 'Nuevo', color: 'bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-500/20 dark:text-blue-200 dark:border-blue-400/35' },
   OPEN: { label: 'Abierto', color: 'bg-sky-100 text-sky-800 border-sky-200 dark:bg-sky-500/20 dark:text-sky-200 dark:border-sky-400/35' },
-  IN_PROGRESS: { label: 'En Progreso', color: 'bg-[#EEF1F9] text-[#041050] border-[#CBD5E1] dark:bg-[#1B2F8A]/60 dark:text-white dark:border-[#2C45B8]' },
-  OPEN_DEAL: { label: 'Negocio Abierto', color: 'bg-[#E6FAF5] text-[#007F66] border-[#00CFA7]/40 dark:bg-[#00CFA7]/15 dark:text-[#00CFA7] dark:border-[#00CFA7]/35' },
+  IN_PROGRESS: { label: 'En Progreso', color: 'bg-[#EBF8FD] text-[#0B0F19] border-[#BAE6FD] dark:bg-[#334155]/70 dark:text-white dark:border-[#475569]' },
+  OPEN_DEAL: { label: 'Negocio Abierto', color: 'bg-[#E8F7FD] text-[#0369A1] border-[#21B6EA]/40 dark:bg-[#21B6EA]/15 dark:text-[#21B6EA] dark:border-[#21B6EA]/35' },
   UNQUALIFIED: { label: 'Descalificado', color: 'bg-rose-100 text-rose-800 border-rose-200 dark:bg-rose-500/20 dark:text-rose-200 dark:border-rose-400/35' },
   ATTEMPTED_TO_CONTACT: { label: 'Intento de Contacto', color: 'bg-amber-100 text-amber-800 border-amber-200 dark:bg-amber-500/20 dark:text-amber-200 dark:border-amber-400/35' },
   CONNECTED: { label: 'Conectado', color: 'bg-teal-100 text-teal-800 border-teal-200 dark:bg-teal-500/20 dark:text-teal-200 dark:border-teal-400/35' },
@@ -760,13 +760,13 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
   return (
     <div className="space-y-6" id="bulk-lead-manager-container">
       {/* Header Banner */}
-      <div className="bg-white dark:bg-[#041050] rounded-xl border border-[#DCE1EB] dark:border-[#1B2F8A] p-5 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="bg-white dark:bg-[#1E293B] rounded-xl border border-[#E2E8F0] dark:border-[#334155] p-5 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-[#E6FAF5] dark:bg-[#00CFA7]/15 border border-[#00CFA7]/35 text-[#007F66] dark:text-[#00CFA7] text-xs font-semibold uppercase tracking-wider mb-2">
-            <Sparkles className="w-3.5 h-3.5 text-[#007F66] dark:text-[#00CFA7]" />
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-[#E8F7FD] dark:bg-[#21B6EA]/15 border border-[#21B6EA]/35 text-[#0369A1] dark:text-[#21B6EA] text-xs font-semibold uppercase tracking-wider mb-2">
+            <Sparkles className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#21B6EA]" />
             Productividad Comercial &amp; Gestión Masiva
           </div>
-          <h2 className="text-xl font-bold text-[#041050] dark:text-white tracking-tight">
+          <h2 className="text-xl font-bold text-[#0B0F19] dark:text-white tracking-tight">
             Gestión y Modificación Masiva de Leads en HubSpot CRM
           </h2>
           <p className="text-sm text-slate-600 dark:text-slate-300 mt-0.5">
@@ -775,15 +775,15 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
         </div>
 
         <div className="flex items-center gap-3 shrink-0">
-          <div className="bg-[#F7F8FC] dark:bg-[#06155E] border border-[#DCE1EB] dark:border-[#1B2F8A] px-4 py-2 rounded-lg text-right">
+          <div className="bg-[#F8FAFC] dark:bg-[#0F172A] border border-[#E2E8F0] dark:border-[#334155] px-4 py-2 rounded-lg text-right">
             <span className="text-xs text-slate-500 dark:text-slate-300 font-medium block">Leads Encontrados</span>
-            <span className="text-lg font-bold text-[#041050] dark:text-white tabular-nums">
+            <span className="text-lg font-bold text-[#0B0F19] dark:text-white tabular-nums">
               {hasSearched ? contacts.length : '—'}
             </span>
           </div>
-          <div className="bg-[#E6FAF5] dark:bg-[#00CFA7]/15 border border-[#00CFA7]/40 px-4 py-2 rounded-lg text-right">
-            <span className="text-xs text-[#007F66] dark:text-[#00CFA7] font-medium block">Seleccionados</span>
-            <span className="text-lg font-bold text-[#041050] dark:text-white tabular-nums">
+          <div className="bg-[#E8F7FD] dark:bg-[#21B6EA]/15 border border-[#21B6EA]/40 px-4 py-2 rounded-lg text-right">
+            <span className="text-xs text-[#0369A1] dark:text-[#21B6EA] font-medium block">Seleccionados</span>
+            <span className="text-lg font-bold text-[#0B0F19] dark:text-white tabular-nums">
               {hasSearched ? selectedContactIds.size : '—'}
             </span>
           </div>
@@ -791,21 +791,21 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
       </div>
 
       {/* Multi-Criteria Filter Section (Origen) */}
-      <div className="bg-white dark:bg-[#041050] rounded-xl border border-[#DCE1EB] dark:border-[#1B2F8A] p-5 shadow-xs" id="filter-origin-panel">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 mb-4 border-b border-[#DCE1EB] dark:border-[#1B2F8A] gap-2">
+      <div className="bg-white dark:bg-[#1E293B] rounded-xl border border-[#E2E8F0] dark:border-[#334155] p-5 shadow-xs" id="filter-origin-panel">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 mb-4 border-b border-[#E2E8F0] dark:border-[#334155] gap-2">
           <div className="flex items-center gap-2 flex-wrap">
-            <Filter className="w-4 h-4 text-[#041050] dark:text-[#00CFA7]" />
-            <h3 className="text-sm font-semibold text-[#041050] dark:text-white uppercase tracking-wide">
+            <Filter className="w-4 h-4 text-[#0B0F19] dark:text-[#21B6EA]" />
+            <h3 className="text-sm font-semibold text-[#0B0F19] dark:text-white uppercase tracking-wide">
               1. Filtros de Búsqueda y Segmentación (Origen)
             </h3>
-            <span className="text-[11px] bg-[#EEF1F9] dark:bg-[#06155E] text-[#041050] dark:text-slate-200 border border-[#DCE1EB] dark:border-[#1B2F8A] px-2 py-0.5 rounded-full font-medium tabular-nums">
+            <span className="text-[11px] bg-[#EBF8FD] dark:bg-[#0F172A] text-[#0B0F19] dark:text-slate-200 border border-[#BAE6FD] dark:border-[#334155] px-2 py-0.5 rounded-full font-medium tabular-nums">
               10 Criterios Disponibles
             </span>
           </div>
           <div className="flex items-center gap-3">
             <button
               onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
-              className="text-xs font-semibold text-[#041050] dark:text-[#00CFA7] hover:text-[#007F66] dark:hover:text-white flex items-center gap-1 transition-colors cursor-pointer whitespace-nowrap shrink-0"
+              className="text-xs font-semibold text-[#0B0F19] dark:text-[#21B6EA] hover:text-[#0369A1] dark:hover:text-white flex items-center gap-1 transition-colors cursor-pointer whitespace-nowrap shrink-0"
             >
               <SlidersHorizontal className="w-3.5 h-3.5" />
               {showAdvancedFilters ? 'Ocultar Filtros Secundarios' : 'Mostrar Todos los Filtros'}
@@ -813,7 +813,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
             </button>
             <button
               onClick={resetAllFilters}
-              className="text-xs font-medium text-slate-600 dark:text-slate-300 hover:text-[#041050] dark:hover:text-white flex items-center gap-1.5 transition-colors cursor-pointer whitespace-nowrap shrink-0"
+              className="text-xs font-medium text-slate-600 dark:text-slate-300 hover:text-[#0B0F19] dark:hover:text-white flex items-center gap-1.5 transition-colors cursor-pointer whitespace-nowrap shrink-0"
             >
               <RefreshCw className="w-3 h-3" />
               Restablecer Filtros
@@ -826,13 +826,13 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
           {/* Asesor / Propietario */}
           <div>
             <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 mb-1.5 flex items-center gap-1">
-              <UserCheck className="w-3.5 h-3.5 text-[#007F66] dark:text-[#00CFA7]" />
+              <UserCheck className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#21B6EA]" />
               Asesor Asignado
             </label>
             <select
               value={filters.ownerId}
               onChange={(e) => setFilters({ ...filters, ownerId: e.target.value })}
-              className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-3 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7]"
+              className="w-full text-xs bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-3 py-2 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA]"
             >
               <option value="ALL">Todos los Asesores</option>
               <option value="__UNASSIGNED__">⚠️ Sin Asesor (Cartera Libre)</option>
@@ -852,7 +852,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
             <select
               value={filters.leadStatus}
               onChange={(e) => setFilters({ ...filters, leadStatus: e.target.value })}
-              className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-3 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7]"
+              className="w-full text-xs bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-3 py-2 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA]"
             >
               <option value="ALL">Todos los Estados</option>
               {Object.entries(LEAD_STATUS_LABELS).map(([key, item]) => (
@@ -871,7 +871,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
             <select
               value={filters.lifecycleStage}
               onChange={(e) => setFilters({ ...filters, lifecycleStage: e.target.value })}
-              className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-3 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7]"
+              className="w-full text-xs bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-3 py-2 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA]"
             >
               <option value="ALL">Todas las Etapas</option>
               {Object.entries(LIFECYCLE_LABELS).map(([key, label]) => (
@@ -891,7 +891,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
             <select
               value={filters.inactivityRange || 'ALL'}
               onChange={(e) => setFilters({ ...filters, inactivityRange: e.target.value })}
-              className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-3 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7]"
+              className="w-full text-xs bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-3 py-2 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA]"
             >
               <option value="ALL">Cualquier Inactividad</option>
               <option value="overdue_24h">🚨 SLA Vencido (&gt; 24h sin contacto)</option>
@@ -913,7 +913,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                 value={filters.searchKeyword}
                 onChange={(e) => setFilters({ ...filters, searchKeyword: e.target.value })}
                 onKeyDown={(e) => e.key === 'Enter' && fetchContacts()}
-                className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg pl-8 pr-3 py-2 text-[#041050] dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#00CFA7]"
+                className="w-full text-xs bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg pl-8 pr-3 py-2 text-[#0B0F19] dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#21B6EA]"
               />
               <Search className="w-3.5 h-3.5 text-slate-400 dark:text-slate-400 absolute left-2.5 top-2.5" />
             </div>
@@ -922,7 +922,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
 
         {/* Secondary / Advanced Filters Row */}
         {showAdvancedFilters && (
-          <div className="mt-3 pt-3 border-t border-[#DCE1EB] dark:border-[#1B2F8A] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 animate-in fade-in duration-150">
+          <div className="mt-3 pt-3 border-t border-[#E2E8F0] dark:border-[#334155] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 animate-in fade-in duration-150">
             {/* Campaña UTM */}
             <div>
               <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 mb-1.5">
@@ -931,7 +931,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
               <select
                 value={filters.campaign}
                 onChange={(e) => setFilters({ ...filters, campaign: e.target.value })}
-                className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-3 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7]"
+                className="w-full text-xs bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-3 py-2 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA]"
               >
                 <option value="ALL">Todas las Campañas</option>
                 {uniqueCampaigns.map((camp) => (
@@ -950,7 +950,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
               <select
                 value={filters.source || 'ALL'}
                 onChange={(e) => setFilters({ ...filters, source: e.target.value })}
-                className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-3 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7]"
+                className="w-full text-xs bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-3 py-2 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA]"
               >
                 <option value="ALL">Todos los Canales</option>
                 {uniqueSources.map((src) => (
@@ -970,7 +970,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
               <select
                 value={filters.priority || 'ALL'}
                 onChange={(e) => setFilters({ ...filters, priority: e.target.value })}
-                className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-3 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7]"
+                className="w-full text-xs bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-3 py-2 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA]"
               >
                 <option value="ALL">Todas las Prioridades</option>
                 <option value="URGENT">🔥 Urgente</option>
@@ -989,7 +989,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
               <select
                 value={filters.industry || 'ALL'}
                 onChange={(e) => setFilters({ ...filters, industry: e.target.value })}
-                className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-3 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7]"
+                className="w-full text-xs bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-3 py-2 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA]"
               >
                 <option value="ALL">Todas las Industrias</option>
                 {INDUSTRY_OPTIONS.map((ind) => (
@@ -1008,7 +1008,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
               <select
                 value={filters.dateRange || 'last_365d'}
                 onChange={(e) => setFilters({ ...filters, dateRange: e.target.value })}
-                className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-3 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7]"
+                className="w-full text-xs bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-3 py-2 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA]"
               >
                 <option value="last_365d">Último Año (365 Días) [Por defecto]</option>
                 <option value="ALL">Todo el Historial</option>
@@ -1029,7 +1029,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
               </span>
             ) : (
               <span className="text-slate-600 dark:text-slate-300">
-                Filtros sincronizados con <strong className="text-[#041050] dark:text-white">HubSpot CRM</strong>
+                Filtros sincronizados con <strong className="text-[#0B0F19] dark:text-white">HubSpot CRM</strong>
               </span>
             )}
           </div>
@@ -1038,8 +1038,8 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
             disabled={isLoading}
             className={`inline-flex items-center gap-2 text-xs font-bold px-6 py-2.5 rounded-lg shadow-sm transition-all disabled:opacity-50 cursor-pointer whitespace-nowrap shrink-0 ${
               !hasSearched
-                ? 'bg-[#041050] hover:bg-[#081C7A] text-white dark:bg-[#00CFA7] dark:hover:bg-[#00B894] dark:text-[#041050] ring-4 ring-[#00CFA7]/25 shadow-md'
-                : 'bg-[#041050] hover:bg-[#081C7A] text-white dark:bg-[#00CFA7] dark:hover:bg-[#00B894] dark:text-[#041050]'
+                ? 'bg-[#0B0F19] hover:bg-[#1E293B] text-white dark:bg-[#21B6EA] dark:hover:bg-[#38C4F3] dark:text-[#0B0F19] ring-4 ring-[#21B6EA]/25 shadow-md'
+                : 'bg-[#0B0F19] hover:bg-[#1E293B] text-white dark:bg-[#21B6EA] dark:hover:bg-[#38C4F3] dark:text-[#0B0F19]'
             }`}
           >
             <Search className="w-4 h-4" />
@@ -1049,16 +1049,16 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
       </div>
 
       {/* Salida de la Lista de Leads - Ancho Horizontal Completo */}
-      <div className="w-full bg-white dark:bg-[#041050] rounded-xl border border-[#DCE1EB] dark:border-[#1B2F8A] shadow-xs overflow-hidden" id="preview-table-card">
-        <div className="p-4 border-b border-[#DCE1EB] dark:border-[#1B2F8A] flex flex-col xl:flex-row xl:items-center justify-between gap-3 bg-[#F7F8FC] dark:bg-[#020829]">
+      <div className="w-full bg-white dark:bg-[#1E293B] rounded-xl border border-[#E2E8F0] dark:border-[#334155] shadow-xs overflow-hidden" id="preview-table-card">
+        <div className="p-4 border-b border-[#E2E8F0] dark:border-[#334155] flex flex-col xl:flex-row xl:items-center justify-between gap-3 bg-[#F8FAFC] dark:bg-[#0F172A]">
           <div className="flex items-center gap-2 flex-wrap">
             <button
               onClick={handleSelectAll}
               disabled={!hasSearched || contacts.length === 0}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#041050] dark:text-slate-200 hover:text-[#007F66] dark:hover:text-[#00CFA7] transition-colors bg-white dark:bg-[#06155E] px-2.5 py-1.5 rounded-md border border-[#DCE1EB] dark:border-[#1B2F8A] shadow-2xs disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer whitespace-nowrap shrink-0 tabular-nums"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0B0F19] dark:text-slate-200 hover:text-[#0369A1] dark:hover:text-[#21B6EA] transition-colors bg-white dark:bg-[#1E293B] px-2.5 py-1.5 rounded-md border border-[#E2E8F0] dark:border-[#334155] shadow-2xs disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer whitespace-nowrap shrink-0 tabular-nums"
             >
               {hasSearched && selectedContactIds.size === contacts.length && contacts.length > 0 ? (
-                <CheckSquare className="w-3.5 h-3.5 text-[#007F66] dark:text-[#00CFA7]" />
+                <CheckSquare className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#21B6EA]" />
               ) : (
                 <Square className="w-3.5 h-3.5 text-slate-400 dark:text-slate-400" />
               )}
@@ -1070,7 +1070,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
             <button
               onClick={handleSelectOverdueOnly}
               disabled={!hasSearched || contacts.length === 0}
-              className="text-[11px] font-medium text-rose-700 dark:text-rose-200 hover:bg-rose-50 dark:hover:bg-rose-500/20 bg-white dark:bg-[#06155E] px-2 py-1.5 rounded border border-rose-200 dark:border-rose-400/35 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap shrink-0"
+              className="text-[11px] font-medium text-rose-700 dark:text-rose-200 hover:bg-rose-50 dark:hover:bg-rose-500/20 bg-white dark:bg-[#1E293B] px-2 py-1.5 rounded border border-rose-200 dark:border-rose-400/35 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap shrink-0"
               title="Seleccionar contactos con más de 24 horas sin atención"
             >
               🚨 Solo SLA Vencido
@@ -1079,7 +1079,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
             <button
               onClick={handleSelectUnassignedOnly}
               disabled={!hasSearched || contacts.length === 0}
-              className="text-[11px] font-medium text-amber-700 dark:text-amber-200 hover:bg-amber-50 dark:hover:bg-amber-500/20 bg-white dark:bg-[#06155E] px-2 py-1.5 rounded border border-amber-200 dark:border-amber-400/35 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap shrink-0"
+              className="text-[11px] font-medium text-amber-700 dark:text-amber-200 hover:bg-amber-50 dark:hover:bg-amber-500/20 bg-white dark:bg-[#1E293B] px-2 py-1.5 rounded border border-amber-200 dark:border-amber-400/35 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap shrink-0"
               title="Seleccionar contactos sin asesor comercial asignado"
             >
               👤 Solo Sin Asignar
@@ -1088,7 +1088,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
             <button
               onClick={handleSelectHighPriorityOnly}
               disabled={!hasSearched || contacts.length === 0}
-              className="text-[11px] font-medium text-[#041050] dark:text-[#00CFA7] hover:bg-[#EEF1F9] dark:hover:bg-[#00CFA7]/15 bg-white dark:bg-[#06155E] px-2 py-1.5 rounded border border-[#CBD5E1] dark:border-[#00CFA7]/35 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap shrink-0"
+              className="text-[11px] font-medium text-[#0B0F19] dark:text-[#21B6EA] hover:bg-[#EBF8FD] dark:hover:bg-[#21B6EA]/15 bg-white dark:bg-[#1E293B] px-2 py-1.5 rounded border border-[#CBD5E1] dark:border-[#21B6EA]/35 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap shrink-0"
             >
               🔥 Solo Urgentes/Altas
             </button>
@@ -1096,20 +1096,20 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
 
           <div className="flex items-center gap-2 flex-wrap">
             <div className="text-xs text-slate-600 dark:text-slate-300 flex items-center gap-1.5 mr-1 tabular-nums">
-              <span className={`inline-block w-2 h-2 rounded-full ${hasSearched && selectedContactIds.size > 0 ? 'bg-[#00CFA7] animate-pulse' : 'bg-slate-300 dark:bg-slate-600'}`} />
+              <span className={`inline-block w-2 h-2 rounded-full ${hasSearched && selectedContactIds.size > 0 ? 'bg-[#21B6EA] animate-pulse' : 'bg-slate-300 dark:bg-slate-600'}`} />
               <span className="font-medium">{hasSearched ? selectedContactIds.size : 0} seleccionados</span>
             </div>
 
             <button
               type="button"
               onClick={() => setIsColumnPickerOpen(true)}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#06155E] hover:bg-[#EEF1F9] dark:hover:bg-[#081C7A] text-[#041050] dark:text-slate-200 text-xs font-semibold rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] shadow-2xs transition-all cursor-pointer whitespace-nowrap shrink-0"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#1E293B] hover:bg-[#EBF8FD] dark:hover:bg-[#334155] text-[#0B0F19] dark:text-slate-200 text-xs font-semibold rounded-lg border border-[#E2E8F0] dark:border-[#334155] shadow-2xs transition-all cursor-pointer whitespace-nowrap shrink-0"
               title="Configurar qué propiedades de HubSpot mostrar en las columnas"
             >
-              <Columns className="w-3.5 h-3.5 text-[#007F66] dark:text-[#00CFA7]" />
+              <Columns className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#21B6EA]" />
               <span>Columnas</span>
               {visibleCustomColumnNames.length > 0 && (
-                <span className="px-1.5 py-0.2 rounded-full bg-[#E6FAF5] dark:bg-[#00CFA7]/20 text-[#007F66] dark:text-[#00CFA7] font-bold text-[10px] tabular-nums">
+                <span className="px-1.5 py-0.2 rounded-full bg-[#E8F7FD] dark:bg-[#21B6EA]/20 text-[#0369A1] dark:text-[#21B6EA] font-bold text-[10px] tabular-nums">
                   {visibleCustomColumnNames.length}
                 </span>
               )}
@@ -1118,26 +1118,26 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
             <button
               type="button"
               onClick={() => setIsHistoryModalOpen(true)}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#06155E] hover:bg-[#EEF1F9] dark:hover:bg-[#081C7A] text-[#041050] dark:text-slate-200 text-xs font-semibold rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] shadow-2xs transition-all cursor-pointer whitespace-nowrap shrink-0"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#1E293B] hover:bg-[#EBF8FD] dark:hover:bg-[#334155] text-[#0B0F19] dark:text-slate-200 text-xs font-semibold rounded-lg border border-[#E2E8F0] dark:border-[#334155] shadow-2xs transition-all cursor-pointer whitespace-nowrap shrink-0"
               title="Ver y filtrar historial de actualizaciones masivas anteriores"
             >
-              <History className="w-3.5 h-3.5 text-[#007F66] dark:text-[#00CFA7]" />
+              <History className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#21B6EA]" />
               <span>Historial</span>
             </button>
 
             <button
               type="button"
               onClick={() => setIsActionPanelPopupOpen(true)}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#EEF1F9] dark:bg-[#06155E] hover:bg-[#DCE1EB] dark:hover:bg-[#081C7A] text-[#041050] dark:text-white text-xs font-semibold rounded-lg border border-[#CBD5E1] dark:border-[#1B2F8A] transition-all cursor-pointer whitespace-nowrap shrink-0"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#EBF8FD] dark:bg-[#1E293B] hover:bg-[#D5EFFA] dark:hover:bg-[#334155] text-[#0B0F19] dark:text-white text-xs font-semibold rounded-lg border border-[#BAE6FD] dark:border-[#334155] transition-all cursor-pointer whitespace-nowrap shrink-0"
               title="Abrir formulario de modificaciones en ventana emergente"
             >
-              <Maximize2 className="w-3.5 h-3.5 text-[#041050] dark:text-[#00CFA7]" />
+              <Maximize2 className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#21B6EA]" />
               <span>Ventana Emergente</span>
             </button>
 
             <a
               href="#bulk-action-panel"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#041050] hover:bg-[#081C7A] text-white dark:bg-[#00CFA7] dark:hover:bg-[#00B894] dark:text-[#041050] text-xs font-bold rounded-lg shadow-xs transition-all cursor-pointer whitespace-nowrap shrink-0"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#0B0F19] hover:bg-[#1E293B] text-white dark:bg-[#21B6EA] dark:hover:bg-[#38C4F3] dark:text-[#0B0F19] text-xs font-bold rounded-lg shadow-xs transition-all cursor-pointer whitespace-nowrap shrink-0"
               title="Desplazarse a la tarjeta de modificaciones masivas ubicada abajo"
             >
               <ArrowDown className="w-3.5 h-3.5" />
@@ -1148,9 +1148,9 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
 
           {/* Active Custom Columns Bar */}
           {visibleCustomColumnNames.length > 0 && (
-            <div className="px-4 py-2 bg-[#EEF1F9] dark:bg-[#06155E] border-b border-[#DCE1EB] dark:border-[#1B2F8A] flex items-center gap-1.5 flex-wrap text-[11px]">
+            <div className="px-4 py-2 bg-[#EBF8FD] dark:bg-[#0F172A] border-b border-[#E2E8F0] dark:border-[#334155] flex items-center gap-1.5 flex-wrap text-[11px]">
               <span className="text-slate-600 dark:text-slate-300 font-medium flex items-center gap-1">
-                <Eye className="w-3 h-3 text-[#007F66] dark:text-[#00CFA7]" />
+                <Eye className="w-3 h-3 text-[#0369A1] dark:text-[#21B6EA]" />
                 Columnas CRM activas:
               </span>
               {visibleCustomColumnNames.map((colName) => {
@@ -1158,9 +1158,9 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                 return (
                   <span
                     key={colName}
-                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-white dark:bg-[#041050] border border-[#CBD5E1] dark:border-[#1E3599] text-[#041050] dark:text-slate-200 font-medium shadow-2xs text-[11px]"
+                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-white dark:bg-[#1E293B] border border-[#CBD5E1] dark:border-[#475569] text-[#0B0F19] dark:text-slate-200 font-medium shadow-2xs text-[11px]"
                   >
-                    {propDef?.isCustom && <span className="w-1.5 h-1.5 rounded-full bg-[#00CFA7]" title="Propiedad personalizada" />}
+                    {propDef?.isCustom && <span className="w-1.5 h-1.5 rounded-full bg-[#21B6EA]" title="Propiedad personalizada" />}
                     <span>{propDef ? propDef.label : colName}</span>
                     <button
                       type="button"
@@ -1176,7 +1176,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
               <button
                 type="button"
                 onClick={() => setIsColumnPickerOpen(true)}
-                className="text-[#041050] dark:text-[#00CFA7] hover:text-[#007F66] dark:hover:text-white text-[11px] font-semibold flex items-center gap-0.5 ml-1 cursor-pointer"
+                className="text-[#0B0F19] dark:text-[#21B6EA] hover:text-[#0369A1] dark:hover:text-white text-[11px] font-semibold flex items-center gap-0.5 ml-1 cursor-pointer"
               >
                 <Plus className="w-3 h-3" />
                 <span>Agregar Columna</span>
@@ -1187,22 +1187,22 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
           <div className="overflow-x-auto max-h-[580px]">
             {isLoading ? (
               <div className="py-20 text-center">
-                <div className="inline-block w-8 h-8 border-3 border-[#041050] dark:border-[#00CFA7] border-t-transparent rounded-full animate-spin mb-3" />
-                <h4 className="text-sm font-semibold text-[#041050] dark:text-white">Consultando HubSpot CRM...</h4>
+                <div className="inline-block w-8 h-8 border-3 border-[#0B0F19] dark:border-[#21B6EA] border-t-transparent rounded-full animate-spin mb-3" />
+                <h4 className="text-sm font-semibold text-[#0B0F19] dark:text-white">Consultando HubSpot CRM...</h4>
                 <p className="text-xs text-slate-500 dark:text-slate-300 mt-1">
                   Obteniendo contactos que coinciden con los criterios...
                 </p>
               </div>
             ) : !hasSearched ? (
               <div className="py-16 px-6 text-center max-w-lg mx-auto">
-                <div className="w-16 h-16 rounded-2xl bg-[#EEF1F9] dark:bg-[#06155E] border border-[#DCE1EB] dark:border-[#1B2F8A] flex items-center justify-center mx-auto mb-4 text-[#041050] dark:text-[#00CFA7] shadow-2xs">
-                  <Search className="w-8 h-8 text-[#041050] dark:text-[#00CFA7]" />
+                <div className="w-16 h-16 rounded-2xl bg-[#EBF8FD] dark:bg-[#0F172A] border border-[#BAE6FD] dark:border-[#334155] flex items-center justify-center mx-auto mb-4 text-[#0B0F19] dark:text-[#21B6EA] shadow-2xs">
+                  <Search className="w-8 h-8 text-[#0369A1] dark:text-[#21B6EA]" />
                 </div>
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 dark:bg-amber-500/15 border border-amber-200 dark:border-amber-500/35 text-amber-800 dark:text-amber-200 text-[11px] font-semibold mb-3">
                   <Sparkles className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
                   <span>Búsqueda bajo demanda</span>
                 </div>
-                <h4 className="text-base font-bold text-[#041050] dark:text-white">
+                <h4 className="text-base font-bold text-[#0B0F19] dark:text-white">
                   Haz clic en «Aplicar Filtros y Buscar» para ver los leads
                 </h4>
                 <p className="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
@@ -1211,8 +1211,8 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
                   Configura tus filtros deseados en el panel superior (asesor, estado, SLA, campaña o industria) y pulsa el botón a continuación para encontrar y desplegar los leads.
                 </p>
-                <div className="mt-3 p-2.5 bg-[#EEF1F9] dark:bg-[#06155E] border border-[#DCE1EB] dark:border-[#1B2F8A] rounded-lg text-[11px] text-[#041050] dark:text-slate-200 text-left flex items-start gap-2">
-                  <Sparkles className="w-4 h-4 text-[#007F66] dark:text-[#00CFA7] shrink-0 mt-0.5" />
+                <div className="mt-3 p-2.5 bg-[#EBF8FD] dark:bg-[#0F172A] border border-[#BAE6FD] dark:border-[#334155] rounded-lg text-[11px] text-[#0B0F19] dark:text-slate-200 text-left flex items-start gap-2">
+                  <Sparkles className="w-4 h-4 text-[#0369A1] dark:text-[#21B6EA] shrink-0 mt-0.5" />
                   <span>
                     <strong>¿No necesitas ver los resultados antes?</strong> Puedes configurar los valores en el panel inferior y pulsar <em>«Ejecutar por Criterios»</em>. El sistema actualizará directamente todos los leads que cumplan los filtros actuales en HubSpot.
                   </span>
@@ -1222,23 +1222,23 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                     type="button"
                     onClick={() => fetchContacts()}
                     disabled={isLoading}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-[#041050] hover:bg-[#081C7A] text-white dark:bg-[#00CFA7] dark:hover:bg-[#00B894] dark:text-[#041050] rounded-xl text-xs font-bold shadow-sm transition-all cursor-pointer disabled:opacity-50"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-[#0B0F19] hover:bg-[#1E293B] text-white dark:bg-[#21B6EA] dark:hover:bg-[#38C4F3] dark:text-[#0B0F19] rounded-xl text-xs font-bold shadow-sm transition-all cursor-pointer disabled:opacity-50"
                   >
                     <Search className="w-4 h-4" />
                     {isLoading ? 'Consultando HubSpot...' : '🔍 Aplicar Filtros y Buscar Leads'}
                   </button>
                 </div>
-                <div className="mt-6 pt-4 border-t border-[#DCE1EB] dark:border-[#1B2F8A] grid grid-cols-3 gap-2 text-[10px] text-slate-600 dark:text-slate-300 text-left">
-                  <div className="p-2 rounded-lg bg-[#F7F8FC] dark:bg-[#06155E] border border-[#DCE1EB] dark:border-[#1B2F8A]">
-                    <span className="font-semibold text-[#041050] dark:text-white block">1. Segmenta</span>
+                <div className="mt-6 pt-4 border-t border-[#E2E8F0] dark:border-[#334155] grid grid-cols-3 gap-2 text-[10px] text-slate-600 dark:text-slate-300 text-left">
+                  <div className="p-2 rounded-lg bg-[#F8FAFC] dark:bg-[#0F172A] border border-[#E2E8F0] dark:border-[#334155]">
+                    <span className="font-semibold text-[#0B0F19] dark:text-white block">1. Segmenta</span>
                     <span>Asesor, SLA, Estado...</span>
                   </div>
-                  <div className="p-2 rounded-lg bg-[#F7F8FC] dark:bg-[#06155E] border border-[#DCE1EB] dark:border-[#1B2F8A]">
-                    <span className="font-semibold text-[#041050] dark:text-white block">2. Consulta</span>
+                  <div className="p-2 rounded-lg bg-[#F8FAFC] dark:bg-[#0F172A] border border-[#E2E8F0] dark:border-[#334155]">
+                    <span className="font-semibold text-[#0B0F19] dark:text-white block">2. Consulta</span>
                     <span>Búsqueda en CRM</span>
                   </div>
-                  <div className="p-2 rounded-lg bg-[#F7F8FC] dark:bg-[#06155E] border border-[#DCE1EB] dark:border-[#1B2F8A]">
-                    <span className="font-semibold text-[#041050] dark:text-white block">3. Actualiza</span>
+                  <div className="p-2 rounded-lg bg-[#F8FAFC] dark:bg-[#0F172A] border border-[#E2E8F0] dark:border-[#334155]">
+                    <span className="font-semibold text-[#0B0F19] dark:text-white block">3. Actualiza</span>
                     <span>Masivamente en lote</span>
                   </div>
                 </div>
@@ -1246,7 +1246,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
             ) : contacts.length === 0 ? (
               <div className="p-12 text-center">
                 <Users className="w-10 h-10 text-slate-300 dark:text-slate-600 mx-auto mb-3" />
-                <h4 className="text-sm font-semibold text-[#041050] dark:text-white">No se encontraron leads con los filtros actuales</h4>
+                <h4 className="text-sm font-semibold text-[#0B0F19] dark:text-white">No se encontraron leads con los filtros actuales</h4>
                 <p className="text-xs text-slate-500 dark:text-slate-300 mt-1 max-w-md mx-auto">
                   {mcpHubspot.isConnectedToRealCRM()
                     ? 'No hay registros en tu portal HubSpot que coincidan con esta combinación de filtros. Puedes restablecerlos para ver toda tu cartera.'
@@ -1254,7 +1254,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                 </p>
                 <button
                   onClick={resetAllFilters}
-                  className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-[#EEF1F9] dark:bg-[#06155E] hover:bg-[#DCE1EB] dark:hover:bg-[#081C7A] text-[#041050] dark:text-[#00CFA7] border border-[#CBD5E1] dark:border-[#1B2F8A] rounded-lg text-xs font-semibold transition-colors cursor-pointer"
+                  className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-[#EBF8FD] dark:bg-[#0F172A] hover:bg-[#D5EFFA] dark:hover:bg-[#334155] text-[#0B0F19] dark:text-[#21B6EA] border border-[#BAE6FD] dark:border-[#334155] rounded-lg text-xs font-semibold transition-colors cursor-pointer"
                 >
                   <RefreshCw className="w-3.5 h-3.5" />
                   Ver todos los contactos sin filtros
@@ -1263,7 +1263,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
             ) : (
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
-                  <tr className="border-b border-[#DCE1EB] dark:border-[#1B2F8A] bg-[#F7F8FC] dark:bg-[#020829] text-slate-600 dark:text-slate-300 font-semibold uppercase tracking-wider text-[11px] sticky top-0 z-10">
+                  <tr className="border-b border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0F172A] text-slate-600 dark:text-slate-300 font-semibold uppercase tracking-wider text-[11px] sticky top-0 z-10">
                     <th className="py-2.5 px-3 w-10 text-center">#</th>
                     <th className="py-2.5 px-3">Contacto / Empresa</th>
                     <th className="py-2.5 px-3">Asesor Actual</th>
@@ -1275,14 +1275,14 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                       return (
                         <th
                           key={colName}
-                          className="py-2.5 px-3 whitespace-nowrap bg-[#EEF1F9] dark:bg-[#06155E] text-[#041050] dark:text-white border-l border-[#DCE1EB] dark:border-[#1B2F8A]"
+                          className="py-2.5 px-3 whitespace-nowrap bg-[#EBF8FD] dark:bg-[#0F172A] text-[#0B0F19] dark:text-white border-l border-[#E2E8F0] dark:border-[#334155]"
                         >
                           <div className="flex items-center justify-between gap-2">
                             <div className="flex flex-col">
-                              <span className="font-semibold text-xs flex items-center gap-1 text-[#041050] dark:text-white">
+                              <span className="font-semibold text-xs flex items-center gap-1 text-[#0B0F19] dark:text-white">
                                 {propDef ? propDef.label : colName}
                                 {propDef?.isCustom && (
-                                  <span className="text-[8px] bg-[#E6FAF5] dark:bg-[#00CFA7]/20 text-[#007F66] dark:text-[#00CFA7] px-1 py-0.2 rounded font-bold uppercase tracking-tight">
+                                  <span className="text-[8px] bg-[#E8F7FD] dark:bg-[#21B6EA]/20 text-[#0369A1] dark:text-[#21B6EA] px-1 py-0.2 rounded font-bold uppercase tracking-tight">
                                     Custom
                                   </span>
                                 )}
@@ -1297,7 +1297,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                                 e.stopPropagation();
                                 handleToggleColumn(colName);
                               }}
-                              className="text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 p-0.5 rounded hover:bg-white dark:hover:bg-[#041050] cursor-pointer transition-colors"
+                              className="text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 p-0.5 rounded hover:bg-white dark:hover:bg-[#1E293B] cursor-pointer transition-colors"
                               title={`Ocultar columna ${propDef?.label || colName}`}
                             >
                               <X className="w-3 h-3" />
@@ -1308,7 +1308,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                     })}
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#DCE1EB] dark:divide-[#1B2F8A]">
+                <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#334155]">
                   {contacts.map((contact) => {
                     const isSelected = selectedContactIds.has(contact.id);
                     const statusInfo = LEAD_STATUS_LABELS[contact.hs_lead_status] || {
@@ -1325,8 +1325,8 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                         onClick={() => handleToggleSelect(contact.id)}
                         className={`cursor-pointer transition-colors ${
                           isSelected
-                            ? 'bg-[#E6FAF5]/60 dark:bg-[#00CFA7]/10 hover:bg-[#E6FAF5] dark:hover:bg-[#00CFA7]/15'
-                            : 'hover:bg-[#F7F8FC] dark:hover:bg-[#06155E]'
+                            ? 'bg-[#E8F7FD]/70 dark:bg-[#21B6EA]/10 hover:bg-[#E8F7FD] dark:hover:bg-[#21B6EA]/15'
+                            : 'hover:bg-[#F8FAFC] dark:hover:bg-[#0F172A]/60'
                         }`}
                       >
                         <td className="py-3 px-3 text-center" onClick={(e) => e.stopPropagation()}>
@@ -1334,11 +1334,11 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                             type="checkbox"
                             checked={isSelected}
                             onChange={() => handleToggleSelect(contact.id)}
-                            className="rounded border-[#CBD5E1] dark:border-[#1E3599] text-[#041050] dark:text-[#00CFA7] focus:ring-[#00CFA7] cursor-pointer"
+                            className="rounded border-[#CBD5E1] dark:border-[#475569] accent-[#0B0F19] dark:accent-[#21B6EA] focus:ring-[#21B6EA] cursor-pointer"
                           />
                         </td>
                         <td className="py-3 px-3">
-                          <div className="font-semibold text-[#041050] dark:text-white">
+                          <div className="font-semibold text-[#0B0F19] dark:text-white">
                             {contact.firstname} {contact.lastname}
                           </div>
                           <div className="text-slate-500 dark:text-slate-400 text-[11px] truncate max-w-[170px]">{contact.email}</div>
@@ -1360,8 +1360,8 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                               Sin Asignar
                             </span>
                           ) : (
-                            <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-[#EEF1F9] dark:bg-[#06155E] text-[#041050] dark:text-slate-200 font-medium text-[11px] border border-[#DCE1EB] dark:border-[#1B2F8A]">
-                              <UserCheck className="w-3 h-3 text-[#007F66] dark:text-[#00CFA7]" />
+                            <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-[#EBF8FD] dark:bg-[#0F172A] text-[#0B0F19] dark:text-slate-200 font-medium text-[11px] border border-[#BAE6FD] dark:border-[#334155]">
+                              <UserCheck className="w-3 h-3 text-[#0369A1] dark:text-[#21B6EA]" />
                               <span className="truncate max-w-[120px]">{getOwnerName(contact.hubspot_owner_id)}</span>
                             </div>
                           )}
@@ -1384,11 +1384,11 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                           </div>
                         </td>
                         <td className="py-3 px-3">
-                          <div className="text-[#041050] dark:text-white font-medium truncate max-w-[130px]">
+                          <div className="text-[#0B0F19] dark:text-white font-medium truncate max-w-[130px]">
                             {LIFECYCLE_LABELS[contact.lifecyclestage] || contact.lifecyclestage}
                           </div>
                           {contact.utm_source && (
-                            <div className="text-[10px] text-[#007F66] dark:text-[#00CFA7] font-medium truncate max-w-[130px] mt-0.5">
+                            <div className="text-[10px] text-[#0369A1] dark:text-[#21B6EA] font-medium truncate max-w-[130px] mt-0.5">
                               {contact.utm_source}
                             </div>
                           )}
@@ -1401,7 +1401,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                             className={`inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded border tabular-nums ${
                               isOverdue
                                 ? 'bg-rose-50 dark:bg-rose-500/20 text-rose-700 dark:text-rose-200 border-rose-200 dark:border-rose-400/35'
-                                : 'bg-[#F7F8FC] dark:bg-[#06155E] text-slate-600 dark:text-slate-300 border-[#DCE1EB] dark:border-[#1B2F8A]'
+                                : 'bg-[#F8FAFC] dark:bg-[#0F172A] text-slate-600 dark:text-slate-300 border-[#E2E8F0] dark:border-[#334155]'
                             }`}
                           >
                             <Clock className="w-3 h-3" />
@@ -1425,19 +1425,19 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                           } else if (propDef?.options && propDef.options.length > 0) {
                             const matched = propDef.options.find((o) => o.value === String(rawVal));
                             displayNode = (
-                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold bg-[#EEF1F9] dark:bg-[#06155E] text-[#041050] dark:text-slate-100 border border-[#CBD5E1] dark:border-[#1E3599] shadow-2xs">
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold bg-[#EBF8FD] dark:bg-[#0F172A] text-[#0B0F19] dark:text-slate-100 border border-[#BAE6FD] dark:border-[#334155] shadow-2xs">
                                 <span>{matched ? matched.label : String(rawVal)}</span>
                               </span>
                             );
                           } else if (typeof rawVal === 'number' || (propDef?.type === 'number' && !isNaN(Number(rawVal)))) {
                             displayNode = (
-                              <span className="font-mono text-[#041050] dark:text-white font-semibold text-[11px] tabular-nums">
+                              <span className="font-mono text-[#0B0F19] dark:text-white font-semibold text-[11px] tabular-nums">
                                 {Number(rawVal).toLocaleString()}
                               </span>
                             );
                           } else if (rawVal === true || rawVal === 'true') {
                             displayNode = (
-                              <span className="inline-flex items-center gap-1 text-[#007F66] dark:text-[#00CFA7] bg-[#E6FAF5] dark:bg-[#00CFA7]/15 px-1.5 py-0.5 rounded text-[10px] font-semibold border border-[#00CFA7]/40">
+                              <span className="inline-flex items-center gap-1 text-[#0369A1] dark:text-[#21B6EA] bg-[#E8F7FD] dark:bg-[#21B6EA]/15 px-1.5 py-0.5 rounded text-[10px] font-semibold border border-[#21B6EA]/40">
                                 Sí
                               </span>
                             );
@@ -1449,14 +1449,14 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                             );
                           } else {
                             displayNode = (
-                              <span className="text-[#041050] dark:text-slate-200 font-medium text-[11px] truncate max-w-[140px] block" title={String(rawVal)}>
+                              <span className="text-[#0B0F19] dark:text-slate-200 font-medium text-[11px] truncate max-w-[140px] block" title={String(rawVal)}>
                                 {String(rawVal)}
                               </span>
                             );
                           }
 
                           return (
-                            <td key={colName} className="py-3 px-3 border-l border-[#DCE1EB]/70 dark:border-[#1B2F8A] bg-[#F7F8FC]/60 dark:bg-[#06155E]/40">
+                            <td key={colName} className="py-3 px-3 border-l border-[#E2E8F0]/70 dark:border-[#334155] bg-[#F8FAFC]/60 dark:bg-[#0F172A]/40">
                               {displayNode}
                             </td>
                           );
@@ -1471,18 +1471,18 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
         </div>
 
       {/* 2. Tarjeta de Modificaciones Masivas - Ubicada DESPUÉS de la lista, a lo largo horizontalmente completo */}
-      <div className="w-full mt-6 bg-white dark:bg-[#041050] rounded-xl border border-[#DCE1EB] dark:border-[#1B2F8A] p-6 shadow-xs scroll-mt-24" id="bulk-action-panel">
-        <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#DCE1EB] dark:border-[#1B2F8A] flex-wrap gap-2">
+      <div className="w-full mt-6 bg-white dark:bg-[#1E293B] rounded-xl border border-[#E2E8F0] dark:border-[#334155] p-6 shadow-xs scroll-mt-24" id="bulk-action-panel">
+        <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#E2E8F0] dark:border-[#334155] flex-wrap gap-2">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-lg bg-[#E6FAF5] dark:bg-[#00CFA7]/15 border border-[#00CFA7]/35 text-[#007F66] dark:text-[#00CFA7]">
+            <div className="p-2 rounded-lg bg-[#E8F7FD] dark:bg-[#21B6EA]/15 border border-[#21B6EA]/35 text-[#0369A1] dark:text-[#21B6EA]">
               <ArrowRightLeft className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-[#041050] dark:text-white">
+              <h3 className="text-base font-bold text-[#0B0F19] dark:text-white">
                 2. Configuración de Modificaciones Masivas (Destino)
               </h3>
               <p className="text-xs text-slate-600 dark:text-slate-300">
-                Selecciona los campos a sobreescribir. Los campos en <span className="font-semibold text-[#041050] dark:text-white">«-- Sin cambio --»</span> mantendrán su valor actual en HubSpot CRM.
+                Selecciona los campos a sobreescribir. Los campos en <span className="font-semibold text-[#0B0F19] dark:text-white">«-- Sin cambio --»</span> mantendrán su valor actual en HubSpot CRM.
               </p>
             </div>
           </div>
@@ -1490,7 +1490,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
             <button
               type="button"
               onClick={() => setIsActionPanelPopupOpen(true)}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#041050] dark:text-slate-200 hover:text-[#007F66] dark:hover:text-[#00CFA7] bg-[#F7F8FC] dark:bg-[#06155E] hover:bg-[#EEF1F9] dark:hover:bg-[#081C7A] px-3 py-1.5 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] transition-colors cursor-pointer whitespace-nowrap shrink-0"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0B0F19] dark:text-slate-200 hover:text-[#0369A1] dark:hover:text-[#21B6EA] bg-[#F8FAFC] dark:bg-[#0F172A] hover:bg-[#EBF8FD] dark:hover:bg-[#334155] px-3 py-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] transition-colors cursor-pointer whitespace-nowrap shrink-0"
               title="Abrir formulario en ventana emergente"
             >
               <Maximize2 className="w-3.5 h-3.5" />
@@ -1511,18 +1511,18 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {/* Columna 1: Asignación y Ciclo de Vida */}
           <div className="space-y-3.5">
-            <div className="pb-1.5 border-b border-[#DCE1EB] dark:border-[#1B2F8A] flex items-center justify-between">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#041050] dark:text-white flex items-center gap-1.5">
-                <UserCheck className="w-3.5 h-3.5 text-[#007F66] dark:text-[#00CFA7]" />
+            <div className="pb-1.5 border-b border-[#E2E8F0] dark:border-[#334155] flex items-center justify-between">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#0B0F19] dark:text-white flex items-center gap-1.5">
+                <UserCheck className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#21B6EA]" />
                 1. Asignación y Ciclo Comercial
               </span>
             </div>
 
             {/* 1. Reasignar Asesor / Propietario */}
-            <div className="p-2.5 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] bg-[#F7F8FC] dark:bg-[#06155E]">
-              <label className="block text-xs font-semibold text-[#041050] dark:text-slate-200 mb-1 flex items-center justify-between">
+            <div className="p-2.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0F172A]">
+              <label className="block text-xs font-semibold text-[#0B0F19] dark:text-slate-200 mb-1 flex items-center justify-between">
                 <span className="flex items-center gap-1">
-                  <UserCheck className="w-3.5 h-3.5 text-[#007F66] dark:text-[#00CFA7]" />
+                  <UserCheck className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#21B6EA]" />
                   1. Reasignar Asesor / Cartera
                 </span>
                 <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400">hubspot_owner_id</span>
@@ -1540,7 +1540,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                     setActionPayload({ ...actionPayload, targetOwnerId: val });
                   }
                 }}
-                className="w-full text-xs bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-3 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7] disabled:bg-amber-50 dark:disabled:bg-amber-500/15 disabled:text-amber-900 dark:disabled:text-amber-200 disabled:border-amber-300 dark:disabled:border-amber-500/40"
+                className="w-full text-xs bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-3 py-2 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA] disabled:bg-amber-50 dark:disabled:bg-amber-500/15 disabled:text-amber-900 dark:disabled:text-amber-200 disabled:border-amber-300 dark:disabled:border-amber-500/40"
               >
                 <option value="">-- Sin cambio --</option>
                 <option value="__UNASSIGN__">⚠️ Desasignar (Mover a Cartera Libre / Sin Asignar)</option>
@@ -1551,7 +1551,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                 ))}
               </select>
               <div className="mt-1.5 flex items-center justify-between">
-                <label className="inline-flex items-center gap-1.5 text-[11px] text-slate-600 dark:text-slate-300 font-medium cursor-pointer hover:text-[#041050] dark:hover:text-white select-none">
+                <label className="inline-flex items-center gap-1.5 text-[11px] text-slate-600 dark:text-slate-300 font-medium cursor-pointer hover:text-[#0B0F19] dark:hover:text-white select-none">
                   <input
                     type="checkbox"
                     checked={Boolean(clearFields.owner || actionPayload.targetOwnerId === '__UNASSIGN__')}
@@ -1560,7 +1560,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                       setClearFields((prev) => ({ ...prev, owner: checked }));
                       setActionPayload((prev) => ({ ...prev, targetOwnerId: checked ? '__UNASSIGN__' : '' }));
                     }}
-                    className="w-3.5 h-3.5 rounded text-amber-600 border-[#CBD5E1] dark:border-[#1E3599] focus:ring-amber-500 cursor-pointer"
+                    className="w-3.5 h-3.5 rounded text-amber-600 border-[#CBD5E1] dark:border-[#475569] focus:ring-amber-500 cursor-pointer"
                   />
                   <span className={clearFields.owner || actionPayload.targetOwnerId === '__UNASSIGN__' ? 'text-amber-800 dark:text-amber-200 font-semibold' : ''}>
                     Poner valor nulo / vaciar (desasignar asesor de todos los leads)
@@ -1570,15 +1570,15 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
             </div>
 
             {/* 2. Cambiar Estado del Lead */}
-            <div className="p-2.5 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] bg-[#F7F8FC] dark:bg-[#06155E]">
-              <label className="block text-xs font-semibold text-[#041050] dark:text-slate-200 mb-1 flex items-center justify-between">
+            <div className="p-2.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0F172A]">
+              <label className="block text-xs font-semibold text-[#0B0F19] dark:text-slate-200 mb-1 flex items-center justify-between">
                 <span>2. Estado del Lead</span>
                 <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400">hs_lead_status</span>
               </label>
               <select
                 value={actionPayload.targetLeadStatus || ''}
                 onChange={(e) => setActionPayload({ ...actionPayload, targetLeadStatus: e.target.value })}
-                className="w-full text-xs bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-3 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7]"
+                className="w-full text-xs bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-3 py-2 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA]"
               >
                 <option value="">-- Sin cambio --</option>
                 {Object.entries(LEAD_STATUS_LABELS).map(([key, item]) => (
@@ -1590,9 +1590,9 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
             </div>
 
             {/* 3. Cierre o Avance de Ciclo */}
-            <div className="p-2.5 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] bg-[#F7F8FC] dark:bg-[#06155E]">
+            <div className="p-2.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0F172A]">
               <div className="flex items-center justify-between mb-1">
-                <label className="text-xs font-semibold text-[#041050] dark:text-slate-200">3. Etapa del Ciclo de Vida</label>
+                <label className="text-xs font-semibold text-[#0B0F19] dark:text-slate-200">3. Etapa del Ciclo de Vida</label>
                 <div className="flex items-center gap-1.5">
                   <span className="text-[10px] text-slate-500 dark:text-slate-400 italic">Obligatoria en CRM (no permite nulo)</span>
                   <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400">lifecyclestage</span>
@@ -1601,7 +1601,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
               <select
                 value={actionPayload.targetLifecycleStage || ''}
                 onChange={(e) => setActionPayload({ ...actionPayload, targetLifecycleStage: e.target.value })}
-                className="w-full text-xs bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-3 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7]"
+                className="w-full text-xs bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-3 py-2 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA]"
               >
                 <option value="">-- Sin cambio --</option>
                 {Object.entries(LIFECYCLE_LABELS).map(([key, label]) => (
@@ -1615,16 +1615,16 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
 
           {/* Columna 2: Prioridad, Campaña y Segmento */}
           <div className="space-y-3.5">
-            <div className="pb-1.5 border-b border-[#DCE1EB] dark:border-[#1B2F8A] flex items-center justify-between">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#041050] dark:text-white flex items-center gap-1.5">
-                <Tag className="w-3.5 h-3.5 text-[#007F66] dark:text-[#00CFA7]" />
+            <div className="pb-1.5 border-b border-[#E2E8F0] dark:border-[#334155] flex items-center justify-between">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#0B0F19] dark:text-white flex items-center gap-1.5">
+                <Tag className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#21B6EA]" />
                 2. Prioridad, Campaña y Segmento
               </span>
             </div>
 
             {/* 4. Prioridad Comercial */}
-            <div className="p-2.5 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] bg-[#F7F8FC] dark:bg-[#06155E]">
-              <label className="block text-xs font-semibold text-[#041050] dark:text-slate-200 mb-1 flex items-center justify-between">
+            <div className="p-2.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0F172A]">
+              <label className="block text-xs font-semibold text-[#0B0F19] dark:text-slate-200 mb-1 flex items-center justify-between">
                 <span className="flex items-center gap-1">
                   <Flame className="w-3.5 h-3.5 text-rose-500 dark:text-rose-400" />
                   4. Prioridad Comercial
@@ -1635,7 +1635,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                 disabled={Boolean(clearFields.priority)}
                 value={clearFields.priority ? '' : actionPayload.targetPriority || ''}
                 onChange={(e) => setActionPayload({ ...actionPayload, targetPriority: e.target.value })}
-                className="w-full text-xs bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-3 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7] disabled:bg-amber-50 dark:disabled:bg-amber-500/15 disabled:text-amber-800 dark:disabled:text-amber-200 disabled:border-amber-300 dark:disabled:border-amber-500/40"
+                className="w-full text-xs bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-3 py-2 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA] disabled:bg-amber-50 dark:disabled:bg-amber-500/15 disabled:text-amber-800 dark:disabled:text-amber-200 disabled:border-amber-300 dark:disabled:border-amber-500/40"
               >
                 <option value="">{clearFields.priority ? '-- Se enviará valor NULO / Vacío --' : '-- Sin cambio --'}</option>
                 <option value="URGENT">🔥 Urgente (Atención Inmediata)</option>
@@ -1644,7 +1644,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                 <option value="LOW">⚪ Baja Prioridad</option>
               </select>
               <div className="mt-1.5 flex items-center justify-between">
-                <label className="inline-flex items-center gap-1.5 text-[11px] text-slate-600 dark:text-slate-300 font-medium cursor-pointer hover:text-[#041050] dark:hover:text-white select-none">
+                <label className="inline-flex items-center gap-1.5 text-[11px] text-slate-600 dark:text-slate-300 font-medium cursor-pointer hover:text-[#0B0F19] dark:hover:text-white select-none">
                   <input
                     type="checkbox"
                     checked={Boolean(clearFields.priority)}
@@ -1655,7 +1655,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                         setActionPayload((prev) => ({ ...prev, targetPriority: '' }));
                       }
                     }}
-                    className="w-3.5 h-3.5 rounded text-amber-600 border-[#CBD5E1] dark:border-[#1E3599] focus:ring-amber-500 cursor-pointer"
+                    className="w-3.5 h-3.5 rounded text-amber-600 border-[#CBD5E1] dark:border-[#475569] focus:ring-amber-500 cursor-pointer"
                   />
                   <span className={clearFields.priority ? 'text-amber-800 dark:text-amber-200 font-semibold' : ''}>
                     Poner valor nulo / vacío (quitar prioridad en HubSpot)
@@ -1666,16 +1666,16 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {/* 5. Cambio de Campaña */}
-              <div className="p-2.5 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] bg-[#F7F8FC] dark:bg-[#06155E]">
+              <div className="p-2.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0F172A]">
                 <div className="flex items-center justify-between mb-1">
-                  <label className="block text-xs font-semibold text-[#041050] dark:text-slate-200">
+                  <label className="block text-xs font-semibold text-[#0B0F19] dark:text-slate-200">
                     5. Campaña (`utm_campaign`)
                   </label>
                   {!clearFields.campaign && (
                     <button
                       type="button"
                       onClick={() => setIsManualCampaign((prev) => !prev)}
-                      className="text-[10px] text-[#041050] dark:text-[#00CFA7] hover:text-[#007F66] dark:hover:text-white font-semibold cursor-pointer underline flex items-center gap-0.5"
+                      className="text-[10px] text-[#0B0F19] dark:text-[#21B6EA] hover:text-[#0369A1] dark:hover:text-white font-semibold cursor-pointer underline flex items-center gap-0.5"
                     >
                       {isManualCampaign ? '📋 Elegir de la lista' : '✏️ Escribir manual'}
                     </button>
@@ -1691,7 +1691,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                       placeholder={clearFields.campaign ? '⚠️ Se enviará valor NULO / Vacío a CRM' : 'Escribe o busca nombre de campaña...'}
                       value={clearFields.campaign ? '' : actionPayload.targetCampaign || ''}
                       onChange={(e) => setActionPayload({ ...actionPayload, targetCampaign: e.target.value })}
-                      className="w-full text-xs bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-3 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7] disabled:bg-amber-50 dark:disabled:bg-amber-500/15 disabled:text-amber-800 dark:disabled:text-amber-200 disabled:border-amber-300 dark:disabled:border-amber-500/40"
+                      className="w-full text-xs bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-3 py-2 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA] disabled:bg-amber-50 dark:disabled:bg-amber-500/15 disabled:text-amber-800 dark:disabled:text-amber-200 disabled:border-amber-300 dark:disabled:border-amber-500/40"
                     />
                     <datalist id="bulk-campaign-suggestions">
                       {uniqueCampaigns.map((camp) => (
@@ -1711,7 +1711,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                         setActionPayload({ ...actionPayload, targetCampaign: val });
                       }
                     }}
-                    className="w-full text-xs bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-3 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7] disabled:bg-amber-50 dark:disabled:bg-amber-500/15 disabled:text-amber-800 dark:disabled:text-amber-200 disabled:border-amber-300 dark:disabled:border-amber-500/40 font-medium"
+                    className="w-full text-xs bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-3 py-2 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA] disabled:bg-amber-50 dark:disabled:bg-amber-500/15 disabled:text-amber-800 dark:disabled:text-amber-200 disabled:border-amber-300 dark:disabled:border-amber-500/40 font-medium"
                   >
                     <option value="">{clearFields.campaign ? '-- Se enviará valor NULO / Vacío --' : '-- Sin cambio --'}</option>
                     {uniqueCampaigns.map((camp) => (
@@ -1724,7 +1724,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                 )}
 
                 <div className="mt-1.5">
-                  <label className="inline-flex items-center gap-1.5 text-[11px] text-slate-600 dark:text-slate-300 font-medium cursor-pointer hover:text-[#041050] dark:hover:text-white select-none">
+                  <label className="inline-flex items-center gap-1.5 text-[11px] text-slate-600 dark:text-slate-300 font-medium cursor-pointer hover:text-[#0B0F19] dark:hover:text-white select-none">
                     <input
                       type="checkbox"
                       checked={Boolean(clearFields.campaign)}
@@ -1735,7 +1735,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                           setActionPayload((prev) => ({ ...prev, targetCampaign: '' }));
                         }
                       }}
-                      className="w-3.5 h-3.5 rounded text-amber-600 border-[#CBD5E1] dark:border-[#1E3599] focus:ring-amber-500 cursor-pointer"
+                      className="w-3.5 h-3.5 rounded text-amber-600 border-[#CBD5E1] dark:border-[#475569] focus:ring-amber-500 cursor-pointer"
                     />
                     <span className={clearFields.campaign ? 'text-amber-800 dark:text-amber-200 font-semibold' : ''}>
                       Poner valor nulo / vacío (borrar campaña en HubSpot)
@@ -1745,15 +1745,15 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
               </div>
 
               {/* 6. Canal / Fuente */}
-              <div className="p-2.5 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] bg-[#F7F8FC] dark:bg-[#06155E]">
-                <label className="block text-xs font-semibold text-[#041050] dark:text-slate-200 mb-1">
+              <div className="p-2.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0F172A]">
+                <label className="block text-xs font-semibold text-[#0B0F19] dark:text-slate-200 mb-1">
                   6. Canal (`utm_source`)
                 </label>
                 <select
                   disabled={Boolean(clearFields.source)}
                   value={clearFields.source ? '' : actionPayload.targetSource || ''}
                   onChange={(e) => setActionPayload({ ...actionPayload, targetSource: e.target.value })}
-                  className="w-full text-xs bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-3 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7] disabled:bg-amber-50 dark:disabled:bg-amber-500/15 disabled:text-amber-800 dark:disabled:text-amber-200 disabled:border-amber-300 dark:disabled:border-amber-500/40"
+                  className="w-full text-xs bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-3 py-2 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA] disabled:bg-amber-50 dark:disabled:bg-amber-500/15 disabled:text-amber-800 dark:disabled:text-amber-200 disabled:border-amber-300 dark:disabled:border-amber-500/40"
                 >
                   <option value="">{clearFields.source ? '-- Se enviará valor NULO / Vacío --' : '-- Sin cambio --'}</option>
                   {SOURCE_OPTIONS.map((src) => (
@@ -1763,7 +1763,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                   ))}
                 </select>
                 <div className="mt-1.5">
-                  <label className="inline-flex items-center gap-1.5 text-[11px] text-slate-600 dark:text-slate-300 font-medium cursor-pointer hover:text-[#041050] dark:hover:text-white select-none">
+                  <label className="inline-flex items-center gap-1.5 text-[11px] text-slate-600 dark:text-slate-300 font-medium cursor-pointer hover:text-[#0B0F19] dark:hover:text-white select-none">
                     <input
                       type="checkbox"
                       checked={Boolean(clearFields.source)}
@@ -1774,7 +1774,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                           setActionPayload((prev) => ({ ...prev, targetSource: '' }));
                         }
                       }}
-                      className="w-3.5 h-3.5 rounded text-amber-600 border-[#CBD5E1] dark:border-[#1E3599] focus:ring-amber-500 cursor-pointer"
+                      className="w-3.5 h-3.5 rounded text-amber-600 border-[#CBD5E1] dark:border-[#475569] focus:ring-amber-500 cursor-pointer"
                     />
                     <span className={clearFields.source ? 'text-amber-800 dark:text-amber-200 font-semibold' : ''}>
                       Poner valor nulo / vacío
@@ -1786,15 +1786,15 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {/* 7. Industria / Rubro */}
-              <div className="p-2.5 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] bg-[#F7F8FC] dark:bg-[#06155E]">
-                <label className="block text-xs font-semibold text-[#041050] dark:text-slate-200 mb-1">
+              <div className="p-2.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0F172A]">
+                <label className="block text-xs font-semibold text-[#0B0F19] dark:text-slate-200 mb-1">
                   7. Industria (`industry`)
                 </label>
                 <select
                   disabled={Boolean(clearFields.industry)}
                   value={clearFields.industry ? '' : actionPayload.targetIndustry || ''}
                   onChange={(e) => setActionPayload({ ...actionPayload, targetIndustry: e.target.value })}
-                  className="w-full text-xs bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-3 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7] disabled:bg-amber-50 dark:disabled:bg-amber-500/15 disabled:text-amber-800 dark:disabled:text-amber-200 disabled:border-amber-300 dark:disabled:border-amber-500/40"
+                  className="w-full text-xs bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-3 py-2 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA] disabled:bg-amber-50 dark:disabled:bg-amber-500/15 disabled:text-amber-800 dark:disabled:text-amber-200 disabled:border-amber-300 dark:disabled:border-amber-500/40"
                 >
                   <option value="">{clearFields.industry ? '-- Se enviará valor NULO / Vacío --' : '-- Sin cambio --'}</option>
                   {INDUSTRY_OPTIONS.map((ind) => (
@@ -1804,7 +1804,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                   ))}
                 </select>
                 <div className="mt-1.5">
-                  <label className="inline-flex items-center gap-1.5 text-[11px] text-slate-600 dark:text-slate-300 font-medium cursor-pointer hover:text-[#041050] dark:hover:text-white select-none">
+                  <label className="inline-flex items-center gap-1.5 text-[11px] text-slate-600 dark:text-slate-300 font-medium cursor-pointer hover:text-[#0B0F19] dark:hover:text-white select-none">
                     <input
                       type="checkbox"
                       checked={Boolean(clearFields.industry)}
@@ -1815,7 +1815,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                           setActionPayload((prev) => ({ ...prev, targetIndustry: '' }));
                         }
                       }}
-                      className="w-3.5 h-3.5 rounded text-amber-600 border-[#CBD5E1] dark:border-[#1E3599] focus:ring-amber-500 cursor-pointer"
+                      className="w-3.5 h-3.5 rounded text-amber-600 border-[#CBD5E1] dark:border-[#475569] focus:ring-amber-500 cursor-pointer"
                     />
                     <span className={clearFields.industry ? 'text-amber-800 dark:text-amber-200 font-semibold' : ''}>
                       Poner valor nulo / vacío
@@ -1825,8 +1825,8 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
               </div>
 
               {/* 8. Ciudad / Ubicación */}
-              <div className="p-2.5 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] bg-[#F7F8FC] dark:bg-[#06155E]">
-                <label className="block text-xs font-semibold text-[#041050] dark:text-slate-200 mb-1">
+              <div className="p-2.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0F172A]">
+                <label className="block text-xs font-semibold text-[#0B0F19] dark:text-slate-200 mb-1">
                   8. Ciudad (`city`)
                 </label>
                 <input
@@ -1835,10 +1835,10 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                   placeholder={clearFields.city ? '⚠️ Se enviará valor NULO / Vacío a CRM' : 'Ej. Lima, Santiago...'}
                   value={clearFields.city ? '' : actionPayload.targetCity || ''}
                   onChange={(e) => setActionPayload({ ...actionPayload, targetCity: e.target.value })}
-                  className="w-full text-xs bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-3 py-2 text-[#041050] dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#00CFA7] disabled:bg-amber-50 dark:disabled:bg-amber-500/15 disabled:text-amber-800 dark:disabled:text-amber-200 disabled:border-amber-300 dark:disabled:border-amber-500/40"
+                  className="w-full text-xs bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-3 py-2 text-[#0B0F19] dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#21B6EA] disabled:bg-amber-50 dark:disabled:bg-amber-500/15 disabled:text-amber-800 dark:disabled:text-amber-200 disabled:border-amber-300 dark:disabled:border-amber-500/40"
                 />
                 <div className="mt-1.5">
-                  <label className="inline-flex items-center gap-1.5 text-[11px] text-slate-600 dark:text-slate-300 font-medium cursor-pointer hover:text-[#041050] dark:hover:text-white select-none">
+                  <label className="inline-flex items-center gap-1.5 text-[11px] text-slate-600 dark:text-slate-300 font-medium cursor-pointer hover:text-[#0B0F19] dark:hover:text-white select-none">
                     <input
                       type="checkbox"
                       checked={Boolean(clearFields.city)}
@@ -1849,7 +1849,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                           setActionPayload((prev) => ({ ...prev, targetCity: '' }));
                         }
                       }}
-                      className="w-3.5 h-3.5 rounded text-amber-600 border-[#CBD5E1] dark:border-[#1E3599] focus:ring-amber-500 cursor-pointer"
+                      className="w-3.5 h-3.5 rounded text-amber-600 border-[#CBD5E1] dark:border-[#475569] focus:ring-amber-500 cursor-pointer"
                     />
                     <span className={clearFields.city ? 'text-amber-800 dark:text-amber-200 font-semibold' : ''}>
                       Poner valor nulo / vacío
@@ -1862,9 +1862,9 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
 
           {/* Columna 3: Propiedades Personalizadas y Campos del Portal */}
           <div className="space-y-3.5">
-            <div className="pb-1.5 border-b border-[#DCE1EB] dark:border-[#1B2F8A] flex items-center justify-between">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#041050] dark:text-white flex items-center gap-1.5">
-                <Database className="w-3.5 h-3.5 text-[#007F66] dark:text-[#00CFA7]" />
+            <div className="pb-1.5 border-b border-[#E2E8F0] dark:border-[#334155] flex items-center justify-between">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#0B0F19] dark:text-white flex items-center gap-1.5">
+                <Database className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#21B6EA]" />
                 3. Propiedades Personalizadas
               </span>
             </div>
@@ -1872,19 +1872,19 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
             {/* 9. Propiedades Dinámicas & Campos Personalizados del Portal */}
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <label className="text-xs font-semibold text-[#041050] dark:text-white flex items-center gap-1.5">
-                  <Database className="w-3.5 h-3.5 text-[#007F66] dark:text-[#00CFA7]" />
+                <label className="text-xs font-semibold text-[#0B0F19] dark:text-white flex items-center gap-1.5">
+                  <Database className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#21B6EA]" />
                   <span>Campos Personalizados del CRM</span>
                 </label>
                 <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-mono bg-[#E6FAF5] dark:bg-[#00CFA7]/15 text-[#007F66] dark:text-[#00CFA7] border border-[#00CFA7]/35 px-1.5 py-0.5 rounded font-medium tabular-nums">
+                  <span className="text-[10px] font-mono bg-[#E8F7FD] dark:bg-[#21B6EA]/15 text-[#0369A1] dark:text-[#21B6EA] border border-[#21B6EA]/35 px-1.5 py-0.5 rounded font-medium tabular-nums">
                     {availableProperties.length} en CRM
                   </span>
                   <button
                     type="button"
                     onClick={fetchProperties}
                     title="Sincronizar propiedades desde el portal de HubSpot"
-                    className="text-[10px] text-[#041050] dark:text-[#00CFA7] hover:text-[#007F66] dark:hover:text-white flex items-center gap-1 cursor-pointer font-medium"
+                    className="text-[10px] text-[#0B0F19] dark:text-[#21B6EA] hover:text-[#0369A1] dark:hover:text-white flex items-center gap-1 cursor-pointer font-medium"
                   >
                     <RefreshCw className={`w-3 h-3 ${isLoadingProperties ? 'animate-spin' : ''}`} />
                     <span>Sincronizar</span>
@@ -1897,13 +1897,13 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
               </p>
 
               {/* Selector to add custom / dynamic property */}
-              <div className="bg-[#F7F8FC] dark:bg-[#06155E] p-3 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] space-y-2 mb-3">
+              <div className="bg-[#F8FAFC] dark:bg-[#0F172A] p-3 rounded-lg border border-[#E2E8F0] dark:border-[#334155] space-y-2 mb-3">
                 <div className="flex flex-col sm:flex-row gap-2">
                   <div className="relative flex-1">
                     <select
                       value={selectedPropertyToAdd}
                       onChange={(e) => setSelectedPropertyToAdd(e.target.value)}
-                      className="w-full text-xs bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg px-2.5 py-2 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7]"
+                      className="w-full text-xs bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg px-2.5 py-2 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA]"
                     >
                       <option value="">-- Selecciona una propiedad para agregar --</option>
                       {/* Group 1: Custom Portal Properties */}
@@ -1942,7 +1942,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                       ]);
                       setSelectedPropertyToAdd('');
                     }}
-                    className="px-3.5 py-2 bg-[#041050] hover:bg-[#081C7A] text-white dark:bg-[#00CFA7] dark:hover:bg-[#00B894] dark:text-[#041050] disabled:opacity-40 disabled:cursor-not-allowed rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 cursor-pointer transition-colors shadow-xs shrink-0 whitespace-nowrap"
+                    className="px-3.5 py-2 bg-[#0B0F19] hover:bg-[#1E293B] text-white dark:bg-[#21B6EA] dark:hover:bg-[#38C4F3] dark:text-[#0B0F19] disabled:opacity-40 disabled:cursor-not-allowed rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 cursor-pointer transition-colors shadow-xs shrink-0 whitespace-nowrap"
                   >
                     <Plus className="w-3.5 h-3.5" />
                     <span>Agregar Propiedad</span>
@@ -1955,17 +1955,17 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                   if (!propToAddDef) return null;
                   const hasOpts = propToAddDef.options && propToAddDef.options.length > 0;
                   return (
-                    <div className="p-2 bg-[#EEF1F9] dark:bg-[#020829] rounded-lg border border-[#CBD5E1] dark:border-[#1E3599] text-[11px] text-[#041050] dark:text-slate-200 flex flex-col gap-1">
+                    <div className="p-2 bg-[#EBF8FD] dark:bg-[#0B0F19] rounded-lg border border-[#BAE6FD] dark:border-[#334155] text-[11px] text-[#0B0F19] dark:text-slate-200 flex flex-col gap-1">
                       <div className="flex items-center justify-between font-semibold">
                         <span className="flex items-center gap-1">
-                          <Sparkles className="w-3 h-3 text-[#007F66] dark:text-[#00CFA7]" />
+                          <Sparkles className="w-3 h-3 text-[#0369A1] dark:text-[#21B6EA]" />
                           {propToAddDef.label} ({propToAddDef.name})
                         </span>
                         <span className="text-[10px] text-slate-500 dark:text-slate-400 font-mono">Tipo: {propToAddDef.type}</span>
                       </div>
                       {hasOpts ? (
                         <div className="text-[10px] text-slate-600 dark:text-slate-300">
-                          <span className="font-semibold text-[#041050] dark:text-white">
+                          <span className="font-semibold text-[#0B0F19] dark:text-white">
                             Valores definidos en tu HubSpot ({propToAddDef.options?.length}):
                           </span>{' '}
                           {propToAddDef.options?.map((o) => o.label).slice(0, 6).join(', ')}
@@ -2006,9 +2006,9 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                             { propertyName: p.name, value: '' },
                           ]);
                         }}
-                        className="text-[10px] px-2 py-0.5 rounded-full bg-white dark:bg-[#041050] border border-[#DCE1EB] dark:border-[#1E3599] hover:border-[#00CFA7] hover:bg-[#E6FAF5] dark:hover:bg-[#00CFA7]/15 text-[#041050] dark:text-slate-200 font-medium flex items-center gap-1 cursor-pointer transition-all shadow-2xs"
+                        className="text-[10px] px-2 py-0.5 rounded-full bg-white dark:bg-[#1E293B] border border-[#E2E8F0] dark:border-[#475569] hover:border-[#21B6EA] hover:bg-[#E8F7FD] dark:hover:bg-[#21B6EA]/15 text-[#0B0F19] dark:text-slate-200 font-medium flex items-center gap-1 cursor-pointer transition-all shadow-2xs"
                       >
-                        {p.isCustom && <span className="w-1.5 h-1.5 rounded-full bg-[#00CFA7]"></span>}
+                        {p.isCustom && <span className="w-1.5 h-1.5 rounded-full bg-[#21B6EA]"></span>}
                         <span>{p.label}</span>
                         <Plus className="w-2.5 h-2.5 text-slate-400" />
                       </button>
@@ -2018,10 +2018,10 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
 
               {/* Configured Custom / Dynamic Properties List */}
               {customPropertiesToEdit.length > 0 ? (
-                <div className="space-y-2.5 bg-[#EEF1F9] dark:bg-[#06155E] p-3 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] mb-3">
-                  <div className="flex items-center justify-between text-[11px] font-semibold text-[#041050] dark:text-white border-b border-[#DCE1EB] dark:border-[#1B2F8A] pb-1.5">
+                <div className="space-y-2.5 bg-[#EBF8FD] dark:bg-[#0F172A] p-3 rounded-lg border border-[#BAE6FD] dark:border-[#334155] mb-3">
+                  <div className="flex items-center justify-between text-[11px] font-semibold text-[#0B0F19] dark:text-white border-b border-[#BAE6FD] dark:border-[#334155] pb-1.5">
                     <span className="flex items-center gap-1">
-                      <Tag className="w-3 h-3 text-[#007F66] dark:text-[#00CFA7]" />
+                      <Tag className="w-3 h-3 text-[#0369A1] dark:text-[#21B6EA]" />
                       Propiedades adicionales activas para esta actualización ({customPropertiesToEdit.length}):
                     </span>
                     <button
@@ -2041,21 +2041,21 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                     const isDate = propDef?.type === 'date' || propDef?.type === 'datetime';
 
                     return (
-                      <div key={idx} className="bg-white dark:bg-[#041050] p-2.5 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] shadow-2xs space-y-2">
+                      <div key={idx} className="bg-white dark:bg-[#1E293B] p-2.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] shadow-2xs space-y-2">
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-1.5 flex-wrap">
-                            <span className="text-xs font-bold text-[#041050] dark:text-white">
+                            <span className="text-xs font-bold text-[#0B0F19] dark:text-white">
                               {propDef ? propDef.label : item.propertyName}
                             </span>
-                            <span className="font-mono text-[9px] text-slate-600 dark:text-slate-300 bg-[#F7F8FC] dark:bg-[#020829] px-1.5 py-0.5 rounded border border-[#DCE1EB] dark:border-[#1E3599]">
+                            <span className="font-mono text-[9px] text-slate-600 dark:text-slate-300 bg-[#F8FAFC] dark:bg-[#0B0F19] px-1.5 py-0.5 rounded border border-[#E2E8F0] dark:border-[#334155]">
                               {item.propertyName}
                             </span>
                             {propDef?.isCustom ? (
-                              <span className="text-[9px] font-semibold text-[#007F66] dark:text-[#00CFA7] bg-[#E6FAF5] dark:bg-[#00CFA7]/15 border border-[#00CFA7]/40 px-1.5 py-0.2 rounded">
+                              <span className="text-[9px] font-semibold text-[#0369A1] dark:text-[#21B6EA] bg-[#E8F7FD] dark:bg-[#21B6EA]/15 border border-[#21B6EA]/40 px-1.5 py-0.2 rounded">
                                 Personalizada
                               </span>
                             ) : (
-                              <span className="text-[9px] font-medium text-slate-600 dark:text-slate-300 bg-[#F7F8FC] dark:bg-[#06155E] border border-[#DCE1EB] dark:border-[#1B2F8A] px-1.5 py-0.2 rounded">
+                              <span className="text-[9px] font-medium text-slate-600 dark:text-slate-300 bg-[#F8FAFC] dark:bg-[#0F172A] border border-[#E2E8F0] dark:border-[#334155] px-1.5 py-0.2 rounded">
                                 Estándar
                               </span>
                             )}
@@ -2090,7 +2090,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                                         prev.map((c, i) => (i === idx ? { ...c, value: val, isNullOrEmpty: false } : c)),
                                       );
                                     }}
-                                    className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-md px-2.5 py-1.5 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7] disabled:bg-amber-50 dark:disabled:bg-amber-500/15 disabled:text-amber-800 dark:disabled:text-amber-200 disabled:border-amber-300 dark:disabled:border-amber-500/40"
+                                    className="w-full text-xs bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-md px-2.5 py-1.5 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA] disabled:bg-amber-50 dark:disabled:bg-amber-500/15 disabled:text-amber-800 dark:disabled:text-amber-200 disabled:border-amber-300 dark:disabled:border-amber-500/40"
                                   >
                                     <option value="">
                                       {isCleared
@@ -2106,10 +2106,10 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
 
                                   {/* Clickable pill options showing allowed values in HubSpot */}
                                   {!isCleared && propDef?.options && propDef.options.length > 0 && (
-                                    <div className="bg-[#F7F8FC] dark:bg-[#06155E] p-2 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] space-y-1.5">
+                                    <div className="bg-[#F8FAFC] dark:bg-[#0F172A] p-2 rounded-lg border border-[#E2E8F0] dark:border-[#334155] space-y-1.5">
                                       <div className="flex items-center justify-between text-[10px] text-slate-600 dark:text-slate-300 font-medium">
-                                        <span className="flex items-center gap-1 font-semibold text-[#041050] dark:text-white">
-                                          <Sparkles className="w-3 h-3 text-[#007F66] dark:text-[#00CFA7]" />
+                                        <span className="flex items-center gap-1 font-semibold text-[#0B0F19] dark:text-white">
+                                          <Sparkles className="w-3 h-3 text-[#0369A1] dark:text-[#21B6EA]" />
                                           Valores permitidos en HubSpot ({propDef.options.length}):
                                         </span>
                                         <span className="text-slate-500 dark:text-slate-400">Clic para seleccionar</span>
@@ -2128,14 +2128,14 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                                               }}
                                               className={`text-[11px] px-2 py-1 rounded-md transition-all flex items-center gap-1.5 cursor-pointer border text-left ${
                                                 isSelected
-                                                  ? 'bg-[#041050] text-white border-[#041050] dark:bg-[#00CFA7] dark:text-[#041050] dark:border-[#00CFA7] font-semibold shadow-xs'
-                                                  : 'bg-white dark:bg-[#020829] text-[#041050] dark:text-slate-200 border-[#DCE1EB] dark:border-[#1E3599] hover:border-[#00CFA7] hover:bg-[#E6FAF5]/60 dark:hover:bg-[#00CFA7]/15'
+                                                  ? 'bg-[#0B0F19] text-white border-[#0B0F19] dark:bg-[#21B6EA] dark:text-[#0B0F19] dark:border-[#21B6EA] font-semibold shadow-xs'
+                                                  : 'bg-white dark:bg-[#0B0F19] text-[#0B0F19] dark:text-slate-200 border-[#E2E8F0] dark:border-[#475569] hover:border-[#21B6EA] hover:bg-[#E8F7FD]/60 dark:hover:bg-[#21B6EA]/15'
                                               }`}
                                             >
                                               <span>{opt.label}</span>
                                               <span
                                                 className={`font-mono text-[9px] ${
-                                                  isSelected ? 'text-[#00CFA7] dark:text-[#041050]/75' : 'text-slate-500 dark:text-slate-400'
+                                                  isSelected ? 'text-[#21B6EA] dark:text-[#0B0F19]/75' : 'text-slate-500 dark:text-slate-400'
                                                 }`}
                                               >
                                                 [{opt.value}]
@@ -2158,7 +2158,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                                       prev.map((c, i) => (i === idx ? { ...c, value: val, isNullOrEmpty: false } : c)),
                                     );
                                   }}
-                                  className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-md px-2.5 py-1.5 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7] disabled:bg-amber-50 dark:disabled:bg-amber-500/15 disabled:text-amber-800 dark:disabled:text-amber-200 disabled:border-amber-300 dark:disabled:border-amber-500/40"
+                                  className="w-full text-xs bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-md px-2.5 py-1.5 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA] disabled:bg-amber-50 dark:disabled:bg-amber-500/15 disabled:text-amber-800 dark:disabled:text-amber-200 disabled:border-amber-300 dark:disabled:border-amber-500/40"
                                 >
                                   <option value="">
                                     {isCleared ? '-- Se enviará valor NULO / Vacío a HubSpot --' : '-- Sin cambio --'}
@@ -2182,7 +2182,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                                       prev.map((c, i) => (i === idx ? { ...c, value: val, isNullOrEmpty: false } : c)),
                                     );
                                   }}
-                                  className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-md px-2.5 py-1.5 text-[#041050] dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#00CFA7] disabled:bg-amber-50 dark:disabled:bg-amber-500/15 disabled:text-amber-800 dark:disabled:text-amber-200 disabled:border-amber-300 dark:disabled:border-amber-500/40"
+                                  className="w-full text-xs bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-md px-2.5 py-1.5 text-[#0B0F19] dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#21B6EA] disabled:bg-amber-50 dark:disabled:bg-amber-500/15 disabled:text-amber-800 dark:disabled:text-amber-200 disabled:border-amber-300 dark:disabled:border-amber-500/40"
                                 />
                               ) : isDate ? (
                                 <input
@@ -2195,7 +2195,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                                       prev.map((c, i) => (i === idx ? { ...c, value: val, isNullOrEmpty: false } : c)),
                                     );
                                   }}
-                                  className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-md px-2.5 py-1.5 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7] disabled:bg-amber-50 dark:disabled:bg-amber-500/15 disabled:text-amber-800 dark:disabled:text-amber-200 disabled:border-amber-300 dark:disabled:border-amber-500/40"
+                                  className="w-full text-xs bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-md px-2.5 py-1.5 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA] disabled:bg-amber-50 dark:disabled:bg-amber-500/15 disabled:text-amber-800 dark:disabled:text-amber-200 disabled:border-amber-300 dark:disabled:border-amber-500/40"
                                 />
                               ) : (
                                 <input
@@ -2213,14 +2213,14 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                                       prev.map((c, i) => (i === idx ? { ...c, value: val, isNullOrEmpty: false } : c)),
                                     );
                                   }}
-                                  className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-md px-2.5 py-1.5 text-[#041050] dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#00CFA7] disabled:bg-amber-50 dark:disabled:bg-amber-500/15 disabled:text-amber-800 dark:disabled:text-amber-200 disabled:border-amber-300 dark:disabled:border-amber-500/40"
+                                  className="w-full text-xs bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-md px-2.5 py-1.5 text-[#0B0F19] dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#21B6EA] disabled:bg-amber-50 dark:disabled:bg-amber-500/15 disabled:text-amber-800 dark:disabled:text-amber-200 disabled:border-amber-300 dark:disabled:border-amber-500/40"
                                 />
                               )}
 
                               {/* Checkbox for Null / Empty value */}
-                              <div className="pt-1 flex items-center justify-between border-t border-[#DCE1EB] dark:border-[#1B2F8A]">
+                              <div className="pt-1 flex items-center justify-between border-t border-[#E2E8F0] dark:border-[#334155]">
                                 {clearInfo.allowed ? (
-                                  <label className="inline-flex items-center gap-1.5 text-[11px] text-slate-600 dark:text-slate-300 font-medium cursor-pointer hover:text-[#041050] dark:hover:text-white select-none">
+                                  <label className="inline-flex items-center gap-1.5 text-[11px] text-slate-600 dark:text-slate-300 font-medium cursor-pointer hover:text-[#0B0F19] dark:hover:text-white select-none">
                                     <input
                                       type="checkbox"
                                       checked={isCleared}
@@ -2238,7 +2238,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                                           ),
                                         );
                                       }}
-                                      className="w-3.5 h-3.5 rounded text-amber-600 border-[#CBD5E1] dark:border-[#1E3599] focus:ring-amber-500 cursor-pointer"
+                                      className="w-3.5 h-3.5 rounded text-amber-600 border-[#CBD5E1] dark:border-[#475569] focus:ring-amber-500 cursor-pointer"
                                     />
                                     <span className={isCleared ? 'text-amber-800 dark:text-amber-200 font-semibold' : ''}>
                                       Poner en valor nulo / vacío (borrar valor en HubSpot)
@@ -2258,7 +2258,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                   })}
                 </div>
               ) : (
-                <div className="p-3 rounded-lg border border-dashed border-[#CBD5E1] dark:border-[#1E3599] text-center text-slate-500 dark:text-slate-400 text-[11px] mb-3">
+                <div className="p-3 rounded-lg border border-dashed border-[#CBD5E1] dark:border-[#475569] text-center text-slate-500 dark:text-slate-400 text-[11px] mb-3">
                   No hay propiedades adicionales agregadas. Puedes seleccionar cualquier campo de tu CRM en el menú superior.
                 </div>
               )}
@@ -2267,13 +2267,13 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
         </div>
 
         {/* Execution Strategy Selector */}
-        <div className="mt-5 p-3.5 rounded-xl bg-[#F7F8FC] dark:bg-[#06155E] border border-[#DCE1EB] dark:border-[#1B2F8A]">
-          <label className="block text-xs font-semibold text-[#041050] dark:text-white mb-2 flex items-center justify-between">
+        <div className="mt-5 p-3.5 rounded-xl bg-[#F8FAFC] dark:bg-[#0F172A] border border-[#E2E8F0] dark:border-[#334155]">
+          <label className="block text-xs font-semibold text-[#0B0F19] dark:text-white mb-2 flex items-center justify-between">
             <span className="flex items-center gap-1.5">
-              <SlidersHorizontal className="w-3.5 h-3.5 text-[#007F66] dark:text-[#00CFA7]" />
+              <SlidersHorizontal className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#21B6EA]" />
               Mecanismo de Ejecución:
             </span>
-            <span className="text-[10px] font-mono text-[#007F66] dark:text-[#00CFA7] bg-[#E6FAF5] dark:bg-[#00CFA7]/15 border border-[#00CFA7]/35 px-2 py-0.5 rounded font-semibold">
+            <span className="text-[10px] font-mono text-[#0369A1] dark:text-[#21B6EA] bg-[#E8F7FD] dark:bg-[#21B6EA]/15 border border-[#21B6EA]/35 px-2 py-0.5 rounded font-semibold">
               {executionStrategy === 'batch_chunks' ? 'Lotes Automáticos (100% de la Selección)' : 'Sincronización Individual'}
             </span>
           </label>
@@ -2284,23 +2284,23 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                 onClick={() => setExecutionStrategy('batch_chunks')}
                 className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
                   executionStrategy === 'batch_chunks'
-                    ? 'bg-[#EEF1F9] dark:bg-[#081C7A] border-[#041050] dark:border-[#00CFA7] ring-1 ring-[#041050] dark:ring-[#00CFA7] shadow-xs'
-                    : 'bg-white dark:bg-[#041050] border-[#DCE1EB] dark:border-[#1B2F8A] hover:bg-[#F7F8FC] dark:hover:bg-[#081C7A]/60'
+                    ? 'bg-[#EBF8FD] dark:bg-[#1E293B] border-[#0B0F19] dark:border-[#21B6EA] ring-1 ring-[#0B0F19] dark:ring-[#21B6EA] shadow-xs'
+                    : 'bg-white dark:bg-[#1E293B]/60 border-[#E2E8F0] dark:border-[#334155] hover:bg-[#F8FAFC] dark:hover:bg-[#334155]/60'
                 }`}
               >
-                <div className="flex items-center justify-between font-semibold text-xs text-[#041050] dark:text-white">
+                <div className="flex items-center justify-between font-semibold text-xs text-[#0B0F19] dark:text-white">
                   <div className="flex items-center gap-1.5">
-                    <Zap className={`w-3.5 h-3.5 ${executionStrategy === 'batch_chunks' ? 'text-[#007F66] dark:text-[#00CFA7]' : 'text-slate-400'}`} />
+                    <Zap className={`w-3.5 h-3.5 ${executionStrategy === 'batch_chunks' ? 'text-[#0369A1] dark:text-[#21B6EA]' : 'text-slate-400'}`} />
                     <span>Lotes Automáticos de CRM (hasta 100 c/u)</span>
                   </div>
-                  <span className="text-[9px] bg-[#E6FAF5] dark:bg-[#00CFA7]/20 text-[#007F66] dark:text-[#00CFA7] font-bold px-1.5 py-0.2 rounded-full uppercase tracking-tight">
+                  <span className="text-[9px] bg-[#E8F7FD] dark:bg-[#21B6EA]/20 text-[#0369A1] dark:text-[#21B6EA] font-bold px-1.5 py-0.2 rounded-full uppercase tracking-tight">
                     Recomendado
                   </span>
                 </div>
                 <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-1.5 leading-relaxed">
                   Actualiza <strong>el 100% de los leads seleccionados</strong> dividiéndolos automáticamente en bloques de hasta 100 por solicitud (límite oficial de la API de HubSpot).
                 </p>
-                <div className="mt-2 text-[10px] text-[#041050] dark:text-slate-200 font-medium bg-white/90 dark:bg-[#020829]/70 p-1.5 rounded-md border border-[#DCE1EB] dark:border-[#1E3599]">
+                <div className="mt-2 text-[10px] text-[#0B0F19] dark:text-slate-200 font-medium bg-white/90 dark:bg-[#0B0F19]/80 p-1.5 rounded-md border border-[#E2E8F0] dark:border-[#334155]">
                   Ejemplo: si seleccionas 109 leads, se enviarán en <strong>2 lotes</strong> (100 + 9 leads) y <strong>los 109 quedan actualizados</strong>.
                 </div>
               </button>
@@ -2310,24 +2310,24 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                 onClick={() => setExecutionStrategy('mcp_individual_queue')}
                 className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
                   executionStrategy === 'mcp_individual_queue'
-                    ? 'bg-[#EEF1F9] dark:bg-[#081C7A] border-[#041050] dark:border-[#00CFA7] ring-1 ring-[#041050] dark:ring-[#00CFA7] shadow-xs'
-                    : 'bg-white dark:bg-[#041050] border-[#DCE1EB] dark:border-[#1B2F8A] hover:bg-[#F7F8FC] dark:hover:bg-[#081C7A]/60'
+                    ? 'bg-[#EBF8FD] dark:bg-[#1E293B] border-[#0B0F19] dark:border-[#21B6EA] ring-1 ring-[#0B0F19] dark:ring-[#21B6EA] shadow-xs'
+                    : 'bg-white dark:bg-[#1E293B]/60 border-[#E2E8F0] dark:border-[#334155] hover:bg-[#F8FAFC] dark:hover:bg-[#334155]/60'
                 }`}
               >
-                <div className="flex items-center justify-between font-semibold text-xs text-[#041050] dark:text-white">
+                <div className="flex items-center justify-between font-semibold text-xs text-[#0B0F19] dark:text-white">
                   <div className="flex items-center gap-1.5">
-                    <Layers className={`w-3.5 h-3.5 ${executionStrategy === 'mcp_individual_queue' ? 'text-[#007F66] dark:text-[#00CFA7]' : 'text-slate-400'}`} />
+                    <Layers className={`w-3.5 h-3.5 ${executionStrategy === 'mcp_individual_queue' ? 'text-[#0369A1] dark:text-[#21B6EA]' : 'text-slate-400'}`} />
                     <span>Sincronización Individual (Contacto por Contacto)</span>
                   </div>
-                  <span className="text-[9px] bg-[#EEF1F9] dark:bg-[#06155E] text-[#041050] dark:text-slate-200 font-semibold px-1.5 py-0.2 rounded">
+                  <span className="text-[9px] bg-[#EBF8FD] dark:bg-[#0F172A] text-[#0B0F19] dark:text-slate-200 font-semibold px-1.5 py-0.2 rounded">
                     1 a 1
                   </span>
                 </div>
                 <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-1.5 leading-relaxed">
                   Actualiza cada contacto de forma individual y segura para aislar y reportar cualquier anomalía específica.
                 </p>
-                <div className="mt-2 text-[10px] text-slate-600 dark:text-slate-300 font-medium bg-white/90 dark:bg-[#020829]/70 p-1.5 rounded-md border border-[#DCE1EB] dark:border-[#1E3599]">
-                  Actualiza con verificación directa cada uno de los <strong className="text-[#041050] dark:text-white tabular-nums">{selectedContactIds.size} leads seleccionados</strong>.
+                <div className="mt-2 text-[10px] text-slate-600 dark:text-slate-300 font-medium bg-white/90 dark:bg-[#0B0F19]/80 p-1.5 rounded-md border border-[#E2E8F0] dark:border-[#334155]">
+                  Actualiza con verificación directa cada uno de los <strong className="text-[#0B0F19] dark:text-white tabular-nums">{selectedContactIds.size} leads seleccionados</strong>.
                 </div>
               </button>
             </div>
@@ -2355,20 +2355,20 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                 </span>
               </div>
             ) : selectedContactIds.size > 0 ? (
-              <div className="mt-3 p-2.5 bg-white dark:bg-[#041050] rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] text-[11px] flex items-center justify-between flex-wrap gap-2">
+              <div className="mt-3 p-2.5 bg-white dark:bg-[#1E293B] rounded-lg border border-[#E2E8F0] dark:border-[#334155] text-[11px] flex items-center justify-between flex-wrap gap-2">
                 <div className="flex items-center gap-2">
-                  <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#E6FAF5] dark:bg-[#00CFA7]/20 text-[#007F66] dark:text-[#00CFA7] font-bold text-xs">
+                  <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#E8F7FD] dark:bg-[#21B6EA]/20 text-[#0369A1] dark:text-[#21B6EA] font-bold text-xs">
                     ✓
                   </span>
                   <div>
-                    <span className="font-bold text-[#041050] dark:text-white tabular-nums">
+                    <span className="font-bold text-[#0B0F19] dark:text-white tabular-nums">
                       Cobertura total garantizada: {selectedContactIds.size} de {selectedContactIds.size} leads seleccionados
                     </span>
                     <p className="text-slate-600 dark:text-slate-300 text-[10px]">
                       {executionStrategy === 'batch_chunks' ? (
                         <>
                           Se particionarán automáticamente en{' '}
-                          <strong className="text-[#007F66] dark:text-[#00CFA7] font-semibold tabular-nums">
+                          <strong className="text-[#0369A1] dark:text-[#21B6EA] font-semibold tabular-nums">
                             {Math.ceil(selectedContactIds.size / 100)} lote(s)
                           </strong>{' '}
                           consecutivo(s)
@@ -2389,7 +2389,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                   </div>
                 </div>
 
-                <span className="px-2 py-0.5 rounded-md bg-[#E6FAF5] dark:bg-[#00CFA7]/15 border border-[#00CFA7]/35 text-[#007F66] dark:text-[#00CFA7] font-mono text-[10px] font-bold tabular-nums">
+                <span className="px-2 py-0.5 rounded-md bg-[#E8F7FD] dark:bg-[#21B6EA]/15 border border-[#21B6EA]/35 text-[#0369A1] dark:text-[#21B6EA] font-mono text-[10px] font-bold tabular-nums">
                   {executionStrategy === 'batch_chunks'
                     ? `${Math.ceil(selectedContactIds.size / 100)} lote(s) de API`
                     : `${selectedContactIds.size} llamadas individuales`}
@@ -2399,10 +2399,10 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
           </div>
 
           {/* Action Impact Summary Box */}
-          <div className="mt-4 p-3.5 rounded-lg bg-[#F7F8FC] dark:bg-[#06155E] border border-[#DCE1EB] dark:border-[#1B2F8A] text-xs text-slate-600 dark:text-slate-300">
-            <div className="font-semibold text-[#041050] dark:text-white mb-1.5 flex items-center justify-between">
+          <div className="mt-4 p-3.5 rounded-lg bg-[#F8FAFC] dark:bg-[#0F172A] border border-[#E2E8F0] dark:border-[#334155] text-xs text-slate-600 dark:text-slate-300">
+            <div className="font-semibold text-[#0B0F19] dark:text-white mb-1.5 flex items-center justify-between">
               <span className="flex items-center gap-1.5">
-                <ShieldAlert className="w-3.5 h-3.5 text-[#007F66] dark:text-[#00CFA7]" />
+                <ShieldAlert className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#21B6EA]" />
                 Resumen de Modificación Masiva
               </span>
               {isUpdatingByFilterCriteriaDirectly ? (
@@ -2411,7 +2411,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                   Por Criterios de Filtro
                 </span>
               ) : (
-                <span className="font-bold text-[#007F66] dark:text-[#00CFA7] tabular-nums">{selectedContactIds.size} seleccionados</span>
+                <span className="font-bold text-[#0369A1] dark:text-[#21B6EA] tabular-nums">{selectedContactIds.size} seleccionados</span>
               )}
             </div>
 
@@ -2426,7 +2426,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                   No ver el resultado de los filtros no te restringe: se actualizarán masivamente todos los leads en HubSpot que cumplan los criterios de la búsqueda configurada.
                 </p>
                 {activeFilterDescriptions.length > 0 ? (
-                  <div className="bg-white/95 dark:bg-[#020829]/80 p-2 rounded border border-amber-200 dark:border-amber-500/35 space-y-1">
+                  <div className="bg-white/95 dark:bg-[#0B0F19]/80 p-2 rounded border border-amber-200 dark:border-amber-500/35 space-y-1">
                     <span className="font-semibold text-amber-900 dark:text-amber-200 text-[10px] uppercase tracking-wide block">
                       Criterios activos de búsqueda:
                     </span>
@@ -2459,7 +2459,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                       className={`inline-flex items-center gap-1 px-2 py-0.5 rounded font-medium text-[10px] border ${
                         chg.isClear
                           ? 'bg-amber-50 dark:bg-amber-500/20 text-amber-800 dark:text-amber-200 border-amber-300 dark:border-amber-500/40 font-semibold'
-                          : 'bg-[#EEF1F9] dark:bg-[#041050] text-[#041050] dark:text-white border-[#CBD5E1] dark:border-[#1E3599]'
+                          : 'bg-[#EBF8FD] dark:bg-[#1E293B] text-[#0B0F19] dark:text-white border-[#BAE6FD] dark:border-[#475569]'
                       }`}
                     >
                       <span className="font-semibold">{chg.label}:</span>
@@ -2483,7 +2483,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                 setIsConfirmModalOpen(true);
               }}
               disabled={!hasChangesConfigured || isExecuting}
-              className="bg-[#041050] hover:bg-[#081C7A] active:bg-[#020829] text-white dark:bg-[#00CFA7] dark:hover:bg-[#00B894] dark:text-[#041050] font-semibold text-xs py-2.5 px-6 rounded-lg shadow-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap shrink-0"
+              className="bg-[#0B0F19] hover:bg-[#1E293B] active:bg-[#0B0F19] text-white dark:bg-[#21B6EA] dark:hover:bg-[#38C4F3] dark:text-[#0B0F19] font-semibold text-xs py-2.5 px-6 rounded-lg shadow-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap shrink-0"
             >
               <ArrowRightLeft className="w-4 h-4" />
               {isUpdatingByFilterCriteriaDirectly ? (
@@ -2497,9 +2497,9 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
 
       {/* Barra flotante rápida para ir a Modificaciones o abrir Emergente */}
       {(selectedContactIds.size > 0 || isUpdatingByFilterCriteriaDirectly) && (
-        <div className="fixed bottom-5 left-1/2 -translate-x-1/2 z-40 bg-[#020829]/95 text-white px-5 py-2.5 rounded-full shadow-2xl border border-[#1B2F8A] backdrop-blur-md flex items-center gap-3 animate-in slide-in-from-bottom-4 duration-200">
+        <div className="fixed bottom-5 left-1/2 -translate-x-1/2 z-40 bg-[#0B0F19]/95 text-white px-5 py-2.5 rounded-full shadow-2xl border border-[#334155] backdrop-blur-md flex items-center gap-3 animate-in slide-in-from-bottom-4 duration-200">
           <div className="flex items-center gap-2 text-xs">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#00CFA7] animate-pulse" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#21B6EA] animate-pulse" />
             <span className="tabular-nums">
               {isUpdatingByFilterCriteriaDirectly ? (
                 <strong>Modificación por Criterios de Búsqueda</strong>
@@ -2508,19 +2508,19 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
               )}
             </span>
           </div>
-          <div className="h-4 w-px bg-[#1B2F8A]" />
+          <div className="h-4 w-px bg-[#334155]" />
           <a
             href="#bulk-action-panel"
-            className="bg-[#00CFA7] hover:bg-[#00B894] text-[#041050] text-xs font-bold px-3 py-1 rounded-full transition-all flex items-center gap-1.5 cursor-pointer shadow-xs whitespace-nowrap shrink-0"
+            className="bg-[#21B6EA] hover:bg-[#38C4F3] text-[#0B0F19] text-xs font-bold px-3 py-1 rounded-full transition-all flex items-center gap-1.5 cursor-pointer shadow-xs whitespace-nowrap shrink-0"
           >
             <span>Modificaciones Masivas</span>
             <ArrowDown className="w-3.5 h-3.5" />
           </a>
           <button
             onClick={() => setIsActionPanelPopupOpen(true)}
-            className="bg-[#06155E] hover:bg-[#081C7A] text-slate-200 text-xs font-medium px-3 py-1 rounded-full border border-[#1E3599] transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0"
+            className="bg-[#1E293B] hover:bg-[#334155] text-slate-200 text-xs font-medium px-3 py-1 rounded-full border border-[#475569] transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0"
           >
-            <Maximize2 className="w-3 h-3 text-[#00CFA7]" />
+            <Maximize2 className="w-3 h-3 text-[#21B6EA]" />
             <span>Emergente</span>
           </button>
         </div>
@@ -2529,14 +2529,14 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
       {/* Column Customizer Modal */}
       {isColumnPickerOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/65 backdrop-blur-xs p-4 animate-in fade-in duration-150">
-          <div className="bg-white dark:bg-[#041050] rounded-2xl max-w-2xl w-full p-6 shadow-2xl border border-[#DCE1EB] dark:border-[#1B2F8A] flex flex-col max-h-[90vh]">
-            <div className="flex items-center justify-between pb-3 border-b border-[#DCE1EB] dark:border-[#1B2F8A]">
+          <div className="bg-white dark:bg-[#1E293B] rounded-2xl max-w-2xl w-full p-6 shadow-2xl border border-[#E2E8F0] dark:border-[#334155] flex flex-col max-h-[90vh]">
+            <div className="flex items-center justify-between pb-3 border-b border-[#E2E8F0] dark:border-[#334155]">
               <div className="flex items-center gap-2.5">
-                <div className="p-2 rounded-lg bg-[#E6FAF5] dark:bg-[#00CFA7]/15 border border-[#00CFA7]/35">
-                  <Columns className="w-5 h-5 text-[#007F66] dark:text-[#00CFA7]" />
+                <div className="p-2 rounded-lg bg-[#E8F7FD] dark:bg-[#21B6EA]/15 border border-[#21B6EA]/35">
+                  <Columns className="w-5 h-5 text-[#0369A1] dark:text-[#21B6EA]" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-[#041050] dark:text-white">
+                  <h3 className="text-base font-bold text-[#0B0F19] dark:text-white">
                     Personalizar Columnas de Leads en la Tabla
                   </h3>
                   <p className="text-xs text-slate-600 dark:text-slate-300">
@@ -2547,7 +2547,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
               <button
                 type="button"
                 onClick={() => setIsColumnPickerOpen(false)}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-[#041050] dark:hover:text-white hover:bg-[#EEF1F9] dark:hover:bg-[#06155E] transition-colors cursor-pointer"
+                className="p-1.5 rounded-lg text-slate-400 hover:text-[#0B0F19] dark:hover:text-white hover:bg-[#EBF8FD] dark:hover:bg-[#334155] transition-colors cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -2562,13 +2562,13 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                   placeholder="Buscar propiedades por etiqueta o nombre técnico (ej: motivo, ciudad, presupuesto...)"
                   value={columnSearchQuery}
                   onChange={(e) => setColumnSearchQuery(e.target.value)}
-                  className="w-full text-xs bg-[#F7F8FC] dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-lg pl-9 pr-3 py-2 text-[#041050] dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#00CFA7]"
+                  className="w-full text-xs bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#475569] rounded-lg pl-9 pr-3 py-2 text-[#0B0F19] dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#21B6EA]"
                 />
                 {columnSearchQuery && (
                   <button
                     type="button"
                     onClick={() => setColumnSearchQuery('')}
-                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#041050] dark:hover:text-white text-xs"
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#0B0F19] dark:hover:text-white text-xs"
                   >
                     ×
                   </button>
@@ -2576,14 +2576,14 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
               </div>
 
               <div className="flex items-center justify-between gap-2 flex-wrap">
-                <div className="flex items-center gap-1.5 bg-[#EEF1F9] dark:bg-[#020829] p-1 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A]">
+                <div className="flex items-center gap-1.5 bg-[#F4F7FA] dark:bg-[#0F172A] p-1 rounded-lg border border-[#E2E8F0] dark:border-[#334155]">
                   <button
                     type="button"
                     onClick={() => setColumnFilterTab('all')}
                     className={`px-2.5 py-1 text-xs font-semibold rounded-md transition-all cursor-pointer tabular-nums ${
                       columnFilterTab === 'all'
-                        ? 'bg-white dark:bg-[#06155E] text-[#041050] dark:text-[#00CFA7] shadow-2xs'
-                        : 'text-slate-600 dark:text-slate-300 hover:text-[#041050] dark:hover:text-white'
+                        ? 'bg-white dark:bg-[#1E293B] text-[#0B0F19] dark:text-[#21B6EA] shadow-2xs'
+                        : 'text-slate-600 dark:text-slate-300 hover:text-[#0B0F19] dark:hover:text-white'
                     }`}
                   >
                     Todas ({availableProperties.length})
@@ -2593,12 +2593,12 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                     onClick={() => setColumnFilterTab('custom')}
                     className={`px-2.5 py-1 text-xs font-semibold rounded-md transition-all cursor-pointer flex items-center gap-1 tabular-nums ${
                       columnFilterTab === 'custom'
-                        ? 'bg-white dark:bg-[#06155E] text-[#007F66] dark:text-[#00CFA7] shadow-2xs'
-                        : 'text-slate-600 dark:text-slate-300 hover:text-[#041050] dark:hover:text-white'
+                        ? 'bg-white dark:bg-[#1E293B] text-[#0369A1] dark:text-[#21B6EA] shadow-2xs'
+                        : 'text-slate-600 dark:text-slate-300 hover:text-[#0B0F19] dark:hover:text-white'
                     }`}
                   >
                     <span>⭐ Personalizadas</span>
-                    <span className="text-[10px] bg-[#E6FAF5] dark:bg-[#00CFA7]/20 text-[#007F66] dark:text-[#00CFA7] px-1.5 py-0.2 rounded-full">
+                    <span className="text-[10px] bg-[#E8F7FD] dark:bg-[#21B6EA]/20 text-[#0369A1] dark:text-[#21B6EA] px-1.5 py-0.2 rounded-full">
                       {availableProperties.filter((p) => p.isCustom).length}
                     </span>
                   </button>
@@ -2607,8 +2607,8 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                     onClick={() => setColumnFilterTab('standard')}
                     className={`px-2.5 py-1 text-xs font-semibold rounded-md transition-all cursor-pointer tabular-nums ${
                       columnFilterTab === 'standard'
-                        ? 'bg-white dark:bg-[#06155E] text-[#041050] dark:text-[#00CFA7] shadow-2xs'
-                        : 'text-slate-600 dark:text-slate-300 hover:text-[#041050] dark:hover:text-white'
+                        ? 'bg-white dark:bg-[#1E293B] text-[#0B0F19] dark:text-[#21B6EA] shadow-2xs'
+                        : 'text-slate-600 dark:text-slate-300 hover:text-[#0B0F19] dark:hover:text-white'
                     }`}
                   >
                     Estándar ({availableProperties.filter((p) => !p.isCustom).length})
@@ -2618,12 +2618,12 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                     onClick={() => setColumnFilterTab('selected')}
                     className={`px-2.5 py-1 text-xs font-semibold rounded-md transition-all cursor-pointer flex items-center gap-1 tabular-nums ${
                       columnFilterTab === 'selected'
-                        ? 'bg-white dark:bg-[#06155E] text-[#041050] dark:text-[#00CFA7] shadow-2xs'
-                        : 'text-slate-600 dark:text-slate-300 hover:text-[#041050] dark:hover:text-white'
+                        ? 'bg-white dark:bg-[#1E293B] text-[#0B0F19] dark:text-[#21B6EA] shadow-2xs'
+                        : 'text-slate-600 dark:text-slate-300 hover:text-[#0B0F19] dark:hover:text-white'
                     }`}
                   >
                     <span>Activas</span>
-                    <span className="text-[10px] bg-[#E6FAF5] dark:bg-[#00CFA7]/20 text-[#007F66] dark:text-[#00CFA7] px-1.5 py-0.2 rounded-full font-bold">
+                    <span className="text-[10px] bg-[#E8F7FD] dark:bg-[#21B6EA]/20 text-[#0369A1] dark:text-[#21B6EA] px-1.5 py-0.2 rounded-full font-bold">
                       {visibleCustomColumnNames.length}
                     </span>
                   </button>
@@ -2640,7 +2640,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                         fetchContacts(filters, combined);
                       }
                     }}
-                    className="text-[11px] font-semibold text-[#007F66] dark:text-[#00CFA7] hover:underline cursor-pointer"
+                    className="text-[11px] font-semibold text-[#0369A1] dark:text-[#21B6EA] hover:underline cursor-pointer"
                   >
                     + Activar todas personalizadas
                   </button>
@@ -2658,7 +2658,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                         fetchContacts(filters, defaultCols);
                       }
                     }}
-                    className="text-[11px] font-semibold text-slate-600 dark:text-slate-300 hover:text-[#041050] dark:hover:text-white cursor-pointer"
+                    className="text-[11px] font-semibold text-slate-600 dark:text-slate-300 hover:text-[#0B0F19] dark:hover:text-white cursor-pointer"
                   >
                     Restablecer
                   </button>
@@ -2680,7 +2680,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
             </div>
 
             {/* Properties List with Checkboxes */}
-            <div className="flex-1 overflow-y-auto py-2 pr-1 space-y-1.5 max-h-[380px] border-t border-b border-[#DCE1EB] dark:border-[#1B2F8A]">
+            <div className="flex-1 overflow-y-auto py-2 pr-1 space-y-1.5 max-h-[380px] border-t border-b border-[#E2E8F0] dark:border-[#334155]">
               {availableProperties
                 .filter((p) => {
                   if (columnFilterTab === 'custom') return p.isCustom;
@@ -2707,8 +2707,8 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                       onClick={() => handleToggleColumn(p.name)}
                       className={`flex items-start justify-between p-2.5 rounded-xl border transition-all cursor-pointer select-none ${
                         isChecked
-                          ? 'bg-[#E6FAF5]/60 dark:bg-[#00CFA7]/15 border-[#00CFA7]/50'
-                          : 'bg-white dark:bg-[#06155E] border-[#DCE1EB] dark:border-[#1B2F8A] hover:bg-[#F7F8FC] dark:hover:bg-[#081C7A]'
+                          ? 'bg-[#E8F7FD]/70 dark:bg-[#21B6EA]/15 border-[#21B6EA]/50'
+                          : 'bg-white dark:bg-[#0F172A] border-[#E2E8F0] dark:border-[#334155] hover:bg-[#F8FAFC] dark:hover:bg-[#334155]'
                       }`}
                     >
                       <div className="flex items-start gap-3 flex-1 min-w-0">
@@ -2716,20 +2716,20 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                           type="checkbox"
                           checked={isChecked}
                           onChange={() => {}}
-                          className="mt-1 rounded border-[#CBD5E1] dark:border-[#1E3599] text-[#041050] dark:text-[#00CFA7] focus:ring-[#00CFA7] cursor-pointer"
+                          className="mt-1 rounded border-[#CBD5E1] dark:border-[#475569] accent-[#0B0F19] dark:accent-[#21B6EA] focus:ring-[#21B6EA] cursor-pointer"
                         />
                         <div className="flex flex-col min-w-0 flex-1">
                           <div className="flex items-center gap-1.5 flex-wrap">
-                            <span className="font-semibold text-xs text-[#041050] dark:text-white">{p.label}</span>
-                            <span className="font-mono text-[10px] text-slate-600 dark:text-slate-300 bg-[#F7F8FC] dark:bg-[#020829] px-1.5 py-0.2 rounded border border-[#DCE1EB] dark:border-[#1E3599]">
+                            <span className="font-semibold text-xs text-[#0B0F19] dark:text-white">{p.label}</span>
+                            <span className="font-mono text-[10px] text-slate-600 dark:text-slate-300 bg-[#F8FAFC] dark:bg-[#0B0F19] px-1.5 py-0.2 rounded border border-[#E2E8F0] dark:border-[#334155]">
                               {p.name}
                             </span>
                             {p.isCustom ? (
-                              <span className="text-[9px] font-bold text-[#007F66] dark:text-[#00CFA7] bg-[#E6FAF5] dark:bg-[#00CFA7]/20 border border-[#00CFA7]/40 px-1.5 py-0.2 rounded-full">
+                              <span className="text-[9px] font-bold text-[#0369A1] dark:text-[#21B6EA] bg-[#E8F7FD] dark:bg-[#21B6EA]/20 border border-[#21B6EA]/40 px-1.5 py-0.2 rounded-full">
                                 ⭐ Personalizada
                               </span>
                             ) : (
-                              <span className="text-[9px] text-slate-600 dark:text-slate-300 bg-[#F7F8FC] dark:bg-[#041050] border border-[#DCE1EB] dark:border-[#1B2F8A] px-1.5 py-0.2 rounded">
+                              <span className="text-[9px] text-slate-600 dark:text-slate-300 bg-[#F8FAFC] dark:bg-[#1E293B] border border-[#E2E8F0] dark:border-[#334155] px-1.5 py-0.2 rounded">
                                 Estándar
                               </span>
                             )}
@@ -2744,7 +2744,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
 
                           {hasOpts && (
                             <div className="mt-1 flex items-center gap-1 flex-wrap text-[10px] text-slate-500 dark:text-slate-400">
-                              <span className="font-semibold text-[#041050] dark:text-white">
+                              <span className="font-semibold text-[#0B0F19] dark:text-white">
                                 {p.options?.length} valores posibles:
                               </span>
                               <span className="text-slate-600 dark:text-slate-300 truncate max-w-md">
@@ -2758,12 +2758,12 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
 
                       <div className="shrink-0 ml-3 pt-0.5">
                         {isChecked ? (
-                          <span className="inline-flex items-center gap-1 text-[10px] font-bold text-[#007F66] dark:text-[#00CFA7] bg-[#E6FAF5] dark:bg-[#00CFA7]/20 px-2 py-0.5 rounded-full">
+                          <span className="inline-flex items-center gap-1 text-[10px] font-bold text-[#0369A1] dark:text-[#21B6EA] bg-[#E8F7FD] dark:bg-[#21B6EA]/20 px-2 py-0.5 rounded-full">
                             <Check className="w-3 h-3" />
                             Visible
                           </span>
                         ) : (
-                          <span className="text-[10px] text-slate-500 dark:text-slate-400 hover:text-[#041050] dark:hover:text-[#00CFA7] font-medium">
+                          <span className="text-[10px] text-slate-500 dark:text-slate-400 hover:text-[#0B0F19] dark:hover:text-[#21B6EA] font-medium">
                             + Agregar
                           </span>
                         )}
@@ -2774,15 +2774,15 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
             </div>
 
             {/* Modal Footer */}
-            <div className="pt-4 flex items-center justify-between border-t border-[#DCE1EB] dark:border-[#1B2F8A]">
+            <div className="pt-4 flex items-center justify-between border-t border-[#E2E8F0] dark:border-[#334155]">
               <span className="text-xs text-slate-600 dark:text-slate-300 tabular-nums">
-                <strong className="text-[#007F66] dark:text-[#00CFA7] font-bold">{visibleCustomColumnNames.length}</strong> columnas adicionales activadas en la tabla
+                <strong className="text-[#0369A1] dark:text-[#21B6EA] font-bold">{visibleCustomColumnNames.length}</strong> columnas adicionales activadas en la tabla
               </span>
 
               <button
                 type="button"
                 onClick={() => setIsColumnPickerOpen(false)}
-                className="px-5 py-2 bg-[#041050] hover:bg-[#081C7A] text-white dark:bg-[#00CFA7] dark:hover:bg-[#00B894] dark:text-[#041050] rounded-lg text-xs font-semibold shadow-sm transition-colors cursor-pointer whitespace-nowrap shrink-0"
+                className="px-5 py-2 bg-[#0B0F19] hover:bg-[#1E293B] text-white dark:bg-[#21B6EA] dark:hover:bg-[#38C4F3] dark:text-[#0B0F19] rounded-lg text-xs font-semibold shadow-sm transition-colors cursor-pointer whitespace-nowrap shrink-0"
               >
                 Aplicar y Ver en Tabla
               </button>
@@ -2794,13 +2794,13 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
       {/* Confirmation Safety Modal with ACTUALIZAR guard */}
       {isConfirmModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/65 backdrop-blur-xs p-4 animate-in fade-in duration-150">
-          <div className="bg-white dark:bg-[#041050] rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-[#DCE1EB] dark:border-[#1B2F8A]">
+          <div className="bg-white dark:bg-[#1E293B] rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-[#E2E8F0] dark:border-[#334155]">
             <div className="flex items-center gap-3 mb-3">
               <div className="p-2.5 rounded-full bg-amber-100 dark:bg-amber-500/20">
                 <AlertTriangle className="w-6 h-6 text-amber-600 dark:text-amber-400" />
               </div>
               <div>
-                <h3 className="text-base font-bold text-[#041050] dark:text-white">
+                <h3 className="text-base font-bold text-[#0B0F19] dark:text-white">
                   Confirmación de Modificación Masiva
                 </h3>
                 <p className="text-xs text-slate-600 dark:text-slate-300">
@@ -2819,7 +2819,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                 <p className="text-amber-900 dark:text-amber-200 leading-relaxed font-semibold">
                   Se actualizarán los leads con los criterios de la búsqueda, a pesar de que no se vea el resultado de ese filtro en la tabla.
                 </p>
-                <div className="bg-white/95 dark:bg-[#020829]/85 rounded-lg p-2.5 border border-amber-300 dark:border-amber-500/40 space-y-1.5">
+                <div className="bg-white/95 dark:bg-[#0B0F19]/85 rounded-lg p-2.5 border border-amber-300 dark:border-amber-500/40 space-y-1.5">
                   <span className="font-bold text-[10px] text-amber-950 dark:text-amber-200 uppercase tracking-wide block">
                     Criterios de búsqueda que se aplicarán a los leads de HubSpot:
                   </span>
@@ -2844,31 +2844,31 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
               </div>
             )}
 
-            <div className="bg-[#F7F8FC] dark:bg-[#06155E] rounded-xl p-4 border border-[#DCE1EB] dark:border-[#1B2F8A] text-xs space-y-2.5 my-4 max-h-60 overflow-y-auto">
-              <div className="flex justify-between pb-2 border-b border-[#DCE1EB] dark:border-[#1B2F8A] font-medium">
+            <div className="bg-[#F8FAFC] dark:bg-[#0F172A] rounded-xl p-4 border border-[#E2E8F0] dark:border-[#334155] text-xs space-y-2.5 my-4 max-h-60 overflow-y-auto">
+              <div className="flex justify-between pb-2 border-b border-[#E2E8F0] dark:border-[#334155] font-medium">
                 <span className="text-slate-600 dark:text-slate-300">Total Leads a Modificar:</span>
                 {isUpdatingByFilterCriteriaDirectly ? (
                   <span className="font-bold text-amber-900 dark:text-amber-100 text-xs bg-amber-100 dark:bg-amber-500/25 px-2 py-0.5 rounded border border-amber-300 dark:border-amber-500/40">
                     Todos los que coincidan con la búsqueda (en vivo)
                   </span>
                 ) : (
-                  <span className="font-bold text-[#007F66] dark:text-[#00CFA7] text-sm tabular-nums">{selectedContactIds.size} contactos (100% de los seleccionados)</span>
+                  <span className="font-bold text-[#0369A1] dark:text-[#21B6EA] text-sm tabular-nums">{selectedContactIds.size} contactos (100% de los seleccionados)</span>
                 )}
               </div>
-              <div className="flex justify-between pb-2 border-b border-[#DCE1EB] dark:border-[#1B2F8A] font-medium text-[11px]">
+              <div className="flex justify-between pb-2 border-b border-[#E2E8F0] dark:border-[#334155] font-medium text-[11px]">
                 <span className="text-slate-600 dark:text-slate-300">Mecanismo de Ejecución:</span>
-                <span className="font-semibold text-[#041050] dark:text-white">
+                <span className="font-semibold text-[#0B0F19] dark:text-white">
                   {executionStrategy === 'batch_chunks'
                     ? 'Lotes Automáticos de CRM (hasta 100 por lote)'
                     : 'Actualización Individual Directa (1 a 1)'}
                 </span>
               </div>
               {!isUpdatingByFilterCriteriaDirectly && (
-                <div className="flex justify-between pb-2 border-b border-[#DCE1EB] dark:border-[#1B2F8A] font-medium text-[11px]">
+                <div className="flex justify-between pb-2 border-b border-[#E2E8F0] dark:border-[#334155] font-medium text-[11px]">
                   <span className="text-slate-600 dark:text-slate-300">
                     {executionStrategy === 'batch_chunks' ? 'Partición en Lotes:' : 'Cola Asíncrona:'}
                   </span>
-                  <span className="font-semibold text-[#041050] dark:text-white tabular-nums">
+                  <span className="font-semibold text-[#0B0F19] dark:text-white tabular-nums">
                     {executionStrategy === 'batch_chunks'
                       ? `${Math.ceil(selectedContactIds.size / 100)} lote(s) ${
                           selectedContactIds.size > 100
@@ -2879,7 +2879,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                   </span>
                 </div>
               )}
-              <div className="flex justify-between pb-2 border-b border-[#DCE1EB] dark:border-[#1B2F8A] font-medium text-[11px] text-[#007F66] dark:text-[#00CFA7] bg-[#E6FAF5] dark:bg-[#00CFA7]/15 px-2 py-1 rounded">
+              <div className="flex justify-between pb-2 border-b border-[#E2E8F0] dark:border-[#334155] font-medium text-[11px] text-[#0369A1] dark:text-[#21B6EA] bg-[#E8F7FD] dark:bg-[#21B6EA]/15 px-2 py-1 rounded">
                 <span className="flex items-center gap-1 font-bold">
                   <Check className="w-3.5 h-3.5" />
                   Garantía de Cobertura:
@@ -2892,17 +2892,17 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
               </div>
 
               {configuredChangesList.map((chg, idx) => (
-                <div key={idx} className="flex justify-between items-center py-1.5 border-b border-[#DCE1EB] dark:border-[#1B2F8A] last:border-0">
+                <div key={idx} className="flex justify-between items-center py-1.5 border-b border-[#E2E8F0] dark:border-[#334155] last:border-0">
                   <span className="text-slate-600 dark:text-slate-300 text-xs">{chg.label}:</span>
-                  <span className={`font-semibold text-xs ${chg.isClear ? 'text-amber-800 dark:text-amber-200 bg-amber-50 dark:bg-amber-500/20 border border-amber-200 dark:border-amber-500/35 px-2 py-0.5 rounded' : 'text-[#041050] dark:text-white'}`}>
+                  <span className={`font-semibold text-xs ${chg.isClear ? 'text-amber-800 dark:text-amber-200 bg-amber-50 dark:bg-amber-500/20 border border-amber-200 dark:border-amber-500/35 px-2 py-0.5 rounded' : 'text-[#0B0F19] dark:text-white'}`}>
                     {chg.value}
                   </span>
                 </div>
               ))}
             </div>
 
-            <div className="p-3 bg-[#EEF1F9] dark:bg-[#06155E] rounded-lg border border-[#CBD5E1] dark:border-[#1B2F8A] text-[11px] text-[#041050] dark:text-slate-200 flex items-start gap-2 mb-4">
-              <ShieldAlert className="w-4 h-4 text-[#007F66] dark:text-[#00CFA7] shrink-0 mt-0.5" />
+            <div className="p-3 bg-[#EBF8FD] dark:bg-[#0F172A] rounded-lg border border-[#BAE6FD] dark:border-[#334155] text-[11px] text-[#0B0F19] dark:text-slate-200 flex items-start gap-2 mb-4">
+              <ShieldAlert className="w-4 h-4 text-[#0369A1] dark:text-[#21B6EA] shrink-0 mt-0.5" />
               <span>
                 {isUpdatingByFilterCriteriaDirectly ? (
                   <>
@@ -2926,12 +2926,12 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
 
             {/* Classic Safety Reconfirmation Box */}
             <div className="mb-5 p-4 rounded-xl bg-amber-50/90 dark:bg-amber-500/15 border border-amber-200 dark:border-amber-500/40">
-              <label className="block text-xs font-semibold text-[#041050] dark:text-white mb-1.5 flex items-center justify-between">
+              <label className="block text-xs font-semibold text-[#0B0F19] dark:text-white mb-1.5 flex items-center justify-between">
                 <span>
                   Escribe <strong className="font-mono bg-amber-200 dark:bg-amber-500/35 text-amber-950 dark:text-amber-100 px-2 py-0.5 rounded tracking-wider border border-amber-300 dark:border-amber-400/40">ACTUALIZAR</strong> para confirmar:
                 </span>
                 {confirmKeyword.trim().toUpperCase() === 'ACTUALIZAR' && (
-                  <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#007F66] dark:text-[#00CFA7] bg-[#E6FAF5] dark:bg-[#00CFA7]/20 px-2 py-0.5 rounded-full border border-[#00CFA7]/40 animate-in fade-in duration-100">
+                  <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#0369A1] dark:text-[#21B6EA] bg-[#E8F7FD] dark:bg-[#21B6EA]/20 px-2 py-0.5 rounded-full border border-[#21B6EA]/40 animate-in fade-in duration-100">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     Correcto
                   </span>
@@ -2950,8 +2950,8 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                 placeholder="Escribe ACTUALIZAR"
                 className={`w-full text-xs font-mono font-bold px-3 py-2.5 rounded-lg border transition-all uppercase tracking-wider focus:outline-none ${
                   confirmKeyword.trim().toUpperCase() === 'ACTUALIZAR'
-                    ? 'bg-[#E6FAF5] dark:bg-[#00CFA7]/15 border-[#00CFA7] text-[#041050] dark:text-white ring-2 ring-[#00CFA7]/30'
-                    : 'bg-white dark:bg-[#020829] border-amber-300 dark:border-amber-500/40 text-[#041050] dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-[#00CFA7] focus:ring-2 focus:ring-[#00CFA7]/30'
+                    ? 'bg-[#E8F7FD] dark:bg-[#21B6EA]/15 border-[#21B6EA] text-[#0B0F19] dark:text-white ring-2 ring-[#21B6EA]/30'
+                    : 'bg-white dark:bg-[#0B0F19] border-amber-300 dark:border-amber-500/40 text-[#0B0F19] dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-[#21B6EA] focus:ring-2 focus:ring-[#21B6EA]/30'
                 }`}
               />
               <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-1.5">
@@ -2965,7 +2965,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                   setIsConfirmModalOpen(false);
                   setConfirmKeyword('');
                 }}
-                className="px-4 py-2 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-[#EEF1F9] dark:hover:bg-[#06155E] rounded-lg transition-colors cursor-pointer"
+                className="px-4 py-2 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-[#EBF8FD] dark:hover:bg-[#334155] rounded-lg transition-colors cursor-pointer"
               >
                 Cancelar
               </button>
@@ -2974,7 +2974,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                 disabled={confirmKeyword.trim().toUpperCase() !== 'ACTUALIZAR' || isExecuting}
                 className={`px-5 py-2.5 text-xs font-semibold rounded-lg shadow-sm transition-all flex items-center gap-2 whitespace-nowrap shrink-0 ${
                   confirmKeyword.trim().toUpperCase() === 'ACTUALIZAR'
-                    ? 'bg-[#041050] hover:bg-[#081C7A] text-white dark:bg-[#00CFA7] dark:hover:bg-[#00B894] dark:text-[#041050] cursor-pointer'
+                    ? 'bg-[#0B0F19] hover:bg-[#1E293B] text-white dark:bg-[#21B6EA] dark:hover:bg-[#38C4F3] dark:text-[#0B0F19] cursor-pointer'
                     : 'bg-slate-200 dark:bg-slate-700/50 text-slate-400 dark:text-slate-400 cursor-not-allowed border border-slate-300/50 dark:border-slate-600/40'
                 }`}
               >
@@ -2992,10 +2992,10 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
 
       {/* Execution Progress & Resilient Batch Monitor with Integrated History */}
       {(isExecuting || executionComplete || resultsActiveTab === 'history') && (
-        <div className="bg-white dark:bg-[#041050] rounded-xl border border-[#DCE1EB] dark:border-[#1B2F8A] p-5 shadow-xs animate-in slide-in-from-bottom-2 duration-200 mt-6 scroll-mt-24" id="execution-monitor-card">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 mb-4 border-b border-[#DCE1EB] dark:border-[#1B2F8A] gap-3">
+        <div className="bg-white dark:bg-[#1E293B] rounded-xl border border-[#E2E8F0] dark:border-[#334155] p-5 shadow-xs animate-in slide-in-from-bottom-2 duration-200 mt-6 scroll-mt-24" id="execution-monitor-card">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 mb-4 border-b border-[#E2E8F0] dark:border-[#334155] gap-3">
             <div className="flex items-center gap-2">
-              <div className={`p-1.5 rounded-md ${executionComplete ? 'bg-[#E6FAF5] dark:bg-[#00CFA7]/20 text-[#007F66] dark:text-[#00CFA7]' : isExecuting ? 'bg-[#EEF1F9] dark:bg-[#06155E] text-[#041050] dark:text-[#00CFA7] animate-spin' : 'bg-[#F7F8FC] dark:bg-[#06155E] text-[#041050] dark:text-slate-200'}`}>
+              <div className={`p-1.5 rounded-md ${executionComplete ? 'bg-[#E8F7FD] dark:bg-[#21B6EA]/20 text-[#0369A1] dark:text-[#21B6EA]' : isExecuting ? 'bg-[#EBF8FD] dark:bg-[#0F172A] text-[#0B0F19] dark:text-[#21B6EA] animate-spin' : 'bg-[#F8FAFC] dark:bg-[#0F172A] text-[#0B0F19] dark:text-slate-200'}`}>
                 {executionComplete ? (
                   <CheckCircle2 className="w-4 h-4" />
                 ) : isExecuting ? (
@@ -3005,7 +3005,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                 )}
               </div>
               <div>
-                <h4 className="text-xs font-bold text-[#041050] dark:text-white uppercase tracking-wide">
+                <h4 className="text-xs font-bold text-[#0B0F19] dark:text-white uppercase tracking-wide">
                   {executionComplete
                     ? 'Sincronización Masiva Completada'
                     : isExecuting
@@ -3026,17 +3026,17 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
 
             {/* In-Card Tab Navigation */}
             <div className="flex items-center gap-2 flex-wrap">
-              <div className="inline-flex rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] bg-[#F7F8FC] dark:bg-[#020829] p-0.5 text-xs font-medium">
+              <div className="inline-flex rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F4F7FA] dark:bg-[#0F172A] p-0.5 text-xs font-medium">
                 <button
                   type="button"
                   onClick={() => setResultsActiveTab('current')}
                   className={`px-3 py-1.5 rounded-md transition-colors cursor-pointer flex items-center gap-1.5 whitespace-nowrap shrink-0 ${
                     resultsActiveTab === 'current'
-                      ? 'bg-white dark:bg-[#06155E] text-[#041050] dark:text-[#00CFA7] font-semibold shadow-2xs'
-                      : 'text-slate-600 dark:text-slate-300 hover:text-[#041050] dark:hover:text-white'
+                      ? 'bg-white dark:bg-[#1E293B] text-[#0B0F19] dark:text-[#21B6EA] font-semibold shadow-2xs'
+                      : 'text-slate-600 dark:text-slate-300 hover:text-[#0B0F19] dark:hover:text-white'
                   }`}
                 >
-                  <Activity className="w-3.5 h-3.5 text-[#007F66] dark:text-[#00CFA7]" />
+                  <Activity className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#21B6EA]" />
                   <span>Resultado Actual</span>
                 </button>
 
@@ -3045,11 +3045,11 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                   onClick={() => setResultsActiveTab('history')}
                   className={`px-3 py-1.5 rounded-md transition-colors cursor-pointer flex items-center gap-1.5 whitespace-nowrap shrink-0 ${
                     resultsActiveTab === 'history'
-                      ? 'bg-white dark:bg-[#06155E] text-[#041050] dark:text-[#00CFA7] font-semibold shadow-2xs'
-                      : 'text-slate-600 dark:text-slate-300 hover:text-[#041050] dark:hover:text-white'
+                      ? 'bg-white dark:bg-[#1E293B] text-[#0B0F19] dark:text-[#21B6EA] font-semibold shadow-2xs'
+                      : 'text-slate-600 dark:text-slate-300 hover:text-[#0B0F19] dark:hover:text-white'
                   }`}
                 >
-                  <History className="w-3.5 h-3.5 text-[#007F66] dark:text-[#00CFA7]" />
+                  <History className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#21B6EA]" />
                   <span>Historial de Actualizaciones</span>
                 </button>
               </div>
@@ -3060,7 +3060,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                     setExecutionComplete(false);
                     setResultsActiveTab('current');
                   }}
-                  className="p-1 hover:bg-[#EEF1F9] dark:hover:bg-[#06155E] text-slate-400 hover:text-[#041050] dark:hover:text-white rounded transition-colors cursor-pointer"
+                  className="p-1 hover:bg-[#EBF8FD] dark:hover:bg-[#334155] text-slate-400 hover:text-[#0B0F19] dark:hover:text-white rounded transition-colors cursor-pointer"
                   title="Cerrar resultados"
                 >
                   <X className="w-4 h-4" />
@@ -3073,48 +3073,48 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
           {resultsActiveTab === 'current' && (
             <div className="space-y-3">
               {/* Summary Stats Strip */}
-              <div className="grid grid-cols-1 sm:grid-cols-4 gap-2.5 text-xs bg-[#F7F8FC] dark:bg-[#06155E] p-3 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A]">
+              <div className="grid grid-cols-1 sm:grid-cols-4 gap-2.5 text-xs bg-[#F8FAFC] dark:bg-[#0F172A] p-3 rounded-lg border border-[#E2E8F0] dark:border-[#334155]">
                 <div>
                   <span className="text-slate-500 dark:text-slate-400 block text-[10px] uppercase font-bold">Mecanismo:</span>
-                  <span className="font-semibold text-[#041050] dark:text-white">
+                  <span className="font-semibold text-[#0B0F19] dark:text-white">
                     {executionStrategy === 'batch_chunks' ? 'Lotes Automáticos' : 'Individual 1 a 1'}
                   </span>
                 </div>
                 <div>
                   <span className="text-slate-500 dark:text-slate-400 block text-[10px] uppercase font-bold">Usuario de Sesión:</span>
-                  <span className="font-semibold text-[#041050] dark:text-white">
+                  <span className="font-semibold text-[#0B0F19] dark:text-white">
                     {userName || user?.email || 'Usuario Actual'}
                   </span>
                 </div>
                 <div>
                   <span className="text-slate-500 dark:text-slate-400 block text-[10px] uppercase font-bold">Progreso:</span>
-                  <span className="font-semibold text-[#041050] dark:text-white tabular-nums">
+                  <span className="font-semibold text-[#0B0F19] dark:text-white tabular-nums">
                     {executionProgress.current} de {executionProgress.total} ({executionProgress.pct}%)
                   </span>
                 </div>
                 <div>
                   <span className="text-slate-500 dark:text-slate-400 block text-[10px] uppercase font-bold">Estado:</span>
-                  <span className={`font-semibold ${executionComplete ? 'text-[#007F66] dark:text-[#00CFA7]' : 'text-[#041050] dark:text-[#00CFA7]'}`}>
+                  <span className={`font-semibold ${executionComplete ? 'text-[#0369A1] dark:text-[#21B6EA]' : 'text-[#0B0F19] dark:text-[#21B6EA]'}`}>
                     {executionComplete ? '✓ Completado' : 'En Ejecución...'}
                   </span>
                 </div>
               </div>
 
               {/* Progress Bar */}
-              <div className="w-full bg-[#EEF1F9] dark:bg-[#020829] rounded-full h-2.5 overflow-hidden border border-[#DCE1EB] dark:border-[#1B2F8A]">
+              <div className="w-full bg-[#EBF8FD] dark:bg-[#0B0F19] rounded-full h-2.5 overflow-hidden border border-[#E2E8F0] dark:border-[#334155]">
                 <div
                   className={`h-2.5 rounded-full transition-all duration-150 ${
-                    executionComplete ? 'bg-[#00CFA7]' : 'bg-[#041050] dark:bg-[#00CFA7]'
+                    executionComplete ? 'bg-[#21B6EA]' : 'bg-[#0B0F19] dark:bg-[#21B6EA]'
                   }`}
                   style={{ width: `${executionProgress.pct}%` }}
                 />
               </div>
 
               {/* Live Activity Feed */}
-              <div className="bg-[#020829] border border-[#1B2F8A] rounded-lg p-3 max-h-40 overflow-y-auto font-mono text-[11px] text-slate-200 space-y-1">
-                <div className="text-slate-400 border-b border-[#1B2F8A] pb-1 flex justify-between">
+              <div className="bg-[#0B0F19] border border-[#334155] rounded-lg p-3 max-h-40 overflow-y-auto font-mono text-[11px] text-slate-200 space-y-1">
+                <div className="text-slate-400 border-b border-[#334155] pb-1 flex justify-between">
                   <span>[HubSpot CRM] Registro en Tiempo Real</span>
-                  <span className="text-[#00CFA7] font-bold">EN LÍNEA</span>
+                  <span className="text-[#21B6EA] font-bold">EN LÍNEA</span>
                 </div>
                 {executionProgress.log.length === 0 ? (
                   <div className="text-slate-400 italic py-2">
@@ -3126,17 +3126,17 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                       <span>
                         &gt; {item.status || `Contacto ID ${item.contactId}: Actualizado exitosamente en CRM`}
                       </span>
-                      <span className="text-[#00CFA7] font-bold tabular-nums">{item.time}</span>
+                      <span className="text-[#21B6EA] font-bold tabular-nums">{item.time}</span>
                     </div>
                   ))
                 )}
                 {executionComplete && (
-                  <div className="text-[#00CFA7] font-bold pt-1 border-t border-[#1B2F8A] flex items-center justify-between flex-wrap gap-2">
+                  <div className="text-[#21B6EA] font-bold pt-1 border-t border-[#334155] flex items-center justify-between flex-wrap gap-2">
                     <span>✓ Sincronización finalizada exitosamente para {executionProgress.total} contactos en HubSpot CRM.</span>
                     <button
                       type="button"
                       onClick={() => setResultsActiveTab('history')}
-                      className="text-xs text-white hover:text-[#00CFA7] underline cursor-pointer font-sans font-medium"
+                      className="text-xs text-white hover:text-[#21B6EA] underline cursor-pointer font-sans font-medium"
                     >
                       Ver en Historial de Auditoría &rarr;
                     </button>
@@ -3153,7 +3153,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                     <button
                       type="button"
                       onClick={() => setResultsActiveTab('history')}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#EEF1F9] dark:bg-[#06155E] hover:bg-[#DCE1EB] dark:hover:bg-[#081C7A] text-[#041050] dark:text-[#00CFA7] text-xs font-semibold rounded-lg border border-[#CBD5E1] dark:border-[#1B2F8A] transition-colors cursor-pointer whitespace-nowrap shrink-0"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#EBF8FD] dark:bg-[#0F172A] hover:bg-[#D5EFFA] dark:hover:bg-[#334155] text-[#0B0F19] dark:text-[#21B6EA] text-xs font-semibold rounded-lg border border-[#BAE6FD] dark:border-[#334155] transition-colors cursor-pointer whitespace-nowrap shrink-0"
                     >
                       <History className="w-3.5 h-3.5" />
                       <span>Ver y Filtrar Historial Anterior</span>
@@ -3177,17 +3177,17 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
       {/* Standalone History Modal */}
       {isHistoryModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/65 backdrop-blur-xs p-4 animate-in fade-in duration-150">
-          <div className="bg-white dark:bg-[#041050] rounded-2xl max-w-5xl w-full max-h-[90vh] shadow-2xl border border-[#DCE1EB] dark:border-[#1B2F8A] flex flex-col overflow-hidden">
-            <div className="p-4 border-b border-[#DCE1EB] dark:border-[#1B2F8A] flex items-center justify-between bg-[#F7F8FC] dark:bg-[#020829]">
+          <div className="bg-white dark:bg-[#1E293B] rounded-2xl max-w-5xl w-full max-h-[90vh] shadow-2xl border border-[#E2E8F0] dark:border-[#334155] flex flex-col overflow-hidden">
+            <div className="p-4 border-b border-[#E2E8F0] dark:border-[#334155] flex items-center justify-between bg-[#F8FAFC] dark:bg-[#0F172A]">
               <div className="flex items-center gap-2">
-                <History className="w-5 h-5 text-[#007F66] dark:text-[#00CFA7]" />
-                <h3 className="text-sm font-bold text-[#041050] dark:text-white">
+                <History className="w-5 h-5 text-[#0369A1] dark:text-[#21B6EA]" />
+                <h3 className="text-sm font-bold text-[#0B0F19] dark:text-white">
                   Historial de Actualizaciones Masivas Anteriores
                 </h3>
               </div>
               <button
                 onClick={() => setIsHistoryModalOpen(false)}
-                className="p-1.5 hover:bg-[#EEF1F9] dark:hover:bg-[#06155E] text-slate-500 dark:text-slate-300 rounded-lg cursor-pointer"
+                className="p-1.5 hover:bg-[#EBF8FD] dark:hover:bg-[#334155] text-slate-500 dark:text-slate-300 rounded-lg cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -3205,12 +3205,12 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
       {/* Action Panel Popup Modal */}
       {isActionPanelPopupOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/65 backdrop-blur-xs p-4 animate-in fade-in duration-150">
-          <div className="bg-white dark:bg-[#041050] rounded-2xl max-w-4xl w-full max-h-[92vh] shadow-2xl border border-[#DCE1EB] dark:border-[#1B2F8A] flex flex-col overflow-hidden">
-            <div className="p-4 border-b border-[#DCE1EB] dark:border-[#1B2F8A] flex items-center justify-between bg-[#F7F8FC] dark:bg-[#020829]">
+          <div className="bg-white dark:bg-[#1E293B] rounded-2xl max-w-4xl w-full max-h-[92vh] shadow-2xl border border-[#E2E8F0] dark:border-[#334155] flex flex-col overflow-hidden">
+            <div className="p-4 border-b border-[#E2E8F0] dark:border-[#334155] flex items-center justify-between bg-[#F8FAFC] dark:bg-[#0F172A]">
               <div className="flex items-center gap-2">
-                <ArrowRightLeft className="w-5 h-5 text-[#007F66] dark:text-[#00CFA7]" />
+                <ArrowRightLeft className="w-5 h-5 text-[#0369A1] dark:text-[#21B6EA]" />
                 <div>
-                  <h3 className="text-sm font-bold text-[#041050] dark:text-white">
+                  <h3 className="text-sm font-bold text-[#0B0F19] dark:text-white">
                     Ventana Emergente: Modificaciones Masivas (Destino)
                   </h3>
                   <p className="text-[11px] text-slate-600 dark:text-slate-300">
@@ -3220,14 +3220,14 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
               </div>
               <button
                 onClick={() => setIsActionPanelPopupOpen(false)}
-                className="p-1.5 hover:bg-[#EEF1F9] dark:hover:bg-[#06155E] text-slate-500 dark:text-slate-300 rounded-lg cursor-pointer"
+                className="p-1.5 hover:bg-[#EBF8FD] dark:hover:bg-[#334155] text-slate-500 dark:text-slate-300 rounded-lg cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             <div className="p-5 overflow-y-auto flex-1 space-y-4">
-              <div className="p-3 bg-[#EEF1F9] dark:bg-[#06155E] border border-[#CBD5E1] dark:border-[#1B2F8A] rounded-lg text-xs text-[#041050] dark:text-slate-200 flex items-center justify-between">
+              <div className="p-3 bg-[#EBF8FD] dark:bg-[#0F172A] border border-[#BAE6FD] dark:border-[#334155] rounded-lg text-xs text-[#0B0F19] dark:text-slate-200 flex items-center justify-between">
                 <div>
                   {isUpdatingByFilterCriteriaDirectly ? (
                     <span>⚡ Se actualizarán los leads que cumplan los <strong>criterios del filtro</strong>.</span>
@@ -3242,7 +3242,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                     const el = document.getElementById('bulk-action-panel');
                     el?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="text-[11px] font-semibold text-[#041050] dark:text-[#00CFA7] hover:underline cursor-pointer"
+                  className="text-[11px] font-semibold text-[#0B0F19] dark:text-[#21B6EA] hover:underline cursor-pointer"
                 >
                   Ver en formulario inferior &darr;
                 </button>
@@ -3252,11 +3252,11 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                 Los cambios configurados en el formulario principal se aplican de forma inmediata. Haz clic abajo para confirmar la ejecución.
               </p>
 
-              <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#DCE1EB] dark:border-[#1B2F8A]">
+              <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#E2E8F0] dark:border-[#334155]">
                 <button
                   type="button"
                   onClick={() => setIsActionPanelPopupOpen(false)}
-                  className="px-4 py-2 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-[#EEF1F9] dark:hover:bg-[#06155E] rounded-lg transition-colors cursor-pointer"
+                  className="px-4 py-2 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-[#EBF8FD] dark:hover:bg-[#334155] rounded-lg transition-colors cursor-pointer"
                 >
                   Cerrar Ventana Emergente
                 </button>
@@ -3268,7 +3268,7 @@ export const BulkLeadManager: React.FC<BulkLeadManagerProps> = ({ owners, onData
                     setIsConfirmModalOpen(true);
                   }}
                   disabled={!hasChangesConfigured || isExecuting}
-                  className="px-5 py-2 text-xs font-bold bg-[#041050] hover:bg-[#081C7A] text-white dark:bg-[#00CFA7] dark:hover:bg-[#00B894] dark:text-[#041050] rounded-lg transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1.5 whitespace-nowrap shrink-0"
+                  className="px-5 py-2 text-xs font-bold bg-[#0B0F19] hover:bg-[#1E293B] text-white dark:bg-[#21B6EA] dark:hover:bg-[#38C4F3] dark:text-[#0B0F19] rounded-lg transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1.5 whitespace-nowrap shrink-0"
                 >
                   <CheckCircle2 className="w-4 h-4" />
                   <span>Proceder a Confirmar ({selectedContactIds.size})</span>

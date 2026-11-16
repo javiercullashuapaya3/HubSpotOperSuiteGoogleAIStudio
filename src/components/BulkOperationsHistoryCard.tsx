@@ -176,15 +176,15 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
   };
 
   return (
-    <div className={`bg-white dark:bg-[#041050] rounded-xl border border-[#DCE1EB] dark:border-[#1B2F8A] shadow-xs overflow-hidden ${isEmbeddedInResults ? 'mt-4' : ''}`}>
+    <div className={`bg-white dark:bg-[#1E293B] rounded-xl border border-[#E2E8F0] dark:border-[#334155] shadow-xs overflow-hidden ${isEmbeddedInResults ? 'mt-4' : ''}`}>
       {/* Top Header */}
-      <div className="p-4 bg-[#F7F8FC] dark:bg-[#06155E] border-b border-[#DCE1EB] dark:border-[#1B2F8A] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div className="p-4 bg-[#F8FAFC] dark:bg-[#0F172A] border-b border-[#E2E8F0] dark:border-[#334155] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="flex items-center gap-2">
-          <div className="p-1.5 rounded-lg bg-[#E6FAF5] dark:bg-[#00CFA7]/15 border border-[#00CFA7]/40 text-[#007F66] dark:text-[#00CFA7]">
+          <div className="p-1.5 rounded-lg bg-[#E8F7FD] dark:bg-[#21B6EA]/15 border border-[#21B6EA]/40 text-[#0369A1] dark:text-[#21B6EA]">
             <History className="w-4 h-4" />
           </div>
           <div>
-            <h3 className="text-xs font-bold text-[#041050] dark:text-white uppercase tracking-wide">
+            <h3 className="text-xs font-bold text-[#0B0F19] dark:text-white uppercase tracking-wide">
               Historial de Operaciones Masivas &amp; Auditoría
             </h3>
             <p className="text-[11px] text-slate-600 dark:text-slate-300">
@@ -197,7 +197,7 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
         <div className="flex items-center gap-2">
           <button
             onClick={refreshList}
-            className="px-3 py-1.5 rounded-lg bg-white dark:bg-[#041050] hover:bg-[#F0F0F0] dark:hover:bg-[#0A1E7A] text-[#041050] dark:text-white border border-[#DCE1EB] dark:border-[#1B2F8A] text-xs font-medium transition-colors cursor-pointer inline-flex items-center gap-1.5"
+            className="px-3 py-1.5 rounded-lg bg-white dark:bg-[#1E293B] hover:bg-[#F4F7FA] dark:hover:bg-[#334155] text-[#0B0F19] dark:text-white border border-[#E2E8F0] dark:border-[#334155] text-xs font-medium transition-colors cursor-pointer inline-flex items-center gap-1.5"
             title="Refrescar historial"
           >
             <RefreshCw className="w-3.5 h-3.5" />
@@ -209,9 +209,9 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
       <div className="p-4 space-y-4">
           {/* Connected status badge if operational */}
           {supabaseHealth && !supabaseHealth.rlsBlocked && supabaseHealth.tableExists && (
-            <div className="px-3 py-2 rounded-lg bg-[#E6FAF5] dark:bg-[#00CFA7]/15 border border-[#00CFA7]/40 text-[#041050] dark:text-white text-[11px] flex items-center justify-between">
+            <div className="px-3 py-2 rounded-lg bg-[#E8F7FD] dark:bg-[#21B6EA]/15 border border-[#21B6EA]/40 text-[#0B0F19] dark:text-white text-[11px] flex items-center justify-between">
               <div className="flex items-center gap-2 font-medium">
-                <span className="w-2 h-2 rounded-full bg-[#00CFA7]"></span>
+                <span className="w-2 h-2 rounded-full bg-[#21B6EA]"></span>
                 <span>
                   Sincronización en la nube activa ({supabaseHealth.jobsCount} registros guardados)
                 </span>
@@ -220,7 +220,7 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
                 <button
                   onClick={handleSyncAllPending}
                   disabled={isSyncingAll}
-                  className="px-2.5 py-0.5 rounded bg-[#041050] hover:bg-[#081C7A] text-white dark:bg-[#00CFA7] dark:hover:bg-[#00B894] dark:text-[#041050] text-[10px] font-semibold cursor-pointer inline-flex items-center gap-1"
+                  className="px-2.5 py-0.5 rounded bg-[#0B0F19] hover:bg-[#1E293B] text-white dark:bg-[#21B6EA] dark:hover:bg-[#38C4F3] dark:text-[#0B0F19] text-[10px] font-semibold cursor-pointer inline-flex items-center gap-1"
                 >
                   <RefreshCw className={`w-2.5 h-2.5 ${isSyncingAll ? 'animate-spin' : ''}`} />
                   <span>Sincronizar {pendingCount} pendientes</span>
@@ -230,10 +230,10 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
           )}
 
           {/* Filter Bar */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5 bg-[#F7F8FC] dark:bg-[#06155E] p-3 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] text-xs">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5 bg-[#F8FAFC] dark:bg-[#0F172A] p-3 rounded-lg border border-[#E2E8F0] dark:border-[#334155] text-xs">
             {/* Search Input */}
             <div className="relative">
-              <label className="block text-[10px] font-bold text-[#041050] dark:text-slate-200 uppercase mb-1">
+              <label className="block text-[10px] font-bold text-[#0B0F19] dark:text-slate-200 uppercase mb-1">
                 Buscar por palabra clave
               </label>
               <div className="relative">
@@ -242,7 +242,7 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
                   placeholder="Usuario, campo, valor..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full text-xs bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-md pl-7 pr-2 py-1.5 text-[#041050] dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00CFA7]"
+                  className="w-full text-xs bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#334155] rounded-md pl-7 pr-2 py-1.5 text-[#0B0F19] dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#21B6EA]"
                 />
                 <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2 top-2" />
               </div>
@@ -250,13 +250,13 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
 
             {/* Filter by User */}
             <div>
-              <label className="block text-[10px] font-bold text-[#041050] dark:text-slate-200 uppercase mb-1">
+              <label className="block text-[10px] font-bold text-[#0B0F19] dark:text-slate-200 uppercase mb-1">
                 Usuario de Sesión
               </label>
               <select
                 value={filterUser}
                 onChange={(e) => setFilterUser(e.target.value)}
-                className="w-full text-xs bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-md px-2 py-1.5 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7]"
+                className="w-full text-xs bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#334155] rounded-md px-2 py-1.5 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA]"
               >
                 <option value="ALL">Todos los Usuarios</option>
                 {distinctUsers.map((u) => (
@@ -269,13 +269,13 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
 
             {/* Filter by Date */}
             <div>
-              <label className="block text-[10px] font-bold text-[#041050] dark:text-slate-200 uppercase mb-1">
+              <label className="block text-[10px] font-bold text-[#0B0F19] dark:text-slate-200 uppercase mb-1">
                 Fecha de Ejecución
               </label>
               <select
                 value={filterDate}
                 onChange={(e) => setFilterDate(e.target.value)}
-                className="w-full text-xs bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-md px-2 py-1.5 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7]"
+                className="w-full text-xs bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#334155] rounded-md px-2 py-1.5 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA]"
               >
                 <option value="ALL">Cualquier Fecha</option>
                 <option value="today">Hoy</option>
@@ -286,13 +286,13 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
 
             {/* Filter by Execution Mode */}
             <div>
-              <label className="block text-[10px] font-bold text-[#041050] dark:text-slate-200 uppercase mb-1">
+              <label className="block text-[10px] font-bold text-[#0B0F19] dark:text-slate-200 uppercase mb-1">
                 Modo de Envío
               </label>
               <select
                 value={filterMode}
                 onChange={(e) => setFilterMode(e.target.value)}
-                className="w-full text-xs bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-md px-2 py-1.5 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7]"
+                className="w-full text-xs bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#334155] rounded-md px-2 py-1.5 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA]"
               >
                 <option value="ALL">Todos los Modos</option>
                 <option value="lote">Sincronización en Lote (lote)</option>
@@ -302,13 +302,13 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
 
             {/* Filter by Status */}
             <div>
-              <label className="block text-[10px] font-bold text-[#041050] dark:text-slate-200 uppercase mb-1">
+              <label className="block text-[10px] font-bold text-[#0B0F19] dark:text-slate-200 uppercase mb-1">
                 Estado
               </label>
               <select
                 value={filterStatus}
                 onChange={(e) => setFilterStatus(e.target.value)}
-                className="w-full text-xs bg-white dark:bg-[#020829] border border-[#CBD5E1] dark:border-[#1E3599] rounded-md px-2 py-1.5 text-[#041050] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#00CFA7]"
+                className="w-full text-xs bg-white dark:bg-[#0B0F19] border border-[#CBD5E1] dark:border-[#334155] rounded-md px-2 py-1.5 text-[#0B0F19] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#21B6EA]"
               >
                 <option value="ALL">Todos los Estados</option>
                 <option value="completado">Completado sin errores</option>
@@ -320,11 +320,11 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
 
           {/* Results List */}
           {historyList.length === 0 ? (
-            <div className="py-12 px-4 text-center rounded-xl border border-dashed border-[#DCE1EB] dark:border-[#1B2F8A] bg-[#F7F8FC] dark:bg-[#06155E] space-y-2">
-              <div className="w-10 h-10 mx-auto rounded-full bg-[#E6FAF5] dark:bg-[#00CFA7]/15 border border-[#00CFA7]/40 flex items-center justify-center text-[#007F66] dark:text-[#00CFA7]">
+            <div className="py-12 px-4 text-center rounded-xl border border-dashed border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0F172A] space-y-2">
+              <div className="w-10 h-10 mx-auto rounded-full bg-[#E8F7FD] dark:bg-[#21B6EA]/15 border border-[#21B6EA]/40 flex items-center justify-center text-[#0369A1] dark:text-[#21B6EA]">
                 <History className="w-5 h-5" />
               </div>
-              <h4 className="text-xs font-bold text-[#041050] dark:text-white uppercase tracking-wide">
+              <h4 className="text-xs font-bold text-[#0B0F19] dark:text-white uppercase tracking-wide">
                 No hay operaciones registradas aún
               </h4>
               <p className="text-[11px] text-slate-600 dark:text-slate-300 max-w-md mx-auto leading-relaxed">
@@ -346,10 +346,10 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
                     key={job.id}
                     className={`rounded-xl border transition-all ${
                       isRecent
-                        ? 'border-[#00CFA7] bg-[#E6FAF5]/30 dark:bg-[#00CFA7]/10 shadow-xs'
+                        ? 'border-[#21B6EA] bg-[#EBF8FD]/70 dark:bg-[#21B6EA]/10 shadow-xs'
                         : isExpanded
-                        ? 'border-[#041050]/40 dark:border-[#2C45B8] bg-[#F7F8FC] dark:bg-[#06155E] shadow-xs'
-                        : 'border-[#DCE1EB] dark:border-[#1B2F8A] bg-white dark:bg-[#041050] hover:border-[#041050]/30 dark:hover:border-[#00CFA7]/50'
+                        ? 'border-[#0B0F19]/40 dark:border-[#475569] bg-[#F8FAFC] dark:bg-[#0F172A] shadow-xs'
+                        : 'border-[#E2E8F0] dark:border-[#334155] bg-white dark:bg-[#1E293B] hover:border-[#0B0F19]/30 dark:hover:border-[#21B6EA]/50'
                     }`}
                   >
                     {/* Header Row */}
@@ -361,7 +361,7 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
                         <div
                           className={`mt-0.5 p-1.5 rounded-lg shrink-0 ${
                             job.status === 'completado'
-                              ? 'bg-[#E6FAF5] dark:bg-[#00CFA7]/15 text-[#007F66] dark:text-[#00CFA7]'
+                              ? 'bg-[#E8F7FD] dark:bg-[#21B6EA]/15 text-[#0369A1] dark:text-[#21B6EA]'
                               : 'bg-amber-100 dark:bg-amber-950/70 text-amber-800 dark:text-amber-200'
                           }`}
                         >
@@ -374,14 +374,14 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
 
                         <div>
                           <div className="flex items-center gap-2 flex-wrap">
-                            <span className="font-bold text-xs text-[#041050] dark:text-white tabular-nums">
+                            <span className="font-bold text-xs text-[#0B0F19] dark:text-white tabular-nums">
                               {job.totalTargetRecords} Leads Modificados
                             </span>
                             <span
                               className={`px-2 py-0.5 rounded-full text-[10px] font-semibold border ${
                                 job.executionMode === 'lote'
-                                  ? 'bg-[#EEF1F9] dark:bg-[#0A1E7A] text-[#041050] dark:text-white border-[#041050]/20 dark:border-[#2C45B8]'
-                                  : 'bg-[#E6FAF5] dark:bg-[#00CFA7]/15 text-[#007F66] dark:text-[#00CFA7] border-[#00CFA7]/40'
+                                  ? 'bg-[#F4F7FA] dark:bg-[#0F172A] text-[#0B0F19] dark:text-white border-[#CBD5E1] dark:border-[#475569]'
+                                  : 'bg-[#E8F7FD] dark:bg-[#21B6EA]/15 text-[#0369A1] dark:text-[#21B6EA] border-[#21B6EA]/40'
                               }`}
                             >
                               {job.executionMode === 'lote'
@@ -391,13 +391,13 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
 
                             {/* Sync Status Badge */}
                             {job.supabaseSyncStatus === 'synced' ? (
-                              <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#E6FAF5] dark:bg-[#00CFA7]/15 text-[#007F66] dark:text-[#00CFA7] border border-[#00CFA7]/40 flex items-center gap-1">
+                              <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#E8F7FD] dark:bg-[#21B6EA]/15 text-[#0369A1] dark:text-[#21B6EA] border border-[#21B6EA]/40 flex items-center gap-1">
                                 <Database className="w-2.5 h-2.5" />
                                 <span>Sincronizado</span>
                               </span>
                             ) : job.supabaseSyncStatus === 'rls_blocked' ? (
-                              <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#F0F0F0] dark:bg-[#06155E] text-[#041050] dark:text-slate-200 border border-[#DCE1EB] dark:border-[#1B2F8A] flex items-center gap-1">
-                                <ShieldCheck className="w-2.5 h-2.5 text-[#041050] dark:text-[#00CFA7]" />
+                              <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#F4F7FA] dark:bg-[#0F172A] text-[#0B0F19] dark:text-slate-200 border border-[#E2E8F0] dark:border-[#334155] flex items-center gap-1">
+                                <ShieldCheck className="w-2.5 h-2.5 text-[#0369A1] dark:text-[#21B6EA]" />
                                 <span>Guardado local</span>
                               </span>
                             ) : job.supabaseSyncStatus === 'failed' ? (
@@ -406,13 +406,13 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
                                 <span>Pendiente de respaldo</span>
                               </span>
                             ) : (
-                              <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#EEF1F9] dark:bg-[#0A1E7A] text-[#041050] dark:text-white border border-[#DCE1EB] dark:border-[#2C45B8]">
+                              <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#F4F7FA] dark:bg-[#0F172A] text-[#0B0F19] dark:text-white border border-[#E2E8F0] dark:border-[#475569]">
                                 Sincronizando...
                               </span>
                             )}
 
                             {isRecent && (
-                              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#00CFA7] text-[#041050]">
+                              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#21B6EA] text-[#0B0F19]">
                                 Recién Ejecutado
                               </span>
                             )}
@@ -421,7 +421,7 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
                           <div className="flex items-center gap-3 text-[11px] text-slate-600 dark:text-slate-300 mt-1 flex-wrap tabular-nums">
                             <span className="flex items-center gap-1">
                               <User className="w-3 h-3 text-slate-500 dark:text-slate-400" />
-                              <strong className="text-[#041050] dark:text-white">{job.executedByUsername}</strong>
+                              <strong className="text-[#0B0F19] dark:text-white">{job.executedByUsername}</strong>
                             </span>
                             <span aria-hidden="true">·</span>
                             <span className="flex items-center gap-1">
@@ -443,7 +443,7 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
 
                       <div className="flex items-center gap-3">
                         <div className="text-right tabular-nums">
-                          <div className="text-xs font-semibold text-[#007F66] dark:text-[#00CFA7] flex items-center gap-1 justify-end">
+                          <div className="text-xs font-semibold text-[#0369A1] dark:text-[#21B6EA] flex items-center gap-1 justify-end">
                             <Check className="w-3.5 h-3.5" />
                             <span>{job.successfulRecords} sincronizados</span>
                           </div>
@@ -463,7 +463,7 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
                               handleRetryJob(job.id);
                             }}
                             disabled={isRetryingSync === job.id}
-                            className="px-2 py-1 rounded bg-[#041050] hover:bg-[#081C7A] text-white dark:bg-[#00CFA7] dark:hover:bg-[#00B894] dark:text-[#041050] text-[10px] font-semibold cursor-pointer inline-flex items-center gap-1 shrink-0"
+                            className="px-2 py-1 rounded bg-[#0B0F19] hover:bg-[#1E293B] text-white dark:bg-[#21B6EA] dark:hover:bg-[#38C4F3] dark:text-[#0B0F19] text-[10px] font-semibold cursor-pointer inline-flex items-center gap-1 shrink-0"
                             title="Reintentar guardar este registro en Supabase"
                           >
                             <RefreshCw className={`w-3 h-3 ${isRetryingSync === job.id ? 'animate-spin' : ''}`} />
@@ -471,7 +471,7 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
                           </button>
                         )}
 
-                        <div className="p-1 rounded-md text-slate-500 dark:text-slate-300 hover:text-[#041050] dark:hover:text-white">
+                        <div className="p-1 rounded-md text-slate-500 dark:text-slate-300 hover:text-[#0B0F19] dark:hover:text-white">
                           {isExpanded ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
                         </div>
                       </div>
@@ -479,7 +479,7 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
 
                     {/* Collapsible Details */}
                     {isExpanded && (
-                      <div className="px-4 pb-4 pt-1 border-t border-[#DCE1EB] dark:border-[#1B2F8A] space-y-3 bg-white dark:bg-[#041050] rounded-b-xl">
+                      <div className="px-4 pb-4 pt-1 border-t border-[#E2E8F0] dark:border-[#334155] space-y-3 bg-white dark:bg-[#1E293B] rounded-b-xl">
                         {/* Supabase error notice if failed */}
                         {job.supabaseError && (
                           <div className="p-2.5 rounded bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-700 text-rose-800 dark:text-rose-200 text-xs flex items-start gap-2">
@@ -494,7 +494,7 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
                         {/* Criterios y Cambios */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-2">
                           {/* Cambios Aplicados */}
-                          <div className="p-3 bg-[#F7F8FC] dark:bg-[#06155E] rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A]">
+                          <div className="p-3 bg-[#F8FAFC] dark:bg-[#0F172A] rounded-lg border border-[#E2E8F0] dark:border-[#334155]">
                             <span className="text-[10px] font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wide block mb-1.5">
                               Valores modificados en HubSpot:
                             </span>
@@ -506,7 +506,7 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
                                     className={`font-semibold px-2 py-0.5 rounded text-[10px] ${
                                       chg.isClear
                                         ? 'bg-amber-100 dark:bg-amber-950/70 text-amber-900 dark:text-amber-200 border border-amber-300 dark:border-amber-700'
-                                        : 'bg-[#E6FAF5] dark:bg-[#00CFA7]/15 text-[#041050] dark:text-[#00CFA7] border border-[#00CFA7]/40'
+                                        : 'bg-[#E8F7FD] dark:bg-[#21B6EA]/15 text-[#0369A1] dark:text-[#21B6EA] border border-[#21B6EA]/40'
                                     }`}
                                   >
                                     {chg.value}
@@ -517,7 +517,7 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
                           </div>
 
                           {/* Criterios de Selección */}
-                          <div className="p-3 bg-[#F7F8FC] dark:bg-[#06155E] rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A]">
+                          <div className="p-3 bg-[#F8FAFC] dark:bg-[#0F172A] rounded-lg border border-[#E2E8F0] dark:border-[#334155]">
                             <span className="text-[10px] font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wide block mb-1.5">
                               Filtros de selección aplicados:
                             </span>
@@ -526,10 +526,10 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
                                 {(job.filterCriteria || []).map((crit, i) => (
                                   <span
                                     key={i}
-                                    className="inline-flex items-center gap-1 bg-white dark:bg-[#041050] px-2 py-0.5 rounded border border-[#DCE1EB] dark:border-[#1B2F8A] text-[10px] text-[#041050] dark:text-white"
+                                    className="inline-flex items-center gap-1 bg-white dark:bg-[#1E293B] px-2 py-0.5 rounded border border-[#E2E8F0] dark:border-[#334155] text-[10px] text-[#0B0F19] dark:text-white"
                                   >
                                     <span className="text-slate-600 dark:text-slate-300">{crit.label}:</span>
-                                    <strong className="text-[#041050] dark:text-[#00CFA7]">{crit.value}</strong>
+                                    <strong className="text-[#0369A1] dark:text-[#21B6EA]">{crit.value}</strong>
                                   </span>
                                 ))}
                               </div>
@@ -542,18 +542,18 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
                         </div>
 
                         {/* Metadata Bar */}
-                        <div className="p-2.5 bg-[#F0F0F0] dark:bg-[#020829] rounded-lg text-[10px] font-medium text-slate-600 dark:text-slate-300 flex flex-wrap items-center justify-between gap-2 border border-[#DCE1EB] dark:border-[#1B2F8A]">
+                        <div className="p-2.5 bg-[#F4F7FA] dark:bg-[#0B0F19] rounded-lg text-[10px] font-medium text-slate-600 dark:text-slate-300 flex flex-wrap items-center justify-between gap-2 border border-[#E2E8F0] dark:border-[#334155]">
                           <div>
                             <span className="text-slate-500 dark:text-slate-400">Identificador:</span>{' '}
-                            <strong className="text-[#041050] dark:text-white font-mono">{job.jobUuid}</strong>
+                            <strong className="text-[#0B0F19] dark:text-white font-mono">{job.jobUuid}</strong>
                           </div>
                           <div>
                             <span className="text-slate-500 dark:text-slate-400">Operador:</span>{' '}
-                            <strong className="text-[#041050] dark:text-white">{job.executedByUsername}</strong>
+                            <strong className="text-[#0B0F19] dark:text-white">{job.executedByUsername}</strong>
                           </div>
                           <div>
                             <span className="text-slate-500 dark:text-slate-400">Estado de sincronización:</span>{' '}
-                            <strong className={job.supabaseSyncStatus === 'synced' ? 'text-[#007F66] dark:text-[#00CFA7]' : 'text-amber-700 dark:text-amber-300'}>
+                            <strong className={job.supabaseSyncStatus === 'synced' ? 'text-[#0369A1] dark:text-[#21B6EA]' : 'text-amber-700 dark:text-amber-300'}>
                               {job.supabaseSyncStatus === 'synced' ? 'Sincronizado' : 'Guardado local'}
                             </strong>
                           </div>
@@ -561,20 +561,20 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
 
                         {/* Detail Items if recorded */}
                         {job.items && job.items.length > 0 && (
-                          <div className="border border-[#DCE1EB] dark:border-[#1B2F8A] rounded-lg overflow-hidden">
-                            <div className="bg-[#F7F8FC] dark:bg-[#06155E] px-3 py-1.5 text-[10px] font-bold uppercase text-[#041050] dark:text-slate-200 border-b border-[#DCE1EB] dark:border-[#1B2F8A]">
+                          <div className="border border-[#E2E8F0] dark:border-[#334155] rounded-lg overflow-hidden">
+                            <div className="bg-[#F8FAFC] dark:bg-[#0F172A] px-3 py-1.5 text-[10px] font-bold uppercase text-[#0B0F19] dark:text-slate-200 border-b border-[#E2E8F0] dark:border-[#334155]">
                               Muestra de Contactos Afectados ({job.items.length} registrados):
                             </div>
-                            <div className="max-h-36 overflow-y-auto divide-y divide-[#DCE1EB] dark:divide-[#1B2F8A] text-[11px]">
+                            <div className="max-h-36 overflow-y-auto divide-y divide-[#E2E8F0] dark:divide-[#334155] text-[11px]">
                               {(job.items || []).map((item) => (
                                 <div key={item.id} className="p-2 flex items-center justify-between">
                                   <div className="flex items-center gap-2">
                                     {item.status === 'exitoso' ? (
-                                      <Check className="w-3 h-3 text-[#007F66] dark:text-[#00CFA7] shrink-0" />
+                                      <Check className="w-3 h-3 text-[#0369A1] dark:text-[#21B6EA] shrink-0" />
                                     ) : (
                                       <AlertTriangle className="w-3 h-3 text-rose-600 dark:text-rose-400 shrink-0" />
                                     )}
-                                    <span className="font-semibold text-[#041050] dark:text-white">{item.recordIdentifier}</span>
+                                    <span className="font-semibold text-[#0B0F19] dark:text-white">{item.recordIdentifier}</span>
                                     <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400">
                                       (ID: {item.recordId})
                                     </span>
@@ -582,7 +582,7 @@ export const BulkOperationsHistoryCard: React.FC<BulkOperationsHistoryCardProps>
                                   <span
                                     className={`text-[10px] px-2 py-0.5 rounded font-medium border ${
                                       item.status === 'exitoso'
-                                        ? 'text-[#007F66] dark:text-[#00CFA7] bg-[#E6FAF5] dark:bg-[#00CFA7]/15 border-[#00CFA7]/40'
+                                        ? 'text-[#0369A1] dark:text-[#21B6EA] bg-[#E8F7FD] dark:bg-[#21B6EA]/15 border-[#21B6EA]/40'
                                         : 'text-rose-700 dark:text-rose-200 bg-rose-50 dark:bg-rose-950/60 border-rose-200 dark:border-rose-700'
                                     }`}
                                   >

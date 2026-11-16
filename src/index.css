@@ -2,39 +2,40 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: "Poppins", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  --color-brand-prussian: #041050;
-  --color-brand-prussian-hover: #081c7a;
-  --color-brand-lagoon: #00cfa7;
-  --color-brand-lagoon-hover: #00b894;
-  --color-brand-lagoon-deep: #007f66;
-  --color-brand-chalk: #f0f0f0;
+  --color-brand-obsidian: #0b0f19;
+  --color-brand-navy: #1e293b;
+  --color-brand-capri: #21b6ea;
+  --color-brand-capri-hover: #38c4f3;
+  --color-brand-capri-deep: #0369a1;
+  --color-brand-ice: #ebf8fd;
+  --color-brand-canvas: #f4f7fa;
   --color-brand-white: #ffffff;
 }
 
 @layer base {
   :root {
     color-scheme: light;
-    --bg-canvas: #f0f0f0;
+    --bg-canvas: #f4f7fa;
     --bg-surface: #ffffff;
-    --bg-subtle: #f7f8fc;
-    --text-primary: #041050;
+    --bg-subtle: #f8fafc;
+    --text-primary: #0b0f19;
     --text-body: #1e293b;
     --text-muted: #475569;
-    --border-hairline: #dce1eb;
+    --border-hairline: #e2e8f0;
   }
 
   .dark {
     color-scheme: dark;
-    --bg-canvas: #020829;
-    --bg-surface: #041050;
-    --bg-subtle: #08186b;
+    --bg-canvas: #0b0f19;
+    --bg-surface: #1e293b;
+    --bg-subtle: #0f172a;
     --text-primary: #ffffff;
     --text-body: #e2e8f0;
-    --text-muted: #b8c4e0;
-    --border-hairline: #1b2f8a;
+    --text-muted: #94a3b8;
+    --border-hairline: #334155;
   }
 
   html,

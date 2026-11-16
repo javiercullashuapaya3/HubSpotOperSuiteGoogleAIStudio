@@ -71,12 +71,12 @@ function AppContent() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#F0F0F0] dark:bg-[#020829] flex flex-col items-center justify-center p-4 transition-colors">
-        <div className="w-12 h-12 rounded-2xl bg-[#041050] dark:bg-[#00CFA7] flex items-center justify-center text-white dark:text-[#041050] mb-4 shadow-md">
+      <div className="min-h-screen bg-[#F4F7FA] dark:bg-[#0B0F19] flex flex-col items-center justify-center p-4 transition-colors">
+        <div className="w-12 h-12 rounded-2xl bg-[#0B0F19] dark:bg-[#21B6EA] flex items-center justify-center text-white dark:text-[#0B0F19] mb-4 shadow-md">
           <Zap className="w-6 h-6" />
         </div>
-        <div className="flex items-center gap-2 text-[#041050] dark:text-white font-semibold text-sm">
-          <Loader2 className="w-4 h-4 animate-spin text-[#007F66] dark:text-[#00CFA7]" />
+        <div className="flex items-center gap-2 text-[#0B0F19] dark:text-white font-semibold text-sm">
+          <Loader2 className="w-4 h-4 animate-spin text-[#0369A1] dark:text-[#21B6EA]" />
           <span>Iniciando sesión...</span>
         </div>
       </div>
@@ -88,24 +88,24 @@ function AppContent() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F0F0F0] dark:bg-[#020829] text-[#041050] dark:text-slate-100 flex flex-col font-sans selection:bg-[#00CFA7]/30 selection:text-[#041050] dark:selection:text-white transition-colors duration-200">
+    <div className="min-h-screen bg-[#F4F7FA] dark:bg-[#0B0F19] text-[#1E293B] dark:text-slate-100 flex flex-col font-sans selection:bg-[#21B6EA]/30 selection:text-[#0B0F19] dark:selection:text-white transition-colors duration-200">
       {/* Executive Top Navbar */}
       <header
-        className="sticky top-0 z-40 bg-white dark:bg-[#041050] border-b border-[#DCE1EB] dark:border-[#1B2F8A] shadow-2xs transition-colors"
+        className="sticky top-0 z-40 bg-white dark:bg-[#1E293B] border-b border-[#E2E8F0] dark:border-[#334155] shadow-2xs transition-colors"
         id="app-executive-header"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 gap-4">
             {/* Logo & Brand Identity */}
             <div className="flex items-center gap-3 min-w-0">
-              <div className="w-10 h-10 rounded-xl bg-[#F7F8FC] dark:bg-[#06155E] border border-[#DCE1EB] dark:border-[#1B2F8A] flex items-center justify-center p-1.5 shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-[#F8FAFC] dark:bg-[#0B0F19] border border-[#E2E8F0] dark:border-[#334155] flex items-center justify-center p-1.5 shrink-0">
                 <PromptiaLogo variant="icon" size={28} />
               </div>
               <div className="min-w-0">
-                <h1 className="text-base font-extrabold text-[#041050] dark:text-white tracking-tight flex items-baseline truncate">
-                  <span className="text-[#007F66] dark:text-[#00CFA7] font-black mr-0.5">Promptia</span>
-                  <span className="text-[#041050] dark:text-white font-black mr-1.5">.lat</span>
-                  <span className="text-[#041050] dark:text-slate-200 font-bold">HubOps Suite</span>
+                <h1 className="text-base font-extrabold text-[#0B0F19] dark:text-white tracking-tight flex items-baseline truncate">
+                  <span className="text-[#0369A1] dark:text-[#21B6EA] font-black mr-0.5">Promptia</span>
+                  <span className="text-[#0B0F19] dark:text-white font-black mr-1.5">.lat</span>
+                  <span className="text-[#1E293B] dark:text-slate-200 font-bold">HubOps Suite</span>
                 </h1>
                 <p className="text-[11px] text-slate-600 dark:text-slate-300 font-medium truncate">
                   Operaciones Comerciales &amp; Gestión Masiva HubSpot CRM
@@ -119,24 +119,24 @@ function AppContent() {
                 onClick={() => setActiveTab('config')}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-semibold transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
                   isRealConnected
-                    ? 'bg-[#E6FAF5] dark:bg-[#00CFA7]/15 text-[#007F66] dark:text-[#00CFA7] border-[#00CFA7]/50 hover:bg-[#CCF5EB] dark:hover:bg-[#00CFA7]/25'
+                    ? 'bg-[#E8F7FD] dark:bg-[#21B6EA]/15 text-[#0369A1] dark:text-[#21B6EA] border-[#21B6EA]/50 hover:bg-[#D5EFFA] dark:hover:bg-[#21B6EA]/25'
                     : 'bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-amber-200 border-amber-300 dark:border-amber-700 hover:bg-amber-100'
                 }`}
               >
                 <span
                   className={`w-2 h-2 rounded-full ${
-                    isRealConnected ? 'bg-[#00CFA7]' : 'bg-amber-500'
+                    isRealConnected ? 'bg-[#21B6EA]' : 'bg-amber-500'
                   }`}
                 />
                 <span>{isRealConnected ? 'HubSpot Conectado' : 'Conectar HubSpot'}</span>
               </button>
 
-              <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#F7F8FC] dark:bg-[#06155E] border border-[#DCE1EB] dark:border-[#1B2F8A] whitespace-nowrap">
+              <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#F8FAFC] dark:bg-[#0F172A] border border-[#E2E8F0] dark:border-[#334155] whitespace-nowrap">
                 <span className="text-slate-600 dark:text-slate-300 font-medium">
-                  API Oficial: <strong className="text-[#041050] dark:text-white">HubSpot CRM v3</strong>
+                  API Oficial: <strong className="text-[#0B0F19] dark:text-white">HubSpot CRM v3</strong>
                 </span>
-                <span className="text-slate-300 dark:text-[#1B2F8A]">|</span>
-                <span className="text-[#007F66] dark:text-[#00CFA7] font-semibold flex items-center gap-1">
+                <span className="text-slate-300 dark:text-slate-600">|</span>
+                <span className="text-[#0369A1] dark:text-[#21B6EA] font-semibold flex items-center gap-1">
                   <ShieldCheck className="w-3.5 h-3.5" /> Sincronización Segura
                 </span>
               </div>
@@ -145,18 +145,18 @@ function AppContent() {
               <button
                 type="button"
                 onClick={toggleTheme}
-                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-[#DCE1EB] dark:border-[#1B2F8A] bg-[#F7F8FC] dark:bg-[#06155E] text-[#041050] dark:text-white hover:border-[#00CFA7] transition-colors cursor-pointer whitespace-nowrap shrink-0"
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0F172A] text-[#0B0F19] dark:text-white hover:border-[#21B6EA] transition-colors cursor-pointer whitespace-nowrap shrink-0"
                 title={theme === 'light' ? 'Activar modo oscuro' : 'Activar modo claro'}
                 aria-label={theme === 'light' ? 'Activar modo oscuro' : 'Activar modo claro'}
               >
                 {theme === 'light' ? (
                   <>
-                    <Moon className="w-3.5 h-3.5 text-[#041050]" />
+                    <Moon className="w-3.5 h-3.5 text-[#0B0F19]" />
                     <span className="hidden xl:inline font-semibold">Oscuro</span>
                   </>
                 ) : (
                   <>
-                    <Sun className="w-3.5 h-3.5 text-[#00CFA7]" />
+                    <Sun className="w-3.5 h-3.5 text-[#21B6EA]" />
                     <span className="hidden xl:inline font-semibold">Claro</span>
                   </>
                 )}
@@ -168,16 +168,16 @@ function AppContent() {
           </div>
 
           {/* Navigation Tabs */}
-          <nav className="flex space-x-1 border-t border-[#DCE1EB] dark:border-[#1B2F8A] pt-1 overflow-x-auto" aria-label="Tabs">
+          <nav className="flex space-x-1 border-t border-[#E2E8F0] dark:border-[#334155] pt-1 overflow-x-auto" aria-label="Tabs">
             <button
               onClick={() => setActiveTab('bulk')}
               className={`py-3 px-4 text-xs font-semibold rounded-t-lg transition-all flex items-center gap-2 border-b-2 cursor-pointer whitespace-nowrap shrink-0 ${
                 activeTab === 'bulk'
-                  ? 'border-[#041050] dark:border-[#00CFA7] text-[#041050] dark:text-[#00CFA7] bg-[#F7F8FC] dark:bg-[#06155E]'
-                  : 'border-transparent text-slate-600 dark:text-slate-300 hover:text-[#041050] dark:hover:text-white hover:border-slate-300 dark:hover:border-[#2C45B8]'
+                  ? 'border-[#0B0F19] dark:border-[#21B6EA] text-[#0B0F19] dark:text-[#21B6EA] bg-[#EBF8FD] dark:bg-[#0F172A]'
+                  : 'border-transparent text-slate-600 dark:text-slate-300 hover:text-[#0B0F19] dark:hover:text-white hover:border-slate-300 dark:hover:border-slate-500'
               }`}
             >
-              <Zap className="w-4 h-4 text-[#007F66] dark:text-[#00CFA7]" />
+              <Zap className="w-4 h-4 text-[#0369A1] dark:text-[#21B6EA]" />
               <span>Gestión Masiva de Leads</span>
             </button>
 
@@ -185,11 +185,11 @@ function AppContent() {
               onClick={() => setActiveTab('monitor')}
               className={`py-3 px-4 text-xs font-semibold rounded-t-lg transition-all flex items-center gap-2 border-b-2 cursor-pointer whitespace-nowrap shrink-0 ${
                 activeTab === 'monitor'
-                  ? 'border-[#041050] dark:border-[#00CFA7] text-[#041050] dark:text-[#00CFA7] bg-[#F7F8FC] dark:bg-[#06155E]'
-                  : 'border-transparent text-slate-600 dark:text-slate-300 hover:text-[#041050] dark:hover:text-white hover:border-slate-300 dark:hover:border-[#2C45B8]'
+                  ? 'border-[#0B0F19] dark:border-[#21B6EA] text-[#0B0F19] dark:text-[#21B6EA] bg-[#EBF8FD] dark:bg-[#0F172A]'
+                  : 'border-transparent text-slate-600 dark:text-slate-300 hover:text-[#0B0F19] dark:hover:text-white hover:border-slate-300 dark:hover:border-slate-500'
               }`}
             >
-              <BarChart3 className="w-4 h-4 text-[#007F66] dark:text-[#00CFA7]" />
+              <BarChart3 className="w-4 h-4 text-[#0369A1] dark:text-[#21B6EA]" />
               <span>Control y Despacho Operativo</span>
             </button>
 
@@ -197,11 +197,11 @@ function AppContent() {
               onClick={() => setActiveTab('config')}
               className={`py-3 px-4 text-xs font-semibold rounded-t-lg transition-all flex items-center gap-2 border-b-2 cursor-pointer whitespace-nowrap shrink-0 ${
                 activeTab === 'config'
-                  ? 'border-[#041050] dark:border-[#00CFA7] text-[#041050] dark:text-[#00CFA7] bg-[#F7F8FC] dark:bg-[#06155E]'
-                  : 'border-transparent text-slate-600 dark:text-slate-300 hover:text-[#041050] dark:hover:text-white hover:border-slate-300 dark:hover:border-[#2C45B8]'
+                  ? 'border-[#0B0F19] dark:border-[#21B6EA] text-[#0B0F19] dark:text-[#21B6EA] bg-[#EBF8FD] dark:bg-[#0F172A]'
+                  : 'border-transparent text-slate-600 dark:text-slate-300 hover:text-[#0B0F19] dark:hover:text-white hover:border-slate-300 dark:hover:border-slate-500'
               }`}
             >
-              <Settings className="w-4 h-4 text-[#041050] dark:text-slate-300" />
+              <Settings className="w-4 h-4 text-[#1E293B] dark:text-slate-300" />
               <span>Configuración del Sistema</span>
             </button>
           </nav>
@@ -220,13 +220,13 @@ function AppContent() {
       </main>
 
       {/* Operational Footer */}
-      <footer className="bg-white dark:bg-[#041050] border-t border-[#DCE1EB] dark:border-[#1B2F8A] py-4 text-xs text-slate-600 dark:text-slate-300 mt-auto transition-colors">
+      <footer className="bg-white dark:bg-[#1E293B] border-t border-[#E2E8F0] dark:border-[#334155] py-4 text-xs text-slate-600 dark:text-slate-300 mt-auto transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2">
           <div className="flex items-center gap-2.5">
             <PromptiaLogo variant="icon" size={16} />
-            <span className="font-semibold text-[#041050] dark:text-white">Promptia.lat HubOps Suite</span>
+            <span className="font-semibold text-[#0B0F19] dark:text-white">Promptia.lat HubOps Suite</span>
             <span aria-hidden="true">·</span>
-            <span>Sincronizado con HubSpot CRM</span>
+            <span>Tu lógica opera sola, el valor se multiplica</span>
             <span aria-hidden="true">·</span>
             <span className="font-mono tabular-nums text-[11px] text-slate-500 dark:text-slate-400">
               Última sync: {lastSync}
@@ -235,11 +235,11 @@ function AppContent() {
 
           <div className="flex items-center gap-4">
             <span className="text-slate-600 dark:text-slate-300 flex items-center gap-1">
-              <Database className="w-3.5 h-3.5 text-[#041050] dark:text-[#00CFA7]" />
+              <Database className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#21B6EA]" />
               HubSpot API v3 Ready
             </span>
             <span className="text-slate-600 dark:text-slate-300 flex items-center gap-1">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#007F66] dark:text-[#00CFA7]" />
+              <ShieldCheck className="w-3.5 h-3.5 text-[#0369A1] dark:text-[#21B6EA]" />
               Supabase Multi-Tenant Auth
             </span>
           </div>
